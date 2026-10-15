@@ -24,7 +24,8 @@
         <div id="explore-ui" hidden>
           <div id="objective" class="objective"><span class="tiny-star" aria-hidden="true">✦</span><span>草原上的少年，似乎有话想说。</span></div>
           <button id="interact" class="interaction" type="button" hidden><kbd>E</kbd><span>与艾米尔交谈</span></button>
-          <div class="explore-caption"><span class="caption-dot"></span>沿着风的方向，继续旅行。</div>
+          <div class="explore-caption"><span class="caption-dot"></span><span id="scene-caption">沿着风的方向，继续旅行。</span><span id="observation-count" hidden>见闻 0 / 4</span></div>
+          <div id="route-strip" class="route-strip" aria-label="漫游路线"><span class="route-heading">漫游路线</span></div>
         </div>
 
         <section id="title-screen" class="title-screen" aria-labelledby="story-title">
@@ -52,10 +53,14 @@
         <section id="end-screen" class="end-screen" aria-labelledby="end-title" hidden>
           <div class="end-panel"><span class="end-ornament" aria-hidden="true">✧</span><p class="eyebrow">一页旅途，暂告一段落</p><h2 id="end-title">瓶子里的，是什么呢？</h2><p>风还在吹。关于幸福的故事，才刚刚开始。</p><button id="return" class="primary-button" type="button">回到草原 <span aria-hidden="true">→</span></button><button id="replay" class="text-button" type="button">再读一遍这段故事</button></div>
         </section>
+        <section id="inspection" class="inspection-layer" aria-labelledby="inspection-title" hidden>
+          <div class="inspection-card"><span class="inspection-kicker">旅途中的小小见闻</span><h2 id="inspection-title"></h2><p id="inspection-text"></p><button id="close-inspection" class="text-button" type="button">返回探索 <kbd>Esc</kbd></button></div>
+        </section>
+        <div id="scene-transition" class="scene-transition" hidden><div><span>沿着旅途，继续前行</span><h2 id="arrival-name"></h2><i aria-hidden="true">✧</i></div></div>
         <div id="error-panel" class="error-panel" role="alert" hidden><h2>旅行手记暂时打不开</h2><p id="error-message"></p><button id="retry" class="primary-button" type="button">重新读取</button></div>
       </section>
 
-      <footer class="page-footer"><p>一段旅途，一瓶幸福。<span class="footer-note">探索原型 · 美术暂用占位</span></p><div class="keyboard-guide"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 移动</span><span><kbd>E</kbd> 交谈</span><span><kbd>Space</kbd> 继续</span><span><kbd>Esc</kbd> 返回草原</span></div></footer>
+      <footer class="page-footer"><p>一段旅途，一瓶幸福。<span class="footer-note">场景漫游 · 美术暂用占位</span></p><div class="keyboard-guide"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 移动</span><span><kbd>E</kbd> 交互 / 进入</span><span><kbd>Space</kbd> 继续</span><span><kbd>Esc</kbd> 返回探索</span></div></footer>
       <noscript>这个小游戏需要启用 JavaScript，请在浏览器中开启后刷新。</noscript>
     </main>
     <script type="module" src="./src/main.js"></script>
