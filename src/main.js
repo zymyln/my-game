@@ -1,9 +1,12 @@
 import { DialogueSession } from './dialogue.mjs';
 import { AssetLibrary } from './assets.js';
-import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient, drawGlass } from './art.js';
+import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient } from './art.js';
 import { SCENES, ROUTE, START, START_SCENE, canStand, nearestInteraction, readHallObservations } from './world.mjs';
 import { readChapter, ChapterFlow, shotPresentation, glassCue, ACTOR_NAMES } from './chapter.mjs';
 import { SoundEffects } from './sound.js';
+import { MagicPlayer } from './magic.mjs';
+import { drawMagicEffect } from './magic-art.js';
+import { setupEffectsPreview } from './effects-preview.js';
 
 const $ = id => document.getElementById(id);
 const ui = Object.fromEntries([
@@ -13,7 +16,7 @@ const ui = Object.fromEntries([
   'inspection','inspection-title','inspection-text','close-inspection','observation-count',
   'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
   'memory-layer','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
-  'end-kicker','end-title','end-description','passage-label',
+  'end-kicker','end-title','end-description','passage-label','memory-bottle',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -31,7 +34,12 @@ let lastFrame = 0, typedCount = 0, textStarted = 0, textCharacters = [], complet
 let portraitFaces = { left: 'elaina_normal', right: 'emil_proud' };
 let activeInteraction = null;
 let playMode='story',chapter=null,flow=null,roamSession=null,lastShot=null;
-let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null;
+let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null,propKind=null,effectLocked=false;
+const magic=new MagicPlayer({reducedMotion});
+const syncSound=()=>{ui['sound-toggle'].textContent=sound.enabled?'音效：开':'音效：关';ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled));};
+const effectsPreview=setupEffectsPreview({backgrounds,sound,onSoundChange:syncSound});
+const requestedEffect=new URLSearchParams(location.search).get('effects');
+if(['bottle','glass','cup'].includes(requestedEffect))effectsPreview.open(requestedEffect==='bottle'?'bottle':'cup');
 const lunchSeat={id:'wait-lunch',kind:'story',label:'坐下，等待午餐',x:330,y:304,radius:22};
 
 function availableInteractions() {
@@ -57,7 +65,7 @@ function setMode(next) {
   ui['memory-layer'].hidden = next !== 'memory';
   ui['pause-screen'].hidden = next !== 'pause';
   ui['pause-toggle'].hidden = ['title','complete','transition','pause'].includes(next);
-  ui['story-prop'].hidden = !(glassState && next==='dialogue');
+  ui['story-prop'].hidden = !(propKind && next==='dialogue');
   ui.game.dataset.mode = next;
   ui.game.dataset.playMode=playMode;
   ui.game.dataset.storyPhase=playMode==='story' ? flow?.phase ?? 'idle' : 'roam';
@@ -109,7 +117,7 @@ async function travel(exit) {
 function resetJourney(nextMode) {
   playMode=nextMode;sceneId=START_SCENE;Object.assign(player,START,{direction:'right',moving:false});
   visited.clear();visited.add(START_SCENE);inspected.clear();completed=false;
-  lastShot=null;glassState=null;advanceReadyAt=0;activeInteraction=null;
+  lastShot=null;glassState=null;propKind=null;effectLocked=false;advanceReadyAt=0;activeInteraction=null;
   portraitFaces={left:'elaina_normal',right:'emil_bright'};
   ui['dialogue-layer'].classList.remove('no-portraits');
   $('portrait-right').querySelector('.portrait-label').textContent='艾米尔';
@@ -136,7 +144,7 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {glassState=null;propKind=null;effectLocked=false;setMode('title');ui.start.focus({preventScroll:true});}
 
 function displayPortrait(side,face) {
   const container = $(`portrait-${side}`);
@@ -157,7 +165,9 @@ function showLine() {
   if(playMode==='story') {
     const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId);
     if(changed) {
-      lastShot=node.shotId;glassState=null;
+      lastShot=node.shotId;glassState=null;propKind=null;effectLocked=false;
+      if(['SH-04','SH-12'].includes(node.shotId)){propKind='bottle';magic.select('bottle');}
+      if(node.shotId==='SH-10'){propKind='cup';glassState='whole';magic.select('cup');}
       advanceReadyAt=performance.now()+staging.hold;
       if(staging.rightFace)portraitFaces.right=staging.rightFace;
     }
@@ -166,14 +176,20 @@ function showLine() {
     ui.game.dataset.shot=node.shotId;ui.game.dataset.stepKind=node.kind;
     ui.game.dataset.storyPhase=flow.phase;
     const cue=glassCue(node);
-    if(cue==='sound')sound.play('glass');else if(cue)glassState=cue;
+    if(cue==='sound'||cue==='broken') {
+      glassState='broken';
+      if(magic.trigger('shatter')){sound.play('glass');effectLocked=true;}
+    } else if(cue==='mist') {
+      glassState='mist';
+      if(magic.trigger('restore')){sound.play('restore');effectLocked=true;}
+    } else if(cue==='whole')glassState='whole';
     ui['story-prop'].dataset.state=glassState ?? '';
     if(node.shotId==='SH-12'&&/^妮诺她/.test(node.text))portraitFaces.right='nino_teary';
     if(node.kind==='memory') {
       setMode('memory');ui['memory-text'].textContent=node.text;ui['memory-count'].textContent=`${node.memoryNumber} / 6`;
       advanceReadyAt=performance.now()+2000;ui['memory-next'].disabled=true;ui['memory-next'].textContent='静静看着…';
       ui.game.dataset.dialogueId=session.currentId;
-      if(node.memoryNumber===1)sound.play('bottle');
+      if(node.memoryNumber===1&&magic.trigger('release'))sound.play('bottle');
       return;
     }
   } else {advanceReadyAt=0;ui['passage-label'].textContent='瓶中的幸福';}
@@ -201,6 +217,7 @@ function showLine() {
 
 function openDialogue(restart = false) {
   if (!session) return;
+  if(restart||propKind!=='bottle'){propKind='bottle';glassState=null;effectLocked=false;magic.select('bottle');}
   if (restart || !session.current || session.ended) {
     session.start();
     const nodes = Object.values(session.data);
@@ -218,7 +235,7 @@ function advance() {
     typedCount = textCharacters.length; ui['dialogue-text'].textContent = textCharacters.join('');
     ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent = '继续'; return;
   }
-  if(performance.now()<advanceReadyAt)return;
+  if(performance.now()<advanceReadyAt||(effectLocked&&magic.busy))return;
   if(playMode==='story') {
     if(flow.advance())showLine();
     else if(flow.phase==='complete')showEnding();
@@ -228,7 +245,7 @@ function advance() {
 }
 
 function showEnding() {
-  completed=true;glassState=null;
+  completed=true;glassState=null;propKind=null;effectLocked=false;
   const story=playMode==='story';
   ui['end-kicker'].textContent=story?'第一章 · 完':'一页旅途，暂告一段落';
   ui['end-title'].textContent=story?'瓶中的幸福':'瓶子里的，是什么呢？';
@@ -304,6 +321,7 @@ document.addEventListener('fullscreenchange',() => ui.fullscreen.setAttribute('a
 
 const movementKeys = ['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'];
 document.addEventListener('keydown',event => {
+  if(effectsPreview.active)return;
   if (event.ctrlKey || event.altKey || event.metaKey || event.isComposing) return;
   if (event.target instanceof HTMLElement && event.target.matches('input,textarea,select,[contenteditable="true"]')) return;
   const key = event.key.toLowerCase();
@@ -383,7 +401,10 @@ function draw(time) {
     for (const sprite of sprites) drawSprite(ctx,sprite.actor,sprite.x,sprite.y,{moving:sprite.moving,direction:sprite.direction,time});
     drawAmbient(ctx,visibleScene,time,reducedMotion); drawMarkers(time);
   }
-  if(glassState&&mode==='dialogue')drawGlass(ui['glass-prop'],glassState);
+  if(propKind&&mode==='dialogue')drawMagicEffect(ui['glass-prop'],magic);
+  if(propKind==='bottle'&&mode==='memory')drawMagicEffect(ui['memory-bottle'],magic,{placement:'memory'});
+  ui['story-prop'].dataset.phase=magic.phase;
+  ui['story-prop'].dataset.progress=magic.progress.toFixed(3);
   const label = document.querySelector('.location');
   if (label.dataset.location !== visibleScene) {
     label.dataset.location = visibleScene;
@@ -394,13 +415,14 @@ function draw(time) {
 function frame(time) {
   const dt = lastFrame ? Math.min((time-lastFrame)/1000,.05) : 0;
   lastFrame = time; updateMovement(dt);
+  if(propKind&&['dialogue','memory'].includes(mode)&&!effectsPreview.active)magic.update(dt*1000);
   if (mode==='dialogue' && typedCount<textCharacters.length) {
     const count = reducedMotion ? textCharacters.length : Math.min(textCharacters.length,Math.floor((time-textStarted)/32));
     if (count!==typedCount) { typedCount=count; ui['dialogue-text'].textContent=textCharacters.slice(0,count).join(''); }
     if (typedCount===textCharacters.length) { ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent='继续'; }
   }
   if(mode==='dialogue') {
-    const held=time<advanceReadyAt;ui.advance.disabled=held;
+    const held=time<advanceReadyAt||(effectLocked&&magic.busy);ui.advance.disabled=held;
     if(held)ui['advance-label'].textContent='片刻之后…';
     else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
   }

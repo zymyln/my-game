@@ -151,24 +151,6 @@ export function drawPortrait(canvas, actor, expression = '') {
   if(/angry/.test(expression)){polygon(ctx,'#5a5148',[[33,46],[44,50],[44,53],[33,49]]);polygon(ctx,'#5a5148',[[63,46],[52,50],[52,53],[63,49]]);}
 }
 
-export function drawGlass(canvas,state) {
-  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,160,100);ctx.imageSmoothingEnabled=false;
-  rect(ctx,'#425d4c20',31,82,99,5);
-  if(state==='broken'||state==='mist') {
-    for(const [x,y,w]of[[40,73,13],[64,79,11],[90,71,16],[106,82,10],[76,66,8]]){
-      polygon(ctx,'#bfd5cb',[[x,y],[x+w,y-7],[x+w-3,y+4]]);rect(ctx,'#edf1db',x+3,y-1,4,1);
-    }
-  } else {
-    polygon(ctx,'#bfd5cb',[[61,33],[99,33],[95,67],[85,76],[85,84],[101,84],[101,88],[59,88],[59,84],[75,84],[75,76],[65,67]]);
-    rect(ctx,'#eef1da',63,32,34,3);rect(ctx,'#e1e8d1',66,37,3,23);rect(ctx,'#d8e5cf',72,69,18,3);rect(ctx,'#f3f1dc',62,85,36,2);
-  }
-  if(state==='mist') {
-    for(const [x,y,w]of[[27,55,34],[47,40,44],[75,50,42],[101,62,27],[53,66,42]]){
-      rect(ctx,'#f5f3dfb8',x,y,w,13);rect(ctx,'#fffce855',x+5,y-4,w-10,20);
-    }
-  }
-}
-
 export function drawInterior(ctx) {
   rect(ctx,'#d9ccb0',0,0,640,360);
   rect(ctx,'#d2bd95',0,0,640,13);rect(ctx,'#8a7455',0,13,640,7);
