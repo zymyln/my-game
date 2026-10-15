@@ -1,7 +1,9 @@
 import { DialogueSession } from './dialogue.mjs';
 import { AssetLibrary } from './assets.js';
-import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient } from './art.js';
+import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient, drawGlass } from './art.js';
 import { SCENES, ROUTE, START, START_SCENE, canStand, nearestInteraction, readHallObservations } from './world.mjs';
+import { readChapter, ChapterFlow, shotPresentation, glassCue, ACTOR_NAMES } from './chapter.mjs';
+import { SoundEffects } from './sound.js';
 
 const $ = id => document.getElementById(id);
 const ui = Object.fromEntries([
@@ -9,12 +11,15 @@ const ui = Object.fromEntries([
   'dialogue-layer','speaker','dialogue-text','advance','advance-label','end-screen','return',
   'replay','fullscreen','error-panel','error-message','retry','route-strip','scene-caption',
   'inspection','inspection-title','inspection-text','close-inspection','observation-count',
-  'scene-transition','arrival-name',
+  'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
+  'memory-layer','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
+  'end-kicker','end-title','end-description','passage-label',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 const backgrounds = createSceneBackgrounds();
 const assets = new AssetLibrary();
+const sound = new SoundEffects();
 const keys = new Set();
 const player = { ...START, direction: 'right', moving: false };
 const visited = new Set([START_SCENE]);
@@ -25,6 +30,15 @@ let mode = 'title', sceneId = START_SCENE, session = null, observations = new Ma
 let lastFrame = 0, typedCount = 0, textStarted = 0, textCharacters = [], completed = false;
 let portraitFaces = { left: 'elaina_normal', right: 'emil_proud' };
 let activeInteraction = null;
+let playMode='story',chapter=null,flow=null,roamSession=null,lastShot=null;
+let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null;
+const lunchSeat={id:'wait-lunch',kind:'story',label:'坐下，等待午餐',x:330,y:304,radius:22};
+
+function availableInteractions() {
+  if(playMode==='roam')return SCENES[sceneId].interactions;
+  const allowed=flow?.interactions() ?? [];
+  return [...SCENES[sceneId].interactions,lunchSeat].filter(item=>allowed.includes(item.id));
+}
 
 for (const [index,id] of ROUTE.entries()) {
   const stop = document.createElement('span');
@@ -40,7 +54,13 @@ function setMode(next) {
   ui['dialogue-layer'].hidden = next !== 'dialogue';
   ui['end-screen'].hidden = next !== 'complete';
   ui.inspection.hidden = next !== 'inspect';
+  ui['memory-layer'].hidden = next !== 'memory';
+  ui['pause-screen'].hidden = next !== 'pause';
+  ui['pause-toggle'].hidden = ['title','complete','transition','pause'].includes(next);
+  ui['story-prop'].hidden = !(glassState && next==='dialogue');
   ui.game.dataset.mode = next;
+  ui.game.dataset.playMode=playMode;
+  ui.game.dataset.storyPhase=playMode==='story' ? flow?.phase ?? 'idle' : 'roam';
 }
 
 function refreshSceneUI() {
@@ -49,6 +69,11 @@ function refreshSceneUI() {
   ui.objective.querySelector('span:last-child').textContent = sceneId === 'field_day' && completed
     ? '沿远处的小路前往宅邸，继续探索。' : scene.objective;
   ui['scene-caption'].textContent = scene.caption;
+  if(playMode==='story'&&flow) {
+    ui.objective.querySelector('span:last-child').textContent=flow.objective();
+    ui['scene-caption'].textContent=flow.phase==='waiting' ? '调查完全可选；准备好后，到餐桌下方坐下。' : '跟随亮起的标记，继续这段旅途。';
+  }
+  ui['route-strip'].querySelector('.route-heading').textContent=playMode==='story' ? '第一章' : '漫游路线';
   ui['observation-count'].hidden = sceneId !== 'hall';
   ui['observation-count'].textContent = `见闻 ${inspected.size} / 4`;
   for (const stop of ui['route-strip'].children) {
@@ -78,25 +103,85 @@ async function travel(exit) {
   ui['scene-transition'].classList.remove('covered');
   await wait(reducedMotion ? 0 : 260);
   ui['scene-transition'].hidden = true; returnToExploration();
+  if(playMode==='story') {session=flow.arrive(sceneId);showLine();ui.game.focus({preventScroll:true});}
 }
+
+function resetJourney(nextMode) {
+  playMode=nextMode;sceneId=START_SCENE;Object.assign(player,START,{direction:'right',moving:false});
+  visited.clear();visited.add(START_SCENE);inspected.clear();completed=false;
+  lastShot=null;glassState=null;advanceReadyAt=0;activeInteraction=null;
+  portraitFaces={left:'elaina_normal',right:'emil_bright'};
+  ui['dialogue-layer'].classList.remove('no-portraits');
+  $('portrait-right').querySelector('.portrait-label').textContent='艾米尔';
+  refreshSceneUI();
+}
+
+function startStory() {
+  resetJourney('story');flow=new ChapterFlow(chapter);session=flow.start();
+  showLine();ui.game.focus({preventScroll:true});
+}
+
+function startRoam() {
+  resetJourney('roam');session=roamSession=new DialogueSession(roamSession.data);
+  returnToExploration();
+}
+
+function pauseJourney() {
+  if(['title','complete','transition','pause'].includes(mode))return;
+  pausedMode=mode;pausedAt=performance.now();setMode('pause');ui.resume.focus({preventScroll:true});
+}
+function resumeJourney() {
+  if(mode!=='pause')return;
+  const elapsed=performance.now()-pausedAt;
+  advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
+  setMode(pausedMode);ui.game.focus({preventScroll:true});
+}
+function backToTitle() {glassState=null;setMode('title');ui.start.focus({preventScroll:true});}
 
 function displayPortrait(side,face) {
   const container = $(`portrait-${side}`);
   const image = container.querySelector('img'), canvas = container.querySelector('canvas');
   const existing = assets.portrait(face);
+  const actorChanged=container.dataset.face?.split('_')[0]!==face.split('_')[0];
   image.hidden = !existing; canvas.hidden = Boolean(existing);
   if (existing) image.src = existing.src;
   else drawPortrait(canvas,face.split('_')[0],face);
   image.alt = `${container.querySelector('.portrait-label').textContent}立绘`;
   container.dataset.face = face;
+  if(actorChanged&&!reducedMotion){container.classList.remove('arriving');void container.offsetWidth;container.classList.add('arriving');}
 }
 
 function showLine() {
   const node = session.current;
   if (!node) return;
+  if(playMode==='story') {
+    const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId);
+    if(changed) {
+      lastShot=node.shotId;glassState=null;
+      advanceReadyAt=performance.now()+staging.hold;
+      if(staging.rightFace)portraitFaces.right=staging.rightFace;
+    }
+    ui['dialogue-layer'].classList.toggle('no-portraits',staging.hidePortraits);
+    ui['passage-label'].textContent=node.shotTitle;
+    ui.game.dataset.shot=node.shotId;ui.game.dataset.stepKind=node.kind;
+    ui.game.dataset.storyPhase=flow.phase;
+    const cue=glassCue(node);
+    if(cue==='sound')sound.play('glass');else if(cue)glassState=cue;
+    ui['story-prop'].dataset.state=glassState ?? '';
+    if(node.shotId==='SH-12'&&/^妮诺她/.test(node.text))portraitFaces.right='nino_teary';
+    if(node.kind==='memory') {
+      setMode('memory');ui['memory-text'].textContent=node.text;ui['memory-count'].textContent=`${node.memoryNumber} / 6`;
+      advanceReadyAt=performance.now()+2000;ui['memory-next'].disabled=true;ui['memory-next'].textContent='静静看着…';
+      ui.game.dataset.dialogueId=session.currentId;
+      if(node.memoryNumber===1)sound.play('bottle');
+      return;
+    }
+  } else {advanceReadyAt=0;ui['passage-label'].textContent='瓶中的幸福';}
+  setMode('dialogue');
+  $('portrait-right').querySelector('.portrait-label').textContent=ACTOR_NAMES[portraitFaces.right.split('_')[0]] || '艾米尔';
   const narration = node.speaker === '旁白';
   ui.speaker.hidden = narration; ui.speaker.textContent = narration ? '' : node.speaker;
-  if (node.face !== null && !narration) {
+  if (node.face !== null && (!narration || node.thought)) {
     const side = node.face.startsWith('elaina_') ? 'left' : 'right';
     portraitFaces[side] = node.face;
     if (side === 'right') $('portrait-right').querySelector('.portrait-label').textContent = node.speaker;
@@ -110,6 +195,7 @@ function showLine() {
   textCharacters = Array.from(node.text); typedCount = 0; textStarted = performance.now();
   ui['dialogue-text'].textContent = '';
   ui['dialogue-layer'].classList.remove('ready'); ui['advance-label'].textContent = '显示全文';
+  ui.advance.disabled=performance.now()<advanceReadyAt;
   ui.game.dataset.dialogueId = session.currentId;
 }
 
@@ -127,19 +213,43 @@ function openDialogue(restart = false) {
 }
 
 function advance() {
-  if (mode !== 'dialogue') return;
-  if (typedCount < textCharacters.length) {
+  if (!['dialogue','memory'].includes(mode)) return;
+  if (mode==='dialogue' && typedCount < textCharacters.length) {
     typedCount = textCharacters.length; ui['dialogue-text'].textContent = textCharacters.join('');
     ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent = '继续'; return;
   }
-  if (session.advance()) showLine();
-  else { completed = true; setMode('complete'); ui.return.focus({preventScroll:true}); }
+  if(performance.now()<advanceReadyAt)return;
+  if(playMode==='story') {
+    if(flow.advance())showLine();
+    else if(flow.phase==='complete')showEnding();
+    else returnToExploration();
+  } else if (session.advance()) showLine();
+  else showEnding();
+}
+
+function showEnding() {
+  completed=true;glassState=null;
+  const story=playMode==='story';
+  ui['end-kicker'].textContent=story?'第一章 · 完':'一页旅途，暂告一段落';
+  ui['end-title'].textContent=story?'瓶中的幸福':'瓶子里的，是什么呢？';
+  ui['end-description'].textContent=story?'风还在吹。旅途仍将继续。':'风还在吹。关于幸福的故事，才刚刚开始。';
+  ui.return.textContent=story?'返回标题':'回到草原 →';
+  ui.replay.textContent=story?'从头重读这一章':'再读一遍这段故事';
+  setMode('complete');ui.return.focus({preventScroll:true});
 }
 
 function interact(item = activeInteraction) {
   if (mode !== 'explore' || !item) return;
   if (item.kind === 'exit') { travel(item); return; }
-  if (item.kind === 'dialogue') { openDialogue(); return; }
+  if (item.kind === 'dialogue') {
+    if(playMode==='story'){session=flow.meet();showLine();ui.game.focus({preventScroll:true});}
+    else openDialogue();
+    return;
+  }
+  if(item.kind==='story') {
+    Object.assign(player,{x:330,y:289,direction:'up'});
+    session=flow.sit();showLine();ui.game.focus({preventScroll:true});return;
+  }
   if (item.kind === 'inspect') {
     ui['inspection-title'].textContent = item.source;
     ui['inspection-text'].textContent = observations.get(item.source);
@@ -148,7 +258,7 @@ function interact(item = activeInteraction) {
 }
 
 function updateInteraction() {
-  activeInteraction = nearestInteraction(sceneId,player);
+  activeInteraction = nearestInteraction(sceneId,player,availableInteractions());
   ui.interact.hidden = !activeInteraction;
   if (!activeInteraction) return;
   ui.interact.querySelector('span').textContent = activeInteraction.label;
@@ -160,11 +270,20 @@ function updateInteraction() {
   ui.interact.style.top = `${(height-360*scale)/2 + (activeInteraction.y-35)*scale}px`;
 }
 
-ui.start.addEventListener('click',returnToExploration);
+ui.start.addEventListener('click',startStory);
+ui.roam.addEventListener('click',startRoam);
 ui.interact.addEventListener('click',() => interact());
 ui.advance.addEventListener('click',advance);
-ui.return.addEventListener('click',returnToExploration);
-ui.replay.addEventListener('click',() => openDialogue(true));
+ui.return.addEventListener('click',()=>playMode==='story'?backToTitle():returnToExploration());
+ui.replay.addEventListener('click',()=>playMode==='story'?startStory():openDialogue(true));
+ui['memory-next'].addEventListener('click',advance);
+ui['pause-toggle'].addEventListener('click',pauseJourney);
+ui.resume.addEventListener('click',resumeJourney);
+ui['back-title'].addEventListener('click',backToTitle);
+ui['sound-toggle'].addEventListener('click',async()=>{
+  try {const enabled=await sound.toggle();ui['sound-toggle'].textContent=enabled?'音效：开':'音效：关';ui['sound-toggle'].setAttribute('aria-pressed',String(enabled));}
+  catch {ui['sound-toggle'].textContent='音效不可用';}
+});
 ui['close-inspection'].addEventListener('click',returnToExploration);
 ui.retry.addEventListener('click',() => location.reload());
 ui.world.addEventListener('click',event => {
@@ -196,10 +315,16 @@ document.addEventListener('keydown',event => {
   }
   if (key === 'f' && !event.repeat) { event.preventDefault(); toggleFullscreen(); return; }
   if (event.repeat) return;
-  if (key === 'escape' && ['dialogue','complete','inspect'].includes(mode)) { event.preventDefault(); returnToExploration(); return; }
+  if(key==='escape') {
+    if(mode==='pause'){event.preventDefault();resumeJourney();return;}
+    if(mode==='inspect'){event.preventDefault();returnToExploration();return;}
+    if(mode==='complete'){event.preventDefault();if(playMode==='story')backToTitle();else returnToExploration();return;}
+    if(playMode==='story'&&['explore','dialogue','memory'].includes(mode)){event.preventDefault();pauseJourney();return;}
+    if(mode==='dialogue'){event.preventDefault();returnToExploration();return;}
+  }
   if (mode === 'explore' && key === 'e') { event.preventDefault(); interact(); return; }
   if (mode === 'inspect' && [' ','enter','e'].includes(key) && !onButton) { event.preventDefault(); returnToExploration(); return; }
-  if (mode === 'dialogue' && [' ','enter','e'].includes(key) && !onButton) { event.preventDefault(); advance(); }
+  if (['dialogue','memory'].includes(mode) && [' ','enter','e'].includes(key) && !onButton) { event.preventDefault(); advance(); }
 });
 document.addEventListener('keyup',event => keys.delete(event.key.toLowerCase()));
 window.addEventListener('blur',() => { keys.clear(); player.moving = false; });
@@ -218,11 +343,12 @@ function updateMovement(dt) {
   }
   updateInteraction();
   ui.game.dataset.playerX = player.x.toFixed(1); ui.game.dataset.playerY = player.y.toFixed(1);
+  if(playMode==='story'&&flow?.phase==='meet'&&activeInteraction?.id==='emil')interact();
 }
 
 function drawMarkers(time) {
   if (mode !== 'explore') return;
-  for (const item of SCENES[sceneId].interactions) {
+  for (const item of availableInteractions()) {
     const near = activeInteraction?.id === item.id;
     const x = item.x, y = item.y-24+(reducedMotion ? 0 : Math.round(Math.sin(time/650)*1));
     ctx.globalAlpha = near ? 1 : .65;
@@ -240,7 +366,8 @@ function drawMarkers(time) {
 }
 
 function draw(time) {
-  const node = mode==='dialogue' ? session?.current : null;
+  const readingMode=mode==='dialogue'||mode==='memory'||(mode==='pause'&&['dialogue','memory'].includes(pausedMode));
+  const node = readingMode ? session?.current : null;
   const visibleScene = node?.bg && SCENES[node.bg] ? node.bg : sceneId;
   const background = node ? assets.backgrounds.get(node.bg) : null;
   if (background) {
@@ -249,12 +376,14 @@ function draw(time) {
     ctx.drawImage(background,(640-width)/2,(360-height)/2,width,height);
   } else {
     ctx.drawImage(backgrounds.get(visibleScene),0,0);
-    const sprites = [...SCENES[visibleScene].npcs];
-    if (visibleScene===sceneId) sprites.push({actor:'elaina',...player});
+    const hideSprites=playMode==='story'&&node&&shotPresentation(node.shotId).hideSprites;
+    const sprites = hideSprites ? [] : [...SCENES[visibleScene].npcs];
+    if (!hideSprites&&visibleScene===sceneId) sprites.push({actor:'elaina',...player});
     sprites.sort((a,b)=>a.y-b.y);
     for (const sprite of sprites) drawSprite(ctx,sprite.actor,sprite.x,sprite.y,{moving:sprite.moving,direction:sprite.direction,time});
     drawAmbient(ctx,visibleScene,time,reducedMotion); drawMarkers(time);
   }
+  if(glassState&&mode==='dialogue')drawGlass(ui['glass-prop'],glassState);
   const label = document.querySelector('.location');
   if (label.dataset.location !== visibleScene) {
     label.dataset.location = visibleScene;
@@ -270,6 +399,15 @@ function frame(time) {
     if (count!==typedCount) { typedCount=count; ui['dialogue-text'].textContent=textCharacters.slice(0,count).join(''); }
     if (typedCount===textCharacters.length) { ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent='继续'; }
   }
+  if(mode==='dialogue') {
+    const held=time<advanceReadyAt;ui.advance.disabled=held;
+    if(held)ui['advance-label'].textContent='片刻之后…';
+    else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
+  }
+  if(mode==='memory') {
+    const held=time<advanceReadyAt;ui['memory-next'].disabled=held;
+    ui['memory-next'].textContent=held?'静静看着…':'继续 · Space';
+  }
   draw(time); requestAnimationFrame(frame);
 }
 refreshSceneUI(); requestAnimationFrame(frame);
@@ -283,11 +421,14 @@ async function initialize() {
     ]);
     if (!response.ok) throw new Error(`剧情文件读取失败（HTTP ${response.status}）。`);
     if (!script.ok) throw new Error(`旅行见闻读取失败（HTTP ${script.status}）。`);
-    session = new DialogueSession(await response.json());
-    observations = readHallObservations(await script.text());
+    session = roamSession = new DialogueSession(await response.json());
+    const manuscript=await script.text();
+    observations = readHallObservations(manuscript);
+    chapter=readChapter(manuscript);
     await assets.load();
     ui.start.disabled = false; ui.start.innerHTML = '开始旅行 <span aria-hidden="true">→</span>';
-    ui['loading-message'].textContent = '四处风景 · 一段关于幸福的故事';
+    ui.roam.disabled=false;
+    ui['loading-message'].textContent = '第一章完整剧情 · 也可以自由漫游';
   } catch (error) {
     ui['error-panel'].hidden=false; ui['error-message'].textContent=error.message;
     console.error('游戏启动失败：',error);

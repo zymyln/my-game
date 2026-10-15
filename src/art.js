@@ -123,6 +123,14 @@ export function drawPortrait(canvas, actor, expression = '') {
     rect(ctx,'#70697a',31,12,11,10);rect(ctx,'#c0ab72',21,23,53,5);rect(ctx,'#ddd5bd',63,21,9,9);rect(ctx,'#77707c',65,23,5,5);
     rect(ctx,'#ebe4d3',30,81,36,5);polygon(ctx,'#f1ebda',[[29,79],[45,84],[40,96]]);polygon(ctx,'#ddd5c6',[[67,79],[51,84],[56,96]]);
     rect(ctx,'#ae9560',45,86,8,5);rect(ctx,'#ccb985',48,91,3,8);rect(ctx,'#79717f',37,103,3,25);
+  } else if(nino) {
+    rect(ctx,'#e2d7bd',32,80,32,48);rect(ctx,'#f0e7d0',35,82,26,43);
+    rect(ctx,'#bdb69e',35,109,26,2);rect(ctx,'#f3ead5',29,83,8,11);rect(ctx,'#f3ead5',61,83,8,11);
+    rect(ctx,skin,22,116,8,10);rect(ctx,skin,68,116,8,10);
+  } else if(chief) {
+    polygon(ctx,'#e3d6b9',[[32,79],[48,89],[65,79],[60,95],[37,95]]);
+    rect(ctx,'#475246',45,90,7,27);rect(ctx,'#bba575',47,103,3,3);rect(ctx,'#bba575',47,116,3,3);
+    rect(ctx,'#8b8273',37,69,22,8);rect(ctx,'#8b8273',41,76,14,4);
   } else {
     rect(ctx,hair,24,26,46,12);rect(ctx,hairLight,30,24,31,10);rect(ctx,hair,25,37,7,12);rect(ctx,hair,62,34,8,13);
     rect(ctx,'#ede2c5',31,80,10,48);rect(ctx,'#ede2c5',58,80,8,48);
@@ -138,6 +146,27 @@ export function drawPortrait(canvas, actor, expression = '') {
   rect(ctx,shade,46,59,3,2);rect(ctx,'#bd8b7d',44,65,9,2);
   if(smile)rect(ctx,'#bd8b7d',46,67,5,2);
   if(panic)rect(ctx,'#a66f64',46,64,5,5);
+  if(/teary/.test(expression)){rect(ctx,'#b9d6ce',39,57,3,12);rect(ctx,'#b9d6ce',55,57,3,12);}
+  if(/empty/.test(expression)){rect(ctx,'#514f53',36,51,7,6);rect(ctx,'#514f53',53,51,7,6);}
+  if(/angry/.test(expression)){polygon(ctx,'#5a5148',[[33,46],[44,50],[44,53],[33,49]]);polygon(ctx,'#5a5148',[[63,46],[52,50],[52,53],[63,49]]);}
+}
+
+export function drawGlass(canvas,state) {
+  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,160,100);ctx.imageSmoothingEnabled=false;
+  rect(ctx,'#425d4c20',31,82,99,5);
+  if(state==='broken'||state==='mist') {
+    for(const [x,y,w]of[[40,73,13],[64,79,11],[90,71,16],[106,82,10],[76,66,8]]){
+      polygon(ctx,'#bfd5cb',[[x,y],[x+w,y-7],[x+w-3,y+4]]);rect(ctx,'#edf1db',x+3,y-1,4,1);
+    }
+  } else {
+    polygon(ctx,'#bfd5cb',[[61,33],[99,33],[95,67],[85,76],[85,84],[101,84],[101,88],[59,88],[59,84],[75,84],[75,76],[65,67]]);
+    rect(ctx,'#eef1da',63,32,34,3);rect(ctx,'#e1e8d1',66,37,3,23);rect(ctx,'#d8e5cf',72,69,18,3);rect(ctx,'#f3f1dc',62,85,36,2);
+  }
+  if(state==='mist') {
+    for(const [x,y,w]of[[27,55,34],[47,40,44],[75,50,42],[101,62,27],[53,66,42]]){
+      rect(ctx,'#f5f3dfb8',x,y,w,13);rect(ctx,'#fffce855',x+5,y-4,w-10,20);
+    }
+  }
 }
 
 export function drawInterior(ctx) {

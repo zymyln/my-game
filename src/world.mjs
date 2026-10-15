@@ -82,8 +82,8 @@ export function canStand(sceneId, x, y) {
   return scene.npcs.every(npc => Math.hypot(x-npc.x,y-npc.y) > 14);
 }
 
-export function nearestInteraction(sceneId, player) {
-  return SCENES[sceneId].interactions
+export function nearestInteraction(sceneId, player, interactions = SCENES[sceneId].interactions) {
+  return interactions
     .map(item => ({ item, distance: Math.hypot(player.x-item.x,player.y-item.y) }))
     .filter(({item,distance}) => distance <= item.radius)
     .sort((a,b) => a.distance-b.distance)[0]?.item ?? null;
