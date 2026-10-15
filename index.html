@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f0e6" />
+    <meta name="description" content="与伊蕾娜一起，走进一段关于瓶中幸福的旅途。魔女之旅同人小游戏。" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23505c50' d='M17 3 7 23h20L17 3ZM3 24h26v4H3z'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./src/styles.css" />
+    <title>魔女之旅 · 瓶中的幸福</title>
+  </head>
+  <body>
+    <main class="travel-page">
+      <header class="page-header">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">✧</span><div><span class="eyebrow">A WITCH'S LITTLE JOURNEY</span><h1>魔女之旅</h1></div></div>
+        <div class="chapter-heading"><span class="chapter-number">CHAPTER 01</span><span>瓶中的幸福</span><span class="chapter-rule" aria-hidden="true"></span><span class="edition">同人小游戏 · 制作中</span></div>
+      </header>
+
+      <section id="game" class="game-frame" aria-label="魔女之旅游戏" tabindex="-1">
+        <canvas id="world" width="640" height="360" aria-label="草原地图，使用 WASD 或方向键移动，靠近艾米尔后按 E 交谈"></canvas>
+        <div class="scene-vignette" aria-hidden="true"></div>
+        <div class="scene-topbar"><span class="location"><span aria-hidden="true">☀</span> 草原 · 白昼</span><button id="fullscreen" class="icon-button" type="button" title="全屏（F）" aria-label="切换全屏">⛶</button></div>
+
+        <div id="explore-ui" hidden>
+          <div id="objective" class="objective"><span class="tiny-star" aria-hidden="true">✦</span><span>草原上的少年，似乎有话想说。</span></div>
+          <button id="interact" class="interaction" type="button" hidden><kbd>E</kbd><span>与艾米尔交谈</span></button>
+          <div class="explore-caption"><span class="caption-dot"></span>沿着风的方向，继续旅行。</div>
+        </div>
+
+        <section id="title-screen" class="title-screen" aria-labelledby="story-title">
+          <div class="title-panel">
+            <p class="title-kicker">第一章 <span aria-hidden="true">—</span> 一段小小的旅途</p>
+            <div class="title-ornament" aria-hidden="true">✧</div>
+            <h2 id="story-title">瓶中的<span>幸福</span></h2>
+            <p class="title-description">风吹过草原。<br />一位少年，正小心翼翼地收集着幸福。</p>
+            <button id="start" class="primary-button" type="button" disabled>正在整理行囊…</button>
+            <p id="loading-message" class="title-note" role="status">正在读取旅行手记</p>
+          </div>
+          <p class="scene-credit">THE THINGS WE FIND ALONG THE WAY</p>
+        </section>
+
+        <section id="dialogue-layer" class="dialogue-layer" aria-label="剧情对话" hidden>
+          <div class="portrait portrait-left" id="portrait-left"><canvas width="96" height="128" aria-hidden="true"></canvas><img alt="伊蕾娜立绘" hidden /><span class="portrait-label">伊蕾娜</span></div>
+          <div class="portrait portrait-right" id="portrait-right"><canvas width="96" height="128" aria-hidden="true"></canvas><img alt="对话角色立绘" hidden /><span class="portrait-label">艾米尔</span></div>
+          <div class="dialogue-box">
+            <div id="speaker" class="speaker" hidden></div>
+            <p id="dialogue-text" class="dialogue-text" aria-live="polite" aria-atomic="true"></p>
+            <div class="dialogue-bottom"><span id="passage-label">瓶中的幸福</span><button id="advance" type="button" class="advance-button"><span id="advance-label">显示全文</span><kbd>Space</kbd><span class="next-diamond" aria-hidden="true">◆</span></button></div>
+          </div>
+        </section>
+
+        <section id="end-screen" class="end-screen" aria-labelledby="end-title" hidden>
+          <div class="end-panel"><span class="end-ornament" aria-hidden="true">✧</span><p class="eyebrow">一页旅途，暂告一段落</p><h2 id="end-title">瓶子里的，是什么呢？</h2><p>风还在吹。关于幸福的故事，才刚刚开始。</p><button id="return" class="primary-button" type="button">回到草原 <span aria-hidden="true">→</span></button><button id="replay" class="text-button" type="button">再读一遍这段故事</button></div>
+        </section>
+        <div id="error-panel" class="error-panel" role="alert" hidden><h2>旅行手记暂时打不开</h2><p id="error-message"></p><button id="retry" class="primary-button" type="button">重新读取</button></div>
+      </section>
+
+      <footer class="page-footer"><p>一段旅途，一瓶幸福。<span class="footer-note">探索原型 · 美术暂用占位</span></p><div class="keyboard-guide"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 移动</span><span><kbd>E</kbd> 交谈</span><span><kbd>Space</kbd> 继续</span><span><kbd>Esc</kbd> 返回草原</span></div></footer>
+      <noscript>这个小游戏需要启用 JavaScript，请在浏览器中开启后刷新。</noscript>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
