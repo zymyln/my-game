@@ -1,1 +1,156 @@
-{}
+{
+  "ch1_field_01": {
+    "speaker": "旁白",
+    "text": "我看向被他保护的玻璃瓶，看见某种东西在瓶中蠢动。",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_02"
+  },
+  "ch1_field_02": {
+    "speaker": "旁白",
+    "text": "定眼一看，那是一团白雾，宛如具有生命般在瓶内飘舞。",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_03"
+  },
+  "ch1_field_03": {
+    "speaker": "伊蕾娜",
+    "text": "那是什么？",
+    "face": "elaina_normal",
+    "bg": "field_day",
+    "next": "ch1_field_04"
+  },
+  "ch1_field_04": {
+    "speaker": "艾米尔",
+    "text": "这就是收集幸福的瓶子喔！",
+    "face": "emil_proud",
+    "bg": "field_day",
+    "next": "ch1_field_05"
+  },
+  "ch1_field_05": {
+    "speaker": "艾米尔",
+    "text": "将人或动物感受到幸福的瞬间变成魔力，就能用瓶子收集起来。",
+    "face": "emil_proud",
+    "bg": "field_day",
+    "next": "ch1_field_06"
+  },
+  "ch1_field_06": {
+    "speaker": "伊蕾娜",
+    "text": "可以打开吗？",
+    "face": "elaina_normal",
+    "bg": "field_day",
+    "next": "ch1_field_07"
+  },
+  "ch1_field_07": {
+    "speaker": "艾米尔",
+    "text": "当、当然不行啊！",
+    "face": "emil_panic",
+    "bg": "field_day",
+    "next": "ch1_field_08"
+  },
+  "ch1_field_08": {
+    "speaker": "艾米尔",
+    "text": "这是我为了喜欢的女生收集的，不能让大姊姊碰喔！",
+    "face": "emil_serious",
+    "bg": "field_day",
+    "next": "ch1_field_09"
+  },
+  "ch1_field_09": {
+    "speaker": "伊蕾娜",
+    "text": "原来如此。",
+    "face": "elaina_smile",
+    "bg": "field_day",
+    "next": "ch1_field_10"
+  },
+  "ch1_field_10": {
+    "speaker": "艾米尔",
+    "text": "啊，你生气了吗？",
+    "face": "emil_pout",
+    "bg": "field_day",
+    "next": "ch1_field_11"
+  },
+  "ch1_field_11": {
+    "speaker": "伊蕾娜",
+    "text": "没有，只是有点佩服而已。",
+    "face": "elaina_smile",
+    "bg": "field_day",
+    "next": "ch1_field_12"
+  },
+  "ch1_field_12": {
+    "speaker": "伊蕾娜",
+    "text": "你喜欢的女生是谁？",
+    "face": "elaina_normal",
+    "bg": "field_day",
+    "next": "ch1_field_13"
+  },
+  "ch1_field_13": {
+    "speaker": "艾米尔",
+    "text": "是在我家工作，叫做妮诺的佣人喔。",
+    "face": "emil_bright",
+    "bg": "field_day",
+    "next": "ch1_field_14"
+  },
+  "ch1_field_14": {
+    "speaker": "艾米尔",
+    "text": "她的表情一直很忧郁，所以我想让她幸福。",
+    "face": "emil_down",
+    "bg": "field_day",
+    "next": "ch1_field_15"
+  },
+  "ch1_field_15": {
+    "speaker": "伊蕾娜",
+    "text": "所以你才会用瓶子收集幸福。",
+    "face": "elaina_normal",
+    "bg": "field_day",
+    "next": "ch1_field_16"
+  },
+  "ch1_field_16": {
+    "speaker": "艾米尔",
+    "text": "嗯！",
+    "face": "emil_bright",
+    "bg": "field_day",
+    "next": "ch1_field_17"
+  },
+  "ch1_field_17": {
+    "speaker": "旁白",
+    "text": "他满怀爱意望着瓶子的表情看起来十分幸福。",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_18"
+  },
+  "ch1_field_18": {
+    "speaker": "旁白",
+    "text": "我想起以前看过的书。",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_19"
+  },
+  "ch1_field_19": {
+    "speaker": "旁白",
+    "text": "丈夫为了生病无法离开家里的妻子，出门游历世界，",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_20"
+  },
+  "ch1_field_20": {
+    "speaker": "旁白",
+    "text": "以魔法复制看到美景瞬间的画面，带回与妻子分享的故事。",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_21"
+  },
+  "ch1_field_21": {
+    "speaker": "旁白",
+    "text": "让我想想，那个故事的结局怎么了？",
+    "face": null,
+    "bg": "field_day",
+    "next": "ch1_field_22"
+  },
+  "ch1_field_22": {
+    "speaker": "旁白",
+    "text": "嗯……结局我也忘记了。",
+    "face": null,
+    "bg": "field_day",
+    "next": null
+  }
+}

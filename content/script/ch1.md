@@ -28,12 +28,16 @@
 
 立绘排布全章统一：左侧固定为伊蕾娜，右侧为对话对象。
 
-| 角色 | 表情 |
-|---|---|
-| 伊蕾娜 | 平常 / 微笑 / 得意 / 无语 / 惊讶 / 正色 |
-| 艾米尔 | 灿烂 / 得意 / 嘟嘴 / 惊慌 / 沮丧 / 认真 |
-| 妮诺 | 低头 / 慌张 / 惊惧 / 微浅笑 / 泪目 / 空洞 |
-| 村长 | 平静 / 怒吼 / 冷笑 |
+| 角色 | 表情（剧本里写的） | face 文件名（不含扩展名） |
+|---|---|---|
+| 伊蕾娜 | 平常 / 微笑 / 得意 / 无语 / 惊讶 / 正色 | `elaina_normal` / `elaina_smile` / `elaina_proud` / `elaina_blank` / `elaina_surprised` / `elaina_serious` |
+| 艾米尔 | 灿烂 / 得意 / 嘟嘴 / 惊慌 / 沮丧 / 认真 | `emil_bright` / `emil_proud` / `emil_pout` / `emil_panic` / `emil_down` / `emil_serious` |
+| 妮诺 | 低头 / 慌张 / 惊惧 / 微浅笑 / 泪目 / 空洞 | `nino_down` / `nino_flustered` / `nino_terrified` / `nino_smiletiny` / `nino_teary` / `nino_empty` |
+| 村长 | 平静 / 怒吼 / 冷笑 | `chief_calm` / `chief_angry` / `chief_smirk` |
+
+立绘和背景一律是 PNG，放在 `assets/` 下。同一画面同时显示两张立绘：伊蕾娜在左，对话对象在右。`face` 只表示**当前说话人**的表情，另一侧保持不变；旁白时两侧都不动。
+
+背景文件名（不含扩展名）：`field_day`（草原·日）、`hall`（宅邸餐厅）、`gate_dusk`（村口·黄昏）、`field_dusk`（草原·黄昏）。
 
 ---
 
