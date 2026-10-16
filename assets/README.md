@@ -1,6 +1,6 @@
 # 美术素材放这里
 
-现在没有正式美术也可以运行。游戏会显示程序绘制的像素占位场景和人物。
+伊蕾娜已接入四种姿势、站立五种表情，共八张透明立绘。其他人物继续使用像素占位，场景由程序绘制。
 
 ## 立绘
 
@@ -36,9 +36,9 @@
 
 ## 当前立绘接入清单
 
-以下是现行主线表情表中的文件名。四种姿势底图已由用户确认，归档于 `portraits/elaina/approved/`；站立五种表情已收到并制作透明处理版，见 `portraits/elaina/standing/`。其他姿势仍为有背景原图。当前处理版尚未登记进运行清单，游戏继续显示能区分表情的像素占位。
+以下是现行主线表情表中的文件名。四种姿势底图已由用户确认，归档于 `portraits/elaina/approved/`；站立五种表情已收到并制作透明处理版，见 `portraits/elaina/standing/`。其余三个姿势的透明处理版见 `portraits/elaina/poses/`。八张处理版均已登记进运行清单，按当前主线标记切换。
 
-| 角色 | 待接入的 face |
+| 角色 | face（伊蕾娜已接入，其余待提供） |
 |---|---|
 | 伊蕾娜·站立 | `elaina_standing`、`elaina_standing_smile`、`elaina_standing_blank`、`elaina_standing_surprised`、`elaina_standing_serious` |
 | 伊蕾娜·其他姿势 | `elaina_thinking`、`elaina_explaining`、`elaina_confident` |
@@ -46,9 +46,9 @@
 | 妮诺 | `nino_down`、`nino_flustered`、`nino_terrified`、`nino_smiletiny`、`nino_teary`、`nino_empty` |
 | 村长 | `chief_calm`、`chief_angry` |
 
-最新四种姿势见 [确认底图与差分清单](portraits/elaina/approved/README.md)，原图用 `_source.png` 后缀归档；旧三张初稿仍保存在 `portraits/elaina/drafts/`。站立五表情现已另存透明处理版，其他三个姿势尚未处理。正式接入时保留归档原图，在 `portraits` 中登记上述小写 face 与实际路径的对应关系，避免缺失差分时误用其他表情。
+最新四种姿势见 [确认底图与差分清单](portraits/elaina/approved/README.md)，原图用 `_source.png` 后缀归档；旧三张初稿仍保存在 `portraits/elaina/drafts/`。站立五表情与其他三个姿势均已另存透明处理版；保留全部归档原图，`portraits` 已登记上述八个小写 face。缺表情时优先回退同姿势，再回退角色默认立绘，避免异步加载顺序影响结果。
 
-站立差分最新进展：用户提供的五张原图保存在 `portraits/elaina/approved/standing-expressions/`，透明处理版、处理说明和校对页见 [standing/README.md](portraits/elaina/standing/README.md)。可直接双击其中的 `preview.html`，比较浅色、深色、棋盘背景及表情切换。使用内置 imagegen 编辑，可能存在细微线条变化；本轮不覆盖游戏素材清单。
+站立差分最新进展：用户提供的五张原图保存在 `portraits/elaina/approved/standing-expressions/`，透明处理版、处理说明和校对页见 [standing/README.md](portraits/elaina/standing/README.md)。可直接双击其中的 `preview.html`，比较浅色、深色、棋盘背景及表情切换。使用内置 imagegen 编辑，可能存在细微线条变化；现已接入游戏素材清单。其他三个姿势的处理提示词和验证记录见 [poses/README.md](portraits/elaina/poses/README.md)。
 
 ## 调查物特写
 

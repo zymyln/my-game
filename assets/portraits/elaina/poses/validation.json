@@ -1,0 +1,61 @@
+{
+  "fallback": true,
+  "data": [
+    {
+      "face": "elaina_standing",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 578557,
+      "visible": 937365
+    },
+    {
+      "face": "elaina_standing_smile",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 593203,
+      "visible": 936945
+    },
+    {
+      "face": "elaina_standing_blank",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 592001,
+      "visible": 941359
+    },
+    {
+      "face": "elaina_standing_surprised",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 596062,
+      "visible": 937119
+    },
+    {
+      "face": "elaina_standing_serious",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 558854,
+      "visible": 940948
+    },
+    {
+      "face": "elaina_confident",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 479658,
+      "visible": 1061816
+    },
+    {
+      "face": "elaina_thinking",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 601556,
+      "visible": 928031
+    },
+    {
+      "face": "elaina_explaining",
+      "width": 1024,
+      "height": 1536,
+      "transparent": 561524,
+      "visible": 982675
+    }
+  ]
+}

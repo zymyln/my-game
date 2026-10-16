@@ -45,7 +45,7 @@ const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不
 let panelPausedGame=false;
 const audioPanel=setupAudioPanel({sound,onChange:syncSound,onOpen:()=>{panelPausedGame=!['title','pause','complete'].includes(mode);if(panelPausedGame)pauseJourney();},onClose:()=>{if(panelPausedGame)resumeJourney();panelPausedGame=false;}});
 syncSound();
-const effectsPreview=setupEffectsPreview({backgrounds,sound,onSoundChange:syncSound});
+const effectsPreview=setupEffectsPreview({backgrounds,assets,sound,onSoundChange:syncSound});
 const requestedEffect=new URLSearchParams(location.search).get('effects');
 if(['bottle','glass','cup','mood'].includes(requestedEffect))effectsPreview.open(requestedEffect==='mood'?'mood':requestedEffect==='bottle'?'bottle':'cup');
 const lunchSeat={id:'wait-lunch',kind:'story',label:'坐下，等待午餐',x:330,y:304,radius:22};
@@ -177,6 +177,7 @@ function displayPortrait(side,face) {
   const existing = assets.portrait(face);
   const actorChanged=container.dataset.face?.split('_')[0]!==face.split('_')[0];
   image.hidden = !existing; canvas.hidden = Boolean(existing);
+  container.classList.toggle('illustrated',Boolean(existing));
   if (existing) image.src = existing.src;
   else drawPortrait(canvas,face.split('_')[0],face);
   image.alt = `${container.querySelector('.portrait-label').textContent}立绘`;

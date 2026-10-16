@@ -11,7 +11,7 @@
 | `Elaina_Pose02_Thinking.png` | `elaina_thinking_source.png` | 手抵下巴，思考 | `elaina_thinking` |
 | `Elaina_Pose03_Explaining.png` | `elaina_explaining_source.png` | 单手摊开，微笑解释 | `elaina_explaining` |
 
-`_source` 表示归档原图，不是剧本里的新表情。当前未登记到 `assets/manifest.json`，本轮只纳入文件；正式接入前统一透明背景、画布对齐与显示构图。当前图不自动套用于缺失的严肃表情。
+`_source` 表示归档原图，不是剧本里的新表情。原图保持不变；透明处理版分别位于 `../standing/`、`../poses/`，八张均已登记到 `assets/manifest.json`，按主线姿势和表情切换。下方保留原差分制作计划。
 
 ## 当前主线需要的差分
 

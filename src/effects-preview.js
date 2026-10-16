@@ -6,7 +6,7 @@ import { StagePlayer, MOODS, drawAtmosphere } from './staging.mjs';
 const moodSequence=['meadow','calm','unease','pressure','calm','gaze','afterglow'];
 const moodDescriptions={meadow:'暖光、微风，镜头轻轻靠近。',calm:'柔和的窗光回到餐厅，紧绷的画面逐渐放松。',unease:'冷色慢慢渗入餐厅，边缘收暗。',pressure:'光线收紧，强调冲突带来的压迫感。',gaze:'左侧退暗，让注意力停在妮诺的回望。',afterglow:'暮色、微风和留白，旅途继续。'};
 
-export function setupEffectsPreview({backgrounds,sound,onSoundChange}) {
+export function setupEffectsPreview({backgrounds,assets,sound,onSoundChange}) {
   const root=document.getElementById('effects-preview');
   const canvas=document.getElementById('effects-canvas'),ctx=canvas.getContext('2d');
   const action=document.getElementById('effects-action'),status=document.getElementById('effects-status');
@@ -80,7 +80,12 @@ export function setupEffectsPreview({backgrounds,sound,onSoundChange}) {
       drawAtmosphere(ctx,state,{clear:false});
       if(stage.mood!=='afterglow'){
         ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha=stage.mood==='gaze'?.5:1;
-        ctx.drawImage(portraits.get('elaina'),72,113,96,128);ctx.globalAlpha=1;
+        const elaina=assets?.portrait('elaina_standing');
+        if(elaina){
+          ctx.save();ctx.beginPath();ctx.rect(20,85,200,156);ctx.clip();
+          ctx.imageSmoothingEnabled=true;ctx.drawImage(elaina,22,85,196,294);ctx.restore();
+        }else ctx.drawImage(portraits.get('elaina'),72,113,96,128);
+        ctx.globalAlpha=1;
         ctx.drawImage(portraits.get(stage.mood==='gaze'?'nino':['unease','pressure'].includes(stage.mood)?'chief':'emil'),472,113,96,128);ctx.restore();
       }
       ctx.fillStyle='#f4efd9';ctx.font='16px SimSun,serif';ctx.textAlign='center';ctx.shadowColor='#162f2a';ctx.shadowBlur=7;

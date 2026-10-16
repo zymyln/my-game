@@ -1,5 +1,14 @@
 {
-  "portraits": {},
+  "portraits": {
+    "elaina_standing": "portraits/elaina/standing/elaina_standing.png",
+    "elaina_standing_smile": "portraits/elaina/standing/elaina_standing_smile.png",
+    "elaina_standing_blank": "portraits/elaina/standing/elaina_standing_blank.png",
+    "elaina_standing_surprised": "portraits/elaina/standing/elaina_standing_surprised.png",
+    "elaina_standing_serious": "portraits/elaina/standing/elaina_standing_serious.png",
+    "elaina_confident": "portraits/elaina/poses/elaina_confident.png",
+    "elaina_thinking": "portraits/elaina/poses/elaina_thinking.png",
+    "elaina_explaining": "portraits/elaina/poses/elaina_explaining.png"
+  },
   "backgrounds": {},
   "objects": {
     "painting": "objects/hall/hall_painting.png",
