@@ -49,12 +49,14 @@
 
 | 角色 | 表情（剧本里写的） | face 文件名（不含扩展名） |
 |---|---|---|
-| 伊蕾娜 | 站立·平常 / 站立·微笑 / 站立·无语 / 站立·惊讶 / 站立·正色 | `elaina_stand_normal` / `elaina_stand_smile` / `elaina_stand_blank` / `elaina_stand_surprised` / `elaina_stand_serious` |
-| 伊蕾娜 | 思考·平常 | `elaina_think_normal` |
-| 伊蕾娜 | 摊手·微笑 / 摊手·正色 | `elaina_explain_smile` / `elaina_explain_serious` |
-| 伊蕾娜 | 扶帽·得意 | `elaina_conf_proud` |
+| 伊蕾娜 | 站立·平常 / 站立·微笑 / 站立·无语 / 站立·惊讶 / 站立·正色 | `elaina_standing` / `elaina_standing_smile` / `elaina_standing_blank` / `elaina_standing_surprised` / `elaina_standing_serious` |
+| 伊蕾娜 | 思考·平常 | `elaina_thinking` |
+| 伊蕾娜 | 摊手·微笑 / 摊手·正色 | `elaina_explaining` / `elaina_explaining_serious` |
+| 伊蕾娜 | 扶帽·得意 | `elaina_confident` |
 
-伊蕾娜的四张立绘：站立＝正面站立（对话主用）、思考＝手抵下巴、摊手＝单手摊开解释、扶帽＝扶帽檐。文件名的中间一段是姿势，最后一段是表情。
+伊蕾娜的四张立绘：站立＝正面站立（对话主用）、思考＝手抵下巴、摊手＝单手摊开解释、扶帽＝扶帽檐。
+
+命名规则：文件名是「角色_姿势」；这个姿势如果只有一张脸，名字就到姿势为止（思考、扶帽）；如果还要差分，就在后面接上表情（站立、摊手）。例：`elaina_standing` 是站立的平常脸，`elaina_standing_smile` 是同一张站的微笑脸。文件名全部小写，跟其他三个角色一致。
 | 艾米尔 | 灿烂 / 得意 / 嘟嘴 / 惊慌 / 沮丧 / 认真 | `emil_bright` / `emil_proud` / `emil_pout` / `emil_panic` / `emil_down` / `emil_serious` |
 | 妮诺 | 低头 / 慌张 / 惊惧 / 微浅笑 / 泪目 / 空洞 | `nino_down` / `nino_flustered` / `nino_terrified` / `nino_smiletiny` / `nino_teary` / `nino_empty` |
 | 村长 | 平静 / 怒吼 / 冷笑 | `chief_calm` / `chief_angry` / `chief_smirk` |

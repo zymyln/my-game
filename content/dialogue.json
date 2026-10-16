@@ -16,7 +16,7 @@
   "ch1_field_03": {
     "speaker": "伊蕾娜",
     "text": "那是什么？",
-    "face": "elaina_stand_normal",
+    "face": "elaina_standing",
     "bg": "field_day",
     "next": "ch1_field_04"
   },
@@ -37,7 +37,7 @@
   "ch1_field_06": {
     "speaker": "伊蕾娜",
     "text": "可以打开吗？",
-    "face": "elaina_stand_normal",
+    "face": "elaina_standing",
     "bg": "field_day",
     "next": "ch1_field_07"
   },
@@ -58,7 +58,7 @@
   "ch1_field_09": {
     "speaker": "伊蕾娜",
     "text": "原来如此。",
-    "face": "elaina_stand_smile",
+    "face": "elaina_standing_smile",
     "bg": "field_day",
     "next": "ch1_field_10"
   },
@@ -72,14 +72,14 @@
   "ch1_field_11": {
     "speaker": "伊蕾娜",
     "text": "没有，只是有点佩服而已。",
-    "face": "elaina_stand_smile",
+    "face": "elaina_standing_smile",
     "bg": "field_day",
     "next": "ch1_field_12"
   },
   "ch1_field_12": {
     "speaker": "伊蕾娜",
     "text": "你喜欢的女生是谁？",
-    "face": "elaina_think_normal",
+    "face": "elaina_thinking",
     "bg": "field_day",
     "next": "ch1_field_13"
   },
@@ -100,7 +100,7 @@
   "ch1_field_15": {
     "speaker": "伊蕾娜",
     "text": "所以你才会用瓶子收集幸福。",
-    "face": "elaina_stand_normal",
+    "face": "elaina_standing",
     "bg": "field_day",
     "next": "ch1_field_16"
   },

@@ -116,15 +116,17 @@
 
 ## 2026-10-16 文本机：伊蕾娜立绘分为四种姿势
 
-- 用户决定伊蕾娜用四张立绘：正面站立（对话主用）、思考（手抵下巴）、摊手解释、扶帽檐。表情标注从 `角色[表情]` 扩展为 `角色[姿势·表情]`，立绘文件名变成 `elaina_姿势_表情`。
+- 用户决定伊蕾娜用四张立绘：正面站立（对话主用）、思考（手抵下巴）、摊手解释、扶帽檐。表情标注从 `角色[表情]` 扩展为 `角色[姿势·表情]`。
+- 命名规则：文件名是「角色_姿势」，该姿势只有一张脸时名字到姿势为止，需要差分时再接上表情。伊蕾娜的九个文件名是 `elaina_standing`、`elaina_standing_smile`、`elaina_standing_blank`、`elaina_standing_surprised`、`elaina_standing_serious`、`elaina_thinking`、`elaina_explaining`、`elaina_explaining_serious`、`elaina_confident`。
+- 命名一律小写，与艾米尔、妮诺、村长一致。用户原本想用大写开头的 `Elaina_姿势`；文本机核对程序后发现大写会牵动四处：`chapter.mjs` 第 27 行要求文件名以 `elaina_` 开头，`main.js` 第 156 行与 `assets.js` 第 27 行都靠第一个下划线之前那段判断角色，`art.js` 的占位立绘也走 `actor === 'elaina'` 分支。小写不用改程序，因此按小写执行；若用户坚持大写，需要同步改这四处。
 - 剧本里 47 条伊蕾娜台词（主线 43 条 + 附录 4 条）全部改完。分布：站立 29 条（微笑 12 / 平常 7 / 无语 7 / 惊讶 1 / 正色 2）、思考·平常 6 条、摊手 4 条（微笑 3 / 正色 1）、扶帽·得意 4 条。
-- 剧本表情表里伊蕾娜一行拆成四行，各行之间的表情名不重复；其余角色不变。
 - 差分结论：三张已完成的姿势自带的脸可以直接用（扶帽＝得意、思考＝平常、摊手＝微笑），所以只需再画站立姿势的五张差分，加摊手姿势的正色一张，共六张。
-- 同步更新：`content/dialogue.json` 的 SH-04 共二十二条按新剧本重新生成，文本与 ID 未变，只有立绘名从 `elaina_normal` 这类变成 `elaina_stand_normal` 这类。
-- **需要主力机配合（`src/` 归主力机，文本机未改动）**：`src/chapter.test.mjs` 有三处固定字符串已对不上新剧本，18 条测试里剩 2 条失败：
-  1. 「the active script is parsed…」里的 `assert.equal(thought.face,'elaina_serious')` 要改成 `'elaina_stand_serious'`。
-  2. 「small dialogue edits…」里 replace 的原文：`伊蕾娜[微笑]：你好。` 改成 `伊蕾娜[站立·微笑]：你好。`；`` `elaina_normal` `` 改成 `` `elaina_stand_normal` ``。
+- 同步更新：`content/dialogue.json` 的 SH-04 二十二条重新生成，文本与 ID 未变，立绘名跟着新规则更新。
+- **需要主力机配合（`src/` 归主力机，文本机未改动）**：`src/chapter.test.mjs` 里三处固定字符串对不上新剧本，18 条测试剩 2 条失败：
+  1. 「the active script is parsed…」里的 `assert.equal(thought.face,'elaina_serious')` 改成 `'elaina_standing_serious'`。
+  2. 「small dialogue edits…」里 replace 的原文 `伊蕾娜[微笑]：你好。` 改成 `伊蕾娜[站立·微笑]：你好。`。
+  3. 同一处的 `` `elaina_normal` `` 改成 `` `elaina_standing` ``。
   改完这三处即可，`chapter.mjs` 本身能正常解析四种姿势的标注。
-- 验证：本地 Word 从仓库 md 重新生成，15 页；表情表与姿势说明已同步进文档。
-- 接口变动：剧本的表情标注格式变了，`docs/contract.md` 里「立绘：`角色_表情`」这句需要同步改成 `角色_姿势_表情`。该文件只读，待用户确认后再改。
+- 验证：本地 Word 从仓库 md 重新生成，表情表与命名规则已同步进文档。
+- 接口变动：`docs/contract.md` 里「立绘：`角色_表情`」这句已不准确，应改成「角色_姿势」加可选表情。该文件只读，文本机未改，等用户确认。
 - 下一步：用户画差分；主力机修测试里的固定字符串，并把新立绘登记进 `assets/manifest.json`。
