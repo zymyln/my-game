@@ -23,14 +23,14 @@
   "ch1_field_04": {
     "speaker": "艾米尔",
     "text": "这就是收集幸福的瓶子喔！",
-    "face": "emil_proud",
+    "face": "emil_bright",
     "bg": "field_day",
     "next": "ch1_field_05"
   },
   "ch1_field_05": {
     "speaker": "艾米尔",
     "text": "将人或动物感受到幸福的瞬间变成魔力，就能用瓶子收集起来。",
-    "face": "emil_proud",
+    "face": "emil_bright",
     "bg": "field_day",
     "next": "ch1_field_06"
   },
@@ -44,14 +44,14 @@
   "ch1_field_07": {
     "speaker": "艾米尔",
     "text": "当、当然不行啊！",
-    "face": "emil_panic",
+    "face": "emil_pout",
     "bg": "field_day",
     "next": "ch1_field_08"
   },
   "ch1_field_08": {
     "speaker": "艾米尔",
     "text": "这是我为了喜欢的女生收集的，不能让大姊姊碰喔！",
-    "face": "emil_serious",
+    "face": "emil_pout",
     "bg": "field_day",
     "next": "ch1_field_09"
   },

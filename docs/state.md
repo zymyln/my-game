@@ -135,3 +135,27 @@
 2. 用户画好立绘后，把九个立绘登记进 `assets/manifest.json`（`elaina_standing`、`elaina_standing_smile`、`elaina_standing_blank`、`elaina_standing_surprised`、`elaina_standing_serious`、`elaina_thinking`、`elaina_explaining`、`elaina_explaining_serious`、`elaina_confident`）。
 3. 可选：`main.js` 第 34 行和第 121 行里写死的初始立绘名 `elaina_normal` 现在已不存在，建议顺手换成 `elaina_standing` 或该角色任一新名。
 - 下一步：用户监修剧本；主力机处理上面三条，并核对四种姿势的实际显示效果。
+
+
+
+## 2026-10-16 文本机：同步用户改稿，配角表情减量
+
+- 用户在 Word 上微调了伊蕾娜三句标注，已同步回剧本：SH-10「这种东西，只要能收齐碎片就不用打扫喔。」由摊手·正色改为摊手·微笑；SH-11「哎呀呀，对不起…」与「不用那么在意。」由摊手·微笑改为站立·微笑。结果是摊手·正色这个表情不再存在，摊手姿势只需要一张脸。
+- 按用户要求给配角减表情：艾米尔由六个减到三个（灿烂 / 嘟嘴 / 沮丧），得意并入灿烂、惊慌与一条认真并入嘟嘴、其余三条认真并入灿烂；村长由三个减到两个（平静 / 怒吼），冷笑并入平静；妮诺维持六个，用户会在她身上多花工夫。
+- 每个角色的第一个表情就是那张立绘的底图，后面几个是只改脸的差分。折算工作量：伊蕾娜五张差分、艾米尔两张、妮诺五张、村长一张。
+- 表情表恢复成完整的一张表：上一版把说明文字插在表格中间，把表切断了，Markdown 渲染会断；这次把说明移到表后。
+- `assets/README.md` 里举例的文件名还是旧的（`elaina_normal`、`emil_proud` 等），会误导画图的人，已更新为新名字。该文件在 `assets/` 下，按约定两台机器都可放素材，因此直接改。
+- 工具 `make_dialogue.py` 改成直接从剧本的表情表读对照，不再自己抄一份，避免和剧本脱节。
+- 同步：`content/dialogue.json` 重新生成，文本与 ID 不变。
+- 验证：18 条测试里 16 条通过，仍剩 2 条挂在 `src/chapter.test.mjs` 的固定字符串上（见下）。
+- 接口变动：无新增，`docs/contract.md` 未改动。
+
+### 给主力机（`src/` 归主力机，文本机没有改动）
+
+1. `src/chapter.test.mjs` 三处固定字符串：
+   - `assert.equal(thought.face,'elaina_serious')` 改成 `'elaina_standing_serious'`。
+   - replace 的原文 `伊蕾娜[微笑]：你好。` 改成 `伊蕾娜[站立·微笑]：你好。`。
+   - 同一处的 `` `elaina_normal` `` 改成 `` `elaina_standing` ``。
+2. 立绘登记清单（表情减量后）：伊蕾娜 `elaina_standing`、`elaina_standing_smile`、`elaina_standing_blank`、`elaina_standing_surprised`、`elaina_standing_serious`、`elaina_thinking`、`elaina_explaining`、`elaina_confident`；艾米尔 `emil_bright`、`emil_pout`、`emil_down`；妮诺 `nino_down`、`nino_flustered`、`nino_terrified`、`nino_smiletiny`、`nino_teary`、`nino_empty`；村长 `chief_calm`、`chief_angry`。已废弃：`elaina_explaining_serious`、`emil_proud`、`emil_serious`、`emil_panic`、`chief_smirk`。
+3. 可选：`main.js` 第 34、121 行写死的 `elaina_normal` 已不存在，建议顺手换掉。
+- 下一步：用户画立绘并监修剧本；主力机处理上面三条。

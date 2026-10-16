@@ -6,9 +6,9 @@
 
 使用透明背景 PNG，文件名沿用剧本，不含空格。例如：
 
-- `elaina_normal.png`、`elaina_smile.png`
-- `emil_proud.png`、`emil_panic.png`、`emil_serious.png`
-- 其他表情以 `content/script/ch1.md` 的表情表为准。
+- `elaina_standing.png`、`elaina_standing_smile.png`、`elaina_thinking.png`、`elaina_confident.png`
+- `emil_bright.png`、`emil_pout.png`、`emil_down.png`
+- 完整清单以 `content/script/ch1.md` 的表情表为准。命名规则：伊蕾娜用「角色_姿势」加可选表情，其他三位只有一张姿势，用「角色_表情」。
 
 建议同一角色所有图片使用相同画布（例如 768 × 1024），脚底或半身像底边对齐，帽子不裁切，人物尽量占满画布。这个尺寸是出图建议，不是强制限制。
 
@@ -17,7 +17,7 @@
 ```json
 {
   "portraits": {
-    "elaina_normal": "elaina_normal.png",
+    "elaina_standing": "elaina_standing.png",
     "elaina_smile": "elaina_smile.png"
   },
   "backgrounds": {}
@@ -32,4 +32,4 @@
 
 在 `backgrounds` 中登记，如 `"field_day": "field_day.png"`，对话时会按数据切换。探索地图仍由程序绘制；背景插画不会自动成为可走动的地图。
 
-不用为了跑第一版而一次生成全部素材。先交付伊蕾娜平常、微笑，以及艾米尔得意的一张图，就可以检查两侧立绘的效果。
+不用为了跑第一版而一次生成全部素材。先交付 `elaina_standing`、`elaina_standing_smile` 和 `emil_bright` 三张，就可以检查两侧立绘的效果。
