@@ -1,5 +1,7 @@
 # 伊蕾娜已确认的四个姿势底图
 
+更新：站立五种表情现已全部收到，原图见 [standing-expressions/README.md](standing-expressions/README.md)，透明处理版见 [../standing/README.md](../standing/README.md)。下方差分计划保留作制作记录，不代表仍需重新生成。
+
 2026-10-16 用户确认四个姿势。本目录保存原图副本，统一资源名；未抠图、裁切、重绘或压缩。旧 `drafts/` 保留为历史初稿。
 
 | 来源文件 | 本目录原图 | 姿势 | 后续游戏 face |

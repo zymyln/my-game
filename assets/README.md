@@ -36,7 +36,7 @@
 
 ## 当前立绘接入清单
 
-以下是现行主线表情表中的文件名。四种姿势底图已由用户确认，归档于 `portraits/elaina/approved/`；正式透明图及站立表情差分待准备。缺失图片不写进运行清单，避免启动时请求不存在的文件；游戏继续显示能区分表情的像素占位。
+以下是现行主线表情表中的文件名。四种姿势底图已由用户确认，归档于 `portraits/elaina/approved/`；站立五种表情已收到并制作透明处理版，见 `portraits/elaina/standing/`。其他姿势仍为有背景原图。当前处理版尚未登记进运行清单，游戏继续显示能区分表情的像素占位。
 
 | 角色 | 待接入的 face |
 |---|---|
@@ -46,7 +46,9 @@
 | 妮诺 | `nino_down`、`nino_flustered`、`nino_terrified`、`nino_smiletiny`、`nino_teary`、`nino_empty` |
 | 村长 | `chief_calm`、`chief_angry` |
 
-最新四种姿势见 [确认底图与差分清单](portraits/elaina/approved/README.md)，原图用 `_source.png` 后缀归档；旧三张初稿仍保存在 `portraits/elaina/drafts/`。本次未抠图或登记，避免底色遮挡场景，以及不完整差分导致严肃台词复用微笑图。准备好后保留归档原图，另存正式透明版，再在 `portraits` 中登记上述小写 face 与实际路径的对应关系。
+最新四种姿势见 [确认底图与差分清单](portraits/elaina/approved/README.md)，原图用 `_source.png` 后缀归档；旧三张初稿仍保存在 `portraits/elaina/drafts/`。站立五表情现已另存透明处理版，其他三个姿势尚未处理。正式接入时保留归档原图，在 `portraits` 中登记上述小写 face 与实际路径的对应关系，避免缺失差分时误用其他表情。
+
+站立差分最新进展：用户提供的五张原图保存在 `portraits/elaina/approved/standing-expressions/`，透明处理版、处理说明和校对页见 [standing/README.md](portraits/elaina/standing/README.md)。可直接双击其中的 `preview.html`，比较浅色、深色、棋盘背景及表情切换。使用内置 imagegen 编辑，可能存在细微线条变化；本轮不覆盖游戏素材清单。
 
 ## 调查物特写
 
