@@ -1,0 +1,27 @@
+# 妮诺六表情处理提示词
+
+使用内置 imagegen 编辑，未使用 CLI/API，未安装依赖。分别处理平常（手扶胸前）和害怕（双手垂下）两个动作基准；微笑、空洞、流泪以平常处理版为编辑目标，惊恐以害怕处理版为目标，对应用户原图仅作表情参考。首次平常工具调用未返回成图，原提示词重试成功。
+
+## down
+
+Use case: background-extract. Image 1 is the EDIT TARGET, an approved full-body visual-novel illustration of Nino. Remove ONLY the tan background, including all gaps between hair strands, arms, skirt and legs. Output a genuinely transparent RGBA PNG, 1024x1536 canvas. Preserve the original painting style, soft textured shading, linework and colors, black hair covering one eye, visible red eye, torn off-white headcloth and blouse, dusty pink worn dress with black lacing, white stockings, brown shoes, hands, pose and facial expression. Do not redesign, beautify, repair torn garments, add objects, shadows, glow or a checkerboard. Proportionally fit full character with headcloth top at y=25 and shoe bottom at y=1500, center the head at x=512, keep head size around 290 pixels wide including headcloth. Keep entire shoes and headcloth visible, preserve body proportions. Clean antialiased alpha edges, no tan halo. Preserve the reserved neutral closed-mouth expression and one hand held to her chest, other arm lowered.
+
+## flustered
+
+Use case: background-extract. Image 1 is the EDIT TARGET, an approved full-body visual-novel illustration of Nino. Remove ONLY the tan background, including all gaps between hair strands, arms, skirt and legs. Output a genuinely transparent RGBA PNG, 1024x1536 canvas. Preserve the original painting style, soft textured shading, linework and colors, black hair covering one eye, visible red eye, torn off-white headcloth and blouse, dusty pink worn dress with black lacing, white stockings, brown shoes, hands, pose and facial expression. Do not redesign, beautify, repair torn garments, add objects, shadows, glow or a checkerboard. Proportionally fit full character with headcloth top at y=25 and shoe bottom at y=1500, center the head at x=512, keep head size around 290 pixels wide including headcloth. Keep entire shoes and headcloth visible, preserve body proportions. Clean antialiased alpha edges, no tan halo. Preserve the worried gently raised brow and slightly parted lips, BOTH arms lowered, hands tense near the skirt. This is mild anxious fear, not wide-eyed terror.
+
+## smiletiny
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET and locked transparent full-body master. Image 2 is ONLY the user's expression reference. Change only the facial expression on image 1 to match image 2. Keep image 1 canvas 1024x1536, genuine transparent alpha, character size, head position, silhouette, hairstyle covering one eye, headcloth, pose, hands, dress, all garment damage and soft painterly textures and colors unchanged. Do not copy image 2 background or body framing. No redesign, opaque matte, checkerboard, added objects, glow or shadows. Keep full shoes and headcloth. Make a very small, restrained closed-mouth smile as in image 2; keep the natural red eye, reserved gaze, no broad grin.
+
+## empty
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET and locked transparent full-body master. Image 2 is ONLY the user's expression reference. Change only the facial expression on image 1 to match image 2. Keep image 1 canvas 1024x1536, genuine transparent alpha, character size, head position, silhouette, hairstyle covering one eye, headcloth, pose, hands, dress, all garment damage and soft painterly textures and colors unchanged. Do not copy image 2 background or body framing. No redesign, opaque matte, checkerboard, added objects, glow or shadows. Keep full shoes and headcloth. Match the unfocused dull darkened visible eye, no sparkling catchlight and blank closed-mouth expression of image 2. Preserve the face shadow in the reference without changing the rest of the body.
+
+## teary
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET and locked transparent full-body master. Image 2 is ONLY the user's expression reference. Change only the facial expression on image 1 to match image 2. Keep image 1 canvas 1024x1536, genuine transparent alpha, character size, head position, silhouette, hairstyle covering one eye, headcloth, pose, hands, dress, all garment damage and soft painterly textures and colors unchanged. Do not copy image 2 background or body framing. No redesign, opaque matte, checkerboard, added objects, glow or shadows. Keep full shoes and headcloth. Match image 2's tear-filled red eye with a visible tear track on the cheek, sad brow and trembling closed lips. Preserve one hand to chest pose from image 1.
+
+## terrified
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET and locked transparent full-body master. Image 2 is ONLY the user's expression reference. Change only the facial expression on image 1 to match image 2. Keep image 1 canvas 1024x1536, genuine transparent alpha, character size, head position, silhouette, hairstyle covering one eye, headcloth, pose, hands, dress, all garment damage and soft painterly textures and colors unchanged. Do not copy image 2 background or body framing. No redesign, opaque matte, checkerboard, added objects, glow or shadows. Keep full shoes and headcloth. Match image 2's visibly wide frightened eye with small pupil, tense raised brow, mouth trembling open and tears, face shaded by fear. Keep BOTH arms lowered as in image 1. Distinct, much stronger terror than the mild anxious base.

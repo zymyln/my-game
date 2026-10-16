@@ -1,0 +1,92 @@
+[
+  {
+    "name": "down",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1050864,
+    "visible": 496093,
+    "bounds": [
+      178,
+      19,
+      845,
+      1520
+    ],
+    "bodyMaster": "down",
+    "bodyMeanDifference": 0
+  },
+  {
+    "name": "flustered",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1094431,
+    "visible": 451705,
+    "bounds": [
+      204,
+      28,
+      819,
+      1497
+    ],
+    "bodyMaster": "flustered",
+    "bodyMeanDifference": 0
+  },
+  {
+    "name": "terrified",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1095474,
+    "visible": 453933,
+    "bounds": [
+      204,
+      28,
+      821,
+      1498
+    ],
+    "bodyMaster": "flustered",
+    "bodyMeanDifference": 6.91311500323949
+  },
+  {
+    "name": "teary",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1052775,
+    "visible": 497753,
+    "bounds": [
+      178,
+      19,
+      847,
+      1519
+    ],
+    "bodyMaster": "down",
+    "bodyMeanDifference": 7.626170784788599
+  },
+  {
+    "name": "smiletiny",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1046940,
+    "visible": 497585,
+    "bounds": [
+      178,
+      19,
+      847,
+      1519
+    ],
+    "bodyMaster": "down",
+    "bodyMeanDifference": 5.135670335736086
+  },
+  {
+    "name": "empty",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1050381,
+    "visible": 497129,
+    "bounds": [
+      178,
+      18,
+      846,
+      1519
+    ],
+    "bodyMaster": "down",
+    "bodyMeanDifference": 8.200397198754965
+  }
+]

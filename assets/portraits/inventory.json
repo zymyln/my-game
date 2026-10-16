@@ -128,5 +128,65 @@
     "path": "elaina/standing/elaina_standing.png",
     "bytes": 1863248,
     "sha256": "c30320121196dd972a940645c62e40914a749877c3a95a1dafa225a5cd6e44ab"
+  },
+  {
+    "path": "nino/approved/nino_down_source.png",
+    "bytes": 1750076,
+    "sha256": "c620b5e390a3efeb92d57ba4bb5a45e5a06993807fa53de53b6c59c2d2bcb912"
+  },
+  {
+    "path": "nino/approved/nino_empty_source.png",
+    "bytes": 1695160,
+    "sha256": "22dfe9752a46536f7c66fa32069f98be53c18cfa169000f6e594e6709b671dad"
+  },
+  {
+    "path": "nino/approved/nino_flustered_source.png",
+    "bytes": 1710567,
+    "sha256": "e32bc0266f13efe97f7669d901d9a0420a02aa3ea0639531c66358337fd0e633"
+  },
+  {
+    "path": "nino/approved/nino_smiletiny_source.png",
+    "bytes": 1674317,
+    "sha256": "4fa4deafab6b19792c81d40ece5699fe4221d5f8ee516ba2f9cb5777be014835"
+  },
+  {
+    "path": "nino/approved/nino_teary_source.png",
+    "bytes": 1706092,
+    "sha256": "4d819dbde4fa7b9463d90dda7237e43547700d68cb7d7154727a7750a974580e"
+  },
+  {
+    "path": "nino/approved/nino_terrified_source.png",
+    "bytes": 1687888,
+    "sha256": "8e5bb7994b3836f1ad8f6643e6c914ed447594f75071ea0fd6014818e0ddd0f2"
+  },
+  {
+    "path": "nino/processed/nino_down.png",
+    "bytes": 1592675,
+    "sha256": "7b5e7ded6b52c7ac27a38855ca1722bcfb5d635322572e003966fdd12fae3f5a"
+  },
+  {
+    "path": "nino/processed/nino_empty.png",
+    "bytes": 1575963,
+    "sha256": "1488b5188c03a67ea7b9c1b38efbd77a267bad8b6e2c0bceab8f9b8c53b3b105"
+  },
+  {
+    "path": "nino/processed/nino_flustered.png",
+    "bytes": 1532661,
+    "sha256": "4a77e4512bad0e4b24c2e5514f25dd1561e0bbfc9dcf62b5d2a4f67f5e1ebda4"
+  },
+  {
+    "path": "nino/processed/nino_smiletiny.png",
+    "bytes": 1586046,
+    "sha256": "9c7b7c3bd27e6503105560974cb9e4d1f7405d0278fc4b501c69c4b534793520"
+  },
+  {
+    "path": "nino/processed/nino_teary.png",
+    "bytes": 1570168,
+    "sha256": "e2faeddb18fca67e060e4cf2359a49748e82758e831abfbb22955d4e1c31b773"
+  },
+  {
+    "path": "nino/processed/nino_terrified.png",
+    "bytes": 1485908,
+    "sha256": "e52093c47535eeb5eee8319a920f51e6ec903e0308392de3780925747d1a11d7"
   }
 ]
