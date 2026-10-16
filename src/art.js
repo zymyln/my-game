@@ -1,4 +1,5 @@
-// Code-drawn placeholders. Replace portraits/backgrounds through assets/manifest.json.
+import { drawElainaSprite } from './elaina-sprite.js';
+// Code-drawn scenes and NPC placeholders. Elaina has a dedicated pixel sprite.
 function rect(ctx, color, x, y, w, h) { ctx.fillStyle = color; ctx.fillRect(x, y, w, h); }
 function polygon(ctx, color, points) {
   ctx.fillStyle = color; ctx.beginPath();
@@ -74,21 +75,10 @@ export function createMeadow({withScenery=true} = {}) {
 }
 
 export function drawSprite(ctx, actor, x, y, { moving = false, direction = 'down', time = 0 } = {}) {
+  if(actor==='elaina'){drawElainaSprite(ctx,x,y,{moving,direction,time});return;}
   ctx.save(); ctx.translate(Math.round(x),Math.round(y));
   rect(ctx,'#385d4630',-9,-1,19,4);
-  const step = moving ? Math.floor(time/125)%2 : 0;
-  if (actor === 'elaina') {
-    rect(ctx,'#474450',-6,-13,12,12); rect(ctx,'#686072',-7,-14,14,5);
-    rect(ctx,'#ddd9d0',-6,-23,12,14); rect(ctx,'#eeeadb',-3,-22,6,12);
-    rect(ctx,'#f3d8bb',-4,-20,8,7);
-    if(direction !== 'up') { rect(ctx,'#665777',direction==='left'?-4:direction==='right'?2:-3,-18,2,2); if(direction==='down')rect(ctx,'#665777',2,-18,2,2); }
-    else rect(ctx,'#dedcd3',-5,-21,10,11);
-    rect(ctx,'#4e4a59',-9,-25,18,3); rect(ctx,'#575160',-6,-30,11,6);rect(ctx,'#575160',-3,-34,6,5);rect(ctx,'#575160',-1,-36,3,3);
-    rect(ctx,'#a9986c',-6,-26,12,2);rect(ctx,'#d7d1bf',4,-27,3,3);
-    rect(ctx,'#d5cab5',-4,-11,8,2);rect(ctx,'#b8a16c',-1,-10,2,3);
-    rect(ctx,'#39383f',-4,-2,3,3+step);rect(ctx,'#39383f',2,-2,3,4-step);
-    rect(ctx,'#776951',6,-14,3,11);rect(ctx,'#b29c6a',5,-5,6,3);
-  } else {
+  {
     rect(ctx,'#c6b37d',-5,-15,10,12);rect(ctx,'#eee0b5',-6,-15,3,9);rect(ctx,'#eee0b5',4,-15,3,9);
     rect(ctx,'#e7c49d',-5,-23,10,9);rect(ctx,'#90734c',-6,-25,12,5);rect(ctx,'#aa8956',-4,-27,9,5);rect(ctx,'#b69760',-6,-24,5,4);
     rect(ctx,'#526c50',-3,-20,2,2);rect(ctx,'#526c50',2,-20,2,2);rect(ctx,'#809773',-4,-15,8,3);
