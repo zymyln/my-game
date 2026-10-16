@@ -80,3 +80,5 @@
 @media(max-width:620px){.effects-header{left:11px;right:11px;top:10px}.effects-header>span{font-size:10px;letter-spacing:1px}.effects-header>div{gap:4px}.effects-small{font-size:8px;padding:5px 6px}.effects-tabs{gap:14px;top:43px}.effects-status{bottom:58px;font-size:9px;letter-spacing:0}.effects-controls{bottom:14px;gap:6px}.effects-controls .primary-button{min-width:110px;font-size:9px;padding:8px}.story-prop{width:32%;bottom:32%}}
 .portrait.illustrated{width:38%;height:65%;bottom:27%;clip-path:inset(-20% 0 0)}.portrait-left.illustrated{left:0}.portrait-right.illustrated{right:0}.portrait.illustrated img{position:absolute;left:50%;bottom:-45%;height:150%;width:auto;max-width:none;max-height:none;transform:translateX(-50%)}
 @media(max-width:620px){.portrait.illustrated{width:46%;height:58%;bottom:31%}.portrait.illustrated img{height:130%;bottom:-30%}}
+.portrait.illustrated[data-actor="chief"] img{bottom:-65%}
+@media(max-width:620px){.portrait.illustrated[data-actor="chief"] img{bottom:-48%}}

@@ -86,7 +86,11 @@ export function setupEffectsPreview({backgrounds,assets,sound,onSoundChange}) {
           ctx.imageSmoothingEnabled=true;ctx.drawImage(elaina,22,85,196,294);ctx.restore();
         }else ctx.drawImage(portraits.get('elaina'),72,113,96,128);
         ctx.globalAlpha=1;
-        ctx.drawImage(portraits.get(stage.mood==='gaze'?'nino':['unease','pressure'].includes(stage.mood)?'chief':'emil'),472,113,96,128);ctx.restore();
+        const actor=stage.mood==='gaze'?'nino':['unease','pressure'].includes(stage.mood)?'chief':'emil';
+        const chief=actor==='chief'?assets?.portrait(stage.mood==='pressure'?'chief_angry':'chief_calm'):null;
+        if(chief){ctx.save();ctx.beginPath();ctx.rect(425,85,200,156);ctx.clip();ctx.imageSmoothingEnabled=true;ctx.drawImage(chief,428,125,196,294);ctx.restore();}
+        else ctx.drawImage(portraits.get(actor),472,113,96,128);
+        ctx.restore();
       }
       ctx.fillStyle='#f4efd9';ctx.font='16px SimSun,serif';ctx.textAlign='center';ctx.shadowColor='#162f2a';ctx.shadowBlur=7;
       ctx.fillText(MOODS[stage.mood].label,320,154);ctx.shadowBlur=0;

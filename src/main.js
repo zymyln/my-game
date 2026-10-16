@@ -182,6 +182,7 @@ function displayPortrait(side,face) {
   else drawPortrait(canvas,face.split('_')[0],face);
   image.alt = `${container.querySelector('.portrait-label').textContent}立绘`;
   container.dataset.face = face;
+  container.dataset.actor = face.split('_')[0];
   if(actorChanged&&!reducedMotion){container.classList.remove('arriving');void container.offsetWidth;container.classList.add('arriving');}
 }
 

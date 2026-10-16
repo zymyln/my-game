@@ -1,0 +1,44 @@
+[
+  {
+    "name": "chief_calm",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 987111,
+    "visible": 570748,
+    "bounds": [
+      193,
+      51,
+      839,
+      1483
+    ],
+    "bodyMeanDifference": 0
+  },
+  {
+    "name": "chief_impatient",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 986197,
+    "visible": 573562,
+    "bounds": [
+      192,
+      50,
+      840,
+      1484
+    ],
+    "bodyMeanDifference": 5.86687777765234
+  },
+  {
+    "name": "chief_angry",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 977189,
+    "visible": 576120,
+    "bounds": [
+      193,
+      49,
+      840,
+      1484
+    ],
+    "bodyMeanDifference": 6.21297776472294
+  }
+]

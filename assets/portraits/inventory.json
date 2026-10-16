@@ -1,0 +1,132 @@
+[
+  {
+    "path": "chief/approved/chief_angry_source.png",
+    "bytes": 1445601,
+    "sha256": "d1b996ecd351be882f4f834861e2507859d2c1b4d47018ba7c317ff426302302"
+  },
+  {
+    "path": "chief/approved/chief_calm_source.png",
+    "bytes": 813273,
+    "sha256": "06528ed641fd8989ea52f5b0d91d649229a4ca4332242666265548399bb60b46"
+  },
+  {
+    "path": "chief/approved/chief_impatient_source.png",
+    "bytes": 818757,
+    "sha256": "4eb89fa0a89c0d3b07dadbd8045c2384f33153949f81034096a01d2dfcc461cb"
+  },
+  {
+    "path": "chief/processed/chief_angry.png",
+    "bytes": 1351639,
+    "sha256": "6bbf5954e776b8899d4014d2b8193ae87402f005eab7958608bac4a3713015de"
+  },
+  {
+    "path": "chief/processed/chief_calm.png",
+    "bytes": 1311391,
+    "sha256": "a382174772e8b4fbaad609cc70029b5b2146bac2ec2874bf750faffc6aba5bb6"
+  },
+  {
+    "path": "chief/processed/chief_impatient.png",
+    "bytes": 1311838,
+    "sha256": "55ffeccdcf048894e44fcd54cff84ecccb6c9f44d04d825de41890df9f1d73d9"
+  },
+  {
+    "path": "elaina/approved/elaina_confident_source.png",
+    "bytes": 1299997,
+    "sha256": "bb3a4a0703d8676646ecb625bdcd3dd1986f6ac92d01c5dbbe41530c4aaa961e"
+  },
+  {
+    "path": "elaina/approved/elaina_explaining_source.png",
+    "bytes": 1275451,
+    "sha256": "dbba56a231c58f0be47ff1479a30a20ccc8e991e6b37de1bb01232ae12d427ff"
+  },
+  {
+    "path": "elaina/approved/elaina_standing_source.png",
+    "bytes": 1316743,
+    "sha256": "c79b41080c091b41e6892f274773e86affe27ed5ecb7ba5cfe0255f183a42855"
+  },
+  {
+    "path": "elaina/approved/elaina_thinking_source.png",
+    "bytes": 1266346,
+    "sha256": "8f0ced5ad14c7016ecada28bb8c612f9f5eea785d969382d99b13e779399734a"
+  },
+  {
+    "path": "elaina/approved/standing-expressions/elaina_standing_blank_source.png",
+    "bytes": 1793654,
+    "sha256": "d404580dd5d8ff67fc25c69d3a3a586149520b46470186e7aed2b771df94d762"
+  },
+  {
+    "path": "elaina/approved/standing-expressions/elaina_standing_serious_source.png",
+    "bytes": 1771421,
+    "sha256": "add41b69bd0d6629758856d6152690255fe08e5671ca050f860d2aa432f3b67e"
+  },
+  {
+    "path": "elaina/approved/standing-expressions/elaina_standing_smile_source.png",
+    "bytes": 1316743,
+    "sha256": "c79b41080c091b41e6892f274773e86affe27ed5ecb7ba5cfe0255f183a42855"
+  },
+  {
+    "path": "elaina/approved/standing-expressions/elaina_standing_source.png",
+    "bytes": 1316203,
+    "sha256": "f953c9d12543ba0ac2264d6d6c1bdcaeedbeb84faa759bbc38176bd6737d10b9"
+  },
+  {
+    "path": "elaina/approved/standing-expressions/elaina_standing_surprised_source.png",
+    "bytes": 1317069,
+    "sha256": "142e2fa60a99603763fd9d28b229d523425f6b20bb83426034ab6b42d320c58a"
+  },
+  {
+    "path": "elaina/drafts/Elaina_Pose01_Confident.png",
+    "bytes": 1267402,
+    "sha256": "0e453ca4ad95925ba74b537dba54825d500f73c81264dbfc0b9a50275caa2a0e"
+  },
+  {
+    "path": "elaina/drafts/Elaina_Pose02_Thinking.png",
+    "bytes": 1266346,
+    "sha256": "8f0ced5ad14c7016ecada28bb8c612f9f5eea785d969382d99b13e779399734a"
+  },
+  {
+    "path": "elaina/drafts/Elaina_Pose03_Explaining.png",
+    "bytes": 1275451,
+    "sha256": "dbba56a231c58f0be47ff1479a30a20ccc8e991e6b37de1bb01232ae12d427ff"
+  },
+  {
+    "path": "elaina/poses/elaina_confident.png",
+    "bytes": 1924573,
+    "sha256": "ec97d27c56727da2fec62d450b6c7ff9db843d019712297ba3cac03d13fd5865"
+  },
+  {
+    "path": "elaina/poses/elaina_explaining.png",
+    "bytes": 1978539,
+    "sha256": "72097419855d16f06a298a6c84292743bbe06d121581b5d4891b2335948226ed"
+  },
+  {
+    "path": "elaina/poses/elaina_thinking.png",
+    "bytes": 1928424,
+    "sha256": "20a98454d83fb02fad4f44489ab52f6a26a724525711930863186c97f09cb24b"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_blank.png",
+    "bytes": 1867727,
+    "sha256": "b35dd79319e49c9d67aff239706732ef2bd6b3be83d082f42eb4bc4576764211"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_serious.png",
+    "bytes": 1883791,
+    "sha256": "a994e748f3cfb811d1a4767cf990f611c185f6fe628b76fae1ad29012ee8408a"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_smile.png",
+    "bytes": 1874846,
+    "sha256": "570a0af30ca19982171a776df98479f381a67bbdb300e4404e237940f5cbe4c3"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_surprised.png",
+    "bytes": 1861816,
+    "sha256": "8ea654d7562196a7dfa70b591c67c8c330baab30f01071443f6ed7487d68cd7f"
+  },
+  {
+    "path": "elaina/standing/elaina_standing.png",
+    "bytes": 1863248,
+    "sha256": "c30320121196dd972a940645c62e40914a749877c3a95a1dafa225a5cd6e44ab"
+  }
+]
