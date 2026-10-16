@@ -2,7 +2,7 @@ import { DialogueSession } from './dialogue.mjs';
 import { AssetLibrary } from './assets.js';
 import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient } from './art.js';
 import { SCENES, ROUTE, START, START_SCENE, canStand, nearestInteraction, readHallObservations } from './world.mjs';
-import { readChapter, ChapterFlow, shotPresentation, glassCue, ACTOR_NAMES } from './chapter.mjs';
+import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue, ACTOR_NAMES } from './chapter.mjs';
 import { SoundEffects } from './sound.js';
 import { MagicPlayer } from './magic.mjs';
 import { drawMagicEffect } from './magic-art.js';
@@ -13,7 +13,7 @@ const ui = Object.fromEntries([
   'game','world','start','title-screen','loading-message','explore-ui','objective','interact',
   'dialogue-layer','speaker','dialogue-text','advance','advance-label','end-screen','return',
   'replay','fullscreen','error-panel','error-message','retry','route-strip','scene-caption',
-  'inspection','inspection-title','inspection-text','close-inspection','observation-count',
+  'inspection','inspection-title','inspection-text','inspection-image','close-inspection','observation-count',
   'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
   'memory-layer','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
   'end-kicker','end-title','end-description','passage-label','memory-bottle',
@@ -31,7 +31,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const wait = milliseconds => new Promise(resolve => setTimeout(resolve,milliseconds));
 let mode = 'title', sceneId = START_SCENE, session = null, observations = new Map();
 let lastFrame = 0, typedCount = 0, textStarted = 0, textCharacters = [], completed = false;
-let portraitFaces = { left: 'elaina_normal', right: 'emil_proud' };
+let portraitFaces = { left: 'elaina_standing', right: 'emil_bright' };
 let activeInteraction = null;
 let playMode='story',chapter=null,flow=null,roamSession=null,lastShot=null;
 let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null,propKind=null,effectLocked=false;
@@ -118,7 +118,8 @@ function resetJourney(nextMode) {
   playMode=nextMode;sceneId=START_SCENE;Object.assign(player,START,{direction:'right',moving:false});
   visited.clear();visited.add(START_SCENE);inspected.clear();completed=false;
   lastShot=null;glassState=null;propKind=null;effectLocked=false;advanceReadyAt=0;activeInteraction=null;
-  portraitFaces={left:'elaina_normal',right:'emil_bright'};
+  ui.game.classList.remove('impact');
+  portraitFaces={left:chapter.faces.get('伊蕾娜:站立·平常') ?? 'elaina_standing',right:'emil_bright'};
   ui['dialogue-layer'].classList.remove('no-portraits');
   $('portrait-right').querySelector('.portrait-label').textContent='艾米尔';
   refreshSceneUI();
@@ -144,7 +145,18 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;propKind=null;effectLocked=false;setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {glassState=null;propKind=null;effectLocked=false;ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+
+function playImpact(cue) {
+  if(!cue || reducedMotion)return;
+  ui.game.classList.remove('impact');
+  void ui.game.offsetWidth;
+  ui.game.dataset.impact=cue;
+  ui.game.classList.add('impact');
+}
+ui.game.addEventListener('animationend',event=>{
+  if(event.target===ui.game && event.animationName==='scene-impact')ui.game.classList.remove('impact');
+});
 
 function displayPortrait(side,face) {
   const container = $(`portrait-${side}`);
@@ -176,6 +188,7 @@ function showLine() {
     ui.game.dataset.shot=node.shotId;ui.game.dataset.stepKind=node.kind;
     ui.game.dataset.storyPhase=flow.phase;
     const cue=glassCue(node);
+    playImpact(impactCue(node));
     if(cue==='sound'||cue==='broken') {
       glassState='broken';
       if(magic.trigger('shatter')){sound.play('glass');effectLocked=true;}
@@ -223,7 +236,7 @@ function openDialogue(restart = false) {
     const nodes = Object.values(session.data);
     const firstLeft = nodes.find(node => node.face?.startsWith('elaina_'));
     const firstRight = nodes.find(node => node.face && !node.face.startsWith('elaina_') && node.speaker !== '旁白');
-    portraitFaces = { left: firstLeft?.face || 'elaina_normal', right: firstRight?.face || 'emil_proud' };
+    portraitFaces = { left: firstLeft?.face || 'elaina_standing', right: firstRight?.face || 'emil_bright' };
     $('portrait-right').querySelector('.portrait-label').textContent = firstRight?.speaker || '艾米尔';
   }
   setMode('dialogue'); showLine(); ui.game.focus({preventScroll:true});
@@ -270,6 +283,11 @@ function interact(item = activeInteraction) {
   if (item.kind === 'inspect') {
     ui['inspection-title'].textContent = item.source;
     ui['inspection-text'].textContent = observations.get(item.source);
+    const detail=assets.objects.get(item.id),image=ui['inspection-image'];
+    image.hidden=!detail;
+    if(detail){image.src=detail.src;image.alt=`${item.source}的像素特写`;}
+    else {image.removeAttribute('src');image.alt='';}
+    ui.inspection.classList.toggle('has-image',Boolean(detail));
     inspected.add(item.id); setMode('inspect'); refreshSceneUI(); ui.game.focus({preventScroll:true});
   }
 }

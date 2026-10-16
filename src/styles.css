@@ -30,6 +30,12 @@
 .inspection-card h2{font-size:22px;letter-spacing:3px;margin:10px 0 13px;color:#465d46}
 .inspection-card p{font-family:var(--serif);font-size:17px;line-height:1.95;letter-spacing:1px;margin:0;color:#50604d}
 .inspection-card .text-button{margin:18px 0 0 auto;display:flex;align-items:center;gap:8px}
+.inspection-card{max-height:100%;overflow:auto}.inspection-body{display:flex;align-items:center;gap:22px}.inspection-body p{flex:1;min-width:0}
+#inspection-image{width:40%;max-width:240px;height:auto;flex:none;image-rendering:pixelated;filter:drop-shadow(0 6px 6px #35472b25)}
+.game-frame.impact{animation:scene-impact .32s ease-out}.game-frame.impact[data-mode="pause"]{animation-play-state:paused}
+@keyframes scene-impact{0%,100%{transform:translate(0,0)}15%{transform:translate(-2px,1px)}35%{transform:translate(2px,-1px)}55%{transform:translate(-1px,1px)}75%{transform:translate(1px,0)}}
+@media(max-width:800px){.inspection-body{gap:12px}.inspection-card{padding:18px 22px}.inspection-card p{font-size:14px;line-height:1.7}.inspection-card h2{margin:7px 0 10px;font-size:19px}#inspection-image{width:34%;max-width:165px}}
+@media(max-width:450px){.inspection-body{gap:9px}.inspection-card{padding:16px}.inspection-card p{font-size:12px;line-height:1.6;letter-spacing:0}.inspection-card h2{font-size:16px}}
 .scene-transition{position:absolute;inset:0;z-index:9;background:#253c34;opacity:0;transition:opacity .25s ease;display:grid;place-items:center;pointer-events:auto}
 .scene-transition.covered{opacity:1}.scene-transition>div{text-align:center;color:#f3ead0}
 .scene-transition span{font-size:10px;letter-spacing:4px;color:#c3c5aa}.scene-transition h2{font-size:30px;letter-spacing:6px;margin:20px 0}.scene-transition i{font-style:normal;font-size:25px;color:#c8b37a}

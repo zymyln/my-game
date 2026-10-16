@@ -1,4 +1,9 @@
 {
   "portraits": {},
-  "backgrounds": {}
+  "backgrounds": {},
+  "objects": {
+    "painting": "objects/hall/hall_painting.png",
+    "apron": "objects/hall/hall_apron.png",
+    "table": "objects/hall/hall_table.png"
+  }
 }

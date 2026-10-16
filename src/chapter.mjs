@@ -122,7 +122,7 @@ export function shotPresentation(id) {
   return {
     hidePortraits:['SH-01','SH-07','SH-15'].includes(id),
     hideSprites:['SH-07','SH-15'].includes(id),
-    rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty'}[id] ?? null,
+    rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty'}[id] ?? null,
     hold:id==='SH-14' ? 3000 : 0,
   };
 }
@@ -133,5 +133,12 @@ export function glassCue(step) {
   if(/碎了一地|大小不一的碎片/.test(step.text))return 'broken';
   if(/白雾.*轻抚|轻抚.*碎片/.test(step.text))return 'mist';
   if(/碎片聚集回溯/.test(step.text))return 'whole';
+  return null;
+}
+
+export function impactCue(step) {
+  if(step.shotId!=='SH-10')return null;
+  if(glassCue(step)==='sound')return 'glass';
+  if(step.speaker==='村长' && /^——你在搞什么啊[！!]/.test(step.text))return 'shout';
   return null;
 }

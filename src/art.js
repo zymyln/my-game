@@ -138,7 +138,7 @@ export function drawPortrait(canvas, actor, expression = '') {
     rect(ctx,'#c9dcd0',62,102,21,25);rect(ctx,'#dce8ce',65,104,10,20);rect(ctx,'#eaf0d7',68,109,9,4);rect(ctx,'#9a8358',67,97,12,6);
     rect(ctx,skin,58,117,12,8);rect(ctx,shade,58,123,10,3);
   }
-  const smile = /smile|bright|smirk/.test(expression), panic = /panic|surprised|terrified/.test(expression), down = /down|pout|blank/.test(expression);
+  const smile = /smile|bright|smirk|confident|explaining/.test(expression), panic = /panic|surprised|terrified|flustered/.test(expression), down = /down|pout|blank/.test(expression);
   const eyes = elaina ? '#776187' : '#637256';
   if(smile) { rect(ctx,eyes,35,53,8,2);rect(ctx,eyes,53,53,8,2);rect(ctx,eyes,35,55,2,2);rect(ctx,eyes,59,55,2,2); }
   else { rect(ctx,'#fcf4df',34,51,10,6);rect(ctx,'#fcf4df',52,51,10,6);rect(ctx,eyes,38,51,4,panic?7:5);rect(ctx,eyes,54,51,4,panic?7:5);rect(ctx,'#45414b',35,50,9,2);rect(ctx,'#45414b',52,50,9,2); }

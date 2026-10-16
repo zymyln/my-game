@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { readChapter, ChapterFlow, shotPresentation, glassCue } from './chapter.mjs';
+import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue } from './chapter.mjs';
 
 const source=await readFile(new URL('../content/script/ch1.md',import.meta.url),'utf8');
 const chapter=readChapter(source);
@@ -17,7 +17,7 @@ test('the active script is parsed without directions, observations or appendix b
   assert.ok(steps.every(step=>!step.text.includes('【演出】')&&!step.text.startsWith('- 光粒子')));
   assert.ok(!steps.some(step=>step.text.includes('井绳磨得很旧')));
   const thought=steps.find(step=>step.thought);
-  assert.equal(thought.speaker,'旁白');assert.equal(thought.face,'elaina_serious');
+  assert.equal(thought.speaker,'旁白');assert.equal(thought.face,chapter.faces.get('伊蕾娜:站立·正色'));
 });
 test('the original 22 sample lines still match the working script and IDs remain untouched',async()=>{
   const sample=JSON.parse(await readFile(new URL('../content/dialogue.json',import.meta.url),'utf8'));
@@ -36,16 +36,30 @@ test('the whole chapter follows its gates and optional observations never gate l
   flow.arrive('field_dusk');finish(flow,seen);assert.equal(flow.phase,'complete');
   assert.equal(new Set(seen.map(step=>step.cursor)).size,seen.length);
   assert.equal(seen.length,chapter.lineCount+6);
-  assert.equal(seen.at(-1).text,'去了肯定只会徒增悲伤而已。');
+  assert.equal(seen.at(-1),chapter.shots.get('SH-15').steps.at(-1));
 });
 test('small dialogue edits are read on refresh and unknown expression tags fail clearly',()=>{
-  const edited=readChapter(source.replace('不用说也知道那是谁——没错，就是我。','新的开场台词。'));
-  assert.equal(edited.shots.get('SH-01').steps[2].text,'新的开场台词。');
-  assert.throws(()=>readChapter(source.replace('伊蕾娜[微笑]：你好。','伊蕾娜[不存在]：你好。')),/找不到表情/);
+  const opening=chapter.shots.get('SH-01').steps[0];
+  const edited=readChapter(source.replace(opening.text,'新的开场台词。'));
+  assert.equal(edited.shots.get('SH-01').steps[0].text,'新的开场台词。');
+  const elainaLine=source.split(/\r?\n/).find(line=>/^伊蕾娜\[/.test(line));
+  assert.ok(elainaLine,'the expression-validation fixture must exist');
+  assert.throws(()=>readChapter(source.replace(elainaLine,elainaLine.replace(/\[[^\]]+\]/,'[不存在]'))),/找不到表情/);
   assert.throws(()=>readChapter(source.replace('## 附录', '### SH-16　新镜头\n\n旁白：尚未编排。\n\n## 附录')),/尚未编排/);
-  assert.throws(()=>readChapter(source.replace('`elaina_normal`','`emil_normal`')),/角色不对应/);
+  const face=chapter.faces.get('伊蕾娜:站立·平常');
+  assert.ok(source.includes(`\`${face}\``));
+  assert.throws(()=>readChapter(source.replace(`\`${face}\``,'`emil_invalid`')),/角色不对应/);
+});
+
+test('only the glass impact and the first chief shout cue a screen shake',()=>{
+  const impacts=[...chapter.shots.values()].flatMap(shot=>shot.steps).map(impactCue).filter(Boolean);
+  assert.deepEqual(impacts,['glass','shout']);
+  assert.equal(impactCue({shotId:'SH-09',speaker:'村长',text:'——你在搞什么啊！'}),null);
+  assert.equal(impactCue({shotId:'SH-10',speaker:'旁白',text:'——你在搞什么啊！'}),null);
+  assert.equal(impactCue({shotId:'SH-10',speaker:'村长',text:'马上给我扫干净！'}),null);
 });
 test('the final pause, portrait-free epilogue and glass restoration are staged',()=>{
+  assert.equal(shotPresentation('SH-09').rightFace,'chief_calm');
   assert.equal(shotPresentation('SH-14').hold,3000);
   assert.equal(shotPresentation('SH-15').hidePortraits,true);
   const cues=chapter.shots.get('SH-10').steps.map(glassCue).filter(Boolean);
