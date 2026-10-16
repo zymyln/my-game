@@ -19,6 +19,7 @@
       <section id="game" class="game-frame" aria-label="魔女之旅游戏" tabindex="-1">
         <canvas id="world" width="640" height="360" aria-label="草原地图，使用 WASD 或方向键移动，靠近艾米尔后按 E 交谈"></canvas>
         <div class="scene-vignette" aria-hidden="true"></div>
+        <canvas id="scene-atmosphere" width="640" height="360" aria-hidden="true"></canvas>
         <div class="scene-topbar"><span class="location"><span aria-hidden="true">☀</span> 草原 · 白昼</span><div class="scene-controls"><button id="sound-toggle" class="small-button" type="button" aria-pressed="false">音效：关</button><button id="pause-toggle" class="small-button" type="button" hidden>暂停</button><button id="fullscreen" class="icon-button" type="button" title="全屏（F）" aria-label="切换全屏">⛶</button></div></div>
 
         <div id="explore-ui" hidden>
@@ -35,7 +36,7 @@
             <h2 id="story-title">瓶中的<span>幸福</span></h2>
             <p class="title-description">风吹过草原。<br />一位少年，正小心翼翼地收集着幸福。</p>
             <button id="start" class="primary-button" type="button" disabled>正在整理行囊…</button>
-            <div class="title-options"><button id="roam" class="text-button" type="button" disabled>自由漫游</button><button id="effects-open" class="text-button" type="button">魔法小剧场</button></div>
+            <div class="title-options"><button id="roam" class="text-button" type="button" disabled>自由漫游</button><button id="effects-open" class="text-button" type="button">演出小剧场</button></div>
             <p id="loading-message" class="title-note" role="status">正在读取旅行手记</p>
           </div>
           <p class="scene-credit">THE THINGS WE FIND ALONG THE WAY</p>
@@ -62,10 +63,10 @@
         <section id="pause-screen" class="pause-screen" aria-labelledby="pause-title" hidden><div class="pause-panel"><span class="title-ornament" aria-hidden="true">✧</span><h2 id="pause-title">让旅途稍作停留</h2><p>故事会在原处等你。</p><button id="resume" class="primary-button" type="button">继续旅途</button><button id="back-title" class="text-button" type="button">返回标题</button></div></section>
         <div id="scene-transition" class="scene-transition" hidden><div><span>沿着旅途，继续前行</span><h2 id="arrival-name"></h2><i aria-hidden="true">✧</i></div></div>
         <div id="error-panel" class="error-panel" role="alert" hidden><h2>旅行手记暂时打不开</h2><p id="error-message"></p><button id="retry" class="primary-button" type="button">重新读取</button></div>
-        <section id="effects-preview" class="effects-preview" role="dialog" aria-modal="true" aria-label="魔法小剧场" hidden>
+        <section id="effects-preview" class="effects-preview" role="dialog" aria-modal="true" aria-label="演出小剧场" hidden>
           <canvas id="effects-canvas" width="640" height="360" tabindex="0" aria-label="魔法物品演出，空格暂停或继续"></canvas>
-          <div class="effects-header"><span>✧ 魔法小剧场</span><div><button id="effects-sound" class="effects-small" type="button" aria-pressed="false">音效：关</button><button id="effects-close" class="effects-small" type="button">返回游戏 <kbd>Esc</kbd></button></div></div>
-          <div class="effects-tabs" aria-label="选择演出"><button type="button" data-effect-kind="bottle" aria-pressed="true">幸福的魔法瓶</button><button type="button" data-effect-kind="cup" aria-pressed="false">碎杯与还原</button></div>
+          <div class="effects-header"><span>✧ 演出小剧场</span><div><button id="effects-sound" class="effects-small" type="button" aria-pressed="false">音效：关</button><button id="effects-close" class="effects-small" type="button">返回游戏 <kbd>Esc</kbd></button></div></div>
+          <div class="effects-tabs" aria-label="选择演出"><button type="button" data-effect-kind="bottle" aria-pressed="true">幸福的魔法瓶</button><button type="button" data-effect-kind="cup" aria-pressed="false">碎杯与还原</button><button type="button" data-effect-kind="mood" aria-pressed="false">剧情氛围</button></div>
           <p id="effects-status" class="effects-status" role="status"></p>
           <div class="effects-controls"><button id="effects-action" class="primary-button" type="button">打开瓶塞</button><button id="effects-sequence" class="effects-small" type="button">完整演出</button><button id="effects-pause" class="effects-small" type="button">暂停演出</button></div>
         </section>

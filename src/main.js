@@ -7,6 +7,7 @@ import { SoundEffects } from './sound.js';
 import { MagicPlayer } from './magic.mjs';
 import { drawMagicEffect } from './magic-art.js';
 import { setupEffectsPreview } from './effects-preview.js';
+import { StagePlayer, moodForShot, drawAtmosphere } from './staging.mjs';
 
 const $ = id => document.getElementById(id);
 const ui = Object.fromEntries([
@@ -16,7 +17,7 @@ const ui = Object.fromEntries([
   'inspection','inspection-title','inspection-text','inspection-image','close-inspection','observation-count',
   'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
   'memory-layer','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
-  'end-kicker','end-title','end-description','passage-label','memory-bottle',
+  'end-kicker','end-title','end-description','passage-label','memory-bottle','scene-atmosphere',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -36,10 +37,12 @@ let activeInteraction = null;
 let playMode='story',chapter=null,flow=null,roamSession=null,lastShot=null;
 let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null,propKind=null,effectLocked=false;
 const magic=new MagicPlayer({reducedMotion});
+const stage=new StagePlayer({reducedMotion});
+let worldTime=0;
 const syncSound=()=>{ui['sound-toggle'].textContent=sound.enabled?'音效：开':'音效：关';ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled));};
 const effectsPreview=setupEffectsPreview({backgrounds,sound,onSoundChange:syncSound});
 const requestedEffect=new URLSearchParams(location.search).get('effects');
-if(['bottle','glass','cup'].includes(requestedEffect))effectsPreview.open(requestedEffect==='bottle'?'bottle':'cup');
+if(['bottle','glass','cup','mood'].includes(requestedEffect))effectsPreview.open(requestedEffect==='mood'?'mood':requestedEffect==='bottle'?'bottle':'cup');
 const lunchSeat={id:'wait-lunch',kind:'story',label:'坐下，等待午餐',x:330,y:304,radius:22};
 
 function availableInteractions() {
@@ -93,6 +96,7 @@ function refreshSceneUI() {
 }
 
 function returnToExploration() {
+  stage.reset();
   setMode('explore'); refreshSceneUI(); ui.game.focus({preventScroll:true});
 }
 
@@ -119,6 +123,7 @@ function resetJourney(nextMode) {
   visited.clear();visited.add(START_SCENE);inspected.clear();completed=false;
   lastShot=null;glassState=null;propKind=null;effectLocked=false;advanceReadyAt=0;activeInteraction=null;
   ui.game.classList.remove('impact');
+  stage.reset();
   portraitFaces={left:chapter.faces.get('伊蕾娜:站立·平常') ?? 'elaina_standing',right:'emil_bright'};
   ui['dialogue-layer'].classList.remove('no-portraits');
   $('portrait-right').querySelector('.portrait-label').textContent='艾米尔';
@@ -145,7 +150,7 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;propKind=null;effectLocked=false;ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
 function playImpact(cue) {
   if(!cue || reducedMotion)return;
@@ -178,6 +183,7 @@ function showLine() {
     const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId);
     if(changed) {
       lastShot=node.shotId;glassState=null;propKind=null;effectLocked=false;
+      stage.select(moodForShot(node.shotId));
       if(['SH-04','SH-12'].includes(node.shotId)){propKind='bottle';magic.select('bottle');}
       if(node.shotId==='SH-10'){propKind='cup';glassState='whole';magic.select('cup');}
       advanceReadyAt=performance.now()+staging.hold;
@@ -189,10 +195,12 @@ function showLine() {
     ui.game.dataset.storyPhase=flow.phase;
     const cue=glassCue(node);
     playImpact(impactCue(node));
+    if(impactCue(node))stage.select('pressure');
     if(cue==='sound'||cue==='broken') {
       glassState='broken';
       if(magic.trigger('shatter')){sound.play('glass');effectLocked=true;}
     } else if(cue==='mist') {
+      stage.select('calm');
       glassState='mist';
       if(magic.trigger('restore')){sound.play('restore');effectLocked=true;}
     } else if(cue==='whole')glassState='whole';
@@ -258,6 +266,7 @@ function advance() {
 }
 
 function showEnding() {
+  stage.reset();
   completed=true;glassState=null;propKind=null;effectLocked=false;
   const story=playMode==='story';
   ui['end-kicker'].textContent=story?'第一章 · 完':'一页旅途，暂告一段落';
@@ -406,6 +415,10 @@ function draw(time) {
   const node = readingMode ? session?.current : null;
   const visibleScene = node?.bg && SCENES[node.bg] ? node.bg : sceneId;
   const background = node ? assets.backgrounds.get(node.bg) : null;
+  const staged=playMode==='story'&&readingMode;
+  const lighting=stage.snapshot();
+  ctx.clearRect(0,0,640,360);ctx.save();
+  if(staged){ctx.translate(lighting.x*640,lighting.y*360);ctx.scale(lighting.zoom,lighting.zoom);ctx.translate(-lighting.x*640,-lighting.y*360);}
   if (background) {
     const scale = Math.max(640/background.naturalWidth,360/background.naturalHeight);
     const width = background.naturalWidth*scale, height = background.naturalHeight*scale;
@@ -419,6 +432,11 @@ function draw(time) {
     for (const sprite of sprites) drawSprite(ctx,sprite.actor,sprite.x,sprite.y,{moving:sprite.moving,direction:sprite.direction,time});
     drawAmbient(ctx,visibleScene,time,reducedMotion); drawMarkers(time);
   }
+  ctx.restore();
+  ui['scene-atmosphere'].hidden=!staged;
+  if(staged)drawAtmosphere(ui['scene-atmosphere'].getContext('2d'),lighting);
+  ui.game.dataset.mood=staged?stage.mood:'clear';
+  ui.game.dataset.stageTime=stage.time.toFixed(0);
   if(propKind&&mode==='dialogue')drawMagicEffect(ui['glass-prop'],magic);
   if(propKind==='bottle'&&mode==='memory')drawMagicEffect(ui['memory-bottle'],magic,{placement:'memory'});
   ui['story-prop'].dataset.phase=magic.phase;
@@ -433,6 +451,8 @@ function draw(time) {
 function frame(time) {
   const dt = lastFrame ? Math.min((time-lastFrame)/1000,.05) : 0;
   lastFrame = time; updateMovement(dt);
+  if(mode!=='pause'&&!effectsPreview.active)worldTime+=dt*1000;
+  if(playMode==='story'&&mode==='dialogue'&&!effectsPreview.active)stage.update(dt*1000);
   if(propKind&&['dialogue','memory'].includes(mode)&&!effectsPreview.active)magic.update(dt*1000);
   if (mode==='dialogue' && typedCount<textCharacters.length) {
     const count = reducedMotion ? textCharacters.length : Math.min(textCharacters.length,Math.floor((time-textStarted)/32));
@@ -448,7 +468,7 @@ function frame(time) {
     const held=time<advanceReadyAt;ui['memory-next'].disabled=held;
     ui['memory-next'].textContent=held?'静静看着…':'继续 · Space';
   }
-  draw(time); requestAnimationFrame(frame);
+  draw(worldTime); requestAnimationFrame(frame);
 }
 refreshSceneUI(); requestAnimationFrame(frame);
 
