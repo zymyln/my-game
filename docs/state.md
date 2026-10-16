@@ -120,10 +120,11 @@
 - 剧本里 47 条伊蕾娜台词（主线 43 条 + 附录 4 条）全部改完。分布：站立 29 条（微笑 12 / 平常 7 / 无语 7 / 惊讶 1 / 正色 2）、思考·平常 6 条、摊手 4 条（微笑 3 / 正色 1）、扶帽·得意 4 条。
 - 剧本表情表里伊蕾娜一行拆成四行，各行之间的表情名不重复；其余角色不变。
 - 差分结论：三张已完成的姿势自带的脸可以直接用（扶帽＝得意、思考＝平常、摊手＝微笑），所以只需再画站立姿势的五张差分，加摊手姿势的正色一张，共六张。
-- **需要主力机配合（`src/` 归主力机，文本机未改动）**：`src/chapter.test.mjs` 里有两条固定字符串已经对不上新剧本，测试因此失败，18 条里 1 条挂：
-  1. `source.replace('伊蕾娜[微笑]：你好。', '伊蕾娜[不存在]：你好。')` 里的原文要改成 `伊蕾娜[站立·微笑]：你好。`
-  2. `source.replace('`elaina_normal`','`emil_normal`')` 里的原文要改成 `` `elaina_stand_normal` ``
-  改这两处即可，`chapter.mjs` 本身能正常解析四种姿势的标注。
+- 同步更新：`content/dialogue.json` 的 SH-04 共二十二条按新剧本重新生成，文本与 ID 未变，只有立绘名从 `elaina_normal` 这类变成 `elaina_stand_normal` 这类。
+- **需要主力机配合（`src/` 归主力机，文本机未改动）**：`src/chapter.test.mjs` 有三处固定字符串已对不上新剧本，18 条测试里剩 2 条失败：
+  1. 「the active script is parsed…」里的 `assert.equal(thought.face,'elaina_serious')` 要改成 `'elaina_stand_serious'`。
+  2. 「small dialogue edits…」里 replace 的原文：`伊蕾娜[微笑]：你好。` 改成 `伊蕾娜[站立·微笑]：你好。`；`` `elaina_normal` `` 改成 `` `elaina_stand_normal` ``。
+  改完这三处即可，`chapter.mjs` 本身能正常解析四种姿势的标注。
 - 验证：本地 Word 从仓库 md 重新生成，15 页；表情表与姿势说明已同步进文档。
 - 接口变动：剧本的表情标注格式变了，`docs/contract.md` 里「立绘：`角色_表情`」这句需要同步改成 `角色_姿势_表情`。该文件只读，待用户确认后再改。
-- 下一步：用户画差分；主力机修两条测试固定字符串，并把新立绘登记进 `assets/manifest.json`。
+- 下一步：用户画差分；主力机修测试里的固定字符串，并把新立绘登记进 `assets/manifest.json`。
