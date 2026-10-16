@@ -159,3 +159,18 @@
 2. 立绘登记清单（表情减量后）：伊蕾娜 `elaina_standing`、`elaina_standing_smile`、`elaina_standing_blank`、`elaina_standing_surprised`、`elaina_standing_serious`、`elaina_thinking`、`elaina_explaining`、`elaina_confident`；艾米尔 `emil_bright`、`emil_pout`、`emil_down`；妮诺 `nino_down`、`nino_flustered`、`nino_terrified`、`nino_smiletiny`、`nino_teary`、`nino_empty`；村长 `chief_calm`、`chief_angry`。已废弃：`elaina_explaining_serious`、`emil_proud`、`emil_serious`、`emil_panic`、`chief_smirk`。
 3. 可选：`main.js` 第 34、121 行写死的 `elaina_normal` 已不存在，建议顺手换掉。
 - 下一步：用户画立绘并监修剧本；主力机处理上面三条。
+
+
+
+## 2026-10-16 文本机：SH-10 加入抖屏演出
+
+- 用户在 Word 上标红两处，指定这两句要加屏幕抖动：「旁白：响起一声“匡啷”的、震耳欲聋的声音。」与「村长[怒吼]：——你在搞什么啊！」。
+- 剧本 SH-10 新增一条【演出】：这两句各抖一次、幅度小；系统开启「减少动态效果」时不做抖动。
+- 用户表示除此之外暂时不再加演出，等主力机开工后再一起考虑。
+- 讨论中：用户要再写一个 happy end，分岔点在 SH-11 末尾（建议送瓶子 / 不送瓶子两条线），细节待定。定下来后剧本会增加一条支线，并需要 `docs/contract.md` 增加「选择」的写法。
+
+### 给主力机（`src/` 归主力机，文本机没有改动）
+
+- 抖屏需要程序支持。现在只有「匡啷」那一句被 `glassCue` 识别成碎杯音效；村长那句怒吼没有对应提示，需要新增一个（例如让「——你在搞什么啊！」返回 `shake`，并让「匡啷」那一句在播音效的同时也抖一次）。
+- 抖动幅度要小，并且跟随现有的「减少动态效果」开关。
+- 之前列的三条仍然待办：`chapter.test.mjs` 里三处固定字符串、立绘登记清单、`main.js` 里写死的 `elaina_normal`。
