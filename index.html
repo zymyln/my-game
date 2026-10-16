@@ -20,7 +20,7 @@
         <canvas id="world" width="640" height="360" aria-label="草原地图，使用 WASD 或方向键移动，靠近艾米尔后按 E 交谈"></canvas>
         <div class="scene-vignette" aria-hidden="true"></div>
         <canvas id="scene-atmosphere" width="640" height="360" aria-hidden="true"></canvas>
-        <div class="scene-topbar"><span class="location"><span aria-hidden="true">☀</span> 草原 · 白昼</span><div class="scene-controls"><button id="sound-toggle" class="small-button" type="button" aria-pressed="false">音效：关</button><button id="pause-toggle" class="small-button" type="button" hidden>暂停</button><button id="fullscreen" class="icon-button" type="button" title="全屏（F）" aria-label="切换全屏">⛶</button></div></div>
+        <div class="scene-topbar"><span class="location"><span aria-hidden="true">☀</span> 草原 · 白昼</span><div class="scene-controls"><button id="sound-toggle" class="small-button" type="button" aria-pressed="true">声音：开</button><button id="audio-settings" class="small-button" type="button" aria-expanded="false" aria-controls="audio-panel">音量</button><button id="pause-toggle" class="small-button" type="button" hidden>暂停</button><button id="fullscreen" class="icon-button" type="button" title="全屏（F）" aria-label="切换全屏">⛶</button></div></div>
 
         <div id="explore-ui" hidden>
           <div id="objective" class="objective"><span class="tiny-star" aria-hidden="true">✦</span><span>草原上的少年，似乎有话想说。</span></div>
@@ -60,7 +60,16 @@
         </section>
         <div id="story-prop" class="story-prop" hidden><canvas id="glass-prop" width="320" height="240" aria-label="魔法瓶与玻璃杯演出"></canvas></div>
         <section id="memory-layer" class="memory-layer" aria-label="瓶中的六片幸福" hidden><canvas id="memory-bottle" width="640" height="360" aria-hidden="true"></canvas><div class="memory-motes" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i><i>✧</i></div><p class="memory-kicker">瓶中的幸福</p><p id="memory-text" aria-live="polite"></p><div class="memory-bottom"><span id="memory-count"></span><button id="memory-next" class="memory-next" type="button" disabled>静静看着…</button></div></section>
-        <section id="pause-screen" class="pause-screen" aria-labelledby="pause-title" hidden><div class="pause-panel"><span class="title-ornament" aria-hidden="true">✧</span><h2 id="pause-title">让旅途稍作停留</h2><p>故事会在原处等你。</p><button id="resume" class="primary-button" type="button">继续旅途</button><button id="back-title" class="text-button" type="button">返回标题</button></div></section>
+        <section id="pause-screen" class="pause-screen" aria-labelledby="pause-title" hidden><div class="pause-panel"><span class="title-ornament" aria-hidden="true">✧</span><h2 id="pause-title">让旅途稍作停留</h2><p>故事会在原处等你。</p><button id="resume" class="primary-button" type="button">继续旅途</button><button id="pause-audio" class="text-button" type="button" aria-controls="audio-panel">音量与配乐试听</button><button id="back-title" class="text-button" type="button">返回标题</button></div></section>
+        <div id="audio-shade" class="audio-shade" hidden></div><section id="audio-panel" class="audio-panel" role="dialog" aria-modal="true" aria-labelledby="audio-title" hidden>
+          <div class="audio-heading"><h2 id="audio-title">旅途的声音</h2><button id="audio-close" type="button" aria-label="关闭音量设置">关闭 ×</button></div>
+          <button id="audio-master" class="small-button" type="button" aria-pressed="true">声音已开启</button>
+          <label>音乐 <input data-channel="music" type="range" min="0" max="100" step="1" aria-label="背景音乐音量" /><output></output></label>
+          <label>音效 <input data-channel="effects" type="range" min="0" max="100" step="1" aria-label="动作音效音量" /><output></output></label>
+          <label>环境 <input data-channel="ambience" type="range" min="0" max="100" step="1" aria-label="环境音音量" /><output></output></label>
+          <p class="audio-listen-title">配乐试听</p><div class="audio-listen"><button data-listen="meadow" type="button">草原</button><button data-listen="hall" type="button">餐厅</button><button data-listen="memory" type="button">幸福</button><button data-listen="dusk" type="button">黄昏</button></div>
+          <p id="audio-preview-status" role="status"></p>
+        </section>
         <div id="scene-transition" class="scene-transition" hidden><div><span>沿着旅途，继续前行</span><h2 id="arrival-name"></h2><i aria-hidden="true">✧</i></div></div>
         <div id="error-panel" class="error-panel" role="alert" hidden><h2>旅行手记暂时打不开</h2><p id="error-message"></p><button id="retry" class="primary-button" type="button">重新读取</button></div>
         <section id="effects-preview" class="effects-preview" role="dialog" aria-modal="true" aria-label="演出小剧场" hidden>

@@ -8,6 +8,8 @@ import { MagicPlayer } from './magic.mjs';
 import { drawMagicEffect } from './magic-art.js';
 import { setupEffectsPreview } from './effects-preview.js';
 import { StagePlayer, moodForShot, drawAtmosphere } from './staging.mjs';
+import { audioProfile } from './score.mjs';
+import { setupAudioPanel } from './audio-panel.js';
 
 const $ = id => document.getElementById(id);
 const ui = Object.fromEntries([
@@ -39,7 +41,10 @@ let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null,propKind=null,ef
 const magic=new MagicPlayer({reducedMotion});
 const stage=new StagePlayer({reducedMotion});
 let worldTime=0;
-const syncSound=()=>{ui['sound-toggle'].textContent=sound.enabled?'音效：开':'音效：关';ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled));};
+const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';ui['sound-toggle'].disabled=Boolean(sound.unavailable);ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));};
+let panelPausedGame=false;
+const audioPanel=setupAudioPanel({sound,onChange:syncSound,onOpen:()=>{panelPausedGame=!['title','pause','complete'].includes(mode);if(panelPausedGame)pauseJourney();},onClose:()=>{if(panelPausedGame)resumeJourney();panelPausedGame=false;}});
+syncSound();
 const effectsPreview=setupEffectsPreview({backgrounds,sound,onSoundChange:syncSound});
 const requestedEffect=new URLSearchParams(location.search).get('effects');
 if(['bottle','glass','cup','mood'].includes(requestedEffect))effectsPreview.open(requestedEffect==='mood'?'mood':requestedEffect==='bottle'?'bottle':'cup');
@@ -102,6 +107,7 @@ function returnToExploration() {
 
 async function travel(exit) {
   if (mode !== 'explore') return;
+  sound.play('door');
   setMode('transition');
   ui['arrival-name'].textContent = SCENES[exit.to].name;
   ui['scene-transition'].hidden = false;
@@ -131,11 +137,13 @@ function resetJourney(nextMode) {
 }
 
 function startStory() {
+  sound.activate().then(syncSound).catch(()=>{});
   resetJourney('story');flow=new ChapterFlow(chapter);session=flow.start();
   showLine();ui.game.focus({preventScroll:true});
 }
 
 function startRoam() {
+  sound.activate().then(syncSound).catch(()=>{});
   resetJourney('roam');session=roamSession=new DialogueSession(roamSession.data);
   returnToExploration();
 }
@@ -195,6 +203,7 @@ function showLine() {
     ui.game.dataset.storyPhase=flow.phase;
     const cue=glassCue(node);
     playImpact(impactCue(node));
+    if(impactCue(node)==='shout')sound.play('impact');
     if(impactCue(node))stage.select('pressure');
     if(cue==='sound'||cue==='broken') {
       glassState='broken';
@@ -211,6 +220,7 @@ function showLine() {
       advanceReadyAt=performance.now()+2000;ui['memory-next'].disabled=true;ui['memory-next'].textContent='静静看着…';
       ui.game.dataset.dialogueId=session.currentId;
       if(node.memoryNumber===1&&magic.trigger('release'))sound.play('bottle');
+      else if(node.memoryNumber>1)sound.play('sparkle');
       return;
     }
   } else {advanceReadyAt=0;ui['passage-label'].textContent='瓶中的幸福';}
@@ -290,6 +300,7 @@ function interact(item = activeInteraction) {
     session=flow.sit();showLine();ui.game.focus({preventScroll:true});return;
   }
   if (item.kind === 'inspect') {
+    sound.play('page');
     ui['inspection-title'].textContent = item.source;
     ui['inspection-text'].textContent = observations.get(item.source);
     const detail=assets.objects.get(item.id),image=ui['inspection-image'];
@@ -325,8 +336,8 @@ ui['pause-toggle'].addEventListener('click',pauseJourney);
 ui.resume.addEventListener('click',resumeJourney);
 ui['back-title'].addEventListener('click',backToTitle);
 ui['sound-toggle'].addEventListener('click',async()=>{
-  try {const enabled=await sound.toggle();ui['sound-toggle'].textContent=enabled?'音效：开':'音效：关';ui['sound-toggle'].setAttribute('aria-pressed',String(enabled));}
-  catch {ui['sound-toggle'].textContent='音效不可用';}
+  try {await sound.toggle();syncSound();}
+  catch {ui['sound-toggle'].textContent='声音不可用';}
 });
 ui['close-inspection'].addEventListener('click',returnToExploration);
 ui.retry.addEventListener('click',() => location.reload());
@@ -348,6 +359,7 @@ document.addEventListener('fullscreenchange',() => ui.fullscreen.setAttribute('a
 
 const movementKeys = ['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'];
 document.addEventListener('keydown',event => {
+  if(audioPanel.active)return;
   if(effectsPreview.active)return;
   if (event.ctrlKey || event.altKey || event.metaKey || event.isComposing) return;
   if (event.target instanceof HTMLElement && event.target.matches('input,textarea,select,[contenteditable="true"]')) return;
@@ -377,6 +389,7 @@ document.addEventListener('visibilitychange',() => { keys.clear(); lastFrame = 0
 
 function updateMovement(dt) {
   if (mode !== 'explore') return;
+  const previousX=player.x,previousY=player.y;
   let dx = Number(keys.has('d') || keys.has('arrowright')) - Number(keys.has('a') || keys.has('arrowleft'));
   let dy = Number(keys.has('s') || keys.has('arrowdown')) - Number(keys.has('w') || keys.has('arrowup'));
   const length = Math.hypot(dx,dy); player.moving = length > 0;
@@ -386,6 +399,7 @@ function updateMovement(dt) {
     if (canStand(sceneId,player.x+dx,player.y)) player.x += dx;
     if (canStand(sceneId,player.x,player.y+dy)) player.y += dy;
   }
+  sound.walk(Math.hypot(player.x-previousX,player.y-previousY),sceneId);
   updateInteraction();
   ui.game.dataset.playerX = player.x.toFixed(1); ui.game.dataset.playerY = player.y.toFixed(1);
   if(playMode==='story'&&flow?.phase==='meet'&&activeInteraction?.id==='emil')interact();
@@ -451,6 +465,13 @@ function draw(time) {
 function frame(time) {
   const dt = lastFrame ? Math.min((time-lastFrame)/1000,.05) : 0;
   lastFrame = time; updateMovement(dt);
+  const audioMode=mode==='pause'?pausedMode:mode;
+  const audioNode=['dialogue','memory'].includes(audioMode)?session?.current:null;
+  const profile=audioPanel.active&&audioPanel.profile?audioPanel.profile:effectsPreview.active?effectsPreview.audioProfile:audioProfile({mode:audioMode,scene:audioNode?.bg??sceneId,shot:playMode==='story'?audioNode?.shotId:null,glass:glassState});
+  sound.setProfile(profile);
+  sound.setPaused(document.hidden||(!audioPanel.active&&(mode==='pause'||effectsPreview.active&&effectsPreview.paused)));
+  sound.tick();
+  ui.game.dataset.audioProfile=profile;ui.game.dataset.audioState=sound.context?.state??'waiting';ui.game.dataset.musicTrack=sound.music?.id??'';
   if(mode!=='pause'&&!effectsPreview.active)worldTime+=dt*1000;
   if(playMode==='story'&&mode==='dialogue'&&!effectsPreview.active)stage.update(dt*1000);
   if(propKind&&['dialogue','memory'].includes(mode)&&!effectsPreview.active)magic.update(dt*1000);
@@ -471,6 +492,7 @@ function frame(time) {
   draw(worldTime); requestAnimationFrame(frame);
 }
 refreshSceneUI(); requestAnimationFrame(frame);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)sound.setPaused(true);});
 
 async function initialize() {
   try {

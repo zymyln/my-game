@@ -50,7 +50,7 @@ export function setupEffectsPreview({backgrounds,sound,onSoundChange}) {
     if(status.textContent!==labels[1])status.textContent=labels[1];
     action.disabled=kind!=='mood'&&player.busy;
     pause.textContent=paused?'继续演出':'暂停演出';
-    audio.textContent=sound.enabled?'音效：开':'音效：关';audio.setAttribute('aria-pressed',String(sound.enabled));
+    audio.textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';audio.disabled=Boolean(sound.unavailable);audio.setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));
     root.dataset.kind=kind;root.dataset.phase=phase;root.dataset.progress=(kind==='mood'?stage.elapsed/Math.max(1,stage.duration):player.progress).toFixed(3);root.dataset.paused=String(paused);
   }
   function frame(time) {
@@ -101,6 +101,7 @@ export function setupEffectsPreview({backgrounds,sound,onSoundChange}) {
     inertStates=[...root.parentElement.children].filter(element=>element!==root).map(element=>[element,element.inert]);
     for(const [element]of inertStates)element.inert=true;
     choose(kind);root.hidden=false;last=0;canvas.focus({preventScroll:true});
+    sound.activate().catch(()=>{});
     frameId=requestAnimationFrame(frame);
   }
   function close() {
@@ -108,22 +109,24 @@ export function setupEffectsPreview({backgrounds,sound,onSoundChange}) {
     for(const [element,value]of inertStates)element.inert=value;
     inertStates=[];onSoundChange();restoreFocus?.focus({preventScroll:true});
   }
-  tabs.forEach(tab=>tab.addEventListener('click',()=>choose(tab.dataset.effectKind)));
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{sound.activate().catch(()=>{});choose(tab.dataset.effectKind);}));
   document.getElementById('effects-open').addEventListener('click',()=>open());
   document.getElementById('effects-close').addEventListener('click',close);
-  action.addEventListener('click',()=>{
-    sequence=false;paused=false;
+  action.addEventListener('click',async()=>{
+    try{await sound.activate();}catch{}
+    sequence=false;paused=false;sound.setPaused(false);
     if(kind==='mood')nextMood();
     else if(player.kind==='bottle'){if(player.phase==='bottle-idle')trigger('release');else player.select('bottle');}
     else trigger(player.phase==='cup-broken'?'restore':'shatter');
   });
-  document.getElementById('effects-sequence').addEventListener('click',()=>{choose(kind);sequence=true;sequenceTime=0;paused=false;});
+  document.getElementById('effects-sequence').addEventListener('click',async()=>{try{await sound.activate();}catch{}choose(kind);sequence=true;sequenceTime=0;paused=false;});
   pause.addEventListener('click',()=>{paused=!paused;});
   audio.addEventListener('click',async()=>{try{await sound.toggle();onSoundChange();}catch{audio.textContent='音效不可用';}});
-  root.addEventListener('keydown',event=>{
+  document.addEventListener('keydown',event=>{
+    if(root.hidden)return;
     if(event.key==='Escape'){event.preventDefault();event.stopPropagation();close();}
     if(event.key===' '&&event.target===canvas){event.preventDefault();paused=!paused;}
-  });
+  },true);
   document.addEventListener('visibilitychange',()=>{last=0;});
-  return {open,close,get active(){return !root.hidden;}};
+  return {open,close,get active(){return !root.hidden;},get paused(){return paused;},get audioProfile(){return kind==='mood'?({unease:'quiet',pressure:'tension',gaze:'hush',afterglow:'dusk',meadow:'meadow',calm:'hall'}[stage.mood]):kind==='bottle'?'memory':'hall';}};
 }
