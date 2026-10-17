@@ -1,0 +1,187 @@
+{
+  "createdAt": "2026-10-17T03:21:35.282Z",
+  "sourceRevision": "d79f938acbcdc133846292e08c0f247210a51a20",
+  "archive": {
+    "file": "魔女之旅-第一章-离线试玩版.zip",
+    "bytes": 46830592,
+    "sha256": "e4094343991b5de1da3664a815c26ab7bc6d532085ebf9735d3134f7f555a8e2"
+  },
+  "game": {
+    "file": "开始游戏.html",
+    "bytes": 63042660,
+    "sha256": "d55c6062984b2ea22a0e7bca6d9778c92cfa15529cc9392ae3bc8fe2cfd147c9"
+  },
+  "target": "Desktop Microsoft Edge / Google Chrome; offline file opening",
+  "modules": [
+    "src/main.js",
+    "src/dialogue.mjs",
+    "src/assets.js",
+    "src/art.js",
+    "src/elaina-sprite.js",
+    "src/world.mjs",
+    "src/chapter.mjs",
+    "src/sound.js",
+    "src/music.js",
+    "src/score.mjs",
+    "src/magic.mjs",
+    "src/magic-art.js",
+    "src/effects-preview.js",
+    "src/staging.mjs",
+    "src/audio-panel.js",
+    "src/flight.mjs"
+  ],
+  "assets": [
+    {
+      "path": "portraits/elaina/standing/elaina_standing.png",
+      "bytes": 1872595,
+      "sha256": "37cad01d3212214967096f3d171a746c496ed992a53fd6be25871375608eae39"
+    },
+    {
+      "path": "portraits/elaina/standing/elaina_standing_smile.png",
+      "bytes": 1884497,
+      "sha256": "50a18995d78d529f48bb7bb7b81b38625b7022b9453f4b4d1975051386cbb036"
+    },
+    {
+      "path": "portraits/elaina/standing/elaina_standing_blank.png",
+      "bytes": 1873215,
+      "sha256": "435711e90a5745138670bbc3d06b0352ca4d14976c8907a78e65c8ef7d7275a2"
+    },
+    {
+      "path": "portraits/elaina/standing/elaina_standing_surprised.png",
+      "bytes": 1881592,
+      "sha256": "2b96b1bb0bb241bfe392379fc3bef2ca11372061be0a600328ec88e5b0f7fa55"
+    },
+    {
+      "path": "portraits/elaina/standing/elaina_standing_serious.png",
+      "bytes": 1881479,
+      "sha256": "865a856d3d83c6e6e0bd61397f9a7825a7630f60efff0aa3992e55b746396de5"
+    },
+    {
+      "path": "portraits/elaina/poses/elaina_confident.png",
+      "bytes": 1924573,
+      "sha256": "ec97d27c56727da2fec62d450b6c7ff9db843d019712297ba3cac03d13fd5865"
+    },
+    {
+      "path": "portraits/elaina/poses/elaina_thinking.png",
+      "bytes": 1928424,
+      "sha256": "20a98454d83fb02fad4f44489ab52f6a26a724525711930863186c97f09cb24b"
+    },
+    {
+      "path": "portraits/elaina/poses/elaina_explaining.png",
+      "bytes": 1978539,
+      "sha256": "72097419855d16f06a298a6c84292743bbe06d121581b5d4891b2335948226ed"
+    },
+    {
+      "path": "portraits/chief/processed/chief_calm.png",
+      "bytes": 1311391,
+      "sha256": "a382174772e8b4fbaad609cc70029b5b2146bac2ec2874bf750faffc6aba5bb6"
+    },
+    {
+      "path": "portraits/chief/processed/chief_impatient.png",
+      "bytes": 1311838,
+      "sha256": "55ffeccdcf048894e44fcd54cff84ecccb6c9f44d04d825de41890df9f1d73d9"
+    },
+    {
+      "path": "portraits/chief/processed/chief_angry.png",
+      "bytes": 1351639,
+      "sha256": "6bbf5954e776b8899d4014d2b8193ae87402f005eab7958608bac4a3713015de"
+    },
+    {
+      "path": "portraits/emil/processed/emil_neutral.png",
+      "bytes": 1235072,
+      "sha256": "6355193fc1e086b580946b06bf68edf913cbec1072010bfa8bc609d4e9f0b175"
+    },
+    {
+      "path": "portraits/emil/processed/emil_bright.png",
+      "bytes": 1246084,
+      "sha256": "61ad17c5e1e7e8664f9269d7ec44b43658d2841912ae08c08ec06843afd9773a"
+    },
+    {
+      "path": "portraits/emil/processed/emil_down.png",
+      "bytes": 1248015,
+      "sha256": "892c4533d70a2352601b17890506285e67477bf4876d865915dfb566ffd1840d"
+    },
+    {
+      "path": "portraits/nino/processed-v2/nino_down.png",
+      "bytes": 1247898,
+      "sha256": "b3f06270910aa14db8754d24332b5b35090c014cf08844b7517ed1ed2682d78f"
+    },
+    {
+      "path": "portraits/nino/processed-v2/nino_teary.png",
+      "bytes": 1248707,
+      "sha256": "4b7773879a4d3dce4e2cd5b69ef72a46b3a0e2793f1ae18dfe071755bcf3a1d4"
+    },
+    {
+      "path": "portraits/nino/processed-v2/nino_smiletiny.png",
+      "bytes": 1263639,
+      "sha256": "05309d5e78cf58c62219c1935321cb9452aaf5b888c14119db3e06d43bae905b"
+    },
+    {
+      "path": "portraits/nino/processed-v2/nino_empty.png",
+      "bytes": 1245687,
+      "sha256": "a54301fe37c09db065b481ff783703621d639f45a6c43ad1acd54ce9f1b97817"
+    },
+    {
+      "path": "sprites/elaina/broom-trial/elaina_broom_front_source.png",
+      "bytes": 900081,
+      "sha256": "e8fca58fb82c83932a8718c68de6e5bbb093b85c58a0970697a40fe21c54bc18"
+    },
+    {
+      "path": "sprites/elaina/broom-trial/elaina_broom_back_source.png",
+      "bytes": 670297,
+      "sha256": "987fad313aa08db397400cf6c21a0f8d08b4fed0b856f023972acbfe735c562d"
+    },
+    {
+      "path": "sprites/elaina/broom-trial/elaina_broom_source.png",
+      "bytes": 983768,
+      "sha256": "50363b8d05777923d5fdf5e7e33159b870c638a7b231206fa11114e16b11165e"
+    },
+    {
+      "path": "memories/trial/memory_01_birth.png",
+      "bytes": 2257785,
+      "sha256": "2185aa713a97220c4241ac53f89e7be379eb2ecda122fa764eaa1098d629756d"
+    },
+    {
+      "path": "memories/trial/memory_02_vista.png",
+      "bytes": 3020067,
+      "sha256": "598bbfc7f834959f2bdb7ccb1d52078eeb267dacc7cc4c2379794e065c63fbd6"
+    },
+    {
+      "path": "memories/trial/memory_03_walk.png",
+      "bytes": 2941495,
+      "sha256": "2096e9be4355dd4a9855206bc234ee5028be90f7cbb08c34cd4d766a1d301462"
+    },
+    {
+      "path": "memories/memory_04_flower.png",
+      "bytes": 2706534,
+      "sha256": "bac6c9df277d4184be20d28584a3716529e718225c72dbb93b0a984537a40383"
+    },
+    {
+      "path": "memories/memory_05_hardship.png",
+      "bytes": 2866779,
+      "sha256": "64deb35f2aed4d80d63c28c805b694886e36725020749d7fd90a42745bea25a3"
+    },
+    {
+      "path": "memories/memory_06_reading.png",
+      "bytes": 2841437,
+      "sha256": "eac25c54e6ea46a44aa09f045537b45036a480b33128a28fc4a0c84bb87c1b7a"
+    },
+    {
+      "path": "objects/hall/hall_painting.png",
+      "bytes": 4082,
+      "sha256": "435b443d9548491094fbbe03a6e274cee331d62f2e923a7ada6923c263a05167"
+    },
+    {
+      "path": "objects/hall/hall_apron.png",
+      "bytes": 2435,
+      "sha256": "8bd7de47a6ead45487f1bb8b2eefd4c9aed9844da83096248c76c103cc62ad71"
+    },
+    {
+      "path": "objects/hall/hall_table.png",
+      "bytes": 3586,
+      "sha256": "b0dd5fef8e4c15293d3f814211d3408b9fb359ea0468dd1feaf762b8fb8245aa"
+    }
+  ],
+  "scriptAppendixIncluded": false,
+  "dependenciesRequiredByPlayer": []
+}
