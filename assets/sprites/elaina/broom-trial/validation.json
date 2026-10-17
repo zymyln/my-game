@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-17",
+  "mode": "built-in image_gen",
+  "source": {
+    "width": 1448,
+    "height": 1086,
+    "transparent": 884339,
+    "opaque": 2257,
+    "partial": 685932,
+    "nearOpaque": 639554,
+    "file": "elaina_broom_source.png",
+    "bytes": 983768,
+    "sha256": "50363b8d05777923d5fdf5e7e33159b870c638a7b231206fa11114e16b11165e"
+  },
+  "reference": {
+    "file": "pose-reference.png",
+    "matchesUserOriginal": true,
+    "sha256": "465c80652b4f9192282071ccbfe897e054052b52dbf6ab0857db5256c406ac5f"
+  },
+  "preview": {
+    "logicalSprite": [
+      64,
+      48
+    ],
+    "map": [
+      640,
+      360
+    ],
+    "heightAboveGround": [
+      9,
+      11
+    ],
+    "entryMilliseconds": 4200,
+    "checks": [
+      "透明通道",
+      "按原字节保存参考图和生成原件",
+      "离线载入",
+      "草地滑入并悬浮",
+      "暂停冻结并恢复",
+      "左右翻转和空格控制",
+      "减少动态效果默认暂停",
+      "1440/390px预览无水平溢出"
+    ],
+    "browserErrors": []
+  }
+}

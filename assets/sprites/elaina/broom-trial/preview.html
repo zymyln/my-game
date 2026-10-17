@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>伊蕾娜 · 骑扫帚像素试作</title>
+<style>
+:root{font-family:system-ui,"Microsoft YaHei",sans-serif;color:#30453a;background:#f3f0e6}*{box-sizing:border-box}body{margin:0;padding:28px 18px}main{max-width:1080px;margin:auto}h1{font:400 26px Georgia,"SimSun",serif;letter-spacing:3px;margin:0 0 12px}.intro{font-size:13px;line-height:1.8;color:#77816d;margin:0 0 24px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px}.scene-wrap{position:relative;border:5px solid #fdfcf5;border-radius:5px;box-shadow:0 0 0 1px #bbc5b5;overflow:hidden;background:#8eac78}canvas{display:block;image-rendering:pixelated;max-width:100%}#scene{width:100%;height:auto;aspect-ratio:16/9}.badge{position:absolute;left:12px;top:12px;padding:6px 9px;background:#f7f4e5e8;font-size:11px;color:#576b51}.controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}button{font:inherit;font-size:12px;border:1px solid #a8b69c;border-radius:3px;background:#e4e8d8;color:#42583b;padding:9px 13px;cursor:pointer}button:focus-visible{outline:3px solid #a98d4b;outline-offset:3px}button:disabled{opacity:.5;cursor:default}.detail{background:#e6e5dc;border:1px solid #c4cbbb;border-radius:4px;padding:16px}h2{font-size:13px;font-weight:500;margin:0 0 15px}.detail canvas{width:224px;height:168px;background-color:#efeee9;background-image:conic-gradient(#d9dbd3 25%,transparent 0 50%,#d9dbd3 0 75%,transparent 0);background-size:20px 20px}.detail p{font-size:11px;line-height:1.9;color:#75816f}.note{font-size:12px;line-height:1.9;color:#7a8270;margin-top:22px}a{color:#8b743c}.status{font-size:11px;color:#72816b;margin-top:12px;min-height:1.7em}@media(max-width:760px){.layout{grid-template-columns:1fr}.detail{display:grid;grid-template-columns:1fr 1fr;gap:12px}.detail h2{grid-column:1/-1;margin:0}.detail canvas{width:100%;height:auto}.detail p{margin:0}h1{font-size:22px}.badge{font-size:9px;top:7px;left:7px}body{padding:20px 12px}}
+</style>
+<main>
+<h1>伊蕾娜 · 掠过草地</h1>
+<p class="intro">骑扫帚的像素试作。先看小尺寸造型，以及低空滑行、轻微起伏和脚下影子的效果。</p>
+<div class="layout"><section>
+<div class="scene-wrap"><canvas id="scene" width="640" height="360" aria-label="伊蕾娜骑扫帚贴近草地飞行的动态预览"></canvas><span class="badge">游戏比例 · 低空滑行</span></div>
+<div class="controls"><button id="pause" type="button" disabled>暂停</button><button id="replay" type="button" disabled>重新飞入</button><button id="direction" type="button" disabled>朝向：右 →</button></div>
+<p id="status" class="status" aria-live="polite">正在载入试作…</p>
+</section><aside class="detail"><h2>骑姿放大查看</h2><canvas id="detail" width="224" height="168" aria-label="骑扫帚小人的放大像素轮廓"></canvas><p>银白长发、紫眼睛、粉色帽带、黑色披风。<br>小人在游戏画布上占 64×48 像素，漂浮高度约 10 像素；可左右切换，停下后仍轻微悬浮。</p></aside></div>
+<p class="note">此页是造型与移动试作，当前主线保持原状。可以直接双击此 HTML 离线观看。<br><a href="elaina_broom_source.png">透明原图</a> · <a href="pose-reference.png">姿势参考</a> · <a href="generation.json">生成提示词</a></p>
+</main>
+<script>
+const scene=document.querySelector('#scene'),ctx=scene.getContext('2d'),detail=document.querySelector('#detail'),detailCtx=detail.getContext('2d');
+const pause=document.querySelector('#pause'),replay=document.querySelector('#replay'),directionButton=document.querySelector('#direction'),status=document.querySelector('#status');
+const sprite=document.createElement('canvas');sprite.width=64;sprite.height=48;
+const spriteCtx=sprite.getContext('2d');ctx.imageSmoothingEnabled=false;detailCtx.imageSmoothingEnabled=false;spriteCtx.imageSmoothingEnabled=false;
+let ready=false,paused=matchMedia('(prefers-reduced-motion: reduce)').matches,clock=0,last=0,facing=1,entry=0;
+const background=new Image(),rider=new Image();
+function load(image,path){return new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('无法读取 '+path));image.src=path})}
+function draw(){
+  if(!ready)return;
+  ctx.clearRect(0,0,640,360);ctx.drawImage(background,0,0,640,360);
+  const progress=Math.min(entry/4200,1),ease=1-Math.pow(1-progress,3),origin=facing===1?70:570,x=origin+(281-origin)*ease,ground=245;
+  const bob=Math.round(Math.sin(clock/420)),lift=10+bob;
+  ctx.fillStyle='#2e403340';ctx.fillRect(Math.round(x)-19,ground-1,38,3);ctx.fillRect(Math.round(x)-14,ground-2,28,1);ctx.fillRect(Math.round(x)-14,ground+2,28,1);
+  ctx.save();ctx.translate(Math.round(x),ground-lift);ctx.scale(facing,1);ctx.drawImage(sprite,-32,-48);ctx.restore();
+  detailCtx.clearRect(0,0,224,168);detailCtx.save();detailCtx.translate(facing===1?0:224,0);detailCtx.scale(facing,1);detailCtx.drawImage(sprite,0,0,224,168);detailCtx.restore();
+  scene.dataset.phase=progress<1?'arriving':'hovering';scene.dataset.time=Math.round(clock);scene.dataset.x=Math.round(x);scene.dataset.height=lift;scene.dataset.facing=facing===1?'right':'left';scene.dataset.paused=String(paused);
+}
+function sync(){pause.textContent=paused?'继续飞行':'暂停';pause.setAttribute('aria-pressed',String(paused));directionButton.textContent=facing===1?'朝向：右 →':'朝向：左 ←';status.textContent=paused?'已暂停，画面停留在当前位置。':'从左侧滑入，随后轻轻悬浮。';draw()}
+pause.addEventListener('click',()=>{paused=!paused;sync()});replay.addEventListener('click',()=>{entry=0;clock=0;paused=false;last=0;sync()});directionButton.addEventListener('click',()=>{facing*=-1;sync()});
+document.addEventListener('keydown',event=>{if(event.code==='Space'&&!event.repeat&&ready){event.preventDefault();paused=!paused;sync()}});
+function frame(time){const elapsed=last?Math.min(time-last,50):0;last=time;if(ready&&!paused&&!document.hidden){clock+=elapsed;entry+=elapsed;draw()}requestAnimationFrame(frame)}
+Promise.all([load(background,'grass-preview.png'),load(rider,'elaina_broom_source.png')]).then(()=>{spriteCtx.drawImage(rider,0,0,64,48);ready=true;for(const button of[pause,replay,directionButton])button.disabled=false;sync();requestAnimationFrame(frame)}).catch(error=>{status.textContent=error.message});
+</script>
+</html>
