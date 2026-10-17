@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-17",
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "file": "trial/memory_01_birth.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2257785,
+      "sha256": "2185aa713a97220c4241ac53f89e7be379eb2ecda122fa764eaa1098d629756d"
+    },
+    {
+      "file": "trial/memory_02_vista.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3020067,
+      "sha256": "598bbfc7f834959f2bdb7ccb1d52078eeb267dacc7cc4c2379794e065c63fbd6"
+    },
+    {
+      "file": "trial/memory_03_walk.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2941495,
+      "sha256": "2096e9be4355dd4a9855206bc234ee5028be90f7cbb08c34cd4d766a1d301462"
+    },
+    {
+      "file": "memory_04_flower.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2706534,
+      "sha256": "bac6c9df277d4184be20d28584a3716529e718225c72dbb93b0a984537a40383"
+    },
+    {
+      "file": "memory_05_hardship.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2866779,
+      "sha256": "64deb35f2aed4d80d63c28c805b694886e36725020749d7fd90a42745bea25a3"
+    },
+    {
+      "file": "memory_06_reading.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2841437,
+      "sha256": "eac25c54e6ea46a44aa09f045537b45036a480b33128a28fc4a0c84bb87c1b7a"
+    }
+  ],
+  "checks": [
+    "六张图片解码及尺寸",
+    "六张预览逐次切换和循环",
+    "主线记忆入口与原文同步",
+    "暂停超过两秒后仍保留最短阅读时间",
+    "第五张加载失败回退文字和光点",
+    "第六张恢复图片并清除旧图",
+    "第六张结束恢复对白与伊蕾娜站立平常",
+    "1440/560/390px构图截图"
+  ],
+  "browserErrors": [],
+  "mainline": {
+    "shots": 15,
+    "spokenLines": 234,
+    "memoryCards": 6,
+    "allSteps": 240,
+    "minimumDuration": true,
+    "imageAndKeyboardAdvance": true,
+    "pauseResume": true,
+    "postMemoryNeutralPortrait": true,
+    "browserErrors": []
+  },
+  "nodeTests": {
+    "passed": 28,
+    "failed": 0
+  }
+}

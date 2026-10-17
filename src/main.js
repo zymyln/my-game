@@ -18,7 +18,7 @@ const ui = Object.fromEntries([
   'replay','fullscreen','error-panel','error-message','retry','route-strip','scene-caption',
   'inspection','inspection-title','inspection-text','inspection-image','close-inspection','observation-count',
   'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
-  'memory-layer','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
+  'memory-layer','memory-image','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
   'end-kicker','end-title','end-description','passage-label','memory-bottle','scene-atmosphere',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
@@ -218,6 +218,11 @@ function showLine() {
     ui['story-prop'].dataset.state=glassState ?? '';
     if(node.shotId==='SH-12'&&/^妮诺她/.test(node.text))portraitFaces.right='nino_teary';
     if(node.kind==='memory') {
+      const image=assets.memories.get(`memory_${node.memoryNumber}`);
+      ui['memory-image'].hidden=!image;
+      ui['memory-layer'].classList.toggle('illustrated',Boolean(image));
+      if(image)ui['memory-image'].src=image.src;
+      else ui['memory-image'].removeAttribute('src');
       setMode('memory');ui['memory-text'].textContent=node.text;ui['memory-count'].textContent=`${node.memoryNumber} / 6`;
       advanceReadyAt=performance.now()+2000;ui['memory-next'].disabled=true;ui['memory-next'].textContent='静静看着…';
       ui.game.dataset.dialogueId=session.currentId;
@@ -335,6 +340,9 @@ ui.advance.addEventListener('click',advance);
 ui.return.addEventListener('click',()=>playMode==='story'?backToTitle():returnToExploration());
 ui.replay.addEventListener('click',()=>playMode==='story'?startStory():openDialogue(true));
 ui['memory-next'].addEventListener('click',advance);
+ui['memory-layer'].addEventListener('click',event=>{
+  if(!event.target.closest('button'))advance();
+});
 ui['pause-toggle'].addEventListener('click',pauseJourney);
 ui.resume.addEventListener('click',resumeJourney);
 ui['back-title'].addEventListener('click',backToTitle);
@@ -455,7 +463,7 @@ function draw(time) {
   ui.game.dataset.mood=staged?stage.mood:'clear';
   ui.game.dataset.stageTime=stage.time.toFixed(0);
   if(propKind&&mode==='dialogue')drawMagicEffect(ui['glass-prop'],magic);
-  if(propKind==='bottle'&&mode==='memory')drawMagicEffect(ui['memory-bottle'],magic,{placement:'memory'});
+  if(propKind==='bottle'&&mode==='memory'&&ui['memory-image'].hidden)drawMagicEffect(ui['memory-bottle'],magic,{placement:'memory'});
   ui['story-prop'].dataset.phase=magic.phase;
   ui['story-prop'].dataset.progress=magic.progress.toFixed(3);
   const label = document.querySelector('.location');
@@ -490,7 +498,7 @@ function frame(time) {
   }
   if(mode==='memory') {
     const held=time<advanceReadyAt;ui['memory-next'].disabled=held;
-    ui['memory-next'].textContent=held?'静静看着…':'继续 · Space';
+    ui['memory-next'].textContent=held?'静静看着…':'点击画面继续 · Space';
   }
   draw(worldTime); requestAnimationFrame(frame);
 }

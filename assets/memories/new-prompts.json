@@ -1,0 +1,27 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-17",
+  "images": [
+    {
+      "id": "04_flower",
+      "title": "发现美丽花朵",
+      "text": "找到美丽花朵所感受到，微小的幸福。",
+      "file": "memory_04_flower.png",
+      "prompt": "Use case: illustration-story. Asset type: a single full-bleed landscape visual novel memory CG, 16:9 composition, no panels. Hand-drawn Japanese anime style, delicate clean linework, softly painted backgrounds, gentle cel shading, warm natural light, restrained pastel colors, quiet sincere happiness and a slightly nostalgic atmosphere. Medieval European-inspired fantasy setting without modern objects. These are anonymous people's happy memories, not portraits of the game's named cast. No writing, letters, captions, symbols, logos, watermark, interface, border or frame. Clear readable composition at game-screen size. Depict the small happiness of finding a beautiful flower. On a quiet grassy country footpath, an ordinary young adult woman in a modest cream linen blouse and muted green long skirt kneels to admire a single delicate little pale pink wildflower growing beside a mossy stone. Her fingertips hover gently beside the flower without picking it, her face has a small delighted smile, the flower is clearly visible in the foreground. Intimate medium-wide view, three-quarter profile, sunlit meadow and soft distant trees. A humble everyday discovery, with tiny dew highlights and softly swaying grass. Keep her face, hand and flower above the lower quarter, leaving the lower edge mostly grass for a separate game caption."
+    },
+    {
+      "id": "05_hardship",
+      "title": "克服苦难",
+      "text": "克服苦难所感受，类似快乐的幸福。",
+      "file": "memory_05_hardship.png",
+      "prompt": "Use case: illustration-story. Asset type: a single full-bleed landscape visual novel memory CG, 16:9 composition, no panels. Hand-drawn Japanese anime style, delicate clean linework, softly painted backgrounds, gentle cel shading, warm natural light, restrained pastel colors, quiet sincere happiness and a slightly nostalgic atmosphere. Medieval European-inspired fantasy setting without modern objects. These are anonymous people's happy memories, not portraits of the game's named cast. No writing, letters, captions, symbols, logos, watermark, interface, border or frame. Clear readable composition at game-screen size. Depict the happiness and relief of overcoming hardship, a quiet personal achievement. An ordinary young adult traveler in simple earth-toned medieval clothes and a worn cloak has just finished climbing a difficult steep mountain footpath after rain. Medium-wide three-quarter frontal view: standing safely on the level grassy crest, a little muddy and tired, one hand resting on a walking stick, shoulders finally relaxing, a deeply relieved genuine smile, moist eyes catching warm light. A completed steep winding rocky path is visible behind him below, and the clouds part into gentle sunlight. No wounds, battle, trophies, cheering crowd or dramatic magic. Emphasize the human expression of exhausted relief rather than a grand landscape. Keep the face in the upper middle and the lower edge simple for a separate game caption."
+    },
+    {
+      "id": "06_reading",
+      "title": "晒太阳读书睡着",
+      "text": "假日晒着太阳看著书，不知不觉间睡着的幸福。",
+      "file": "memory_06_reading.png",
+      "prompt": "Use case: illustration-story. Asset type: a single full-bleed landscape visual novel memory CG, 16:9 composition, no panels. Hand-drawn Japanese anime style, delicate clean linework, softly painted backgrounds, gentle cel shading, warm natural light, restrained pastel colors, quiet sincere happiness and a slightly nostalgic atmosphere. Medieval European-inspired fantasy setting without modern objects. These are anonymous people's happy memories, not portraits of the game's named cast. No writing, letters, captions, symbols, logos, watermark, interface, border or frame. Clear readable composition at game-screen size. Depict the happiness of falling asleep while reading in the sun on a day off. An ordinary young adult woman wearing a modest muted pale blue long dress and cream shawl sits comfortably on a grassy slope with her back supported by a broad old tree. She has peacefully dozed off, eyes closed and a relaxed faint smile, an open cloth-bound book resting securely on her lap, hands at rest. Gentle midday sunshine and dappled leaves, a quiet rural meadow with soft wildflowers, warm breeze, stillness and complete ease. Medium-wide view from a slight three-quarter side angle, natural comfortable anatomy. Book pages have only soft indistinct marks, no readable letters. Focus on her resting face and the open book, keep her figure mainly above the bottom quarter for a separate game caption."
+    }
+  ]
+}

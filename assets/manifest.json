@@ -24,6 +24,14 @@
     "nino_empty": "portraits/nino/processed-v2/nino_empty.png"
   },
   "backgrounds": {},
+  "memories": {
+    "memory_1": "memories/trial/memory_01_birth.png",
+    "memory_2": "memories/trial/memory_02_vista.png",
+    "memory_3": "memories/trial/memory_03_walk.png",
+    "memory_4": "memories/memory_04_flower.png",
+    "memory_5": "memories/memory_05_hardship.png",
+    "memory_6": "memories/memory_06_reading.png"
+  },
   "objects": {
     "painting": "objects/hall/hall_painting.png",
     "apron": "objects/hall/hall_apron.png",
