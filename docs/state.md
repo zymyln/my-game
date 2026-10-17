@@ -444,3 +444,9 @@
 - 主要改动：SH-18 至 SH-22 调整台词与表情；SH-20 改为艾米尔在厨房看着碎杯处、围裙和草原；SH-23 增加妮诺的道歉与伊蕾娜的沉默回应；SH-24 尾声改为旅店日记式彩蛋，结尾为“没错，就是我。”。
 - 未修改 `src/`、`index.html`、`assets/manifest.json`、`docs/contract.md`、`AGENTS.md`、`.gitignore`，未安装依赖。
 - 支线仍未接入游戏。`给主力机` 段仍写艾米尔会用到 `emil_serious`，当前稿已统一为 `[平常]`，需主力机确认是更新说明还是恢复 `[认真]`。
+
+## 2026-10-17 文本机 B：归档支线 B Word 修改稿
+
+- 将 Word 编辑稿归档到 `content/word/第一章支线B_不送瓶子_文本修改稿.docx`，SHA-256 与本地 `outputs` 版本一致。
+- 新增 `content/word/README.md`，说明 `content/script/ch1_branch_b.md` 仍是游戏读取的唯一真源，Word 仅作编辑底稿。
+- 未修改 `src/`、`index.html`、`assets/manifest.json`、`docs/contract.md`、`AGENTS.md`、`.gitignore`，未安装依赖。
