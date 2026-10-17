@@ -2,7 +2,7 @@ import { DialogueSession } from './dialogue.mjs';
 import { AssetLibrary } from './assets.js';
 import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient } from './art.js';
 import { SCENES, ROUTE, START, START_SCENE, canStand, nearestInteraction, readHallObservations } from './world.mjs';
-import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue, ACTOR_NAMES } from './chapter.mjs';
+import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue, portraitReaction, ACTOR_NAMES } from './chapter.mjs';
 import { SoundEffects } from './sound.js';
 import { MagicPlayer } from './magic.mjs';
 import { drawMagicEffect } from './magic-art.js';
@@ -235,6 +235,7 @@ function showLine() {
     portraitFaces[side] = node.face;
     if (side === 'right') $('portrait-right').querySelector('.portrait-label').textContent = node.speaker;
   }
+  if(playMode==='story')Object.assign(portraitFaces,portraitReaction(node));
   for (const side of ['left','right']) {
     displayPortrait(side,portraitFaces[side]);
     const element = $(`portrait-${side}`);

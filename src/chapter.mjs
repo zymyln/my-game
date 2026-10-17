@@ -142,3 +142,14 @@ export function impactCue(step) {
   if(step.speaker==='村长' && /^——你在搞什么啊[！!]/.test(step.text))return 'shout';
   return null;
 }
+
+// Event-driven listener reactions persist until a new reaction or their own line.
+// These affect the portrait only, never the speaker label or active-side lighting.
+export function portraitReaction(step) {
+  if(step.shotId!=='SH-10')return null;
+  const impact=impactCue(step);
+  if(impact==='glass')return {left:'elaina_standing_surprised'};
+  if(impact==='shout')return {left:'elaina_standing'};
+  if(glassCue(step)==='mist')return {left:'elaina_explaining'};
+  return null;
+}

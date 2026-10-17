@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue } from './chapter.mjs';
+import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue, portraitReaction } from './chapter.mjs';
 
 const source=await readFile(new URL('../content/script/ch1.md',import.meta.url),'utf8');
 const chapter=readChapter(source);
@@ -64,4 +64,28 @@ test('the final pause, portrait-free epilogue and glass restoration are staged',
   assert.equal(shotPresentation('SH-15').hidePortraits,true);
   const cues=chapter.shots.get('SH-10').steps.map(glassCue).filter(Boolean);
   assert.deepEqual(cues,['sound','broken','broken','mist','whole']);
+});
+
+test('Elaina reacts while listening, settles before intervening, and keeps her casting pose through restoration',()=>{
+  const steps=chapter.shots.get('SH-10').steps;
+  let left='elaina_thinking';
+  const faces=steps.map(step=>{
+    if(step.face?.startsWith('elaina_'))left=step.face;
+    const reaction=portraitReaction(step);
+    if(reaction?.left)left=reaction.left;
+    assert.ok(!reaction?.right,'listener reactions must not replace the speaking actor');
+    return left;
+  });
+  const sound=steps.findIndex(step=>step.text.includes('匡啷'));
+  const scolding=steps.findIndex(step=>step.text==='——你在搞什么啊！');
+  const cast=steps.findIndex(step=>step.speaker==='伊蕾娜'&&step.text.startsWith('这种东西'));
+  const gentle=steps.findIndex(step=>step.speaker==='伊蕾娜'&&step.text.startsWith('小心下次'));
+  assert.ok(sound>=0&&sound<scolding&&scolding<cast&&cast<gentle);
+  assert.ok(faces.slice(sound,scolding).every(face=>face==='elaina_standing_surprised'));
+  assert.ok(faces.slice(scolding,cast).every(face=>face==='elaina_standing'));
+  assert.ok(faces.slice(cast,gentle).every(face=>face==='elaina_explaining'));
+  assert.equal(faces[gentle],'elaina_standing_smile');
+  assert.equal(faces.at(-1),'elaina_standing_smile');
+  assert.equal(portraitReaction({shotId:'SH-04',speaker:'旁白',text:'匡啷'}),null);
+  assert.equal(portraitReaction({shotId:'SH-11',speaker:'村长',text:'——你在搞什么啊！'}),null);
 });
