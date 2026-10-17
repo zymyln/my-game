@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-17",
+  "images": [
+    {
+      "file": "memory_01_birth.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2257785,
+      "sha256": "2185aa713a97220c4241ac53f89e7be379eb2ecda122fa764eaa1098d629756d"
+    },
+    {
+      "file": "memory_02_vista.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3020067,
+      "sha256": "598bbfc7f834959f2bdb7ccb1d52078eeb267dacc7cc4c2379794e065c63fbd6"
+    },
+    {
+      "file": "memory_03_walk.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2941495,
+      "sha256": "2096e9be4355dd4a9855206bc234ee5028be90f7cbb08c34cd4d766a1d301462"
+    }
+  ],
+  "checks": [
+    "全部图片可解码",
+    "三段字幕与剧本逐字一致",
+    "点击大图、前后按钮、缩略图和空格/方向键切换",
+    "末张循环回第一张",
+    "1440px与390px布局无水平溢出",
+    "无浏览器运行错误"
+  ],
+  "errors": []
+}

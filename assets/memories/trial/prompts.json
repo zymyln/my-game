@@ -1,0 +1,28 @@
+{
+  "mode": "built-in image_gen",
+  "status": "trial",
+  "date": "2026-10-17",
+  "images": [
+    {
+      "id": "01_birth",
+      "title": "孩子诞生",
+      "text": "小孩诞生时，感受到的幸福。",
+      "prompt": "Use case: illustration-story. Asset type: a single full-bleed landscape visual novel memory CG, 16:9 composition, no panels. Hand-drawn Japanese anime style, delicate clean linework, softly painted backgrounds, gentle cel shading, warm natural light, restrained pastel colors, quiet sincere happiness and a slightly nostalgic atmosphere. Medieval European-inspired fantasy setting without modern objects. These are anonymous people's happy memories, not portraits of the game's named cast. No writing, letters, captions, symbols, logos, watermark, interface, border or frame. Clear readable composition at game-screen size. Depict the happiness felt at the birth of a child. A peaceful intimate family scene inside a modest wooden home, sunlight filtering through a small window. A fully clothed young adult mother sitting comfortably in bed under a blanket, holding a newborn securely wrapped in soft cream cloth. A fully clothed young adult father sitting closely beside her, gently supporting her shoulder and looking tenderly at the baby's face. Both adults have softly joyful, relieved expressions. The tiny baby's face is visible, eyes peacefully closed. Medium-wide view, three-quarter angle, focus on their expressions and the safe swaddled baby; warm honey light, pale linen, humble timber surroundings. This is a quiet moment after childbirth, no medical procedure.",
+      "file": "memory_01_birth.png"
+    },
+    {
+      "id": "02_vista",
+      "title": "壮丽景色",
+      "text": "目睹壮丽景色时，感受到的幸福。",
+      "prompt": "Use case: illustration-story. Asset type: a single full-bleed landscape visual novel memory CG, 16:9 composition, no panels. Hand-drawn Japanese anime style, delicate clean linework, softly painted backgrounds, gentle cel shading, warm natural light, restrained pastel colors, quiet sincere happiness and a slightly nostalgic atmosphere. Medieval European-inspired fantasy setting without modern objects. These are anonymous people's happy memories, not portraits of the game's named cast. No writing, letters, captions, symbols, logos, watermark, interface, border or frame. Clear readable composition at game-screen size. Depict the happiness of witnessing a magnificent landscape. An ordinary cloaked traveler, seen from behind and small in the foreground on a grassy mountain overlook, pauses in wonder before a vast green valley with a winding blue river and a distant shimmering lake, layers of mountains, clouds opening to golden morning sunlight. The vista is the central subject, breathtaking yet peaceful, light wind in grass and the traveler's simple cloak, subtle wildflowers at the overlook. Wide cinematic composition with a strong sense of depth, natural scale and luminous atmospheric perspective. No castles or cities needed.",
+      "file": "memory_02_vista.png"
+    },
+    {
+      "id": "03_walk",
+      "title": "与恋人漫步",
+      "text": "与恋人一同漫步的幸福。",
+      "prompt": "Use case: illustration-story. Asset type: a single full-bleed landscape visual novel memory CG, 16:9 composition, no panels. Hand-drawn Japanese anime style, delicate clean linework, softly painted backgrounds, gentle cel shading, warm natural light, restrained pastel colors, quiet sincere happiness and a slightly nostalgic atmosphere. Medieval European-inspired fantasy setting without modern objects. These are anonymous people's happy memories, not portraits of the game's named cast. No writing, letters, captions, symbols, logos, watermark, interface, border or frame. Clear readable composition at game-screen size. Depict the happiness of taking a walk with one's lover. Two ordinary young adult lovers in modest medieval everyday clothing walking leisurely hand in hand along a gently curving riverside path at late afternoon. Show them in a natural three-quarter side view, full figures in the middle distance, exchanging an affectionate soft smile. Trees frame the path, warm sunlight filters through the leaves, grass and a calm sparkling river nearby. Simple linen shirt and brown vest for one, muted pale blue long dress for the other, no elaborate accessories. Their relaxed gait and tender everyday companionship are central, intimate and understated. Anatomically natural hands, each person has two arms, their joined hands clearly arranged.",
+      "file": "memory_03_walk.png"
+    }
+  ]
+}
