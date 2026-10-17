@@ -437,3 +437,10 @@
 - 新增 `assets/cg/README.md`，记录用途、规格和待接入事项；未修改 `assets/manifest.json`，未接入剧情或渲染代码。
 - 未修改 `src/`、`index.html`、`content/`、`docs/contract.md`、`AGENTS.md`、`.gitignore`，未安装依赖。
 - 待主力机在 manifest 增加 `cg` 类别，并决定 SH-15 使用全屏 CG 还是结尾画面的展示方式。
+
+## 2026-10-17 文本机 B：同步支线 B Word 终稿
+
+- 用户直接在 Word 修改稿上完成支线 B 文案，已按原有 Markdown 结构同步回 `content/script/ch1_branch_b.md`；镜头号 SH-16 至 SH-24 与选项块保持原顺序。
+- 主要改动：SH-18 至 SH-22 调整台词与表情；SH-20 改为艾米尔在厨房看着碎杯处、围裙和草原；SH-23 增加妮诺的道歉与伊蕾娜的沉默回应；SH-24 尾声改为旅店日记式彩蛋，结尾为“没错，就是我。”。
+- 未修改 `src/`、`index.html`、`assets/manifest.json`、`docs/contract.md`、`AGENTS.md`、`.gitignore`，未安装依赖。
+- 支线仍未接入游戏。`给主力机` 段仍写艾米尔会用到 `emil_serious`，当前稿已统一为 `[平常]`，需主力机确认是更新说明还是恢复 `[认真]`。
