@@ -1,0 +1,58 @@
+[
+  {
+    "name": "down",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1085988,
+    "visible": 474613,
+    "bounds": [
+      207,
+      44,
+      729,
+      1503
+    ],
+    "bodyMeanDifference": 0
+  },
+  {
+    "name": "smiletiny",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1085209,
+    "visible": 475218,
+    "bounds": [
+      207,
+      44,
+      730,
+      1503
+    ],
+    "bodyMeanDifference": 6.067783721418082
+  },
+  {
+    "name": "teary",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1085599,
+    "visible": 476317,
+    "bounds": [
+      206,
+      44,
+      730,
+      1504
+    ],
+    "bodyMeanDifference": 3.635130007698464
+  },
+  {
+    "name": "empty",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1084825,
+    "visible": 475575,
+    "bounds": [
+      207,
+      44,
+      730,
+      1504
+    ],
+    "bodyMeanDifference": 3.5554690550937504
+  }
+]

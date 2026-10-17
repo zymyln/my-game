@@ -210,6 +210,26 @@
     "sha256": "6355193fc1e086b580946b06bf68edf913cbec1072010bfa8bc609d4e9f0b175"
   },
   {
+    "path": "nino/approved/2026-10-17-v2/nino_down_source.png",
+    "bytes": 1472639,
+    "sha256": "ebc57323f5d55ed07fe5d65c5189e8a78522e7500d2448943330eeb459d4240e"
+  },
+  {
+    "path": "nino/approved/2026-10-17-v2/nino_empty_source.png",
+    "bytes": 2021765,
+    "sha256": "2c2ed2cf8784050f568376c65f752be4331218e2a26ed80a1bf302a2ec03ab7c"
+  },
+  {
+    "path": "nino/approved/2026-10-17-v2/nino_smiletiny_source.png",
+    "bytes": 1552385,
+    "sha256": "2f44da0c064bca64bc6ada01bed23adfcb2b8281e6e6e419ef022a8f6b87f707"
+  },
+  {
+    "path": "nino/approved/2026-10-17-v2/nino_teary_source.png",
+    "bytes": 1475953,
+    "sha256": "0df053ac40de8ea58bb68e6fe0803a653f39ded72abbcba5e3c33c97f7b3f06a"
+  },
+  {
     "path": "nino/approved/nino_down_source.png",
     "bytes": 1750076,
     "sha256": "c620b5e390a3efeb92d57ba4bb5a45e5a06993807fa53de53b6c59c2d2bcb912"
@@ -238,6 +258,26 @@
     "path": "nino/approved/nino_terrified_source.png",
     "bytes": 1687888,
     "sha256": "8e5bb7994b3836f1ad8f6643e6c914ed447594f75071ea0fd6014818e0ddd0f2"
+  },
+  {
+    "path": "nino/processed-v2/nino_down.png",
+    "bytes": 1247898,
+    "sha256": "b3f06270910aa14db8754d24332b5b35090c014cf08844b7517ed1ed2682d78f"
+  },
+  {
+    "path": "nino/processed-v2/nino_empty.png",
+    "bytes": 1245687,
+    "sha256": "a54301fe37c09db065b481ff783703621d639f45a6c43ad1acd54ce9f1b97817"
+  },
+  {
+    "path": "nino/processed-v2/nino_smiletiny.png",
+    "bytes": 1263639,
+    "sha256": "05309d5e78cf58c62219c1935321cb9452aaf5b888c14119db3e06d43bae905b"
+  },
+  {
+    "path": "nino/processed-v2/nino_teary.png",
+    "bytes": 1248707,
+    "sha256": "4b7773879a4d3dce4e2cd5b69ef72a46b3a0e2793f1ae18dfe071755bcf3a1d4"
   },
   {
     "path": "nino/processed/nino_down.png",

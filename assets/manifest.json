@@ -15,7 +15,13 @@
     "emil_bright": "portraits/emil/processed/emil_bright.png",
     "emil_down": "portraits/emil/processed/emil_down.png",
     "emil_pout": "portraits/emil/processed/emil_neutral.png",
-    "emil_serious": "portraits/emil/processed/emil_neutral.png"
+    "emil_serious": "portraits/emil/processed/emil_neutral.png",
+    "nino_down": "portraits/nino/processed-v2/nino_down.png",
+    "nino_flustered": "portraits/nino/processed-v2/nino_down.png",
+    "nino_terrified": "portraits/nino/processed-v2/nino_teary.png",
+    "nino_teary": "portraits/nino/processed-v2/nino_teary.png",
+    "nino_smiletiny": "portraits/nino/processed-v2/nino_smiletiny.png",
+    "nino_empty": "portraits/nino/processed-v2/nino_empty.png"
   },
   "backgrounds": {},
   "objects": {

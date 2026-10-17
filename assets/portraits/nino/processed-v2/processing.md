@@ -1,0 +1,19 @@
+# 妮诺新版四表情处理提示词
+
+使用内置 imagegen 编辑，未使用 CLI/API，未安装依赖。正常版去背景后作为身体/画布/颜色基准，另三种表情以其为编辑目标，用户对应新原图只作表情参考。AI 编辑仍可能改变少量线条和颜色，原件独立保存。
+
+## 正常
+
+Use case: background-extract. Image 1 is the EDIT TARGET: user's approved NEW Nino full-body normal expression. Remove ONLY the tan background including all gaps, yielding genuinely transparent RGBA PNG. Preserve the character exactly: black hair covering one eye, half-lidded visible red eye, neutral small closed mouth, cream headcloth, cream blouse with worn collar, dusty mauve laced vest and brown-grey long skirt, hands clasped at waist, dark shoes. Keep original anime linework and flat shading, body proportions and colors. No redesign or changed outfit/hair. Keep exact 1024x1536 canvas, character size, positioning and silhouette; no resize or recenter. Entire headcloth and shoes visible with original margins. Clean antialiased alpha edges, no tan fringe or opaque matte, checkerboard, text, shadow, glow, additional objects or scenery. This is the body, alignment and color master for the other three expressions.
+
+## smiletiny
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET: locked transparent NEW Nino body, colors and alignment master. Image 2 is ONLY the user's facial expression reference. Edit only the face's visible eye, eyebrows, mouth and any tears/blush to match image 2. Preserve image 1 exact 1024x1536 canvas, head size and placement, silhouette, cream headcloth, black hair covering the other eye, hair color/shading, cream blouse, mauve laced vest, clasped hands, brown-grey skirt, shoes and genuine transparent alpha. No resizing, recentering or change of costume, body pose, shading or lighting. Do not copy background or body from image 2. Keep delicate lines and exact clothing colors. No opaque matte, checkerboard, text, scenery, glow or shadows. Preserve a tiny gentle closed-mouth smile and restrained half-lidded red eye as in image 2; not a broad happy grin.
+
+## teary
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET: locked transparent NEW Nino body, colors and alignment master. Image 2 is ONLY the user's facial expression reference. Edit only the face's visible eye, eyebrows, mouth and any tears/blush to match image 2. Preserve image 1 exact 1024x1536 canvas, head size and placement, silhouette, cream headcloth, black hair covering the other eye, hair color/shading, cream blouse, mauve laced vest, clasped hands, brown-grey skirt, shoes and genuine transparent alpha. No resizing, recentering or change of costume, body pose, shading or lighting. Do not copy background or body from image 2. Keep delicate lines and exact clothing colors. No opaque matte, checkerboard, text, scenery, glow or shadows. Match image 2's sad half-lidded red eye brimming with tears, visible thin tear tracks, softly flushed cheeks and trembling downturned closed mouth.
+
+## empty
+
+Use case: identity-preserve, expression edit. Image 1 is the EDIT TARGET: locked transparent NEW Nino body, colors and alignment master. Image 2 is ONLY the user's facial expression reference. Edit only the face's visible eye, eyebrows, mouth and any tears/blush to match image 2. Preserve image 1 exact 1024x1536 canvas, head size and placement, silhouette, cream headcloth, black hair covering the other eye, hair color/shading, cream blouse, mauve laced vest, clasped hands, brown-grey skirt, shoes and genuine transparent alpha. No resizing, recentering or change of costume, body pose, shading or lighting. Do not copy background or body from image 2. Keep delicate lines and exact clothing colors. No opaque matte, checkerboard, text, scenery, glow or shadows. Match image 2's dark hollow unfocused visible eye with dark red rim and NO sparkling catchlight, blank neutral mouth. Preserve the emotionally empty look, do not change into anger or smile.
