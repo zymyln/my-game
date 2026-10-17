@@ -89,6 +89,7 @@ export function setupEffectsPreview({backgrounds,assets,sound,onSoundChange}) {
         const actor=stage.mood==='gaze'?'nino':['unease','pressure'].includes(stage.mood)?'chief':'emil';
         const chief=actor==='chief'?assets?.portrait(stage.mood==='pressure'?'chief_angry':'chief_calm'):null;
         if(chief){ctx.save();ctx.beginPath();ctx.rect(405,85,220,156);ctx.clip();ctx.imageSmoothingEnabled=true;ctx.drawImage(chief,402,110,248,372);ctx.restore();}
+        else if(actor==='emil'&&assets?.portrait('emil_bright')){ctx.save();ctx.beginPath();ctx.rect(405,85,220,156);ctx.clip();ctx.imageSmoothingEnabled=true;ctx.drawImage(assets.portrait('emil_bright'),406,110,240,360);ctx.restore();}
         else ctx.drawImage(portraits.get(actor),472,113,96,128);
         ctx.restore();
       }

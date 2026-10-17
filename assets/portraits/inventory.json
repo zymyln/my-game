@@ -130,6 +130,36 @@
     "sha256": "c30320121196dd972a940645c62e40914a749877c3a95a1dafa225a5cd6e44ab"
   },
   {
+    "path": "emil/approved/emil_bright_source.png",
+    "bytes": 1398573,
+    "sha256": "c1f24df3fd155734c7c314142a219d9f0063fea7ed25e31d854ef5f35f09c80f"
+  },
+  {
+    "path": "emil/approved/emil_down_source.png",
+    "bytes": 1348445,
+    "sha256": "37f8b156d7c27534679d57bbe4b47affb722f27102924b37283a5adc1abb3afa"
+  },
+  {
+    "path": "emil/approved/emil_neutral_source.png",
+    "bytes": 659639,
+    "sha256": "4389dc768d6cb83e6d2ef60966adcc7782d9056a961395a634f93a5313881eb2"
+  },
+  {
+    "path": "emil/processed/emil_bright.png",
+    "bytes": 1246084,
+    "sha256": "61ad17c5e1e7e8664f9269d7ec44b43658d2841912ae08c08ec06843afd9773a"
+  },
+  {
+    "path": "emil/processed/emil_down.png",
+    "bytes": 1248015,
+    "sha256": "892c4533d70a2352601b17890506285e67477bf4876d865915dfb566ffd1840d"
+  },
+  {
+    "path": "emil/processed/emil_neutral.png",
+    "bytes": 1235072,
+    "sha256": "6355193fc1e086b580946b06bf68edf913cbec1072010bfa8bc609d4e9f0b175"
+  },
+  {
     "path": "nino/approved/nino_down_source.png",
     "bytes": 1750076,
     "sha256": "c620b5e390a3efeb92d57ba4bb5a45e5a06993807fa53de53b6c59c2d2bcb912"

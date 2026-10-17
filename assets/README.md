@@ -1,6 +1,6 @@
 # 美术素材放这里
 
-伊蕾娜已接入四种姿势、站立五种表情，共八张透明立绘。村长已接入平静和愤怒，不耐烦透明版已登记预留。艾米尔和妮诺继续使用像素占位；妮诺六张透明处理版已整理备用，见 `portraits/nino/processed/`，尚未登记运行清单。场景由程序绘制。全立绘备份目录和离线校对页见 [portraits/README.md](portraits/README.md)。
+伊蕾娜已接入四种姿势、站立五种表情，共八张透明立绘。村长已接入平静和愤怒，不耐烦透明版已登记预留。艾米尔三张已接入，现有“嘟嘴”暂用平常图；妮诺继续使用像素占位；妮诺六张透明处理版已整理备用，见 `portraits/nino/processed/`，尚未登记运行清单。场景由程序绘制。全立绘备份目录和离线校对页见 [portraits/README.md](portraits/README.md)。
 
 ## 立绘
 
@@ -38,11 +38,11 @@
 
 以下是现行主线表情表中的文件名。四种姿势底图已由用户确认，归档于 `portraits/elaina/approved/`；站立五种表情已收到并制作透明处理版，见 `portraits/elaina/standing/`。其余三个姿势的透明处理版见 `portraits/elaina/poses/`。八张处理版均已登记进运行清单，按当前主线标记切换。
 
-| 角色 | face（伊蕾娜、村长已接入） |
+| 角色 | face（伊蕾娜、村长、艾米尔已接入） |
 |---|---|
 | 伊蕾娜·站立 | `elaina_standing`、`elaina_standing_smile`、`elaina_standing_blank`、`elaina_standing_surprised`、`elaina_standing_serious` |
 | 伊蕾娜·其他姿势 | `elaina_thinking`、`elaina_explaining`、`elaina_confident` |
-| 艾米尔 | `emil_bright`、`emil_pout`、`emil_down`、`emil_serious`（支线预留） |
+| 艾米尔 | `emil_bright`、`emil_down`；`emil_neutral` 为平常，`emil_pout`、`emil_serious` 暂时复用平常图 |
 | 妮诺 | `nino_down`、`nino_flustered`、`nino_terrified`、`nino_smiletiny`、`nino_teary`、`nino_empty` |
 | 村长 | `chief_calm`、`chief_angry`；`chief_impatient` 已登记预留 |
 

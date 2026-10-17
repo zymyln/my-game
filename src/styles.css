@@ -82,3 +82,5 @@
 @media(max-width:620px){.portrait.illustrated{width:46%;height:58%;bottom:31%}.portrait.illustrated img{height:130%;bottom:-30%}}
 .portrait.illustrated[data-actor="chief"] img{height:190%;bottom:-100%}
 @media(max-width:620px){.portrait.illustrated[data-actor="chief"] img{height:165%;bottom:-79%}}
+.portrait.illustrated[data-actor="emil"] img{height:180%;bottom:-90%}
+@media(max-width:620px){.portrait.illustrated[data-actor="emil"] img{height:155%;bottom:-69%}}

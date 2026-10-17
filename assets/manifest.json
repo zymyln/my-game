@@ -10,7 +10,12 @@
     "elaina_explaining": "portraits/elaina/poses/elaina_explaining.png",
     "chief_calm": "portraits/chief/processed/chief_calm.png",
     "chief_impatient": "portraits/chief/processed/chief_impatient.png",
-    "chief_angry": "portraits/chief/processed/chief_angry.png"
+    "chief_angry": "portraits/chief/processed/chief_angry.png",
+    "emil_neutral": "portraits/emil/processed/emil_neutral.png",
+    "emil_bright": "portraits/emil/processed/emil_bright.png",
+    "emil_down": "portraits/emil/processed/emil_down.png",
+    "emil_pout": "portraits/emil/processed/emil_neutral.png",
+    "emil_serious": "portraits/emil/processed/emil_neutral.png"
   },
   "backgrounds": {},
   "objects": {

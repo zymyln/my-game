@@ -1,0 +1,59 @@
+[
+  {
+    "name": "neutral",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1147038,
+    "visible": 407447,
+    "bounds": [
+      275,
+      52,
+      758,
+      1494
+    ],
+    "bodyMeanDifference": 0,
+    "hairSampleRGB": [
+      202.10868226600985,
+      165.371408045977,
+      77.03879310344827
+    ]
+  },
+  {
+    "name": "down",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1145867,
+    "visible": 411512,
+    "bounds": [
+      275,
+      49,
+      759,
+      1495
+    ],
+    "bodyMeanDifference": 7.487504066200067,
+    "hairSampleRGB": [
+      210.36358974358976,
+      170.13405128205127,
+      79.06923076923077
+    ]
+  },
+  {
+    "name": "bright",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 1141869,
+    "visible": 415480,
+    "bounds": [
+      275,
+      45,
+      759,
+      1496
+    ],
+    "bodyMeanDifference": 8.197483507678735,
+    "hairSampleRGB": [
+      205.26123076923076,
+      168.31671794871795,
+      80.02974358974359
+    ]
+  }
+]

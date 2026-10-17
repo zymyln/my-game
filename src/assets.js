@@ -27,7 +27,7 @@ export class AssetLibrary {
     const actor = name.split('_')[0];
     const pose=name.split('_').slice(0,2).join('_');
     if(this.portraits.has(pose))return this.portraits.get(pose);
-    const neutral={elaina:'elaina_standing',emil:'emil_bright',nino:'nino_down',chief:'chief_calm'}[actor];
+    const neutral={elaina:'elaina_standing',emil:'emil_neutral',nino:'nino_down',chief:'chief_calm'}[actor];
     return this.portraits.get(neutral) ?? [...this.portraits.entries()].sort(([a],[b])=>a.localeCompare(b)).find(([key]) => key.startsWith(`${actor}_`))?.[1] ?? null;
   }
 }
