@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-17",
+  "checks": [
+    "开场快速点击不跳过飞入",
+    "开场与落地暂停保留进度",
+    "回标题取消开场及离场回调",
+    "自由漫游保持步行",
+    "开场重新播放",
+    "离场飞行中无尾声文字且不能按空格跳过",
+    "离场暂停冻结",
+    "减少动态效果短演出",
+    "全部飞行素材缺失仍可进入探索和尾声"
+  ],
+  "browserErrors": [],
+  "scope": "opening and departure only",
+  "mainline": {
+    "shots": 15,
+    "spokenLines": 234,
+    "memoryCards": 6,
+    "allSteps": 240,
+    "flightDuringOpening": true,
+    "walkingDuringExploration": true,
+    "departureBeforeFirstEpilogueLine": true,
+    "pausedDeparture": true,
+    "epilogueSpritesHidden": true,
+    "browserErrors": []
+  },
+  "editedScriptRefresh": "passed (separately verified after waiting for arrival)",
+  "nodeTests": {
+    "passed": 32,
+    "failed": 0
+  },
+  "viewports": [
+    1440,
+    560,
+    390
+  ]
+}

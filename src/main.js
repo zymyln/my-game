@@ -10,6 +10,8 @@ import { setupEffectsPreview } from './effects-preview.js';
 import { StagePlayer, moodForShot, drawAtmosphere } from './staging.mjs';
 import { audioProfile } from './score.mjs';
 import { setupAudioPanel } from './audio-panel.js';
+import { FlightPlayer } from './flight.mjs';
+import { drawElainaFlight } from './elaina-sprite.js';
 
 const $ = id => document.getElementById(id);
 const ui = Object.fromEntries([
@@ -40,6 +42,8 @@ let playMode='story',chapter=null,flow=null,roamSession=null,lastShot=null;
 let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null,propKind=null,effectLocked=false;
 const magic=new MagicPlayer({reducedMotion});
 const stage=new StagePlayer({reducedMotion});
+const flight=new FlightPlayer({reducedMotion});
+let flightContinuation=null;
 let worldTime=0;
 const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';ui['sound-toggle'].disabled=Boolean(sound.unavailable);ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));};
 let panelPausedGame=false;
@@ -121,7 +125,13 @@ async function travel(exit) {
   ui['scene-transition'].classList.remove('covered');
   await wait(reducedMotion ? 0 : 260);
   ui['scene-transition'].hidden = true; returnToExploration();
-  if(playMode==='story') {session=flow.arrive(sceneId);showLine();ui.game.focus({preventScroll:true});}
+  if(playMode==='story') {
+    const continueStory=()=>{session=flow.arrive(sceneId);showLine();ui.game.focus({preventScroll:true});};
+    if(sceneId==='field_dusk'&&assets.sprites.has('elaina_flying_back')){
+      flight.start('departure',player);flightContinuation=continueStory;
+      stage.select('afterglow');setMode('flight');ui.game.focus({preventScroll:true});
+    }else continueStory();
+  }
 }
 
 function resetJourney(nextMode) {
@@ -130,6 +140,7 @@ function resetJourney(nextMode) {
   lastShot=null;glassState=null;propKind=null;effectLocked=false;advanceReadyAt=0;activeInteraction=null;
   ui.game.classList.remove('impact');
   stage.reset();
+  flight.reset();flightContinuation=null;
   portraitFaces={left:chapter.faces.get('伊蕾娜:站立·平常') ?? 'elaina_standing',right:'emil_bright'};
   ui['dialogue-layer'].classList.remove('no-portraits');
   $('portrait-right').querySelector('.portrait-label').textContent='艾米尔';
@@ -139,6 +150,7 @@ function resetJourney(nextMode) {
 function startStory() {
   sound.activate().then(syncSound).catch(()=>{});
   resetJourney('story');flow=new ChapterFlow(chapter);session=flow.start();
+  if(assets.sprites.has('elaina_flying_front'))flight.start('arrival',START);
   showLine();ui.game.focus({preventScroll:true});
 }
 
@@ -158,7 +170,7 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
 function playImpact(cue) {
   if(!cue || reducedMotion)return;
@@ -250,7 +262,7 @@ function showLine() {
   textCharacters = Array.from(node.text); typedCount = 0; textStarted = performance.now();
   ui['dialogue-text'].textContent = '';
   ui['dialogue-layer'].classList.remove('ready'); ui['advance-label'].textContent = '显示全文';
-  ui.advance.disabled=performance.now()<advanceReadyAt;
+  ui.advance.disabled=performance.now()<advanceReadyAt||flight.busy;
   ui.game.dataset.dialogueId = session.currentId;
 }
 
@@ -274,10 +286,13 @@ function advance() {
     typedCount = textCharacters.length; ui['dialogue-text'].textContent = textCharacters.join('');
     ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent = '继续'; return;
   }
-  if(performance.now()<advanceReadyAt||(effectLocked&&magic.busy))return;
+  if(performance.now()<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy)return;
   if(playMode==='story') {
     if(flow.advance())showLine();
     else if(flow.phase==='complete')showEnding();
+    else if(flow.phase==='meet'&&flight.land()){
+      flightContinuation=returnToExploration;setMode('flight');
+    }
     else returnToExploration();
   } else if (session.advance()) showLine();
   else showEnding();
@@ -285,6 +300,7 @@ function advance() {
 
 function showEnding() {
   stage.reset();
+  flight.reset();flightContinuation=null;
   completed=true;glassState=null;propKind=null;effectLocked=false;
   const story=playMode==='story';
   ui['end-kicker'].textContent=story?'第一章 · 完':'一页旅途，暂告一段落';
@@ -387,7 +403,7 @@ document.addEventListener('keydown',event => {
     if(mode==='pause'){event.preventDefault();resumeJourney();return;}
     if(mode==='inspect'){event.preventDefault();returnToExploration();return;}
     if(mode==='complete'){event.preventDefault();if(playMode==='story')backToTitle();else returnToExploration();return;}
-    if(playMode==='story'&&['explore','dialogue','memory'].includes(mode)){event.preventDefault();pauseJourney();return;}
+    if(playMode==='story'&&['explore','dialogue','memory','flight'].includes(mode)){event.preventDefault();pauseJourney();return;}
     if(mode==='dialogue'){event.preventDefault();returnToExploration();return;}
   }
   if (mode === 'explore' && key === 'e') { event.preventDefault(); interact(); return; }
@@ -440,7 +456,10 @@ function draw(time) {
   const node = readingMode ? session?.current : null;
   const visibleScene = node?.bg && SCENES[node.bg] ? node.bg : sceneId;
   const background = node ? assets.backgrounds.get(node.bg) : null;
-  const staged=playMode==='story'&&readingMode;
+  const cinematic=mode==='flight'||(mode==='pause'&&pausedMode==='flight');
+  const staged=playMode==='story'&&(readingMode||cinematic);
+  const flying=flight.snapshot();
+  const hideSprites=playMode==='story'&&node&&shotPresentation(node.shotId).hideSprites;
   const lighting=stage.snapshot();
   ctx.clearRect(0,0,640,360);ctx.save();
   if(staged){ctx.translate(lighting.x*640,lighting.y*360);ctx.scale(lighting.zoom,lighting.zoom);ctx.translate(-lighting.x*640,-lighting.y*360);}
@@ -450,14 +469,21 @@ function draw(time) {
     ctx.drawImage(background,(640-width)/2,(360-height)/2,width,height);
   } else {
     ctx.drawImage(backgrounds.get(visibleScene),0,0);
-    const hideSprites=playMode==='story'&&node&&shotPresentation(node.shotId).hideSprites;
     const sprites = hideSprites ? [] : [...SCENES[visibleScene].npcs];
-    if (!hideSprites&&visibleScene===sceneId) sprites.push({actor:'elaina',...player});
+    if (!hideSprites&&!flying&&visibleScene===sceneId) sprites.push({actor:'elaina',...player});
     sprites.sort((a,b)=>a.y-b.y);
     for (const sprite of sprites) drawSprite(ctx,sprite.actor,sprite.x,sprite.y,{moving:sprite.moving,direction:sprite.direction,time});
     drawAmbient(ctx,visibleScene,time,reducedMotion); drawMarkers(time);
   }
+  if(flying){
+    if(flying.walkOpacity>0){ctx.save();ctx.globalAlpha=flying.walkOpacity;drawSprite(ctx,'elaina',flying.x,flying.y,{direction:'down',time});ctx.restore();}
+    drawElainaFlight(ctx,assets.sprites.get(`elaina_flying_${flying.frame}`),flying);
+  }
   ctx.restore();
+  ui.game.dataset.flight=flight.kind??'none';ui.game.dataset.flightPhase=flight.phase;
+  ui.game.dataset.flightProgress=(flying?.progress??0).toFixed(3);
+  ui.game.dataset.flightFrame=flying?.frame??'';
+  ui.game.dataset.playerPosture=flying?(flying.phase==='landing'?'landing':'flying'):hideSprites?'hidden':'walking';
   ui['scene-atmosphere'].hidden=!staged;
   if(staged)drawAtmosphere(ui['scene-atmosphere'].getContext('2d'),lighting);
   ui.game.dataset.mood=staged?stage.mood:'clear';
@@ -484,7 +510,13 @@ function frame(time) {
   sound.tick();
   ui.game.dataset.audioProfile=profile;ui.game.dataset.audioState=sound.context?.state??'waiting';ui.game.dataset.musicTrack=sound.music?.id??'';
   if(mode!=='pause'&&!effectsPreview.active)worldTime+=dt*1000;
-  if(playMode==='story'&&mode==='dialogue'&&!effectsPreview.active)stage.update(dt*1000);
+  if(playMode==='story'&&['dialogue','flight'].includes(mode)&&!effectsPreview.active){
+    stage.update(dt*1000);
+    if(!document.hidden)flight.update(dt*1000);
+  }
+  if(mode==='flight'&&flight.complete){
+    const continueStory=flightContinuation;flightContinuation=null;flight.reset();continueStory?.();
+  }
   if(propKind&&['dialogue','memory'].includes(mode)&&!effectsPreview.active)magic.update(dt*1000);
   if (mode==='dialogue' && typedCount<textCharacters.length) {
     const count = reducedMotion ? textCharacters.length : Math.min(textCharacters.length,Math.floor((time-textStarted)/32));
@@ -492,7 +524,7 @@ function frame(time) {
     if (typedCount===textCharacters.length) { ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent='继续'; }
   }
   if(mode==='dialogue') {
-    const held=time<advanceReadyAt||(effectLocked&&magic.busy);ui.advance.disabled=held;
+    const held=time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy;ui.advance.disabled=held;
     if(held)ui['advance-label'].textContent='片刻之后…';
     else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
   }

@@ -1,11 +1,11 @@
 export class AssetLibrary {
-  constructor() { this.portraits = new Map(); this.backgrounds = new Map(); this.objects = new Map(); this.memories = new Map(); }
+  constructor() { this.portraits = new Map(); this.backgrounds = new Map(); this.objects = new Map(); this.memories = new Map(); this.sprites = new Map(); }
   async load() {
     try {
       const response = await fetch(new URL('../assets/manifest.json', import.meta.url));
       if (!response.ok) throw new Error('找不到素材清单');
       const manifest = await response.json();
-      await Promise.all(['portraits','backgrounds','objects','memories'].flatMap(category => Object.entries(manifest[category] || {}).map(async ([name, path]) => {
+      await Promise.all(['portraits','backgrounds','objects','memories','sprites'].flatMap(category => Object.entries(manifest[category] || {}).map(async ([name, path]) => {
         if (typeof path !== 'string' || !path) return;
         const url = new URL(path, new URL('../assets/', import.meta.url));
         if (url.origin !== location.origin) return;

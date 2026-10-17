@@ -24,6 +24,11 @@
     "nino_empty": "portraits/nino/processed-v2/nino_empty.png"
   },
   "backgrounds": {},
+  "sprites": {
+    "elaina_flying_front": "sprites/elaina/broom-trial/elaina_broom_front_source.png",
+    "elaina_flying_back": "sprites/elaina/broom-trial/elaina_broom_back_source.png",
+    "elaina_flying_side": "sprites/elaina/broom-trial/elaina_broom_source.png"
+  },
   "memories": {
     "memory_1": "memories/trial/memory_01_birth.png",
     "memory_2": "memories/trial/memory_02_vista.png",

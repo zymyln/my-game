@@ -15,7 +15,7 @@
 <div class="controls"><button id="pause" type="button" disabled>暂停</button><button id="replay" type="button" disabled>重新飞入</button><button id="direction" type="button" disabled>切换朝向</button></div>
 <p id="status" class="status" aria-live="polite">正在载入试作…</p>
 </section><aside class="detail"><h2 id="detail-title">右侧骑姿</h2><canvas id="detail" width="224" height="168" aria-label="骑扫帚小人的放大像素轮廓"></canvas><p>银白长发、紫眼睛、粉色帽带、黑色披风。<br>小人在游戏画布上占 64×48 像素，漂浮高度约 10 像素；四向可切换，停下后仍轻微悬浮。<br>方向键选择朝向，空格暂停。</p></aside></div>
-<p class="note">此页是造型与移动试作，当前主线保持原状。可以直接双击此 HTML 离线观看。<br><a href="elaina_broom_front_source.png">正面原图</a> · <a href="elaina_broom_back_source.png">背面原图</a> · <a href="elaina_broom_source.png">侧面原图</a> · <a href="pose-reference.png">姿势参考</a> · <a href="directions-generation.json">正背面生成提示词</a></p>
+<p class="note">此页可独立查看四向造型。主线已接入正面飞入、背面飞离，中间探索保持步行。可以直接双击此 HTML 离线观看。<br><a href="elaina_broom_front_source.png">正面原图</a> · <a href="elaina_broom_back_source.png">背面原图</a> · <a href="elaina_broom_source.png">侧面原图</a> · <a href="pose-reference.png">姿势参考</a> · <a href="directions-generation.json">正背面生成提示词</a></p>
 </main>
 <script>
 const scene=document.querySelector('#scene'),ctx=scene.getContext('2d'),detail=document.querySelector('#detail'),detailCtx=detail.getContext('2d');

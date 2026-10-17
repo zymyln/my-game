@@ -1,6 +1,7 @@
 // Integer-pixel artwork, drawn once per direction/frame and reused on the map.
 // Origin is the middle of the feet; movement and collision keep their old anchor.
 const frames=new Map();
+const flyingFrames=new WeakMap();
 const C={ink:'#272431',coat:'#393342',coatLight:'#514456',fold:'#292734',lining:'#783248',
   gold:'#c7a25f',goldLight:'#edd18a',hair:'#d5c7dc',hairShade:'#a49bb9',hairLight:'#f1e6eb',
   skin:'#f4d9cd',skinShade:'#d5a9b4',eye:'#8963ba',white:'#fff1ec',hat:'#302b3c',
@@ -92,4 +93,19 @@ export function drawElainaSprite(ctx,x,y,{moving=false,direction='down',time=0}=
   ctx.fillStyle='#293d4030';ctx.fillRect(Math.round(x)-9,Math.round(y),18,3);
   ctx.fillRect(Math.round(x)-6,Math.round(y)-1,12,1);
   ctx.drawImage(frames.get(key),Math.round(x)-18,Math.round(y)-46);ctx.restore();
+}
+
+export function drawElainaFlight(ctx,image,state){
+  if(!image||!state)return;
+  if(!flyingFrames.has(image)){
+    const frame=document.createElement('canvas');frame.width=64;frame.height=48;
+    const paint=frame.getContext('2d');paint.imageSmoothingEnabled=false;
+    paint.drawImage(image,0,0,64,48);flyingFrames.set(image,frame);
+  }
+  const x=Math.round(state.x),y=Math.round(state.y),width=Math.round(64*state.scale),height=Math.round(48*state.scale);
+  ctx.save();ctx.imageSmoothingEnabled=false;ctx.globalAlpha*=state.opacity;
+  ctx.fillStyle='#293d4030';const shadow=Math.round(19*state.scale);
+  ctx.fillRect(x-shadow,y-1,shadow*2,3);ctx.fillRect(x-shadow+5,y-2,Math.max(3,shadow*2-10),1);
+  ctx.drawImage(flyingFrames.get(image),x-Math.round(width/2),y-Math.round(state.lift*state.scale)-height,width,height);
+  ctx.restore();
 }
