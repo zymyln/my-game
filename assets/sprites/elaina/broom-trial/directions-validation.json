@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-17",
+  "mode": "built-in image_gen",
+  "images": [
+    {
+      "file": "elaina_broom_front_source.png",
+      "width": 1448,
+      "height": 1086,
+      "transparent": 1013634,
+      "nearOpaque": 522293,
+      "bounds": {
+        "minX": 306,
+        "maxX": 1221,
+        "minY": 41,
+        "maxY": 1054
+      },
+      "bytes": 900081,
+      "sha256": "e8fca58fb82c83932a8718c68de6e5bbb093b85c58a0970697a40fe21c54bc18"
+    },
+    {
+      "file": "elaina_broom_back_source.png",
+      "width": 1448,
+      "height": 1086,
+      "transparent": 1139153,
+      "nearOpaque": 400856,
+      "bounds": {
+        "minX": 407,
+        "maxX": 1114,
+        "minY": 73,
+        "maxY": 1043
+      },
+      "bytes": 670297,
+      "sha256": "987fad313aa08db397400cf6c21a0f8d08b4fed0b856f023972acbfe735c562d"
+    }
+  ],
+  "logicalSprite": [
+    64,
+    48
+  ],
+  "sideSourceUnchanged": true,
+  "checks": [
+    "正背面真实透明与尺寸",
+    "四向实际移动方向",
+    "按钮与方向键切换",
+    "暂停冻结和空格恢复",
+    "抵达起点后悬浮",
+    "离线打开和减少动态效果",
+    "1440/390px截图复查"
+  ],
+  "browserErrors": []
+}
