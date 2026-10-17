@@ -1,0 +1,82 @@
+[
+  {
+    "face": "elaina_standing",
+    "label": "平常",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 0,
+    "partial": 0,
+    "opaque": 1572864,
+    "bounds": [
+      0,
+      0,
+      1023,
+      1535
+    ],
+    "cornerAlpha": 255
+  },
+  {
+    "face": "elaina_standing_smile",
+    "label": "微笑",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 0,
+    "partial": 0,
+    "opaque": 1572864,
+    "bounds": [
+      0,
+      0,
+      1023,
+      1535
+    ],
+    "cornerAlpha": 255
+  },
+  {
+    "face": "elaina_standing_blank",
+    "label": "无语",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 0,
+    "partial": 0,
+    "opaque": 1572864,
+    "bounds": [
+      0,
+      0,
+      1023,
+      1535
+    ],
+    "cornerAlpha": 255
+  },
+  {
+    "face": "elaina_standing_surprised",
+    "label": "惊讶",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 0,
+    "partial": 0,
+    "opaque": 1572864,
+    "bounds": [
+      0,
+      0,
+      1023,
+      1535
+    ],
+    "cornerAlpha": 255
+  },
+  {
+    "face": "elaina_standing_serious",
+    "label": "正色",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 0,
+    "partial": 0,
+    "opaque": 1572864,
+    "bounds": [
+      0,
+      0,
+      1023,
+      1535
+    ],
+    "cornerAlpha": 255
+  }
+]

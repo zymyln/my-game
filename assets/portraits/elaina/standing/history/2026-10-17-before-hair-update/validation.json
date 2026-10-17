@@ -1,0 +1,87 @@
+[
+  {
+    "file": "elaina_standing.png",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 578557,
+    "partial": 994307,
+    "opaque": 0,
+    "bounds": [
+      37,
+      16,
+      1014,
+      1521
+    ],
+    "bodyCompared": 865834,
+    "bodyChanged": 85240,
+    "bodyMeanDifference": 4.380752353607428
+  },
+  {
+    "file": "elaina_standing_smile.png",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 593203,
+    "partial": 979661,
+    "opaque": 0,
+    "bounds": [
+      37,
+      16,
+      1014,
+      1522
+    ],
+    "bodyCompared": 867109,
+    "bodyChanged": 0,
+    "bodyMeanDifference": 0
+  },
+  {
+    "file": "elaina_standing_blank.png",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 592001,
+    "partial": 980863,
+    "opaque": 0,
+    "bounds": [
+      37,
+      14,
+      1015,
+      1521
+    ],
+    "bodyCompared": 865385,
+    "bodyChanged": 124526,
+    "bodyMeanDifference": 7.751588406701448
+  },
+  {
+    "file": "elaina_standing_surprised.png",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 596062,
+    "partial": 976802,
+    "opaque": 0,
+    "bounds": [
+      37,
+      16,
+      1014,
+      1521
+    ],
+    "bodyCompared": 865869,
+    "bodyChanged": 71953,
+    "bodyMeanDifference": 3.7492168753779924
+  },
+  {
+    "file": "elaina_standing_serious.png",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 558854,
+    "partial": 1014010,
+    "opaque": 0,
+    "bounds": [
+      37,
+      14,
+      1014,
+      1520
+    ],
+    "bodyCompared": 865723,
+    "bodyChanged": 107026,
+    "bodyMeanDifference": 6.404716828207945
+  }
+]

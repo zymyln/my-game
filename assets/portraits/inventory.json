@@ -75,6 +75,31 @@
     "sha256": "142e2fa60a99603763fd9d28b229d523425f6b20bb83426034ab6b42d320c58a"
   },
   {
+    "path": "elaina/approved/standing-hair-update-2026-10-17/elaina_standing_blank_source.png",
+    "bytes": 1432861,
+    "sha256": "02c6b8c7f4a0ce60e42c6ac21d1f63ce5131d60c8299f39058149a77fa9339a7"
+  },
+  {
+    "path": "elaina/approved/standing-hair-update-2026-10-17/elaina_standing_serious_source.png",
+    "bytes": 1545409,
+    "sha256": "7b9f892f60ee10c9c102c01abfaf966ba8f4b92a2b43eaeb9acc20383ec50ee5"
+  },
+  {
+    "path": "elaina/approved/standing-hair-update-2026-10-17/elaina_standing_smile_source.png",
+    "bytes": 1457613,
+    "sha256": "ec971256e6ce0787559ddb3425b5a414d73c593ee4a2839f3c0799b30a4acf0d"
+  },
+  {
+    "path": "elaina/approved/standing-hair-update-2026-10-17/elaina_standing_source.png",
+    "bytes": 1440531,
+    "sha256": "3f09acfa23171a71a11743c6df0ae70bae88deba77397ad49c42b78920f4f5b3"
+  },
+  {
+    "path": "elaina/approved/standing-hair-update-2026-10-17/elaina_standing_surprised_source.png",
+    "bytes": 1475015,
+    "sha256": "855796ea3e6f1902556c2c16e4dffb8aa91aa01fab6cfe543a92fbf867f044be"
+  },
+  {
     "path": "elaina/drafts/Elaina_Pose01_Confident.png",
     "bytes": 1267402,
     "sha256": "0e453ca4ad95925ba74b537dba54825d500f73c81264dbfc0b9a50275caa2a0e"
@@ -106,26 +131,51 @@
   },
   {
     "path": "elaina/standing/elaina_standing_blank.png",
+    "bytes": 1873215,
+    "sha256": "435711e90a5745138670bbc3d06b0352ca4d14976c8907a78e65c8ef7d7275a2"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_serious.png",
+    "bytes": 1881479,
+    "sha256": "865a856d3d83c6e6e0bd61397f9a7825a7630f60efff0aa3992e55b746396de5"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_smile.png",
+    "bytes": 1884497,
+    "sha256": "50a18995d78d529f48bb7bb7b81b38625b7022b9453f4b4d1975051386cbb036"
+  },
+  {
+    "path": "elaina/standing/elaina_standing_surprised.png",
+    "bytes": 1881592,
+    "sha256": "2b96b1bb0bb241bfe392379fc3bef2ca11372061be0a600328ec88e5b0f7fa55"
+  },
+  {
+    "path": "elaina/standing/elaina_standing.png",
+    "bytes": 1872595,
+    "sha256": "37cad01d3212214967096f3d171a746c496ed992a53fd6be25871375608eae39"
+  },
+  {
+    "path": "elaina/standing/history/2026-10-17-before-hair-update/elaina_standing_blank.png",
     "bytes": 1867727,
     "sha256": "b35dd79319e49c9d67aff239706732ef2bd6b3be83d082f42eb4bc4576764211"
   },
   {
-    "path": "elaina/standing/elaina_standing_serious.png",
+    "path": "elaina/standing/history/2026-10-17-before-hair-update/elaina_standing_serious.png",
     "bytes": 1883791,
     "sha256": "a994e748f3cfb811d1a4767cf990f611c185f6fe628b76fae1ad29012ee8408a"
   },
   {
-    "path": "elaina/standing/elaina_standing_smile.png",
+    "path": "elaina/standing/history/2026-10-17-before-hair-update/elaina_standing_smile.png",
     "bytes": 1874846,
     "sha256": "570a0af30ca19982171a776df98479f381a67bbdb300e4404e237940f5cbe4c3"
   },
   {
-    "path": "elaina/standing/elaina_standing_surprised.png",
+    "path": "elaina/standing/history/2026-10-17-before-hair-update/elaina_standing_surprised.png",
     "bytes": 1861816,
     "sha256": "8ea654d7562196a7dfa70b591c67c8c330baab30f01071443f6ed7487d68cd7f"
   },
   {
-    "path": "elaina/standing/elaina_standing.png",
+    "path": "elaina/standing/history/2026-10-17-before-hair-update/elaina_standing.png",
     "bytes": 1863248,
     "sha256": "c30320121196dd972a940645c62e40914a749877c3a95a1dafa225a5cd6e44ab"
   },

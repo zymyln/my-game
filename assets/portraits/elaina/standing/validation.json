@@ -1,87 +1,377 @@
 [
   {
-    "file": "elaina_standing.png",
+    "face": "elaina_standing",
     "width": 1024,
     "height": 1536,
-    "transparent": 578557,
-    "partial": 994307,
-    "opaque": 0,
+    "transparent": 591392,
+    "visible": 947316,
     "bounds": [
-      37,
-      16,
-      1014,
-      1521
-    ],
-    "bodyCompared": 865834,
-    "bodyChanged": 85240,
-    "bodyMeanDifference": 4.380752353607428
-  },
-  {
-    "file": "elaina_standing_smile.png",
-    "width": 1024,
-    "height": 1536,
-    "transparent": 593203,
-    "partial": 979661,
-    "opaque": 0,
-    "bounds": [
-      37,
-      16,
-      1014,
-      1522
-    ],
-    "bodyCompared": 867109,
-    "bodyChanged": 0,
-    "bodyMeanDifference": 0
-  },
-  {
-    "file": "elaina_standing_blank.png",
-    "width": 1024,
-    "height": 1536,
-    "transparent": 592001,
-    "partial": 980863,
-    "opaque": 0,
-    "bounds": [
-      37,
-      14,
+      38,
+      15,
       1015,
       1521
     ],
-    "bodyCompared": 865385,
-    "bodyChanged": 124526,
-    "bodyMeanDifference": 7.751588406701448
+    "hairPatches": [
+      {
+        "rect": [
+          480,
+          355,
+          500,
+          380
+        ],
+        "sourceRGB": [
+          249.892,
+          226.768,
+          230.766
+        ],
+        "outputRGB": [
+          251.978,
+          229.438,
+          232.236
+        ],
+        "meanAbsoluteChannelDelta": 2.0753333333333335
+      },
+      {
+        "rect": [
+          385,
+          345,
+          405,
+          375
+        ],
+        "sourceRGB": [
+          252.00166666666667,
+          231.78833333333333,
+          235.74666666666667
+        ],
+        "outputRGB": [
+          253.25166666666667,
+          233.74,
+          236.60166666666666
+        ],
+        "meanAbsoluteChannelDelta": 1.3522222222222222
+      }
+    ],
+    "darkForegroundAlpha": [
+      {
+        "x": 620,
+        "y": 120,
+        "alpha": 252
+      },
+      {
+        "x": 760,
+        "y": 430,
+        "alpha": 252
+      },
+      {
+        "x": 320,
+        "y": 1050,
+        "alpha": 253
+      },
+      {
+        "x": 520,
+        "y": 1200,
+        "alpha": 253
+      }
+    ]
   },
   {
-    "file": "elaina_standing_surprised.png",
+    "face": "elaina_standing_smile",
     "width": 1024,
     "height": 1536,
-    "transparent": 596062,
-    "partial": 976802,
-    "opaque": 0,
+    "transparent": 591811,
+    "visible": 942736,
     "bounds": [
-      37,
-      16,
+      38,
+      15,
       1014,
       1521
     ],
-    "bodyCompared": 865869,
-    "bodyChanged": 71953,
-    "bodyMeanDifference": 3.7492168753779924
+    "hairPatches": [
+      {
+        "rect": [
+          480,
+          355,
+          500,
+          380
+        ],
+        "sourceRGB": [
+          246.134,
+          226.286,
+          232.2
+        ],
+        "outputRGB": [
+          246.326,
+          226.662,
+          231.822
+        ],
+        "meanAbsoluteChannelDelta": 0.31533333333333335
+      },
+      {
+        "rect": [
+          385,
+          345,
+          405,
+          375
+        ],
+        "sourceRGB": [
+          249.77333333333334,
+          233.665,
+          238.37666666666667
+        ],
+        "outputRGB": [
+          249.39,
+          232.39666666666668,
+          237.11833333333334
+        ],
+        "meanAbsoluteChannelDelta": 0.9700000000000001
+      }
+    ],
+    "darkForegroundAlpha": [
+      {
+        "x": 620,
+        "y": 120,
+        "alpha": 253
+      },
+      {
+        "x": 760,
+        "y": 430,
+        "alpha": 253
+      },
+      {
+        "x": 320,
+        "y": 1050,
+        "alpha": 254
+      },
+      {
+        "x": 520,
+        "y": 1200,
+        "alpha": 254
+      }
+    ]
   },
   {
-    "file": "elaina_standing_serious.png",
+    "face": "elaina_standing_blank",
     "width": 1024,
     "height": 1536,
-    "transparent": 558854,
-    "partial": 1014010,
-    "opaque": 0,
+    "transparent": 594182,
+    "visible": 946893,
+    "bounds": [
+      38,
+      12,
+      1014,
+      1523
+    ],
+    "hairPatches": [
+      {
+        "rect": [
+          480,
+          355,
+          500,
+          380
+        ],
+        "sourceRGB": [
+          242.082,
+          222.616,
+          227.644
+        ],
+        "outputRGB": [
+          242.904,
+          224.124,
+          229.078
+        ],
+        "meanAbsoluteChannelDelta": 1.2546666666666668
+      },
+      {
+        "rect": [
+          385,
+          345,
+          405,
+          375
+        ],
+        "sourceRGB": [
+          245.66166666666666,
+          228.07,
+          232.74333333333334
+        ],
+        "outputRGB": [
+          246.505,
+          230.18666666666667,
+          234.71333333333334
+        ],
+        "meanAbsoluteChannelDelta": 1.6433333333333333
+      }
+    ],
+    "darkForegroundAlpha": [
+      {
+        "x": 620,
+        "y": 120,
+        "alpha": 253
+      },
+      {
+        "x": 760,
+        "y": 430,
+        "alpha": 254
+      },
+      {
+        "x": 320,
+        "y": 1050,
+        "alpha": 254
+      },
+      {
+        "x": 520,
+        "y": 1200,
+        "alpha": 254
+      }
+    ]
+  },
+  {
+    "face": "elaina_standing_surprised",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 589711,
+    "visible": 944054,
+    "bounds": [
+      38,
+      15,
+      1014,
+      1522
+    ],
+    "hairPatches": [
+      {
+        "rect": [
+          480,
+          355,
+          500,
+          380
+        ],
+        "sourceRGB": [
+          234.636,
+          213.398,
+          220.396
+        ],
+        "outputRGB": [
+          236.23,
+          216.744,
+          222.91
+        ],
+        "meanAbsoluteChannelDelta": 2.484666666666667
+      },
+      {
+        "rect": [
+          385,
+          345,
+          405,
+          375
+        ],
+        "sourceRGB": [
+          240.73666666666668,
+          222.51666666666668,
+          228.22666666666666
+        ],
+        "outputRGB": [
+          241.52833333333334,
+          223.37166666666667,
+          228.47833333333332
+        ],
+        "meanAbsoluteChannelDelta": 0.6327777777777778
+      }
+    ],
+    "darkForegroundAlpha": [
+      {
+        "x": 620,
+        "y": 120,
+        "alpha": 252
+      },
+      {
+        "x": 760,
+        "y": 430,
+        "alpha": 252
+      },
+      {
+        "x": 320,
+        "y": 1050,
+        "alpha": 253
+      },
+      {
+        "x": 520,
+        "y": 1200,
+        "alpha": 253
+      }
+    ]
+  },
+  {
+    "face": "elaina_standing_serious",
+    "width": 1024,
+    "height": 1536,
+    "transparent": 584590,
+    "visible": 953322,
     "bounds": [
       37,
-      14,
+      13,
       1014,
-      1520
+      1525
     ],
-    "bodyCompared": 865723,
-    "bodyChanged": 107026,
-    "bodyMeanDifference": 6.404716828207945
+    "hairPatches": [
+      {
+        "rect": [
+          480,
+          355,
+          500,
+          380
+        ],
+        "sourceRGB": [
+          237.41,
+          213.768,
+          219.202
+        ],
+        "outputRGB": [
+          239.324,
+          215.594,
+          220.646
+        ],
+        "meanAbsoluteChannelDelta": 1.728
+      },
+      {
+        "rect": [
+          385,
+          345,
+          405,
+          375
+        ],
+        "sourceRGB": [
+          243.535,
+          222.95333333333335,
+          227.58
+        ],
+        "outputRGB": [
+          244.165,
+          222.62333333333333,
+          226.95666666666668
+        ],
+        "meanAbsoluteChannelDelta": 0.5277777777777778
+      }
+    ],
+    "darkForegroundAlpha": [
+      {
+        "x": 620,
+        "y": 120,
+        "alpha": 253
+      },
+      {
+        "x": 760,
+        "y": 430,
+        "alpha": 254
+      },
+      {
+        "x": 320,
+        "y": 1050,
+        "alpha": 253
+      },
+      {
+        "x": 520,
+        "y": 1200,
+        "alpha": 254
+      }
+    ]
   }
 ]

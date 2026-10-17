@@ -6,8 +6,10 @@
 |---|---|---|
 | `elaina/approved/` | 已确认四姿势底图原件副本 | 原图备份 |
 | `elaina/approved/standing-expressions/` | 站立五表情原件副本 | 原图备份 |
+| `elaina/approved/standing-hair-update-2026-10-17/` | 用户修正发色的新版站立五表情原件 | 新版原图备份 |
 | `elaina/drafts/` | 旧三姿势初稿 | 历史备份 |
-| `elaina/standing/` | 平常、微笑、无语、惊讶、正色透明版 | 当前游戏 |
+| `elaina/standing/` | 平常、微笑、无语、惊讶、正色透明版，2026-10-17 发色更新 | 当前游戏 |
+| `elaina/standing/history/2026-10-17-before-hair-update/` | 发色更新前的五张游戏版与旧处理记录 | 历史备份，不用于游戏 |
 | `elaina/poses/` | 扶帽、思考、摊手透明版 | 当前游戏 |
 | `chief/approved/` | 村长平静、不耐烦、愤怒原件副本 | 原图备份 |
 | `chief/processed/` | 村长三表情透明版 | 当前游戏及预留 |

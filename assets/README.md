@@ -48,7 +48,7 @@
 
 最新四种姿势见 [确认底图与差分清单](portraits/elaina/approved/README.md)，原图用 `_source.png` 后缀归档；旧三张初稿仍保存在 `portraits/elaina/drafts/`。站立五表情与其他三个姿势均已另存透明处理版；保留全部归档原图，`portraits` 已登记上述八个小写 face。缺表情时优先回退同姿势，再回退角色默认立绘，避免异步加载顺序影响结果。
 
-站立差分最新进展：用户提供的五张原图保存在 `portraits/elaina/approved/standing-expressions/`，透明处理版、处理说明和校对页见 [standing/README.md](portraits/elaina/standing/README.md)。可直接双击其中的 `preview.html`，比较浅色、深色、棋盘背景及表情切换。使用内置 imagegen 编辑，可能存在细微线条变化；现已接入游戏素材清单。其他三个姿势的处理提示词和验证记录见 [poses/README.md](portraits/elaina/poses/README.md)。
+站立差分最新进展：2026-10-17 已替换为用户修正发色的新版，五张新原图在 `portraits/elaina/approved/standing-hair-update-2026-10-17/`；旧游戏版在 `portraits/elaina/standing/history/2026-10-17-before-hair-update/`。透明处理版、处理说明和校对页见 [standing/README.md](portraits/elaina/standing/README.md)。可直接双击其中的 `preview.html`，比较浅色、深色、棋盘背景及表情切换。使用内置 imagegen 编辑，可能存在细微线条变化；现已接入游戏素材清单。其他三个姿势的处理提示词和验证记录见 [poses/README.md](portraits/elaina/poses/README.md)。
 
 ## 调查物特写
 
