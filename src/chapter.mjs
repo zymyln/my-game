@@ -146,10 +146,12 @@ export function impactCue(step) {
 // Event-driven listener reactions persist until a new reaction or their own line.
 // These affect the portrait only, never the speaker label or active-side lighting.
 export function portraitReaction(step) {
+  // First visible line after the six memory cards: stop the earlier confident pose.
+  if(step.shotId==='SH-12'&&step.speaker==='艾米尔'&&/^外面的世界/.test(step.text))return {left:'elaina_standing'};
   if(step.shotId!=='SH-10')return null;
   const impact=impactCue(step);
   if(impact==='glass')return {left:'elaina_standing_surprised'};
-  if(impact==='shout')return {left:'elaina_standing'};
+  if(impact==='shout')return {left:'elaina_standing_serious'};
   if(glassCue(step)==='mist')return {left:'elaina_explaining'};
   return null;
 }

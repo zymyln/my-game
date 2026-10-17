@@ -66,7 +66,7 @@ test('the final pause, portrait-free epilogue and glass restoration are staged',
   assert.deepEqual(cues,['sound','broken','broken','mist','whole']);
 });
 
-test('Elaina reacts while listening, settles before intervening, and keeps her casting pose through restoration',()=>{
+test('Elaina reacts while listening, turns serious during scolding, and keeps her casting pose through restoration',()=>{
   const steps=chapter.shots.get('SH-10').steps;
   let left='elaina_thinking';
   const faces=steps.map(step=>{
@@ -82,10 +82,25 @@ test('Elaina reacts while listening, settles before intervening, and keeps her c
   const gentle=steps.findIndex(step=>step.speaker==='伊蕾娜'&&step.text.startsWith('小心下次'));
   assert.ok(sound>=0&&sound<scolding&&scolding<cast&&cast<gentle);
   assert.ok(faces.slice(sound,scolding).every(face=>face==='elaina_standing_surprised'));
-  assert.ok(faces.slice(scolding,cast).every(face=>face==='elaina_standing'));
+  assert.ok(faces.slice(scolding,cast).every(face=>face==='elaina_standing_serious'));
   assert.ok(faces.slice(cast,gentle).every(face=>face==='elaina_explaining'));
   assert.equal(faces[gentle],'elaina_standing_smile');
   assert.equal(faces.at(-1),'elaina_standing_smile');
   assert.equal(portraitReaction({shotId:'SH-04',speaker:'旁白',text:'匡啷'}),null);
   assert.equal(portraitReaction({shotId:'SH-11',speaker:'村长',text:'——你在搞什么啊！'}),null);
+});
+
+test('Elaina returns to neutral as soon as the memory cards finish and keeps it through Nino crying',()=>{
+  const steps=chapter.shots.get('SH-12').steps;
+  const lastMemory=steps.findLastIndex(step=>step.kind==='memory');
+  assert.ok(lastMemory>=0&&lastMemory<steps.length-1);
+  let left='elaina_confident';
+  for(const [index,step]of steps.entries()){
+    if(step.face?.startsWith('elaina_'))left=step.face;
+    const reaction=portraitReaction(step);
+    if(reaction?.left)left=reaction.left;
+    assert.equal(left,index<=lastMemory?'elaina_confident':'elaina_standing',step.text);
+    assert.ok(!reaction?.right,'the right-side story portraits must stay independent');
+  }
+  assert.equal(portraitReaction({shotId:'SH-04',speaker:'艾米尔',text:'外面的世界充满这么多幸福喔。'}),null);
 });
