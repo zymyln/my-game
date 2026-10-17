@@ -429,3 +429,11 @@
 - 使用 Windows 原生 Expand-Archive 解压到仓库外的中文测试目录；核对两文件名称、ZIP/HTML 哈希、全部 30 张内嵌 PNG 与原图哈希一致，确认剔除附录和开发模块。随后 Edge 断网直接通过 file:// 打开解压 HTML，启动、开场飞行及自由漫游通过，无需任何服务。
 - 在该离线文件中按正常路径走通主线 15 镜头、240 步，核对全部角色立绘、六张幸福图、开场飞入/落地、离场后才显示尾声、剧情门控、可选调查、碎杯还原、音频、暂停恢复及重开。外部请求为零，浏览器错误为零；复查运行截图。结果保存 releases/validation.json，git diff --check 和打包脚本语法检查通过。未修改游戏逻辑，无需重复逻辑单元测试。
 - 更新首页 README 与 releases/README.md，说明转发方式、电脑浏览器目标和重新打包命令。未修改 src、index.html、content、docs/contract.md、AGENTS.md 或 .gitignore。下一步用户可直接转发 ZIP，让试玩者完整解压再打开 HTML。
+
+## 2026-10-17 文本机 B：归档第一章结尾 CG 终稿
+
+- 用户提供 `cg终稿.png`，作为第一章结尾（SH-15 尾声）的黄昏草原 CG；画面为伊蕾娜骑扫帚向右飞离，无烧录文字。
+- 原字节归档为 `assets/cg/ch1_ending_field_dusk.png`，2048×1144 PNG，4,139,283 字节；SHA-256 与源文件一致，详见 `assets/cg/validation.json`。
+- 新增 `assets/cg/README.md`，记录用途、规格和待接入事项；未修改 `assets/manifest.json`，未接入剧情或渲染代码。
+- 未修改 `src/`、`index.html`、`content/`、`docs/contract.md`、`AGENTS.md`、`.gitignore`，未安装依赖。
+- 待主力机在 manifest 增加 `cg` 类别，并决定 SH-15 使用全屏 CG 还是结尾画面的展示方式。

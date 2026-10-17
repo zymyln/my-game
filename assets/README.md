@@ -1,5 +1,7 @@
 # 美术素材放这里
 
+第一章结尾 CG 终稿已归档到 [cg/README.md](cg/README.md)，尚未接入 manifest 或剧情代码，接入由主力机负责。
+
 瓶中六段幸福的二次元 CG 已全部接入主线，见 [六段插画与点击预览](memories/README.md)。原图、提示词和校验记录均已归档。
 
 伊蕾娜骑扫帚原图、参考与四向预览见 [骑扫帚素材](sprites/elaina/broom-trial/README.md)。正面已用于主线开场飞入，背面用于尾声前飞离；中间探索仍步行，左右朝向保留预览。
