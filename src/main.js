@@ -11,6 +11,7 @@ import { StagePlayer, moodForShot, drawAtmosphere } from './staging.mjs';
 import { audioProfile } from './score.mjs';
 import { setupAudioPanel } from './audio-panel.js';
 import { FlightPlayer } from './flight.mjs';
+import { MemoryPlayer } from './memory.mjs';
 import { drawElainaFlight } from './elaina-sprite.js';
 
 const $ = id => document.getElementById(id);
@@ -20,7 +21,7 @@ const ui = Object.fromEntries([
   'replay','fullscreen','error-panel','error-message','retry','route-strip','scene-caption',
   'inspection','inspection-title','inspection-text','inspection-image','close-inspection','observation-count',
   'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
-  'memory-layer','memory-image','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
+  'memory-layer','memory-image','memory-text','memory-count','memory-next','memory-picture','memory-release-label','story-prop','glass-prop','sound-toggle',
   'end-kicker','end-title','end-description','passage-label','memory-bottle','scene-atmosphere','story-cg',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
@@ -43,6 +44,7 @@ let advanceReadyAt=0,pausedAt=0,pausedMode=null,glassState=null,propKind=null,ef
 const magic=new MagicPlayer({reducedMotion});
 const stage=new StagePlayer({reducedMotion});
 const flight=new FlightPlayer({reducedMotion});
+const memory=new MemoryPlayer({reducedMotion});
 let flightContinuation=null;
 let worldTime=0;
 const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';ui['sound-toggle'].disabled=Boolean(sound.unavailable);ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));};
@@ -93,6 +95,17 @@ function refreshStoryCG() {
   if(image) {
     if(ui['story-cg'].src!==image.src)ui['story-cg'].src=image.src;
   } else ui['story-cg'].removeAttribute('src');
+}
+
+function refreshMemoryUI() {
+  const opacity=memory.opacity;
+  ui['memory-layer'].dataset.phase=memory.phase;
+  ui['memory-layer'].style.setProperty('--memory-opacity',opacity.toFixed(4));
+  ui['memory-layer'].style.setProperty('--memory-label-opacity',Math.max(0,1-opacity*4).toFixed(4));
+  ui['memory-picture'].setAttribute('aria-hidden',String(opacity===0));
+  ui['memory-next'].disabled=!memory.ready;
+  ui['memory-next'].textContent=memory.ready?'点击画面继续 · Space':'静静看着…';
+  ui['memory-release-label'].textContent=memory.phase==='fade-out'?'让这份幸福，轻轻远去…':'一缕幸福，正从瓶中飞出…';
 }
 
 function refreshSceneUI() {
@@ -153,6 +166,7 @@ function resetJourney(nextMode) {
   ui.game.classList.remove('impact');
   stage.reset();
   flight.reset();flightContinuation=null;
+  memory.reset();refreshMemoryUI();
   portraitFaces={left:chapter.faces.get('伊蕾娜:站立·平常') ?? 'elaina_standing',right:'emil_bright'};
   ui['dialogue-layer'].classList.remove('no-portraits');
   $('portrait-right').querySelector('.portrait-label').textContent='艾米尔';
@@ -182,7 +196,7 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
 function playImpact(cue) {
   if(!cue || reducedMotion)return;
@@ -247,14 +261,16 @@ function showLine() {
       ui['memory-layer'].classList.toggle('illustrated',Boolean(image));
       if(image)ui['memory-image'].src=image.src;
       else ui['memory-image'].removeAttribute('src');
+      memory.start(node.memoryNumber);refreshMemoryUI();
       setMode('memory');ui['memory-text'].textContent=node.text;ui['memory-count'].textContent=`${node.memoryNumber} / 6`;
-      advanceReadyAt=performance.now()+2000;ui['memory-next'].disabled=true;ui['memory-next'].textContent='静静看着…';
+      advanceReadyAt=0;
       ui.game.dataset.dialogueId=session.currentId;
-      if(node.memoryNumber===1&&magic.trigger('release'))sound.play('bottle');
+      if(node.memoryNumber===1)sound.play('bottle');
       else if(node.memoryNumber>1)sound.play('sparkle');
       return;
     }
   } else {advanceReadyAt=0;ui['passage-label'].textContent='瓶中的幸福';}
+  if(memory.number){memory.reset();refreshMemoryUI();}
   setMode('dialogue');
   $('portrait-right').querySelector('.portrait-label').textContent=ACTOR_NAMES[portraitFaces.right.split('_')[0]] || '艾米尔';
   const narration = node.speaker === '旁白';
@@ -294,6 +310,7 @@ function openDialogue(restart = false) {
 
 function advance() {
   if (!['dialogue','memory'].includes(mode)) return;
+  if(mode==='memory'){memory.next();refreshMemoryUI();return;}
   if (mode==='dialogue' && typedCount < textCharacters.length) {
     typedCount = textCharacters.length; ui['dialogue-text'].textContent = textCharacters.join('');
     ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent = '继续'; return;
@@ -501,7 +518,7 @@ function draw(time) {
   ui.game.dataset.mood=staged?stage.mood:'clear';
   ui.game.dataset.stageTime=stage.time.toFixed(0);
   if(propKind&&mode==='dialogue')drawMagicEffect(ui['glass-prop'],magic);
-  if(propKind==='bottle'&&mode==='memory'&&ui['memory-image'].hidden)drawMagicEffect(ui['memory-bottle'],magic,{placement:'memory'});
+  if(mode==='memory')drawMagicEffect(ui['memory-bottle'],memory.bottle,{placement:'release'});
   ui['story-prop'].dataset.phase=magic.phase;
   ui['story-prop'].dataset.progress=magic.progress.toFixed(3);
   const label = document.querySelector('.location');
@@ -529,6 +546,10 @@ function frame(time) {
   if(mode==='flight'&&flight.complete){
     const continueStory=flightContinuation;flightContinuation=null;flight.reset();continueStory?.();
   }
+  if(mode==='memory'&&!effectsPreview.active&&!document.hidden){
+    memory.update(dt*1000);refreshMemoryUI();
+    if(memory.phase==='complete'&&flow.advance())showLine();
+  }
   if(propKind&&['dialogue','memory'].includes(mode)&&!effectsPreview.active)magic.update(dt*1000);
   if (mode==='dialogue' && typedCount<textCharacters.length) {
     const count = reducedMotion ? textCharacters.length : Math.min(textCharacters.length,Math.floor((time-textStarted)/32));
@@ -539,10 +560,6 @@ function frame(time) {
     const held=time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy;ui.advance.disabled=held;
     if(held)ui['advance-label'].textContent='片刻之后…';
     else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
-  }
-  if(mode==='memory') {
-    const held=time<advanceReadyAt;ui['memory-next'].disabled=held;
-    ui['memory-next'].textContent=held?'静静看着…':'点击画面继续 · Space';
   }
   draw(worldTime); requestAnimationFrame(frame);
 }

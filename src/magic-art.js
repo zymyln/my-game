@@ -1,4 +1,4 @@
-import { CUP_SHARDS, bottleMote, releasedMote, shardPose, smooth, clamp } from './magic.mjs';
+import { CUP_SHARDS, bottleMote, releasedMote, singleReleasedMote, shardPose, smooth, clamp } from './magic.mjs';
 
 function polygon(ctx,points,fill,stroke=null) {
   ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();
@@ -21,7 +21,9 @@ const BOTTLE=[[144,56],[176,56],[176,83],[193,94],[201,108],[201,170],[195,182],
 const CUP=[[125,68],[195,68],[190,106],[178,128],[164,137],[164,169],[188,169],[192,176],[128,176],[132,169],[156,169],[156,137],[142,128],[130,106]];
 
 function bottle(ctx,player) {
-  const sealed=player.phase==='bottle-idle',p=player.phase==='bottle-release'?player.progress:1;
+  const single=['bottle-release-one','bottle-open-full'].includes(player.phase);
+  const flying=single?singleReleasedMote(player):null;
+  const sealed=player.phase==='bottle-idle',p=player.busy?player.progress:1;
   const gradient=ctx.createLinearGradient(118,0,204,0);
   gradient.addColorStop(0,'#bdeddb42');gradient.addColorStop(.22,'#daffe916');gradient.addColorStop(.75,'#74bdbb12');gradient.addColorStop(1,'#b0e4d63b');
   glow(ctx,160,145,60,'220,232,171',.07);
@@ -30,10 +32,12 @@ function bottle(ctx,player) {
   const haze=ctx.createRadialGradient(160,142,4,160,142,47);
   haze.addColorStop(0,'#e3f1ce28');haze.addColorStop(1,'#d4e6d100');ctx.fillStyle=haze;ctx.fillRect(118,90,84,95);
   for(let i=0;i<14;i++) {
-    const m=sealed?bottleMote(i,player.elapsed,player.reducedMotion):releasedMote(i,player);
+    if(single&&i===0)continue;
+    const m=single?bottleMote(i,player.bottleTime,player.reducedMotion):sealed?bottleMote(i,player.elapsed,player.reducedMotion):releasedMote(i,player);
     if(sealed&&!player.reducedMotion)for(let trail=1;trail<4;trail++)mote(ctx,bottleMote(i,player.elapsed-trail*110),i,(4-trail)*.09);
     mote(ctx,m,i);
   }
+  if(flying&&flying.y>=94)mote(ctx,flying,0);
   ctx.restore();
   // Glass stays in front of the motes, so they read as being inside a vessel.
   polygon(ctx,[[124,112],[127,105],[130,105],[128,169],[125,174]],'#edfff13b');
@@ -43,15 +47,16 @@ function bottle(ctx,player) {
   ctx.fillStyle='#d1b77f';ctx.fillRect(141,61,38,3);ctx.fillStyle='#8e805b';ctx.fillRect(141,64,38,1);
   ctx.fillStyle='#e1cf99a0';ctx.fillRect(157,157,6,1);ctx.fillRect(160,154,1,7);
   if(!sealed) {
-    const releaseGlow=player.phase==='bottle-release'?Math.sin(Math.PI*p):Math.max(0,.25-player.elapsed/9000);
+    const releaseGlow=player.busy?Math.sin(Math.PI*p):Math.max(0,.25-player.elapsed/9000);
     glow(ctx,160,59,28,'238,235,167',releaseGlow*.45);
-    for(let i=0;i<14;i++) {
+    if(single){if(flying&&flying.y<94)mote(ctx,flying,0);}
+    else for(let i=0;i<14;i++) {
       const m=releasedMote(i,player);
       if(m.y<94)mote(ctx,m,i);
     }
     if(player.phase==='bottle-open')for(let i=0;i<3;i++)mote(ctx,{...bottleMote(i,player.elapsed,player.reducedMotion),alpha:.12},i);
   }
-  if(sealed||(player.phase==='bottle-release'&&!player.reducedMotion)) {
+  if(sealed||((player.phase==='bottle-release'||player.phase==='bottle-release-one'&&player.releaseWasSealed)&&!player.reducedMotion)) {
     ctx.save();const lift=sealed?0:smooth(p/.55);
     ctx.translate(160+(sealed?0:Math.sin(lift*Math.PI)*12),49-lift*56);ctx.rotate(-lift*.6);
     ctx.globalAlpha=sealed?1:1-smooth((p-.65)/.35);
@@ -123,6 +128,7 @@ export function drawMagicEffect(canvas,player,{clear=true,placement='prop'}={}) 
   let scale=Math.min(canvas.width/320,canvas.height/240),x=canvas.width/2,y=canvas.height/2;
   if(placement==='preview'){scale*=1.05;if(player.kind==='cup')y-=17;}
   if(placement==='memory'){scale*=.78;x=canvas.width*.23;y=canvas.height*.64;}
+  if(placement==='release'){scale*=1.05;y=canvas.height*.57;}
   ctx.translate(x,y);ctx.scale(scale,scale);ctx.translate(-160,-120);
   const shadow=ctx.createRadialGradient(160,192,2,160,192,77);shadow.addColorStop(0,'#182c2b22');shadow.addColorStop(1,'#182c2b00');ctx.fillStyle=shadow;ctx.fillRect(80,185,160,17);
   if(player.kind==='bottle')bottle(ctx,player);else cup(ctx,player);

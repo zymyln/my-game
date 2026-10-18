@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { MagicPlayer, CUP_SHARDS, DURATIONS, shardPose, bottleMote, releasedMote } from './magic.mjs';
+import { MagicPlayer, CUP_SHARDS, DURATIONS, shardPose, bottleMote, releasedMote, singleReleasedMote } from './magic.mjs';
 
 test('repeated narrative cues do not restart a shatter or prematurely restore glass',()=>{
   const player=new MagicPlayer();player.select('cup');
@@ -39,4 +39,20 @@ test('animation depends on elapsed time, preserves a still frame, and supports r
   const still=shardPose(2,a);a.update(0);assert.deepEqual(shardPose(2,a),still);
   const calm=new MagicPlayer({reducedMotion:true});calm.select('cup');calm.trigger('shatter');
   assert.deepEqual(shardPose(0,calm),CUP_SHARDS[0].land);calm.update(700);assert.equal(calm.phase,'cup-broken');
+});
+
+test('a repeatable single release takes one neck-constrained path and leaves resident lights inside',()=>{
+  const player=new MagicPlayer();
+  for(let cycle=0;cycle<6;cycle++){
+    assert.equal(player.trigger('release-one'),true);assert.equal(player.trigger('release-one'),false);
+    for(let step=0;step<90;step++){
+      const light=singleReleasedMote(player);assert.ok(light);
+      if(light.y>55&&light.y<84)assert.ok(Math.abs(light.x-160)<17);
+      for(let i=1;i<14;i++){
+        const resident=bottleMote(i,player.bottleTime);assert.ok(resident.y>=99&&resident.y<=165);
+      }
+      player.update(20);
+    }
+    assert.equal(player.phase,'bottle-open-full');assert.equal(singleReleasedMote(player),null);
+  }
 });

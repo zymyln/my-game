@@ -1,5 +1,5 @@
 // Deterministic, elapsed-time animation. Geometry is shared by the story and preview.
-export const DURATIONS = Object.freeze({ shatter:1800, restore:3200, release:3400 });
+export const DURATIONS = Object.freeze({ shatter:1800, restore:3200, release:3400, releaseOne:1800 });
 export const clamp = value => Math.max(0,Math.min(1,value));
 export const smooth = value => { const t=clamp(value);return t*t*(3-2*t); };
 const mix=(a,b,t)=>a+(b-a)*t;
@@ -24,27 +24,29 @@ export class MagicPlayer {
   constructor({reducedMotion=false}={}) { this.reducedMotion=reducedMotion;this.select('bottle'); }
   select(kind) {
     if(!['bottle','cup'].includes(kind))throw new Error(`Unknown magic prop: ${kind}`);
-    this.kind=kind;this.phase=kind==='bottle'?'bottle-idle':'cup-whole';this.elapsed=0;this.releaseOrigin=0;
+    this.kind=kind;this.phase=kind==='bottle'?'bottle-idle':'cup-whole';this.elapsed=0;this.releaseOrigin=0;this.bottleTime=0;this.releaseWasSealed=false;
   }
-  get busy() { return ['cup-shatter','cup-restore','bottle-release'].includes(this.phase); }
+  get busy() { return ['cup-shatter','cup-restore','bottle-release','bottle-release-one'].includes(this.phase); }
   get duration() {
-    const base={'cup-shatter':DURATIONS.shatter,'cup-restore':DURATIONS.restore,'bottle-release':DURATIONS.release}[this.phase] ?? 0;
+    const base={'cup-shatter':DURATIONS.shatter,'cup-restore':DURATIONS.restore,'bottle-release':DURATIONS.release,'bottle-release-one':DURATIONS.releaseOne}[this.phase] ?? 0;
     return this.reducedMotion && base ? 700 : base;
   }
   get progress() { return this.duration ? clamp(this.elapsed/this.duration) : 1; }
   trigger(action) {
-    const next={shatter:'cup-shatter',restore:'cup-restore',release:'bottle-release'}[action];
-    const allowed=action==='shatter' ? ['cup-whole','cup-restored'] : action==='restore' ? ['cup-broken'] : action==='release' ? ['bottle-idle'] : [];
+    const next={shatter:'cup-shatter',restore:'cup-restore',release:'bottle-release','release-one':'bottle-release-one'}[action];
+    const allowed=action==='shatter' ? ['cup-whole','cup-restored'] : action==='restore' ? ['cup-broken'] : action==='release' ? ['bottle-idle'] : action==='release-one' ? ['bottle-idle','bottle-open-full'] : [];
     if(!next||!allowed.includes(this.phase))return false;
     if(action==='release')this.releaseOrigin=this.elapsed;
+    if(action==='release-one'){this.releaseOrigin=this.bottleTime;this.releaseWasSealed=this.phase==='bottle-idle';}
     this.phase=next;this.elapsed=0;return true;
   }
   update(milliseconds) {
     if(!Number.isFinite(milliseconds)||milliseconds<0)return;
     this.elapsed+=milliseconds;
+    this.bottleTime+=milliseconds;
     if(this.busy&&this.elapsed>=this.duration) {
       const remaining=this.elapsed-this.duration;
-      this.phase={'cup-shatter':'cup-broken','cup-restore':'cup-restored','bottle-release':'bottle-open'}[this.phase];
+      this.phase={'cup-shatter':'cup-broken','cup-restore':'cup-restored','bottle-release':'bottle-open','bottle-release-one':'bottle-open-full'}[this.phase];
       this.elapsed=remaining;
     }
   }
@@ -89,4 +91,11 @@ export function releasedMote(index,player) {
     y=mix(55,6-(index*11)%43,escape)-Math.sin(escape*Math.PI)*12;
   }
   return {x,y,alpha:start.alpha*(1-smooth((t-.75)/.25)),size:start.size};
+}
+
+export function singleReleasedMote(player) {
+  if(player.phase!=='bottle-release-one')return null;
+  if(player.reducedMotion)return {x:160,y:55,alpha:Math.sin(Math.PI*player.progress)*.9,size:2};
+  // Use the same neck-constrained path, with time for the cork to lift first.
+  return releasedMote(0,{...player,progress:clamp((player.progress-.18)/.82)*.67});
 }

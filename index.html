@@ -60,7 +60,14 @@
           <div class="inspection-card"><span class="inspection-kicker">旅途中的小小见闻</span><h2 id="inspection-title"></h2><div class="inspection-body"><img id="inspection-image" width="320" height="240" alt="" hidden /><p id="inspection-text"></p></div><button id="close-inspection" class="text-button" type="button">返回探索 <kbd>Esc</kbd></button></div>
         </section>
         <div id="story-prop" class="story-prop" hidden><canvas id="glass-prop" width="320" height="240" aria-label="魔法瓶与玻璃杯演出"></canvas></div>
-        <section id="memory-layer" class="memory-layer" aria-label="瓶中的六片幸福" hidden><img id="memory-image" alt="" hidden><canvas id="memory-bottle" width="640" height="360" aria-hidden="true"></canvas><div class="memory-motes" aria-hidden="true"><i>✦</i><i>✧</i><i>✦</i><i>✧</i><i>✦</i><i>✧</i></div><p class="memory-kicker">瓶中的幸福</p><p id="memory-text" aria-live="polite"></p><div class="memory-bottom"><span id="memory-count"></span><button id="memory-next" class="memory-next" type="button" disabled>静静看着…</button></div></section>
+        <section id="memory-layer" class="memory-layer" aria-label="瓶中的六片幸福" hidden>
+          <canvas id="memory-bottle" width="640" height="360" aria-hidden="true"></canvas>
+          <p id="memory-release-label">一缕幸福，正从瓶中飞出…</p>
+          <div id="memory-picture" aria-hidden="true">
+            <img id="memory-image" alt="" hidden>
+            <div class="memory-copy"><p class="memory-kicker">瓶中的幸福</p><p id="memory-text" aria-live="polite"></p><div class="memory-bottom"><span id="memory-count"></span><button id="memory-next" class="memory-next" type="button" disabled>静静看着…</button></div></div>
+          </div>
+        </section>
         <section id="pause-screen" class="pause-screen" aria-labelledby="pause-title" hidden><div class="pause-panel"><span class="title-ornament" aria-hidden="true">✧</span><h2 id="pause-title">让旅途稍作停留</h2><p>故事会在原处等你。</p><button id="resume" class="primary-button" type="button">继续旅途</button><button id="pause-audio" class="text-button" type="button" aria-controls="audio-panel">音量与配乐试听</button><button id="back-title" class="text-button" type="button">返回标题</button></div></section>
         <div id="audio-shade" class="audio-shade" hidden></div><section id="audio-panel" class="audio-panel" role="dialog" aria-modal="true" aria-labelledby="audio-title" hidden>
           <div class="audio-heading"><h2 id="audio-title">旅途的声音</h2><button id="audio-close" type="button" aria-label="关闭音量设置">关闭 ×</button></div>

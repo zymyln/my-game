@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-18",
+  "feature": "One light per memory, repeatable release and fades",
+  "timingsMs": {"release": 1800, "fadeIn": 850, "minimumReadingAfterFadeIn": 2000, "fadeOut": 700},
+  "reducedMotionMs": {"release": 700, "fadeIn": 350, "minimumReadingAfterFadeIn": 2000, "fadeOut": 350},
+  "residentLights": 13,
+  "outgoingLightsPerCycle": 1,
+  "mainline": {"shots": 15, "steps": 240, "memoryCycles": 6, "endingCG": true, "passed": true},
+  "unitTests": {"passed": 38, "newMemoryTimingTests": 5, "newSingleReleaseTests": 1},
+  "browserChecks": [
+    "Normal, reduced-motion and missing-fifth-image scenarios each complete all six memories",
+    "All images and original script lines remain in order",
+    "Opacity observed strictly between zero and one during both fade directions",
+    "Two-second reading minimum starts after fade-in completes",
+    "Release, fade-in and fade-out pause without changing opacity or bottle frame",
+    "Rapid clicks and Space cannot skip release, reading minimum or fade-out",
+    "Sixth fade-out returns to dialogue with Elaina standing neutral",
+    "Returning to title cancels pending transition; restarting begins a fresh release",
+    "1440, 560 and 390 pixel screenshots inspected; text remains inside game area",
+    "Missing image retains bottle and text; next image recovers",
+    "Original effects-preview bottle sequence still works",
+    "No browser page errors; no new dependencies; image bytes unchanged"
+  ],
+  "offlineRelease": "Existing ZIP not rebuilt in this change"
+}
