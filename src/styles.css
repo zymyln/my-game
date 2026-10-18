@@ -85,5 +85,9 @@
 .portrait.illustrated[data-actor="emil"] img{height:180%;bottom:-90%}
 @media(max-width:620px){.portrait.illustrated[data-actor="emil"] img{height:155%;bottom:-69%}}
 .portrait.illustrated[data-actor="nino"] img{height:185%;bottom:-85%}
+.choice-layer{position:absolute;inset:0;z-index:6;display:grid;place-items:center;padding:5%;background:#172d30a8;backdrop-filter:blur(2px)}
+.choice-card{width:min(560px,100%);padding:30px 38px;background:#faf8edf5;border:1px solid #c9c5aa;border-radius:5px;box-shadow:0 12px 45px #10242455;text-align:center}
+.choice-card h2{font-size:24px;letter-spacing:2px;margin:12px 0 24px}.choice-option{display:flex;align-items:center;gap:17px;width:100%;text-align:left;padding:15px 18px;margin:12px 0;background:#eef0e2;border:1px solid #c2cbb3;border-radius:3px;color:#405a46;font-size:15px;line-height:1.6}.choice-option>span:first-child{font-size:11px;color:#9a824c}.choice-option:hover,.choice-option:focus{background:#435e49;color:#faf5df;outline:2px solid #c9b57f;outline-offset:2px}.choice-hint{font-size:10px;letter-spacing:2px;color:#8a8d77;margin:20px 0 0}
+@media(max-width:620px){.choice-card{padding:15px 18px}.choice-card h2{font-size:17px;margin:8px 0 14px;letter-spacing:1px}.choice-option{font-size:13px;padding:11px 12px;margin:9px 0}.choice-hint{font-size:9px;margin-top:12px}}
 @media(max-width:620px){.story-prop{width:32%;bottom:32%}}
 @media(max-width:620px){.portrait.illustrated[data-actor="nino"] img{height:160%;bottom:-60%}}

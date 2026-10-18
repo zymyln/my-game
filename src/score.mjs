@@ -23,13 +23,18 @@ export const PROFILES={
   quiet:{music:null,ambience:null},meadow:{music:'meadow',ambience:'wind'},hall:{music:'hall',ambience:'room'},
   tension:{music:'tension',ambience:null},memory:{music:'memory',ambience:null},
   dusk:{music:'dusk',ambience:'evening'},hush:{music:null,ambience:'evening',ambientScale:.18},
+  hope:{music:'meadow',ambience:'evening',ambientScale:.3},
 };
 export function audioProfile({mode,scene,shot,kind,glass}){
   if(['title','complete','transition'].includes(mode))return 'quiet';
   if(mode==='memory'||kind==='memory')return 'memory';
+  if(mode==='interlude')return 'hush';
   if(mode==='dialogue'){
     if(shot==='SH-09')return 'quiet';
     if(shot==='SH-14')return 'hush';
+    if(['SH-19','SH-20'].includes(shot))return 'quiet';
+    if(shot==='SH-23')return 'hush';
+    if(shot==='SH-24')return 'hope';
     if(shot==='SH-10')return ['mist','whole'].includes(glass)?'hall':'tension';
   }
   return scene==='hall'?'hall':scene?.includes('dusk')?'dusk':'meadow';

@@ -43,9 +43,13 @@ for(const relative of new Set(Object.values(manifest).flatMap(category=>Object.v
   imageRecords.push({path:relative,bytes:data.length,sha256:sha256(data)});
 }
 const activeScript=(await read('content/script/ch1.md')).split(/^##\s+附录/m)[0];
+const branchScript=await read('content/script/ch1_branch_b.md');
+const branchStart=branchScript.search(/^##\s+SC-02/m);
+if(branchStart<0)throw new Error('Branch script is missing its first scene');
 const files={
   '/assets/manifest.json':JSON.stringify(manifest),
   '/content/script/ch1.md':activeScript,
+  '/content/script/ch1_branch_b.md':branchScript.slice(branchStart),
 };
 const payload=JSON.stringify({modules,images,files}).replace(/</g,'\\u003c');
 const boot=`<script id="offline-game-data" type="application/json">${payload}</script>

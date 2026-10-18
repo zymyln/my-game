@@ -7,6 +7,8 @@ export const MOODS = {
   pressure:{label:'冲突的压迫感',scene:'hall',tint:[27,37,49],wash:.19,edge:.40,x:.72,y:.43,zoom:1.028,bars:9,light:0,wind:0},
   gaze:{label:'那个眼神',scene:'gate_dusk',tint:[29,45,61],wash:.15,edge:.53,x:.80,y:.40,zoom:1.022,bars:12,light:0,wind:0},
   afterglow:{label:'黄昏留白',scene:'field_dusk',tint:[164,111,134],wash:.07,edge:.21,x:.59,y:.40,zoom:1.012,bars:6,light:.04,wind:.5},
+  reflection:{label:'静静看着',scene:'hall',tint:[48,58,69],wash:.10,edge:.20,x:.80,y:.40,zoom:1.025,bars:5,light:.025,wind:0},
+  night:{label:'安静的村口',scene:'gate_dusk',tint:[16,29,57],wash:.46,edge:.25,x:.5,y:.43,zoom:1.006,bars:5,light:0,wind:.15},
 };
 const values=['wash','edge','x','y','zoom','bars','light','wind'];
 const copy=profile=>({...profile,tint:[...profile.tint]});
@@ -37,6 +39,10 @@ export function moodForShot(shot){
   if(['SH-09','SH-10'].includes(shot))return 'unease';
   if(shot==='SH-14')return 'gaze';
   if(['SH-13','SH-15'].includes(shot))return 'afterglow';
+  if(['SH-17','SH-18','SH-19'].includes(shot))return 'unease';
+  if(shot==='SH-20')return 'reflection';
+  if(shot==='SH-23')return 'night';
+  if(shot==='SH-24')return 'afterglow';
   return 'calm';
 }
 

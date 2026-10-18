@@ -78,6 +78,18 @@ export function drawSprite(ctx, actor, x, y, { moving = false, direction = 'down
   if(actor==='elaina'){drawElainaSprite(ctx,x,y,{moving,direction,time});return;}
   ctx.save(); ctx.translate(Math.round(x),Math.round(y));
   rect(ctx,'#385d4630',-9,-1,19,4);
+  const stride=moving?Math.round(Math.sin(time/105)*1.5):0;
+  if(actor==='nino'){
+    rect(ctx,'#28272f',-7,-26,14,19);rect(ctx,'#eee5c6',-8,-29,16,5);
+    rect(ctx,'#eee5c6',-8,-25,3,14);rect(ctx,'#ddd4b8',6,-25,3,14);
+    rect(ctx,'#f1d1bb',-5,-23,10,9);rect(ctx,'#24232a',-5,-26,11,7);rect(ctx,'#24232a',0,-22,6,5);
+    rect(ctx,'#a74c4c',-4,-20,2,2);rect(ctx,'#b68491',-5,-15,11,9);
+    rect(ctx,'#eee7d2',-7,-15,3,9);rect(ctx,'#eee7d2',5,-15,3,9);
+    polygon(ctx,'#65584e',[[-5,-8],[6,-8],[9,-1],[-8,-1]]);
+    rect(ctx,'#33292a',-5,-1+stride,4,3);rect(ctx,'#33292a',2,-1-stride,4,3);
+    ctx.restore();return;
+  }
+  if(moving)ctx.translate(0,Math.abs(stride)===2?-1:0);
   {
     rect(ctx,'#c6b37d',-5,-15,10,12);rect(ctx,'#eee0b5',-6,-15,3,9);rect(ctx,'#eee0b5',4,-15,3,9);
     rect(ctx,'#e7c49d',-5,-23,10,9);rect(ctx,'#90734c',-6,-25,12,5);rect(ctx,'#aa8956',-4,-27,9,5);rect(ctx,'#b69760',-6,-24,5,4);
@@ -210,16 +222,19 @@ function createCanvas(paint) {
   const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;paint(ctx);return canvas;
 }
 
-function drawDuskSky(ctx) {
-  const bands=['#b1a5b7','#c2adba','#d6b7b6','#e5c3ad','#edcda9','#dfc7ac'];
+function drawDuskSky(ctx,{night=false}={}) {
+  const bands=night?['#18233a','#1d2943','#23314b','#29394f','#344453','#40525b']:['#b1a5b7','#c2adba','#d6b7b6','#e5c3ad','#edcda9','#dfc7ac'];
   bands.forEach((color,index)=>rect(ctx,color,0,index*22,640,23));
-  rect(ctx,'#f1d7ad',451,59,31,25);rect(ctx,'#f1d7ad',456,54,21,35);
+  if(night){
+    rect(ctx,'#d9dfd5',451,59,23,21);rect(ctx,'#d9dfd5',456,54,14,31);rect(ctx,'#23314b',461,52,15,25);
+    for(const [x,y]of[[44,23],[97,61],[161,35],[236,15],[306,47],[369,24],[530,36],[599,17]])rect(ctx,'#c5d4d6',x,y,1,1);
+  } else {rect(ctx,'#f1d7ad',451,59,31,25);rect(ctx,'#f1d7ad',456,54,21,35);}
   polygon(ctx,'#a9a9a0',[[0,102],[65,81],[128,96],[195,72],[271,98],[337,76],[403,97],[479,84],[547,104],[640,82],[640,146],[0,146]]);
   polygon(ctx,'#8b9d8e',[[0,128],[91,107],[168,124],[244,101],[323,123],[409,105],[487,127],[566,110],[640,124],[640,159],[0,159]]);
 }
 
-function drawGate(ctx) {
-  drawDuskSky(ctx);rect(ctx,'#9fa584',0,149,640,211);
+function drawGate(ctx,{night=false}={}) {
+  drawDuskSky(ctx,{night});rect(ctx,'#9fa584',0,149,640,211);
   polygon(ctx,'#aeb18d',[[0,165],[100,158],[205,173],[322,158],[430,177],[531,160],[640,174],[640,245],[0,245]]);
   polygon(ctx,'#c9b793',[[297,139],[342,139],[338,198],[358,275],[389,360],[248,360],[282,269],[303,195]]);
   polygon(ctx,'#d9c59e',[[307,139],[333,139],[330,203],[349,278],[374,360],[267,360],[293,271],[311,199]]);
@@ -245,6 +260,7 @@ export function createSceneBackgrounds() {
     ['field_day',meadow],
     ['hall',createCanvas(drawInterior)],
     ['gate_dusk',createCanvas(drawGate)],
+    ['gate_night',createCanvas(ctx=>drawGate(ctx,{night:true}))],
     ['field_dusk',createCanvas(ctx=>{ctx.drawImage(duskGround,0,0);rect(ctx,'#79557566',0,0,640,360);drawDuskSky(ctx);rect(ctx,'#dbc8a116',0,150,640,210);ctx.drawImage(duskScenery,0,0);})],
   ]);
 }

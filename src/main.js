@@ -10,6 +10,7 @@ import { audioProfile } from './score.mjs';
 import { setupAudioPanel } from './audio-panel.js';
 import { FlightPlayer } from './flight.mjs';
 import { MemoryPlayer } from './memory.mjs';
+import { BranchStagePlayer, branchCast } from './branch-staging.mjs';
 import { drawElainaFlight } from './elaina-sprite.js';
 
 const $ = id => document.getElementById(id);
@@ -21,6 +22,7 @@ const ui = Object.fromEntries([
   'scene-transition','arrival-name','pause-toggle','pause-screen','resume','back-title',
   'memory-layer','memory-image','memory-text','memory-count','memory-next','memory-picture','memory-release-label','story-prop','glass-prop','sound-toggle',
   'end-kicker','end-title','end-description','passage-label','memory-bottle','scene-atmosphere','story-cg',
+  'choice-layer','choice-options',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -43,6 +45,8 @@ const magic=new MagicPlayer({reducedMotion});
 const stage=new StagePlayer({reducedMotion});
 const flight=new FlightPlayer({reducedMotion});
 const memory=new MemoryPlayer({reducedMotion});
+const branchStage=new BranchStagePlayer({reducedMotion});
+let branchContinuation=null,choiceFocus=0;
 let flightContinuation=null;
 let worldTime=0;
 const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';ui['sound-toggle'].disabled=Boolean(sound.unavailable);ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));};
@@ -72,11 +76,13 @@ function setMode(next) {
   ui.inspection.hidden = next !== 'inspect';
   ui['memory-layer'].hidden = next !== 'memory';
   ui['pause-screen'].hidden = next !== 'pause';
+  ui['choice-layer'].hidden = next !== 'choice';
   ui['pause-toggle'].hidden = ['title','complete','transition','pause'].includes(next);
   ui['story-prop'].hidden = !(propKind && next==='dialogue');
   ui.game.dataset.mode = next;
   ui.game.dataset.playMode='story';
   ui.game.dataset.storyPhase=flow?.phase ?? 'idle';
+  ui.game.dataset.route=flow?.route??'main';
   refreshStoryCG();
 }
 
@@ -140,7 +146,7 @@ async function travel(exit,{automatic=false}={}) {
   Object.assign(player,exit.spawn,{ direction: 'down', moving: false });
   visited.add(sceneId); activeInteraction = null; refreshSceneUI();
   const continueStory=()=>{session=flow.arrive(sceneId);showLine();ui.game.focus({preventScroll:true});};
-  const departing=sceneId==='field_dusk'&&assets.sprites.has('elaina_flying_front');
+  const departing=flow.route==='main'&&sceneId==='field_dusk'&&assets.sprites.has('elaina_flying_front');
   if(departing){
     flight.start('departure',player);flightContinuation=continueStory;
     stage.select('afterglow');
@@ -169,6 +175,7 @@ function resetJourney() {
   ui.game.classList.remove('impact');
   stage.reset();
   flight.reset();flightContinuation=null;
+  branchStage.reset();branchContinuation=null;
   memory.reset();refreshMemoryUI();
   portraitFaces={left:chapter.faces.get('伊蕾娜:站立·平常') ?? 'elaina_standing',right:'emil_bright'};
   ui['dialogue-layer'].classList.remove('no-portraits');
@@ -178,13 +185,14 @@ function resetJourney() {
 
 function startStory() {
   sound.activate().then(syncSound).catch(()=>{});
-  resetJourney();flow=new ChapterFlow(chapter);session=flow.start();
+  resetJourney();flow=new ChapterFlow(chapter,{inspected});session=flow.start();
   if(assets.sprites.has('elaina_flying_front'))flight.start('arrival',START);
   showLine();ui.game.focus({preventScroll:true});
 }
 
 function pauseJourney() {
   if(['title','complete','transition','pause'].includes(mode))return;
+  if(mode==='choice')choiceFocus=Math.max(0,[...ui['choice-options'].children].indexOf(document.activeElement));
   pausedMode=mode;pausedAt=performance.now();setMode('pause');ui.resume.focus({preventScroll:true});
 }
 function resumeJourney() {
@@ -192,8 +200,9 @@ function resumeJourney() {
   const elapsed=performance.now()-pausedAt;
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
+  if(pausedMode==='choice')ui['choice-options'].children[choiceFocus]?.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;branchStage.reset();branchContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
 function playImpact(cue) {
   if(!cue || reducedMotion)return;
@@ -224,6 +233,19 @@ function displayPortrait(side,face) {
 function showLine() {
   const node = session.current;
   if (!node) return;
+  ui.game.dataset.scriptSource=node.sourceFile;
+  branchStage.select(node);
+  if(node.kind==='choice'){
+    ui['choice-options'].replaceChildren(...node.options.map((option,index)=>{
+      const button=document.createElement('button');button.type='button';button.className='choice-option';button.dataset.route=option.route;
+      const number=document.createElement('span');number.textContent=String(index+1);
+      const label=document.createElement('span');label.textContent=option.label;button.append(number,label);
+      button.addEventListener('click',()=>{if(mode!=='choice')return;session=flow.choose(option.route);showLine();ui.game.focus({preventScroll:true});});
+      return button;
+    }));
+    ui.game.dataset.shot=node.shotId;ui.game.dataset.stepKind=node.kind;ui.game.dataset.dialogueId=session.currentId;
+    choiceFocus=0;setMode('choice');ui['choice-options'].firstElementChild.focus({preventScroll:true});return;
+  }
   const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId);
   if(changed) {
     lastShot=node.shotId;glassState=null;propKind=null;effectLocked=false;
@@ -286,21 +308,32 @@ function showLine() {
   textCharacters = Array.from(node.text); typedCount = 0; textStarted = performance.now();
   ui['dialogue-text'].textContent = '';
   ui['dialogue-layer'].classList.remove('ready'); ui['advance-label'].textContent = '显示全文';
-  ui.advance.disabled=performance.now()<advanceReadyAt||flight.busy;
+  ui.advance.disabled=performance.now()<advanceReadyAt||flight.busy||branchStage.kind==='reflection';
   ui.game.dataset.dialogueId = session.currentId;
 }
 
 function advance() {
   if (!['dialogue','memory'].includes(mode)) return;
+  if(mode==='dialogue'&&branchStage.kind==='reflection')return;
   if(mode==='memory'){memory.next();refreshMemoryUI();return;}
   if (mode==='dialogue' && typedCount < textCharacters.length) {
     typedCount = textCharacters.length; ui['dialogue-text'].textContent = textCharacters.join('');
     ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent = '继续'; return;
   }
   if(performance.now()<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy)return;
-  if(flow.advance())showLine();
+  advanceStory();
+}
+
+function advanceStory() {
+  const next=flow.advance();session=flow.session;
+  if(next)showLine();
   else if(flow.phase==='complete')showEnding();
   else if(flow.phase==='to-dusk')leaveVillage();
+  else if(flow.phase==='branch-to-gate')travel(SCENES.hall.interactions.find(item=>item.id==='hall-gate'),{automatic:true});
+  else if(flow.phase==='branch-to-epilogue'){
+    branchStage.leave();branchContinuation=()=>travel({...SCENES.gate_dusk.interactions.find(item=>item.id==='gate-dusk'),spawn:{x:320,y:170}},{automatic:true});
+    stage.select('night');setMode('interlude');ui.game.focus({preventScroll:true});
+  }
   else if(flow.phase==='meet'&&flight.land()){
     flightContinuation=returnToExploration;setMode('flight');
   }
@@ -311,8 +344,8 @@ function showEnding() {
   stage.reset();
   flight.reset();flightContinuation=null;
   glassState=null;propKind=null;effectLocked=false;
-  ui['end-kicker'].textContent='第一章 · 完';
-  ui['end-title'].textContent='瓶中的幸福';
+  ui['end-kicker'].textContent=flow.route==='branchB'?'第一章 · 支线 B 完':'第一章 · 完';
+  ui['end-title'].textContent=flow.route==='branchB'?'不送瓶子':'瓶中的幸福';
   ui['end-description'].textContent='风还在吹。旅途仍将继续。';
   ui.return.textContent='返回标题';
   ui.replay.textContent='从头重读这一章';
@@ -397,6 +430,15 @@ document.addEventListener('keydown',event => {
   if (event.target instanceof HTMLElement && event.target.matches('input,textarea,select,[contenteditable="true"]')) return;
   const key = event.key.toLowerCase();
   const onButton = event.target instanceof HTMLButtonElement;
+  if(mode==='choice'&&key!=='escape'){
+    if(event.repeat)return;
+    const buttons=[...ui['choice-options'].children];
+    const selected=Math.max(0,buttons.indexOf(document.activeElement));
+    if(['arrowup','arrowdown','tab'].includes(key)){event.preventDefault();buttons[(selected+(key==='arrowup'||key==='tab'&&event.shiftKey?-1:1)+buttons.length)%buttons.length].focus();}
+    else if(['1','2'].includes(key)){event.preventDefault();buttons[Number(key)-1]?.click();}
+    else if(['enter',' '].includes(key)){event.preventDefault();buttons[selected]?.click();}
+    return;
+  }
   if (movementKeys.includes(key)) {
     if (mode !== 'title') event.preventDefault();
     if (mode === 'explore') keys.add(key);
@@ -408,7 +450,7 @@ document.addEventListener('keydown',event => {
     if(mode==='pause'){event.preventDefault();resumeJourney();return;}
     if(mode==='inspect'){event.preventDefault();returnToExploration();return;}
     if(mode==='complete'){event.preventDefault();backToTitle();return;}
-    if(['explore','dialogue','memory','flight'].includes(mode)){event.preventDefault();pauseJourney();return;}
+    if(['explore','dialogue','memory','flight','choice','interlude'].includes(mode)){event.preventDefault();pauseJourney();return;}
   }
   if (mode === 'explore' && key === 'e') { event.preventDefault(); interact(); return; }
   if (mode === 'inspect' && [' ','enter','e'].includes(key) && !onButton) { event.preventDefault(); returnToExploration(); return; }
@@ -459,11 +501,12 @@ function draw(time) {
   const readingMode=mode==='dialogue'||mode==='memory'||(mode==='pause'&&['dialogue','memory'].includes(pausedMode));
   const node = readingMode ? session?.current : null;
   const visibleScene = node?.bg && SCENES[node.bg] ? node.bg : sceneId;
+  const night=flow?.route==='branchB'&&visibleScene==='gate_dusk';
   const background = node ? assets.backgrounds.get(node.bg) : null;
-  const cinematic=mode==='flight'||(mode==='pause'&&pausedMode==='flight');
+  const cinematic=['flight','interlude'].includes(mode)||(mode==='pause'&&['flight','interlude'].includes(pausedMode));
   const staged=readingMode||cinematic;
   const flying=flight.snapshot();
-  const hideSprites=node&&shotPresentation(node.shotId).hideSprites||mode==='transition'&&flow?.phase==='to-dusk';
+  const hideSprites=node&&shotPresentation(node.shotId).hideSprites||mode==='transition'&&(flow?.phase==='to-dusk'||flow?.phase.startsWith('branch-'));
   const lighting=stage.snapshot();
   ctx.clearRect(0,0,640,360);ctx.save();
   if(staged){ctx.translate(lighting.x*640,lighting.y*360);ctx.scale(lighting.zoom,lighting.zoom);ctx.translate(-lighting.x*640,-lighting.y*360);}
@@ -472,11 +515,12 @@ function draw(time) {
     const width = background.naturalWidth*scale, height = background.naturalHeight*scale;
     ctx.drawImage(background,(640-width)/2,(360-height)/2,width,height);
   } else {
-    ctx.drawImage(backgrounds.get(visibleScene),0,0);
-    const sprites = hideSprites ? [] : [...SCENES[visibleScene].npcs];
-    if (!hideSprites&&!flying&&visibleScene===sceneId) sprites.push({actor:'elaina',...player});
+    ctx.drawImage(backgrounds.get(night?'gate_night':visibleScene),0,0);
+    const cast=hideSprites?null:branchCast(branchStage.kind==='leaving'?'SH-23':node?.shotId,branchStage.kind==='leaving'?branchStage:null);
+    const sprites = hideSprites ? [] : cast??[...SCENES[visibleScene].npcs];
+    if (!cast&&!hideSprites&&!flying&&visibleScene===sceneId) sprites.push({actor:'elaina',...player});
     sprites.sort((a,b)=>a.y-b.y);
-    for (const sprite of sprites) drawSprite(ctx,sprite.actor,sprite.x,sprite.y,{moving:sprite.moving,direction:sprite.direction,time});
+    for (const sprite of sprites){ctx.save();ctx.globalAlpha=sprite.opacity??1;drawSprite(ctx,sprite.actor,sprite.x,sprite.y,{moving:sprite.moving,direction:sprite.direction,time});ctx.restore();}
     drawAmbient(ctx,visibleScene,time,reducedMotion); drawMarkers(time);
   }
   if(flying){
@@ -493,14 +537,16 @@ function draw(time) {
   if(staged&&ui['story-cg'].hidden)drawAtmosphere(ui['scene-atmosphere'].getContext('2d'),lighting);
   ui.game.dataset.mood=staged?stage.mood:'clear';
   ui.game.dataset.stageTime=stage.time.toFixed(0);
+  ui.game.dataset.branchStage=branchStage.kind??'none';ui.game.dataset.branchProgress=branchStage.progress.toFixed(3);
   if(propKind&&mode==='dialogue')drawMagicEffect(ui['glass-prop'],magic);
   if(mode==='memory')drawMagicEffect(ui['memory-bottle'],memory.bottle,{placement:'release'});
   ui['story-prop'].dataset.phase=magic.phase;
   ui['story-prop'].dataset.progress=magic.progress.toFixed(3);
   const label = document.querySelector('.location');
-  if (label.dataset.location !== visibleScene) {
-    label.dataset.location = visibleScene;
-    label.textContent = `${SCENES[visibleScene].icon}  ${SCENES[visibleScene].name}`;
+  const labelKey=visibleScene+(night?':night':'');
+  if (label.dataset.location !== labelKey) {
+    label.dataset.location = labelKey;
+    label.textContent = night?'☾  村口 · 夜里':`${SCENES[visibleScene].icon}  ${SCENES[visibleScene].name}`;
   }
 }
 
@@ -515,26 +561,33 @@ function frame(time) {
   sound.tick();
   ui.game.dataset.audioProfile=profile;ui.game.dataset.audioState=sound.context?.state??'waiting';ui.game.dataset.musicTrack=sound.music?.id??'';
   if(mode!=='pause')worldTime+=dt*1000;
-  if(['dialogue','flight'].includes(mode)){
+  if(['dialogue','flight','interlude'].includes(mode)){
     stage.update(dt*1000);
     if(!document.hidden)flight.update(dt*1000);
   }
   if(mode==='flight'&&flight.complete){
     const continueStory=flightContinuation;flightContinuation=null;flight.reset();continueStory?.();
   }
+  if(['dialogue','interlude'].includes(mode)&&!document.hidden&&branchStage.kind){
+    branchStage.update(dt*1000);
+    if(branchStage.complete){
+      if(branchStage.kind==='reflection')advanceStory();
+      else{const continueStory=branchContinuation;branchContinuation=null;branchStage.reset();continueStory?.();}
+    }
+  }
   if(mode==='memory'&&!document.hidden){
     memory.update(dt*1000);refreshMemoryUI();
-    if(memory.phase==='complete'&&flow.advance())showLine();
+    if(memory.phase==='complete')advanceStory();
   }
   if(propKind&&['dialogue','memory'].includes(mode))magic.update(dt*1000);
   if (mode==='dialogue' && typedCount<textCharacters.length) {
-    const count = reducedMotion ? textCharacters.length : Math.min(textCharacters.length,Math.floor((time-textStarted)/32));
+    const count = reducedMotion ? textCharacters.length : Math.max(0,Math.min(textCharacters.length,Math.floor((time-textStarted)/32)));
     if (count!==typedCount) { typedCount=count; ui['dialogue-text'].textContent=textCharacters.slice(0,count).join(''); }
     if (typedCount===textCharacters.length) { ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent='继续'; }
   }
   if(mode==='dialogue') {
-    const held=time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy;ui.advance.disabled=held;
-    if(held)ui['advance-label'].textContent='片刻之后…';
+    const held=time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy||branchStage.kind==='reflection';ui.advance.disabled=held;
+    if(held)ui['advance-label'].textContent=branchStage.kind==='reflection'?'静静看着…':'片刻之后…';
     else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
   }
   draw(worldTime); requestAnimationFrame(frame);
@@ -545,11 +598,15 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)sound.setPa
 async function initialize() {
   try {
     if (location.protocol==='file:') throw new Error('请双击项目里的“开始游戏.cmd”，通过本地服务打开；浏览器不能直接读取文件夹里的剧情数据。');
-    const script = await fetch(new URL('../content/script/ch1.md',import.meta.url));
+    const [script,branchScript] = await Promise.all([
+      fetch(new URL('../content/script/ch1.md',import.meta.url)),
+      fetch(new URL('../content/script/ch1_branch_b.md',import.meta.url)),
+    ]);
     if (!script.ok) throw new Error(`旅行见闻读取失败（HTTP ${script.status}）。`);
+    if (!branchScript.ok) throw new Error(`支线剧本读取失败（HTTP ${branchScript.status}）。`);
     const manuscript=await script.text();
     observations = readHallObservations(manuscript);
-    chapter=readChapter(manuscript);
+    chapter=readChapter(manuscript,await branchScript.text());
     await assets.load();
     ui.start.disabled = false; ui.start.innerHTML = '开始旅行 <span aria-hidden="true">→</span>';
     ui['loading-message'].textContent = '第一章 · 瓶中的幸福';
