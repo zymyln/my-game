@@ -1,0 +1,276 @@
+[
+  {
+    "number": 1,
+    "label": "伊蕾娜 · 站立／平常",
+    "face": "elaina_standing",
+    "aliases": [
+      "elaina_standing"
+    ],
+    "source": "assets/portraits/elaina/standing/elaina_standing.png",
+    "file": "single-images/elaina_standing.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "37cad01d3212214967096f3d171a746c496ed992a53fd6be25871375608eae39",
+    "note": ""
+  },
+  {
+    "number": 2,
+    "label": "伊蕾娜 · 站立／微笑",
+    "face": "elaina_standing_smile",
+    "aliases": [
+      "elaina_standing_smile"
+    ],
+    "source": "assets/portraits/elaina/standing/elaina_standing_smile.png",
+    "file": "single-images/elaina_standing_smile.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "50a18995d78d529f48bb7bb7b81b38625b7022b9453f4b4d1975051386cbb036",
+    "note": ""
+  },
+  {
+    "number": 3,
+    "label": "伊蕾娜 · 站立／无语",
+    "face": "elaina_standing_blank",
+    "aliases": [
+      "elaina_standing_blank"
+    ],
+    "source": "assets/portraits/elaina/standing/elaina_standing_blank.png",
+    "file": "single-images/elaina_standing_blank.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "435711e90a5745138670bbc3d06b0352ca4d14976c8907a78e65c8ef7d7275a2",
+    "note": ""
+  },
+  {
+    "number": 4,
+    "label": "伊蕾娜 · 站立／惊讶",
+    "face": "elaina_standing_surprised",
+    "aliases": [
+      "elaina_standing_surprised"
+    ],
+    "source": "assets/portraits/elaina/standing/elaina_standing_surprised.png",
+    "file": "single-images/elaina_standing_surprised.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "2b96b1bb0bb241bfe392379fc3bef2ca11372061be0a600328ec88e5b0f7fa55",
+    "note": ""
+  },
+  {
+    "number": 5,
+    "label": "伊蕾娜 · 站立／正色",
+    "face": "elaina_standing_serious",
+    "aliases": [
+      "elaina_standing_serious"
+    ],
+    "source": "assets/portraits/elaina/standing/elaina_standing_serious.png",
+    "file": "single-images/elaina_standing_serious.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "865a856d3d83c6e6e0bd61397f9a7825a7630f60efff0aa3992e55b746396de5",
+    "note": ""
+  },
+  {
+    "number": 6,
+    "label": "伊蕾娜 · 扶帽／得意",
+    "face": "elaina_confident",
+    "aliases": [
+      "elaina_confident"
+    ],
+    "source": "assets/portraits/elaina/poses/elaina_confident.png",
+    "file": "single-images/elaina_confident.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "ec97d27c56727da2fec62d450b6c7ff9db843d019712297ba3cac03d13fd5865",
+    "note": ""
+  },
+  {
+    "number": 7,
+    "label": "伊蕾娜 · 思考",
+    "face": "elaina_thinking",
+    "aliases": [
+      "elaina_thinking"
+    ],
+    "source": "assets/portraits/elaina/poses/elaina_thinking.png",
+    "file": "single-images/elaina_thinking.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "20a98454d83fb02fad4f44489ab52f6a26a724525711930863186c97f09cb24b",
+    "note": ""
+  },
+  {
+    "number": 8,
+    "label": "伊蕾娜 · 摊手／微笑",
+    "face": "elaina_explaining",
+    "aliases": [
+      "elaina_explaining"
+    ],
+    "source": "assets/portraits/elaina/poses/elaina_explaining.png",
+    "file": "single-images/elaina_explaining.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "72097419855d16f06a298a6c84292743bbe06d121581b5d4891b2335948226ed",
+    "note": ""
+  },
+  {
+    "number": 9,
+    "label": "村长 · 平静",
+    "face": "chief_calm",
+    "aliases": [
+      "chief_calm"
+    ],
+    "source": "assets/portraits/chief/processed/chief_calm.png",
+    "file": "single-images/chief_calm.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "a382174772e8b4fbaad609cc70029b5b2146bac2ec2874bf750faffc6aba5bb6",
+    "note": ""
+  },
+  {
+    "number": 10,
+    "label": "村长 · 不耐烦（预留）",
+    "face": "chief_impatient",
+    "aliases": [
+      "chief_impatient"
+    ],
+    "source": "assets/portraits/chief/processed/chief_impatient.png",
+    "file": "single-images/chief_impatient.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "55ffeccdcf048894e44fcd54cff84ecccb6c9f44d04d825de41890df9f1d73d9",
+    "note": "已登记预留，当前主线未使用"
+  },
+  {
+    "number": 11,
+    "label": "村长 · 愤怒",
+    "face": "chief_angry",
+    "aliases": [
+      "chief_angry"
+    ],
+    "source": "assets/portraits/chief/processed/chief_angry.png",
+    "file": "single-images/chief_angry.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "6bbf5954e776b8899d4014d2b8193ae87402f005eab7958608bac4a3713015de",
+    "note": ""
+  },
+  {
+    "number": 12,
+    "label": "艾米尔 · 平常",
+    "face": "emil_neutral",
+    "aliases": [
+      "emil_neutral",
+      "emil_pout",
+      "emil_serious"
+    ],
+    "source": "assets/portraits/emil/processed/emil_neutral.png",
+    "file": "single-images/emil_neutral.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "6355193fc1e086b580946b06bf68edf913cbec1072010bfa8bc609d4e9f0b175",
+    "note": ""
+  },
+  {
+    "number": 13,
+    "label": "艾米尔 · 灿烂",
+    "face": "emil_bright",
+    "aliases": [
+      "emil_bright"
+    ],
+    "source": "assets/portraits/emil/processed/emil_bright.png",
+    "file": "single-images/emil_bright.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "61ad17c5e1e7e8664f9269d7ec44b43658d2841912ae08c08ec06843afd9773a",
+    "note": ""
+  },
+  {
+    "number": 14,
+    "label": "艾米尔 · 沮丧",
+    "face": "emil_down",
+    "aliases": [
+      "emil_down"
+    ],
+    "source": "assets/portraits/emil/processed/emil_down.png",
+    "file": "single-images/emil_down.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "892c4533d70a2352601b17890506285e67477bf4876d865915dfb566ffd1840d",
+    "note": ""
+  },
+  {
+    "number": 15,
+    "label": "妮诺 · 正常（新版）",
+    "face": "nino_down",
+    "aliases": [
+      "nino_down",
+      "nino_flustered"
+    ],
+    "source": "assets/portraits/nino/processed-v2/nino_down.png",
+    "file": "single-images/nino_down.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "b3f06270910aa14db8754d24332b5b35090c014cf08844b7517ed1ed2682d78f",
+    "note": ""
+  },
+  {
+    "number": 16,
+    "label": "妮诺 · 哭泣（新版）",
+    "face": "nino_teary",
+    "aliases": [
+      "nino_terrified",
+      "nino_teary"
+    ],
+    "source": "assets/portraits/nino/processed-v2/nino_teary.png",
+    "file": "single-images/nino_teary.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "4b7773879a4d3dce4e2cd5b69ef72a46b3a0e2793f1ae18dfe071755bcf3a1d4",
+    "note": ""
+  },
+  {
+    "number": 17,
+    "label": "妮诺 · 微笑（新版）",
+    "face": "nino_smiletiny",
+    "aliases": [
+      "nino_smiletiny"
+    ],
+    "source": "assets/portraits/nino/processed-v2/nino_smiletiny.png",
+    "file": "single-images/nino_smiletiny.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "05309d5e78cf58c62219c1935321cb9452aaf5b888c14119db3e06d43bae905b",
+    "note": ""
+  },
+  {
+    "number": 18,
+    "label": "妮诺 · 空洞（新版）",
+    "face": "nino_empty",
+    "aliases": [
+      "nino_empty"
+    ],
+    "source": "assets/portraits/nino/processed-v2/nino_empty.png",
+    "file": "single-images/nino_empty.png",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "sha256": "a54301fe37c09db065b481ff783703621d639f45a6c43ad1acd54ce9f1b97817",
+    "note": ""
+  }
+]
