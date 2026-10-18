@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-18",
+  "feature": "SH-15 ending CG",
+  "asset": "ch1_ending_field_dusk.png",
+  "originalSha256": "18df0ddabee769c70e9a3fd5b16cf1744549cf3e5bb8618a1bdba97e2975dca3",
+  "mainline": {"shots": 15, "steps": 240, "endingLines": 17, "passed": true},
+  "checks": [
+    "CG begins after departure completes and remains through every epilogue line",
+    "Only CG and dialogue visible during epilogue; portraits, topbar and atmosphere hidden",
+    "Original 2048x1144 image decodes and covers game area without stretching",
+    "1440, 560 and 390 pixel viewports visually inspected; dialogue fits",
+    "Pause/resume retains CG and current dialogue cursor",
+    "Returning to title, restarting story and free roam clear CG",
+    "Reduced-motion mode plays all 17 lines",
+    "Failed CG request falls back to dusk map and all 17 lines remain playable",
+    "Existing chapter tests pass; browser page errors zero",
+    "Image source unchanged; script text and six memory illustrations unchanged"
+  ],
+  "offlineRelease": "Existing ZIP not rebuilt in this change"
+}

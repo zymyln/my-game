@@ -120,6 +120,7 @@ export class ChapterFlow {
 // Program-side staging only. No shared dialogue fields or author IDs are changed.
 export function shotPresentation(id) {
   return {
+    cg:id==='SH-15' ? 'ch1_ending_field_dusk' : null,
     hidePortraits:['SH-01','SH-07','SH-15'].includes(id),
     hideSprites:['SH-07','SH-15'].includes(id),
     rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty'}[id] ?? null,

@@ -21,7 +21,7 @@ const ui = Object.fromEntries([
   'inspection','inspection-title','inspection-text','inspection-image','close-inspection','observation-count',
   'scene-transition','arrival-name','roam','pause-toggle','pause-screen','resume','back-title',
   'memory-layer','memory-image','memory-text','memory-count','memory-next','story-prop','glass-prop','sound-toggle',
-  'end-kicker','end-title','end-description','passage-label','memory-bottle','scene-atmosphere',
+  'end-kicker','end-title','end-description','passage-label','memory-bottle','scene-atmosphere','story-cg',
 ].map(id => [id,$(id)]));
 const ctx = ui.world.getContext('2d');
 ctx.imageSmoothingEnabled = false;
@@ -81,6 +81,18 @@ function setMode(next) {
   ui.game.dataset.mode = next;
   ui.game.dataset.playMode=playMode;
   ui.game.dataset.storyPhase=playMode==='story' ? flow?.phase ?? 'idle' : 'roam';
+  refreshStoryCG();
+}
+
+function refreshStoryCG() {
+  const reading=mode==='dialogue'||(mode==='pause'&&pausedMode==='dialogue');
+  const name=playMode==='story'&&reading ? shotPresentation(session?.current?.shotId).cg : null;
+  const image=assets.cg.get(name);
+  ui['story-cg'].hidden=!image;
+  ui.game.dataset.cg=image ? name : '';
+  if(image) {
+    if(ui['story-cg'].src!==image.src)ui['story-cg'].src=image.src;
+  } else ui['story-cg'].removeAttribute('src');
 }
 
 function refreshSceneUI() {
@@ -484,8 +496,8 @@ function draw(time) {
   ui.game.dataset.flightProgress=(flying?.progress??0).toFixed(3);
   ui.game.dataset.flightFrame=flying?.frame??'';
   ui.game.dataset.playerPosture=flying?(flying.phase==='landing'?'landing':'flying'):hideSprites?'hidden':'walking';
-  ui['scene-atmosphere'].hidden=!staged;
-  if(staged)drawAtmosphere(ui['scene-atmosphere'].getContext('2d'),lighting);
+  ui['scene-atmosphere'].hidden=!staged||!ui['story-cg'].hidden;
+  if(staged&&ui['story-cg'].hidden)drawAtmosphere(ui['scene-atmosphere'].getContext('2d'),lighting);
   ui.game.dataset.mood=staged?stage.mood:'clear';
   ui.game.dataset.stageTime=stage.time.toFixed(0);
   if(propKind&&mode==='dialogue')drawMagicEffect(ui['glass-prop'],magic);
