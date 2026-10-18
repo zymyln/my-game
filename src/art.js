@@ -1,5 +1,6 @@
 import { drawElainaSprite } from './elaina-sprite.js';
 import { drawVillagerSprite } from './villager-sprites.js';
+import { detailInterior, detailGate } from './scene-details.js';
 // Code-drawn scenes and NPC placeholders. Elaina has a dedicated pixel sprite.
 function rect(ctx, color, x, y, w, h) { ctx.fillStyle = color; ctx.fillRect(x, y, w, h); }
 function polygon(ctx, color, points) {
@@ -207,6 +208,7 @@ export function drawInterior(ctx) {
   for(const x of [64,529]){rect(ctx,'#7c6b4f',x,335,45,7);rect(ctx,'#dcc395',x+2,337,41,3);}
   rect(ctx,'#c6b07e',70,310,33,21);rect(ctx,'#9d895f',73,314,27,13);
   rect(ctx,'#c6b07e',535,310,33,21);rect(ctx,'#9d895f',538,314,27,13);
+  detailInterior(ctx);
 }
 
 function createCanvas(paint) {
@@ -238,6 +240,7 @@ function drawGate(ctx,{night=false}={}) {
   const random=seededRandom(125);
   for(let i=0;i<400;i++){const x=Math.floor(random()*640),y=174+Math.floor(random()*186);if(Math.abs(x-320)<45)continue;rect(ctx,i%2?'#bac09a':'#8b9b77',x,y,2,1);if(i%19===0)rect(ctx,'#d6cfaa',x,y-2,2,2);}
   rect(ctx,'#8e78641a',0,0,640,360);
+  detailGate(ctx,{night});
 }
 
 export function createSceneBackgrounds() {
