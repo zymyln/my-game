@@ -472,3 +472,10 @@
 - 用户要求学习本地仓库中的 PixAI 内容，并检查能否调用对应 skill。会话开始已读取最近三条状态记录和协作契约；`git pull` 经一次自动权限审核超时后重试成功，返回已是最新版本。
 - 在当前 main（检查时为 aa87bf4）的全部受跟踪文件、包含隐藏及忽略文件的仓库文本、本地可见提交记录中，未找到 PixAI 相关内容或 SKILL.md；当前会话可用 skill 及用户 skills 目录也未发现 PixAI skill，尚无法验证其调用。
 - 已请用户提供对应目录、分支或另一份本地仓库路径。本轮仅追加检查记录，未修改游戏、剧本、素材、协作契约、AGENTS.md 或 .gitignore，未安装依赖，未调用 PixAI 服务。
+
+## 2026-10-18 仓库检查：定位并读取 PixAI Master
+
+- 用户补充实际路径为 `C:\Users\Elaina\Documents\GitHub\pixai-master`，属于另一份本地仓库；此前在游戏仓库未找到的结论不代表该 skill 不存在。
+- 已读取 PixAI Master 0.1.4 的 SKILL.md、README、模型指南、主要工作流、角色草案及评估用例。本会话可按明确路径读取并执行其文本工作流，但当前自动发现列表中没有该 skill；未安装或改动其文件。
+- 使用已有 Python 运行 scripts/validate_skill.py，通过全部静态检查：55 个必要文件、元数据、版本、实验 CSV、原始手册校验和、相对链接、路径与动态参考图规则。
+- 核心边界：区分 Tsubaki.3 图片引用、Haruka v2 Img2Img 和画布整图重绘；参考图职责按用户指定；模型参数与当前面板相符；编辑先列 PRESERVE/CHANGE；未验证经验不当作平台规格。该 skill 未接入网站自动操作或 PixAI API，本轮没有真实出图。
