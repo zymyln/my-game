@@ -36,31 +36,38 @@ test('all sixteen inspection combinations unlock only when all four distinct obs
     const inspected=new Set(points.filter((_,index)=>mask&(1<<index)));
     inspected.add('unrelated');
     const {flow,seen}=reachChoice(inspected);
-    if(mask===15){assert.equal(flow.phase,'choice');assert.equal(seen.at(-1).shotId,'SH-16');assert.equal(seen.at(-1).kind,'line');}
+    if(mask===15){assert.equal(flow.phase,'choice');assert.equal(seen.at(-1).shotId,'SH-11');assert.equal(seen.at(-1).text,'不用那么在意。');}
     else {assert.equal(flow.phase,'to-gate');assert.ok(seen.some(step=>step.shotId==='SH-12'));assert.ok(!seen.some(step=>step.shotId==='SH-16'));assert.throws(()=>flow.choose('branchB'));}
   }
 });
 
-test('the unlocked prompt follows SH-11 and SH-16 opening narration, then either route is selectable once',()=>{
-  const {flow,seen}=reachChoice();assert.equal(seen.at(-2).shotId,'SH-11');
-  assert.equal(seen.at(-1).text,'艾米尔好像很沮丧。');
+test('the prompt precedes the gift proposal and choosing main preserves every original lunch step',()=>{
+  const {flow,seen}=reachChoice();assert.equal(seen.at(-1).shotId,'SH-11');
+  assert.equal(seen.at(-1).text,'不用那么在意。');
   assert.deepEqual(flow.session.current.options.map(option=>option.label),['建议他送出瓶子','建议他安慰妮诺']);
   const cursor=flow.session.currentId;assert.equal(flow.advance(),null);assert.equal(flow.session.currentId,cursor);
-  assert.throws(()=>flow.choose('invalid'));flow.choose('main');assert.equal(flow.session.current.shotId,'SH-12');assert.throws(()=>flow.choose('branchB'));
+  assert.throws(()=>flow.choose('invalid'));flow.choose('main');assert.match(flow.session.current.text,/这不是送她礼物/);assert.throws(()=>flow.choose('branchB'));
   const gift=finish(flow);assert.equal(gift.filter(step=>step.kind==='memory').length,6);assert.equal(flow.phase,'to-gate');
+  assert.deepEqual([...seen,...gift],['SH-08','SH-09','SH-10','SH-11','SH-12'].flatMap(id=>chapter.shots.get(id).steps));
   flow.arrive('gate_dusk');finish(flow);assert.equal(flow.phase,'to-dusk');flow.arrive('field_dusk');finish(flow);assert.equal(flow.phase,'complete');assert.equal(flow.route,'main');
 });
 
 test('branch B retains all dialogue, skips gift memories and original ending, and reaches its own last line',()=>{
   const {flow,seen}=reachChoice();flow.choose('branchB');
-  const branchSteps=finish(flow);assert.equal(branchSteps[0].shotId,'SH-16');assert.match(branchSteps[0].text,/女孩子受伤/);
+  const branchSteps=finish(flow);assert.equal(branchSteps[0].shotId,'SH-16');assert.equal(branchSteps[0].text,'艾米尔好像很沮丧。');
+  assert.ok(!seen.some(step=>/送她礼物|天才|称赞|纯真的孩子/.test(step.text)));
   assert.equal(flow.phase,'branch-to-gate');assert.deepEqual(flow.interactions(),[]);assert.throws(()=>flow.arrive('field_dusk'));
   flow.arrive('gate_dusk');finish(flow,branchSteps);assert.equal(flow.phase,'branch-to-epilogue');
   flow.arrive('field_dusk');finish(flow,branchSteps);assert.equal(flow.phase,'complete');assert.equal(flow.route,'branchB');
   assert.equal(branchSteps.at(-1).text,'没错，就是我。');
   assert.ok(![...seen,...branchSteps].some(step=>['SH-12','SH-13','SH-14','SH-15'].includes(step.shotId)||step.kind==='memory'));
   const expected=[...chapter.shots.values()].filter(shot=>Number(shot.id.slice(3))>=16).flatMap(shot=>shot.steps).filter(step=>step.kind==='line');
-  assert.deepEqual([...seen.filter(step=>step.shotId==='SH-16'),...branchSteps],expected);
+  assert.deepEqual(branchSteps,expected);
+});
+
+test('a missing or ambiguous gift proposal cannot silently relocate the choice',()=>{
+  assert.throws(()=>readChapter(source.replace('这不是送她礼物','可以给她礼物'),branch),/定位选择/);
+  assert.throws(()=>readChapter(source.replace('不用那么在意。','这不是送她礼物。'),branch),/定位选择/);
 });
 
 test('branch-only expression aliases never weaken validation of the original script or new typos',()=>{

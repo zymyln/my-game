@@ -8,7 +8,6 @@ const BLOCKS = {
   lunch: { shots:['SH-08','SH-09','SH-10','SH-11','SH-12'], after:'to-gate' },
   farewell: { shots:['SH-13','SH-14'], after:'to-dusk' },
   epilogue: { shots:['SH-15'], after:'complete' },
-  gift: { shots:['SH-12'], after:'to-gate' },
   branchB: { shots:['SH-16','SH-17','SH-18','SH-19','SH-20','SH-21','SH-22'], after:'branch-to-gate', optional:true },
   branchFarewell: { shots:['SH-23'], after:'branch-to-epilogue', optional:true },
   branchEpilogue: { shots:['SH-24'], after:'complete', optional:true },
@@ -108,7 +107,9 @@ export function readChapter(markdown,branchMarkdown=null) {
     step.sourceFile=planned.has(current.id)?'content/script/ch1.md':'content/script/ch1_branch_b.md';
     step.cursor=`${current.id}:${index}`;
   });
-  return { shots, faces, branchAvailable:branchMarkdown!==null, lineCount:[...shots.values()].reduce((sum,current)=>sum+current.steps.filter(step=>step.kind==='line').length,0) };
+  const proposals=shots.get('SH-11').steps.filter(step=>step.speaker==='伊蕾娜'&&step.text.includes('这不是送她礼物'));
+  if(branchMarkdown!==null&&proposals.length!==1)throw new Error('SH-11 需要唯一的伊蕾娜送礼提议，才能定位选择。');
+  return { shots, faces, choiceBefore:proposals[0]?.cursor, branchAvailable:branchMarkdown!==null, lineCount:[...shots.values()].reduce((sum,current)=>sum+current.steps.filter(step=>step.kind==='line').length,0) };
 }
 
 class ScriptSession {
@@ -129,7 +130,13 @@ export class ChapterFlow {
   advance() {
     if (this.phase!=='reading') return null;
     const current=this.session.advance();
-    if(this.block==='lunch'&&current?.shotId==='SH-12'&&this.branchUnlocked&&!this.choiceResolved)return this.read('branchB').current;
+    if(this.block==='lunch'&&current?.cursor===this.chapter.choiceBefore&&this.branchUnlocked&&!this.choiceResolved){
+      this.mainContinuation=this.session;
+      this.session=new ScriptSession(this.chapter,['SH-16']);
+      this.session.steps=this.session.steps.filter(step=>step.kind==='choice');
+      this.phase='choice';
+      return this.session.current;
+    }
     if(current?.kind==='choice')this.phase='choice';
     if (!current) this.phase=BLOCKS[this.block].after;
     return current;
@@ -137,8 +144,13 @@ export class ChapterFlow {
   choose(route){
     if(this.phase!=='choice'||!this.branchUnlocked||!this.session.current.options.some(option=>option.route===route))throw new Error('这个选择尚未解锁或已经结束。');
     this.route=route;this.choiceResolved=true;
-    if(route==='main')return this.read('gift');
-    this.phase='reading';this.session.advance();return this.session;
+    if(route==='main'){
+      this.session=this.mainContinuation;this.mainContinuation=null;this.phase='reading';return this.session;
+    }
+    this.mainContinuation=null;
+    this.read('branchB');
+    this.session.steps=this.session.steps.filter(step=>step.kind!=='choice');
+    return this.session;
   }
   meet() { if(this.phase!=='meet')throw new Error('相遇的时机不正确。'); return this.read('meeting'); }
   sit() { if(this.phase!=='waiting')throw new Error('还没到等候午餐的时机。'); return this.read('lunch'); }

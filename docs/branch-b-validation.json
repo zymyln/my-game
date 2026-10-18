@@ -1,22 +1,77 @@
 {
   "date": "2026-10-18",
-  "feature": "Chapter 1 branch B integration",
-  "sources": ["content/script/ch1.md", "content/script/ch1_branch_b.md"],
+  "feature": "Chapter 1 branch B integration and mouse-only early choice",
+  "sources": [
+    "content/script/ch1.md",
+    "content/script/ch1_branch_b.md"
+  ],
   "sourceFilesModified": false,
-  "content": {"shotsAvailable": 24, "spokenLinesAvailable": 316, "newBranchShots": 9, "newBranchSpokenLines": 82, "choiceGroups": 1},
+  "content": {
+    "shotsAvailable": 24,
+    "spokenLinesAvailable": 316,
+    "newBranchShots": 9,
+    "newBranchSpokenLines": 82,
+    "choiceGroups": 1
+  },
   "requiredNewImageFiles": 0,
   "requiredNewAudioFiles": 0,
-  "unitTests": {"passed": 49, "newBranchTests": 9, "inspectionSubsetsChecked": 16},
+  "unitTests": {
+    "passed": 50,
+    "newBranchTests": 10,
+    "inspectionSubsetsChecked": 16
+  },
   "browser": "Microsoft Edge, normal motion, full paths from title through physical walking and inspections",
   "fullPaths": [
-    {"route": "branchB", "inspections": 4, "steps": 265, "shots": 20, "memoryImages": 0, "choices": 1, "automaticReflectionLines": 4, "coupleWalking": true, "flightKinds": ["arrival"], "pageErrors": []},
-    {"route": "main after unlocked choice", "inspections": 4, "steps": 242, "shots": 16, "memoryImages": 6, "choices": 1, "originalEndingCG": true, "flightKinds": ["arrival", "farewell", "departure"], "pageErrors": []},
-    {"route": "main with branch locked", "inspections": 3, "steps": 240, "shots": 15, "memoryImages": 6, "choices": 0, "originalEndingCG": true, "flightKinds": ["arrival", "farewell", "departure"], "pageErrors": []}
+    {
+      "route": "branchB",
+      "inspections": 4,
+      "steps": 260,
+      "shots": 20,
+      "memoryImages": 0,
+      "choices": 1,
+      "automaticReflectionLines": 4,
+      "coupleWalking": true,
+      "flightKinds": [
+        "arrival"
+      ],
+      "pageErrors": []
+    },
+    {
+      "route": "main after unlocked choice",
+      "inspections": 4,
+      "steps": 241,
+      "shots": 16,
+      "memoryImages": 6,
+      "choices": 1,
+      "originalEndingCG": true,
+      "flightKinds": [
+        "arrival",
+        "farewell",
+        "departure"
+      ],
+      "pageErrors": []
+    },
+    {
+      "route": "main with branch locked",
+      "inspections": 3,
+      "steps": 240,
+      "shots": 15,
+      "memoryImages": 6,
+      "choices": 0,
+      "originalEndingCG": true,
+      "flightKinds": [
+        "arrival",
+        "farewell",
+        "departure"
+      ],
+      "pageErrors": [],
+      "verification": "Previous full browser path; current regression checks all 16 investigation subsets preserve the locked original route"
+    }
   ],
   "additionalChecks": [
     "All branch dialogue is presented in authored order, with no production notes or missing SH-16 speech",
     "Every branch expression resolves to an existing manifest portrait",
-    "Choice supports mouse, arrows, Enter, digit shortcuts and paused focus restoration",
+    "Choice accepts only a left mouse click; Space, E, Enter, digits, arrows, Tab, held keys, native keyboard clicks, right/middle mouse and touch cannot select; pause/resume remains safe",
     "Choice and night scene inspected at 1440px and 390px, with no horizontal overflow",
     "Reflection narration advances automatically and cannot be skipped by clicks or Space",
     "Reflection and couple departure pause without advancing the game clock",
@@ -28,7 +83,17 @@
     "Branch text edited through a browser test route is read on refresh",
     "Missing branch file yields an explicit startup error rather than silently omitting it",
     "Packaged active script slices parse to the same available shots and line count",
-    "JavaScript syntax and git diff whitespace checks pass; no new dependencies"
+    "JavaScript syntax and git diff whitespace checks pass; no new dependencies",
+    "Choice appears after 不用那么在意 and before the SH-11 gift proposal; main resumes all five original tail lines, branch skips them and retains every SH-16 spoken line"
   ],
-  "offlineRelease": "Existing ZIP not rebuilt; exporter updated to include branch body without production notes"
+  "offlineRelease": "Existing ZIP not rebuilt; exporter updated to include branch body without production notes",
+  "currentBrowserRegression": {
+    "routes": [
+      "main",
+      "branchB"
+    ],
+    "fullPathsPassed": true,
+    "inputChecksPassed": true,
+    "pageErrors": []
+  }
 }

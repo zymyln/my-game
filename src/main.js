@@ -46,7 +46,7 @@ const stage=new StagePlayer({reducedMotion});
 const flight=new FlightPlayer({reducedMotion});
 const memory=new MemoryPlayer({reducedMotion});
 const branchStage=new BranchStagePlayer({reducedMotion});
-let branchContinuation=null,choiceFocus=0;
+let branchContinuation=null;
 let flightContinuation=null;
 let worldTime=0;
 const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';ui['sound-toggle'].disabled=Boolean(sound.unavailable);ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));};
@@ -192,7 +192,6 @@ function startStory() {
 
 function pauseJourney() {
   if(['title','complete','transition','pause'].includes(mode))return;
-  if(mode==='choice')choiceFocus=Math.max(0,[...ui['choice-options'].children].indexOf(document.activeElement));
   pausedMode=mode;pausedAt=performance.now();setMode('pause');ui.resume.focus({preventScroll:true});
 }
 function resumeJourney() {
@@ -200,7 +199,6 @@ function resumeJourney() {
   const elapsed=performance.now()-pausedAt;
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
-  if(pausedMode==='choice')ui['choice-options'].children[choiceFocus]?.focus({preventScroll:true});
 }
 function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;branchStage.reset();branchContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
@@ -238,13 +236,14 @@ function showLine() {
   if(node.kind==='choice'){
     ui['choice-options'].replaceChildren(...node.options.map((option,index)=>{
       const button=document.createElement('button');button.type='button';button.className='choice-option';button.dataset.route=option.route;
+      button.tabIndex=-1;
       const number=document.createElement('span');number.textContent=String(index+1);
       const label=document.createElement('span');label.textContent=option.label;button.append(number,label);
-      button.addEventListener('click',()=>{if(mode!=='choice')return;session=flow.choose(option.route);showLine();ui.game.focus({preventScroll:true});});
+      button.addEventListener('click',event=>{if(mode!=='choice'||event.button!==0||event.detail===0||event.pointerType!=='mouse')return;session=flow.choose(option.route);showLine();ui.game.focus({preventScroll:true});});
       return button;
     }));
     ui.game.dataset.shot=node.shotId;ui.game.dataset.stepKind=node.kind;ui.game.dataset.dialogueId=session.currentId;
-    choiceFocus=0;setMode('choice');ui['choice-options'].firstElementChild.focus({preventScroll:true});return;
+    setMode('choice');ui.game.focus({preventScroll:true});return;
   }
   const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId);
   if(changed) {
@@ -431,12 +430,7 @@ document.addEventListener('keydown',event => {
   const key = event.key.toLowerCase();
   const onButton = event.target instanceof HTMLButtonElement;
   if(mode==='choice'&&key!=='escape'){
-    if(event.repeat)return;
-    const buttons=[...ui['choice-options'].children];
-    const selected=Math.max(0,buttons.indexOf(document.activeElement));
-    if(['arrowup','arrowdown','tab'].includes(key)){event.preventDefault();buttons[(selected+(key==='arrowup'||key==='tab'&&event.shiftKey?-1:1)+buttons.length)%buttons.length].focus();}
-    else if(['1','2'].includes(key)){event.preventDefault();buttons[Number(key)-1]?.click();}
-    else if(['enter',' '].includes(key)){event.preventDefault();buttons[selected]?.click();}
+    event.preventDefault();
     return;
   }
   if (movementKeys.includes(key)) {
