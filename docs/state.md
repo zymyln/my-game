@@ -554,3 +554,11 @@
 - Word 共五页。逐段核对来源正文完整一致；标准 render_docx.py 因环境缺少 LibreOffice 无法渲染，改用本机已有 WPS 只读导出临时 PDF、随附 Poppler 转页面 PNG，全部五页视觉复核通过，清除模板自带标题蓝线。PDF/PNG 仅为仓库外 QA，不作为交付物。
 - 将用户《月下旅途：两人同行.png》原字节归档为 assets/cg/ch1_branch_b_moonlit_journey.png，1672×941、2,445,373 字节；源与目标哈希一致，详见 branch-b-validation.json。更新 CG 说明，明确只保存，待剧本确定后决定演出，未登记 manifest 或接入游戏。
 - 未修改 content、src、index.html、协作契约、AGENTS.md 或 .gitignore，未安装依赖。等待用户修改 Word 后提供新稿。
+
+## 2026-10-19 主力机：恢复并验证 Word 改稿与月下同行 CG
+
+- 用户说明昨天中断，要求继续同步 Word，且还有一张 CG 待补。启动 git pull 成功，发现 12edad5（user commit）已经保存改后的 Word、同步后的 Markdown 和部分程序接入，故保留现有改动继续验证，没有重复重写或撤销。
+- 逐段核对 Word 与 ch1_branch_b.md 完全一致，仅 Word 单段里的手动换行及新 CG 提示被规范成独立【演出】行。当前九个支线镜头、83 条正文，全章 317 条；SH-20 五句静思、SH-23 新收束旁白、SH-24 白天草原均与用户稿对应。原文含“少年少女的的未来”，未擅自润色。
+- 已接入月下同行 CG，展示于 SH-23 最后两句旁白，替代旧二人步行收尾，然后自动切白天草原后记。还缺用户计划的伊蕾娜日记 CG，当前保留白天草原，不自行生成；迟疑/决心差分及主线行为保留。
+- 52 项 Node 测试通过。Edge 正常/减少动态/CG 缺图三种定点验证均通过：CG 范围、暂停恢复、切白天尾声、全部六句读到结尾、返回标题清理、原线 CG 回归，页面错误为零。1440/390px 实际截图视觉复查两人可见、对白不溢出；新增 assets/cg/branch-b-integration-validation.json 和校对截图。此轮未重复完整行走流程。
+- 更新 README、CG 与支线接入说明及归档状态。此轮未修改 content、程序、协作契约、AGENTS.md 或 .gitignore，未安装依赖，未更新旧离线包。待用户试玩新支线收尾并提供最后一张 CG。
