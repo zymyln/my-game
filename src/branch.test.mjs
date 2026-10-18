@@ -110,7 +110,7 @@ test('night farewell moves Emil and Nino only, keeps Elaina still and cancels cl
 
 test('branch staging hides the reflection portraits and uses its own ending without the original CG',()=>{
   assert.equal(shotPresentation('SH-20').hidePortraits,true);assert.equal(shotPresentation('SH-24').hidePortraits,true);assert.equal(shotPresentation('SH-24').hideSprites,true);assert.equal(shotPresentation('SH-24').cg,'ch1_branch_b_happy_ending');
-  assert.equal(audioProfile({mode:'dialogue',scene:'gate_dusk',shot:'SH-23'}),'hush');assert.equal(audioProfile({mode:'dialogue',scene:'field_dusk',shot:'SH-24'}),'hope');
+  assert.equal(audioProfile({mode:'dialogue',scene:'gate_dusk',shot:'SH-23'}),'night');assert.equal(audioProfile({mode:'dialogue',scene:'field_dusk',shot:'SH-24'}),'hope');
 });
 
 test('the revised script shows the couple CG only on its closing narration and then uses daylight',()=>{

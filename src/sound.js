@@ -41,14 +41,14 @@ export class SoundEffects {
   }
   async ensureMusic(){
     const id=PROFILES[this.profile].music;
-    if(this.music?.id===id)return;
+    if(this.music?.id===id){if(id)this.ramp(this.music.gain.gain,.72*(PROFILES[this.profile].musicScale??1),.8);return;}
     if(this.music){this.stopLoop(this.music,1.1);this.music=null;}
     if(!id||!this.enabled||this.paused)return;
     if(!this.cache.has(id))this.cache.set(id,renderScore(id).catch(()=>null));
     const buffer=await this.cache.get(id);
     if(!buffer||PROFILES[this.profile].music!==id||this.music?.id===id||!this.enabled||this.paused)return;
     const ctx=this.context,source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=buffer;source.loop=true;gain.gain.value=0;
-    source.connect(gain);gain.connect(this.buses.music);source.start();this.ramp(gain.gain,.72,1.2);this.music={id,source,gain};
+    source.connect(gain);gain.connect(this.buses.music);source.start();this.ramp(gain.gain,.72*(PROFILES[this.profile].musicScale??1),1.6);this.music={id,source,gain};
     source.onended=()=>{source.disconnect();gain.disconnect();};
   }
   ensureAmbience(){
@@ -59,7 +59,7 @@ export class SoundEffects {
     const ctx=this.context,source=ctx.createBufferSource(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
     source.buffer=this.noiseBuffer??=this.makeNoise();source.loop=true;filter.type='lowpass';filter.frequency.value=id==='room'?240:id==='evening'?420:720;
     source.connect(filter);filter.connect(gain);gain.connect(this.buses.ambience);gain.gain.value=0;source.start();this.ramp(gain.gain,(profile.ambientScale??1)*(id==='room'?.035:.09),1);
-    this.ambient={id,source,gain};this.birdAt=ctx.currentTime+3;
+    this.ambient={id,source,gain};this.birdAt=ctx.currentTime+3;this.cicadaAt=ctx.currentTime+1.3;
     source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();};
   }
   makeNoise(){
@@ -92,6 +92,21 @@ export class SoundEffects {
   tick(){
     if(!this.enabled||this.paused||!this.context||this.context.state!=='running')return;
     if(this.profile==='meadow'&&this.context.currentTime>=this.birdAt){this.birdAt=this.context.currentTime+6.5;this.tone(2200,.15,.014,{end:2900,channel:'ambience'});this.tone(2850,.18,.010,{delay:.21,end:2300,channel:'ambience'});}
+    if(this.profile==='night'&&this.context.currentTime>=this.cicadaAt){this.cicadaAt=this.context.currentTime+4.8;this.cicada();}
+  }
+  cicada(){
+    const ctx=this.context;
+    if(!this.cicadaBuffer){
+      const buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*1.4),ctx.sampleRate),data=buffer.getChannelData(0);
+      for(let i=0;i<data.length;i++){
+        const t=i/ctx.sampleRate,envelope=Math.sin(Math.PI*t/1.4)**2;
+        const pulse=(.5+.5*Math.sin(2*Math.PI*19*t))**3;
+        data[i]=envelope*pulse*(Math.sin(2*Math.PI*3650*t)*.6+Math.sin(2*Math.PI*4210*t)*.22);
+      }
+      this.cicadaBuffer=buffer;
+    }
+    const source=ctx.createBufferSource(),gain=ctx.createGain();source.buffer=this.cicadaBuffer;gain.gain.value=.018;
+    this.cueSource(source,gain,1.42,'ambience');
   }
   play(kind){
     if(!this.enabled||this.paused||!this.context||this.context.state!=='running')return;
@@ -104,6 +119,8 @@ export class SoundEffects {
     else if(kind==='door'){this.noise(.32,.09,1100);this.tone(180,.28,.035,{end:130});}
     else if(kind==='sparkle')[1046,1568].forEach((pitch,i)=>this.tone(pitch,.8,.032,{delay:i*.13}));
     else if(kind==='impact'){this.noise(.19,.10,280);this.tone(75,.32,.07,{end:48});}
+    else if(kind==='crockery'){this.tone(1680,.25,.022,{end:1540});this.tone(2420,.18,.012,{delay:.14,end:2190});this.noise(.12,.012,2800);}
+    else if(kind==='kitchen-steps'){for(let i=0;i<3;i++)this.tone(135-i*8,.10,.045,{delay:i*.19,end:78});this.noise(.12,.03,700);}
     else if(kind==='ui')this.tone(660,.07,.035,{end:780});
   }
 }

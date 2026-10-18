@@ -1,0 +1,13 @@
+{
+  "cuesOnce": true,
+  "reflection": true,
+  "hopeScore": {
+    "seconds": 30,
+    "peak": 0.7200000286102295,
+    "rms": 0.1327736324059302
+  },
+  "nightCicada": true,
+  "pauseSuspends": true,
+  "muteSuppresses": true,
+  "errors": []
+}

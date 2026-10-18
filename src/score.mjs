@@ -1,6 +1,9 @@
 // Original short scores, in MIDI pitch numbers. No downloaded music or samples.
 const phrase=(notes)=>notes.map((pitch,i)=>[i*.5,pitch,i%4===3?.8:.45]);
 export const SCORES={
+  hope:{name:'各自启程',bpm:64,beats:4,voice:'piano',chords:[[48,55,60,64],[45,52,57,60],[41,48,53,57],[43,50,55,62]],melody:[
+    [[.5,72,1],[2.5,76,1]],[[0,74,1.5],[2.5,72,1]],[[.5,69,1],[2,72,1.5]],[[0,71,1],[2,72,1.8]],
+  ]},
   meadow:{name:'风经过的地方',bpm:88,beats:3,voice:'flute',chords:[[48,55,60,64],[45,52,57,60],[41,48,53,57],[43,50,55,59],[48,55,60,64],[45,52,57,60],[41,48,53,57],[43,50,55,59]],melody:[
     phrase([76,79,81,79,76,74]),phrase([72,76,79,76,72,69]),phrase([72,74,77,76,74,72]),phrase([71,74,79,77,74,71]),
     phrase([76,79,84,83,81,79]),phrase([81,79,76,72,71,69]),phrase([69,72,77,76,74,72]),[[0,71,.7],[1,74,.6],[2,72,.9]],
@@ -23,17 +26,23 @@ export const PROFILES={
   quiet:{music:null,ambience:null},meadow:{music:'meadow',ambience:'wind'},hall:{music:'hall',ambience:'room'},
   tension:{music:'tension',ambience:null},memory:{music:'memory',ambience:null},
   dusk:{music:'dusk',ambience:'evening'},hush:{music:null,ambience:'evening',ambientScale:.18},
-  hope:{music:'meadow',ambience:'evening',ambientScale:.3},
+  reflection:{music:null,ambience:'room',ambientScale:.3},
+  resolve:{music:'hope',ambience:'room',ambientScale:.4,musicScale:.48},
+  night:{music:null,ambience:'night',ambientScale:.4},
+  hope:{music:'hope',ambience:'wind',ambientScale:.25,musicScale:.7},
 };
 export function audioProfile({mode,scene,shot,kind,glass}){
+  if(kind==='curtain')return 'quiet';
   if(['title','complete','transition'].includes(mode))return 'quiet';
   if(mode==='memory'||kind==='memory')return 'memory';
   if(mode==='interlude')return 'hush';
   if(mode==='dialogue'){
     if(shot==='SH-09')return 'quiet';
     if(shot==='SH-14')return 'hush';
-    if(['SH-19','SH-20'].includes(shot))return 'quiet';
-    if(shot==='SH-23')return 'hush';
+    if(shot==='SH-19')return 'quiet';
+    if(shot==='SH-20')return 'reflection';
+    if(['SH-21','SH-22'].includes(shot))return 'resolve';
+    if(shot==='SH-23')return 'night';
     if(shot==='SH-24')return 'hope';
     if(shot==='SH-10')return ['mist','whole'].includes(glass)?'hall':'tension';
   }
@@ -41,3 +50,11 @@ export function audioProfile({mode,scene,shot,kind,glass}){
 }
 export const scoreLength=score=>score.chords.length*score.beats*60/score.bpm*(score.voice==='pad'?1:2);
 export const frequency=pitch=>440*2**((pitch-69)/12);
+
+// One restrained cue at the matching narration, never on every click.
+export function branchSoundCue(step){
+  if(step?.speaker!=='旁白')return null;
+  if(step.shotId==='SH-16'&&/^他跑进厨房/.test(step.text))return 'kitchen-steps';
+  if(step.shotId==='SH-17'&&/^厨房里传来碗盘/.test(step.text))return 'crockery';
+  return null;
+}

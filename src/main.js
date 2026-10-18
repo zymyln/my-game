@@ -7,7 +7,7 @@ import { SoundEffects } from './sound.js';
 import { MagicPlayer } from './magic.mjs';
 import { drawMagicEffect } from './magic-art.js';
 import { StagePlayer, moodForShot, drawAtmosphere } from './staging.mjs';
-import { audioProfile } from './score.mjs';
+import { audioProfile, branchSoundCue } from './score.mjs';
 import { setupAudioPanel } from './audio-panel.js';
 import { FlightPlayer } from './flight.mjs';
 import { MemoryPlayer } from './memory.mjs';
@@ -53,6 +53,7 @@ function resetCurtain(){cgTransition.reset();curtain.hidden=true;curtain.style.o
 let branchContinuation=null;
 let flightContinuation=null;
 let worldTime=0;
+let lastBranchCue=null;
 const syncSound=()=>{ui['sound-toggle'].textContent=sound.unavailable?'声音不可用':sound.enabled?'声音：开':'声音：关';ui['sound-toggle'].disabled=Boolean(sound.unavailable);ui['sound-toggle'].setAttribute('aria-pressed',String(sound.enabled&&!sound.unavailable));};
 let panelPausedGame=false;
 const audioPanel=setupAudioPanel({sound,onChange:syncSound,onOpen:()=>{panelPausedGame=!['title','pause','complete'].includes(mode);if(panelPausedGame)pauseJourney();},onClose:()=>{if(panelPausedGame)resumeJourney();panelPausedGame=false;}});
@@ -173,6 +174,7 @@ function leaveVillage() {
 }
 
 function resetJourney() {
+  lastBranchCue=null;if(sound.context)sound.stopCues();
   sceneId=START_SCENE;Object.assign(player,START,{direction:'right',moving:false});
   visited.clear();visited.add(START_SCENE);inspected.clear();
   lastShot=null;glassState=null;propKind=null;effectLocked=false;advanceReadyAt=0;activeInteraction=null;
@@ -204,7 +206,7 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {resetCurtain();glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;branchStage.reset();branchContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {resetCurtain();if(sound.context)sound.stopCues();glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;branchStage.reset();branchContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
 function playImpact(cue) {
   if(!cue || reducedMotion)return;
@@ -296,6 +298,7 @@ function showLine(transitioned=false) {
   }
   if(memory.number){memory.reset();refreshMemoryUI();}
   setMode('dialogue');
+  if(node.cursor!==lastBranchCue){lastBranchCue=node.cursor;const cue=branchSoundCue(node);if(cue)sound.play(cue);}
   $('portrait-right').querySelector('.portrait-label').textContent=ACTOR_NAMES[portraitFaces.right.split('_')[0]] || '艾米尔';
   const narration = node.speaker === '旁白';
   ui.speaker.hidden = narration; ui.speaker.textContent = narration ? '' : node.speaker;
@@ -559,7 +562,7 @@ function frame(time) {
   ui.game.dataset.cgTransition=cgTransition.busy?'busy':'';
   const audioMode=mode==='pause'?pausedMode:mode;
   const audioNode=['dialogue','memory'].includes(audioMode)?session?.current:null;
-  const profile=audioPanel.active&&audioPanel.profile?audioPanel.profile:audioProfile({mode:audioMode,scene:audioNode?.bg??sceneId,shot:audioNode?.shotId??null,glass:glassState});
+  const profile=audioPanel.active&&audioPanel.profile?audioPanel.profile:audioProfile({mode:audioMode,scene:audioNode?.bg??sceneId,shot:audioNode?.shotId??null,glass:glassState,kind:cgTransition.busy?'curtain':null});
   sound.setProfile(profile);
   sound.setPaused(document.hidden||(!audioPanel.active&&mode==='pause'));
   sound.tick();
