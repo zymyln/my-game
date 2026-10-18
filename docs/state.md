@@ -450,3 +450,11 @@
 - 将 Word 编辑稿归档到 `content/word/第一章支线B_不送瓶子_文本修改稿.docx`，SHA-256 与本地 `outputs` 版本一致。
 - 新增 `content/word/README.md`，说明 `content/script/ch1_branch_b.md` 仍是游戏读取的唯一真源，Word 仅作编辑底稿。
 - 未修改 `src/`、`index.html`、`assets/manifest.json`、`docs/contract.md`、`AGENTS.md`、`.gitignore`，未安装依赖。
+
+## 2026-10-18 企划区：归档新游戏企划《循环小镇》
+
+- 将用户提供的《伊蕾娜同人游戏剧情企划文档(1).docx》原字节归档到 `content/planning/loop-town/伊蕾娜同人游戏剧情企划文档_v0.1.docx`，并按原结构整理为 `content/planning/loop-town/剧情企划.md`。
+- 新增 `content/planning/README.md` 与企划目录说明，在根 README 增加“仓库内容板块”入口。该企划分为独立的新游戏板块，尚未接入程序，不影响当前第一章游戏。
+- 验证：Word 归档 SHA-256 与源文件一致；原文档 116 个非空段落逐段核对，Markdown 无漏搬；`git diff --check` 通过。
+- 未修改 `content/script/`、`src/`、`index.html`、`docs/contract.md`、`AGENTS.md` 或 `.gitignore`，未安装依赖。
+- 网络备注：会话开始执行 `git pull` 时连接 GitHub 443 超时；本地工作区原为干净且与 `origin/main` 对齐，完成本地提交后再次尝试推送。
