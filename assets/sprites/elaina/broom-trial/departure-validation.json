@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-18",
+  "feature": "Automatic downward village farewell and grassland departure",
+  "sprite": "elaina_broom_front_source.png",
+  "village": {"kind": "farewell", "durationMs": 2200, "start": {"x": 320, "y": 204}, "endY": 420},
+  "grassland": {"kind": "departure", "durationMs": 3000, "start": {"x": 320, "y": 170}, "endY": 420},
+  "frame": "front",
+  "scale": 1,
+  "unitTestsPassed": 40,
+  "browserMainline": {"shots": 15, "steps": 240, "memories": 6, "endingCG": true, "errors": []},
+  "focusedChecks": [
+    "Nino uses neutral art at her first SH-10 appearance and throughout collision narration",
+    "Nino's four later SH-10 speaking lines use crying art after scolding",
+    "Title contains only story start, no independent roam or effects-preview UI",
+    "Old effects query does not open a preview; preview module and sample dialogue are not requested",
+    "Farewell and Nino gaze retain all original dialogue and the three-second gaze hold",
+    "Finishing farewell automatically flies downward without walking or pressing E",
+    "Both flight segments use front-facing art with increasing y and constant x and scale",
+    "Scene transition does not restore the walking sprite",
+    "Both segments pause and resume without advancing progress",
+    "Returning to title cancels either segment without later firing its continuation",
+    "Reduced-motion and missing-flight-image cases still automatically reach ending CG",
+    "Desktop and 390px mobile title and flight screenshots visually checked",
+    "No browser page errors; no new dependencies; source PNGs unchanged"
+  ],
+  "offlineRelease": "Existing ZIP remains historical; packaging script updated but ZIP not rebuilt"
+}

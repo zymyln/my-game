@@ -45,7 +45,6 @@ for(const relative of new Set(Object.values(manifest).flatMap(category=>Object.v
 const activeScript=(await read('content/script/ch1.md')).split(/^##\s+附录/m)[0];
 const files={
   '/assets/manifest.json':JSON.stringify(manifest),
-  '/content/dialogue.json':await read('content/dialogue.json'),
   '/content/script/ch1.md':activeScript,
 };
 const payload=JSON.stringify({modules,images,files}).replace(/</g,'\\u003c');
@@ -77,7 +76,7 @@ html=replaceRequired(html,/<link rel="stylesheet" href="\.\/src\/styles\.css"\s*
 html=replaceRequired(html,/<script type="module" src="\.\/src\/main\.js"><\/script>/,()=>boot,'entry module');
 html=html.replace('同人小游戏 · 制作中','第一章 · 离线试玩版').replace('第一章 · 角色素材逐步接入','第一章 · 离线试玩版');
 const htmlData=Buffer.from(html,'utf8');
-const instructions=Buffer.from('\ufeff魔女之旅 · 瓶中的幸福\r\n第一章离线试玩版\r\n\r\n1. 先将压缩包完整解压到任意文件夹。\r\n2. 双击“开始游戏.html”，使用电脑上的 Microsoft Edge 或 Google Chrome 打开。\r\n3. 点击“开始旅行”即可游玩；无需联网、安装程序或安装 Node.js。\r\n\r\n操作：WASD / 方向键移动，E 交互，空格继续，Esc 暂停，F 全屏。\r\n右上角可调整声音和音量。第一章包含自由探索、人物立绘、六段幸福插画和开场/离场飞行。\r\n\r\n如果打开后看到代码或没有运行，请右键“开始游戏.html”→打开方式→Microsoft Edge / Google Chrome。\r\n请不要直接在压缩包预览窗口里运行，也不要用聊天软件内置的文件预览器打开。\r\n关闭浏览器页面即可退出。当前版本无进度存档，刷新页面会回到标题。\r\n\r\n这是《魔女之旅》同人游戏的第一章试玩版。\r\n本包仅含当前运行所需内容，不含开发仓库、素材历史备份或未接入的支线草稿。\r\n手机及聊天软件内置浏览器尚未作为发行目标验证；建议使用电脑浏览器。\r\n','utf8');
+const instructions=Buffer.from('\ufeff魔女之旅 · 瓶中的幸福\r\n第一章离线试玩版\r\n\r\n1. 先将压缩包完整解压到任意文件夹。\r\n2. 双击“开始游戏.html”，使用电脑上的 Microsoft Edge 或 Google Chrome 打开。\r\n3. 点击“开始旅行”即可游玩；无需联网、安装程序或安装 Node.js。\r\n\r\n操作：WASD / 方向键移动，E 交互，空格继续，Esc 暂停，F 全屏。\r\n右上角可调整声音和音量。第一章包含剧情行走与调查、人物立绘、六段幸福插画和开场/离场飞行。\r\n\r\n如果打开后看到代码或没有运行，请右键“开始游戏.html”→打开方式→Microsoft Edge / Google Chrome。\r\n请不要直接在压缩包预览窗口里运行，也不要用聊天软件内置的文件预览器打开。\r\n关闭浏览器页面即可退出。当前版本无进度存档，刷新页面会回到标题。\r\n\r\n这是《魔女之旅》同人游戏的第一章试玩版。\r\n本包仅含当前运行所需内容，不含开发仓库、素材历史备份或未接入的支线草稿。\r\n手机及聊天软件内置浏览器尚未作为发行目标验证；建议使用电脑浏览器。\r\n','utf8');
 
 // ZIP with UTF-8 filenames and raw DEFLATE, using only Node built-ins.
 const crcTable=Array.from({length:256},(_,value)=>{for(let bit=0;bit<8;bit++)value=(value&1)?0xedb88320^(value>>>1):value>>>1;return value>>>0;});

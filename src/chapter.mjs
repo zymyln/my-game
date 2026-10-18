@@ -103,7 +103,7 @@ export class ChapterFlow {
     return {
       meet:['emil'], 'to-hall':['meadow-hall'],
       waiting:['painting','kitchen','apron','table','wait-lunch'],
-      'to-gate':['hall-gate'], 'to-dusk':['gate-dusk'],
+      'to-gate':['hall-gate'],
     }[this.phase] ?? [];
   }
   objective() {
@@ -112,7 +112,7 @@ export class ChapterFlow {
       'to-hall':'沿右上方的小路，前往艾米尔家的餐厅。',
       waiting:'可以四处调查；准备好后，到餐桌下方按 E 坐下。',
       'to-gate':'午后的故事告一段落，前往右下方的出口。',
-      'to-dusk':'穿过两棵树之间的小路，走向黄昏草原。',
+      'to-dusk':'骑着扫帚，继续这段旅途。',
     }[this.phase] ?? '';
   }
 }
@@ -142,6 +142,12 @@ export function impactCue(step) {
   if(glassCue(step)==='sound')return 'glass';
   if(step.speaker==='村长' && /^——你在搞什么啊[！!]/.test(step.text))return 'shout';
   return null;
+}
+
+export function speakingPortrait(step) {
+  // The first startled sound precedes the chief's scolding; tears come later.
+  if(step.shotId==='SH-10'&&step.speaker==='妮诺'&&/^呜/.test(step.text))return 'nino_down';
+  return step.face;
 }
 
 // Event-driven listener reactions persist until a new reaction or their own line.

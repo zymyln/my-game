@@ -27,7 +27,7 @@
           <div id="objective" class="objective"><span class="tiny-star" aria-hidden="true">✦</span><span>草原上的少年，似乎有话想说。</span></div>
           <button id="interact" class="interaction" type="button" hidden><kbd>E</kbd><span>与艾米尔交谈</span></button>
           <div class="explore-caption"><span class="caption-dot"></span><span id="scene-caption">沿着风的方向，继续旅行。</span><span id="observation-count" hidden>见闻 0 / 4</span></div>
-          <div id="route-strip" class="route-strip" aria-label="漫游路线"><span class="route-heading">漫游路线</span></div>
+          <div id="route-strip" class="route-strip" aria-label="旅途路线"><span class="route-heading">第一章</span></div>
         </div>
 
         <section id="title-screen" class="title-screen" aria-labelledby="story-title">
@@ -37,7 +37,6 @@
             <h2 id="story-title">瓶中的<span>幸福</span></h2>
             <p class="title-description">风吹过草原。<br />一位少年，正小心翼翼地收集着幸福。</p>
             <button id="start" class="primary-button" type="button" disabled>正在整理行囊…</button>
-            <div class="title-options"><button id="roam" class="text-button" type="button" disabled>自由漫游</button><button id="effects-open" class="text-button" type="button">演出小剧场</button></div>
             <p id="loading-message" class="title-note" role="status">正在读取旅行手记</p>
           </div>
           <p class="scene-credit">THE THINGS WE FIND ALONG THE WAY</p>
@@ -80,13 +79,6 @@
         </section>
         <div id="scene-transition" class="scene-transition" hidden><div><span>沿着旅途，继续前行</span><h2 id="arrival-name"></h2><i aria-hidden="true">✧</i></div></div>
         <div id="error-panel" class="error-panel" role="alert" hidden><h2>旅行手记暂时打不开</h2><p id="error-message"></p><button id="retry" class="primary-button" type="button">重新读取</button></div>
-        <section id="effects-preview" class="effects-preview" role="dialog" aria-modal="true" aria-label="演出小剧场" hidden>
-          <canvas id="effects-canvas" width="640" height="360" tabindex="0" aria-label="魔法物品演出，空格暂停或继续"></canvas>
-          <div class="effects-header"><span>✧ 演出小剧场</span><div><button id="effects-sound" class="effects-small" type="button" aria-pressed="false">音效：关</button><button id="effects-close" class="effects-small" type="button">返回游戏 <kbd>Esc</kbd></button></div></div>
-          <div class="effects-tabs" aria-label="选择演出"><button type="button" data-effect-kind="bottle" aria-pressed="true">幸福的魔法瓶</button><button type="button" data-effect-kind="cup" aria-pressed="false">碎杯与还原</button><button type="button" data-effect-kind="mood" aria-pressed="false">剧情氛围</button></div>
-          <p id="effects-status" class="effects-status" role="status"></p>
-          <div class="effects-controls"><button id="effects-action" class="primary-button" type="button">打开瓶塞</button><button id="effects-sequence" class="effects-small" type="button">完整演出</button><button id="effects-pause" class="effects-small" type="button">暂停演出</button></div>
-        </section>
       </section>
 
       <footer class="page-footer"><p>一段旅途，一瓶幸福。<span class="footer-note">第一章 · 角色素材逐步接入</span></p><div class="keyboard-guide"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 移动</span><span><kbd>E</kbd> 交互 / 坐下</span><span><kbd>Space</kbd> 继续</span><span><kbd>Esc</kbd> 暂停 / 返回</span></div></footer>

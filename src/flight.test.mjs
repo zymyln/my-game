@@ -13,13 +13,25 @@ test('arrival reaches the player anchor, hovers through narration, then lands be
   assert.ok(flight.snapshot().lift<10);assert.equal(flight.snapshot().walkOpacity,.5);
   flight.update(275);assert.ok(flight.complete);assert.equal(flight.snapshot(),null);
 });
-test('departure takes off from the current anchor and fades into the distance before completion',()=>{
+test('departure faces the player and flies downward beyond the screen before completion',()=>{
   const flight=new FlightPlayer();flight.start('departure',{x:469,y:201});
-  assert.equal(flight.snapshot().frame,'back');assert.equal(flight.snapshot().lift,0);
+  assert.equal(flight.snapshot().frame,'front');assert.equal(flight.snapshot().lift,0);
   flight.update(450);assert.equal(flight.snapshot().lift,10);
   flight.update(2100);const far=flight.snapshot();
-  assert.ok(far.x<469&&far.y<201&&far.scale<1&&far.opacity<1);assert.ok(flight.busy);
+  assert.equal(far.x,469);assert.ok(far.y>201&&far.opacity<1);assert.equal(far.scale,1);assert.ok(flight.busy);
   flight.update(450);assert.ok(flight.complete);assert.equal(flight.active,false);
+});
+
+test('village farewell and the following grassland departure share a downward facing flight',()=>{
+  const flight=new FlightPlayer();
+  for(const [kind,point,duration] of [['farewell',{x:320,y:204},2200],['departure',{x:320,y:170},3000]]){
+    flight.start(kind,point);let previous=point.y;
+    for(let i=0;i<9;i++){
+      const state=flight.snapshot();assert.equal(state.frame,'front');assert.equal(state.x,320);assert.ok(state.y>=previous);previous=state.y;
+      flight.update(duration/10);
+    }
+    assert.ok(flight.snapshot().y>360);flight.update(duration);assert.equal(flight.complete,true);
+  }
 });
 test('flight advances by elapsed time only, and reset cancels unfinished departures',()=>{
   const a=new FlightPlayer(),b=new FlightPlayer();a.start('departure',{x:469,y:201});b.start('departure',{x:469,y:201});

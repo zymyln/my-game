@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue, portraitReaction } from './chapter.mjs';
+import { readChapter, ChapterFlow, shotPresentation, glassCue, impactCue, portraitReaction, speakingPortrait } from './chapter.mjs';
 
 const source=await readFile(new URL('../content/script/ch1.md',import.meta.url),'utf8');
 const chapter=readChapter(source);
@@ -33,6 +33,7 @@ test('the whole chapter follows its gates and optional observations never gate l
   assert.ok(flow.interactions().includes('wait-lunch'));
   flow.sit();finish(flow,seen);assert.equal(flow.phase,'to-gate');
   flow.arrive('gate_dusk');finish(flow,seen);assert.equal(flow.phase,'to-dusk');
+  assert.deepEqual(flow.interactions(),[],'farewell automatically flies away instead of offering a walking exit');
   flow.arrive('field_dusk');finish(flow,seen);assert.equal(flow.phase,'complete');
   assert.equal(new Set(seen.map(step=>step.cursor)).size,seen.length);
   assert.equal(seen.length,chapter.lineCount+6);
@@ -64,6 +65,19 @@ test('the final pause, portrait-free epilogue and glass restoration are staged',
   assert.equal(shotPresentation('SH-15').hidePortraits,true);
   const cues=chapter.shots.get('SH-10').steps.map(glassCue).filter(Boolean);
   assert.deepEqual(cues,['sound','broken','broken','mist','whole']);
+});
+
+test('Nino is neutral at the collision and uses crying artwork only after the chief scolds her',async()=>{
+  const steps=chapter.shots.get('SH-10').steps;
+  const scolding=steps.findIndex(step=>impactCue(step)==='shout');
+  const manifest=JSON.parse(await readFile(new URL('../assets/manifest.json',import.meta.url),'utf8'));
+  const first=steps.find(step=>step.speaker==='妮诺');
+  assert.ok(steps.indexOf(first)<scolding);assert.equal(speakingPortrait(first),'nino_down');
+  for(const step of steps.filter((step,index)=>step.speaker==='妮诺'&&index>scolding)){
+    assert.ok(manifest.portraits[speakingPortrait(step)].endsWith('/nino_teary.png'));
+  }
+  assert.equal(speakingPortrait({...first,shotId:'SH-12'}),first.face);
+  assert.ok(steps.filter(step=>step.speaker!=='妮诺').every(step=>speakingPortrait(step)===step.face));
 });
 
 test('Elaina reacts while listening, turns serious during scolding, and keeps her casting pose through restoration',()=>{
