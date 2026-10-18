@@ -184,7 +184,7 @@ export function shotPresentation(id) {
     cg:id==='SH-15' ? 'ch1_ending_field_dusk' : null,
     hidePortraits:['SH-01','SH-07','SH-15','SH-20','SH-24'].includes(id),
     hideSprites:['SH-07','SH-15','SH-24'].includes(id),
-    rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty','SH-16':'emil_down','SH-17':'emil_bright','SH-18':'emil_down','SH-21':'emil_neutral','SH-23':'emil_down'}[id] ?? null,
+    rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty','SH-16':'emil_down','SH-17':'emil_bright','SH-18':'emil_down','SH-21':'emil_serious','SH-23':'emil_down'}[id] ?? null,
     hold:id==='SH-14' ? 3000 : 0,
   };
 }
@@ -208,6 +208,9 @@ export function impactCue(step) {
 export function speakingPortrait(step) {
   // The first startled sound precedes the chief's scolding; tears come later.
   if(step.shotId==='SH-10'&&step.speaker==='妮诺'&&/^呜/.test(step.text))return 'nino_down';
+  // New artwork is staged here without rewriting the text machine's script.
+  if(step.shotId==='SH-21'&&step.speaker==='艾米尔')return 'emil_serious';
+  if(step.shotId==='SH-23'&&step.speaker==='妮诺'&&step.face==='nino_teary')return 'nino_hesitant';
   return step.face;
 }
 

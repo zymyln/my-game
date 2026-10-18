@@ -1,0 +1,31 @@
+{
+  "browser": "Edge headless",
+  "method": "Test response injection only; no game debug hooks saved",
+  "viewports": [
+    1440,
+    390
+  ],
+  "results": [
+    {
+      "face": "emil_serious",
+      "text": "我想带妮诺回家。",
+      "src": "http://127.0.0.1:4175/assets/portraits/branch-expressions/processed/emil_determined.png"
+    },
+    {
+      "face": "nino_hesitant",
+      "text": "……",
+      "src": "http://127.0.0.1:4175/assets/portraits/branch-expressions/processed/nino_hesitant.png"
+    },
+    {
+      "face": "nino_hesitant",
+      "text": "对不……",
+      "src": "http://127.0.0.1:4175/assets/portraits/branch-expressions/processed/nino_hesitant.png"
+    },
+    {
+      "face": "nino_smiletiny",
+      "text": "……谢谢您。",
+      "src": "http://127.0.0.1:4175/assets/portraits/nino/processed-v2/nino_smiletiny.png"
+    }
+  ],
+  "errors": []
+}

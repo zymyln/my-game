@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {readChapter,ChapterFlow,shotPresentation} from './chapter.mjs';
+import {readChapter,ChapterFlow,shotPresentation,speakingPortrait} from './chapter.mjs';
 import {BranchStagePlayer,branchCast} from './branch-staging.mjs';
 import {audioProfile} from './score.mjs';
 
@@ -9,6 +9,17 @@ const source=await readFile(new URL('../content/script/ch1.md',import.meta.url),
 const branch=await readFile(new URL('../content/script/ch1_branch_b.md',import.meta.url),'utf8');
 const chapter=readChapter(source,branch);
 const points=['painting','kitchen','apron','table'];
+test('new expressions accompany resolve and hesitant farewell while the original route keeps its faces',()=>{
+  assert.equal(shotPresentation('SH-21').rightFace,'emil_serious');
+  const resolve=chapter.shots.get('SH-21').steps.filter(step=>step.speaker==='艾米尔');
+  assert.equal(resolve.length,3);
+  assert.ok(resolve.every(step=>speakingPortrait(step)==='emil_serious'));
+  const farewell=chapter.shots.get('SH-23').steps.filter(step=>step.speaker==='妮诺');
+  assert.deepEqual(farewell.map(speakingPortrait),['nino_hesitant','nino_hesitant','nino_smiletiny']);
+  for(const shot of chapter.shots.values())for(const step of shot.steps){
+    if(Number(shot.id.slice(3))<=15&&shot.id!=='SH-10')assert.equal(speakingPortrait(step),step.face);
+  }
+});
 function finish(flow,seen=[]){while(flow.phase==='reading'){seen.push(flow.session.current);flow.advance();}return seen;}
 function reachChoice(inspected=new Set(points)){
   const flow=new ChapterFlow(chapter,{inspected});flow.read('lunch');const seen=finish(flow);return {flow,seen};
