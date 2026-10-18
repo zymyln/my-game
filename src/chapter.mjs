@@ -33,7 +33,7 @@ function parseScript(markdown,{faces=new Map(),branch=false}={}) {
     }
     const sceneHeading = line.match(/^##\s+SC-(\d+)\s+/);
     if (sceneHeading) {
-      scene = SCENE_IDS[sceneHeading[1]];
+      scene = branch&&sceneHeading[1]==='04' ? 'field_day' : SCENE_IDS[sceneHeading[1]];
       if (!scene) throw new Error(`尚未配置场景：${sceneHeading[0].trim()}`);
       shot = null; continue;
     }
@@ -94,8 +94,10 @@ export function readChapter(markdown,branchMarkdown=null) {
     for(const id of expected){
       const shot=branch.shots.get(id);
       if(!shot?.steps.length)throw new Error(`支线缺少镜头或台词：${id}`);
-      const scene=Number(id.slice(3))<=22?'hall':id==='SH-23'?'gate_dusk':'field_dusk';
+      const scene=Number(id.slice(3))<=22?'hall':id==='SH-23'?'gate_dusk':'field_day';
       if(shot.scene!==scene)throw new Error(`支线镜头场景不匹配：${id}`);
+      // The revised farewell closes on two narrated lines over the supplied CG.
+      if(id==='SH-23')for(const step of shot.steps.slice(-2))step.cg='ch1_branch_b_moonlit_journey';
       shots.set(id,shot);
     }
     for(const id of branch.shots.keys())if(!expected.includes(id))throw new Error(`支线新增镜头尚未编排：${id}`);
@@ -155,7 +157,7 @@ export class ChapterFlow {
   meet() { if(this.phase!=='meet')throw new Error('相遇的时机不正确。'); return this.read('meeting'); }
   sit() { if(this.phase!=='waiting')throw new Error('还没到等候午餐的时机。'); return this.read('lunch'); }
   arrive(scene) {
-    const routes={ 'to-hall':['hall','arrival'], 'to-gate':['gate_dusk','farewell'], 'to-dusk':['field_dusk','epilogue'], 'branch-to-gate':['gate_dusk','branchFarewell'], 'branch-to-epilogue':['field_dusk','branchEpilogue'] };
+    const routes={ 'to-hall':['hall','arrival'], 'to-gate':['gate_dusk','farewell'], 'to-dusk':['field_dusk','epilogue'], 'branch-to-gate':['gate_dusk','branchFarewell'], 'branch-to-epilogue':['field_day','branchEpilogue'] };
     const route=routes[this.phase];
     if (!route || route[0]!==scene) throw new Error('这个场景不在当前剧情路线中。');
     return this.read(route[1]);
@@ -179,11 +181,12 @@ export class ChapterFlow {
 }
 
 // Program-side staging only. No shared dialogue fields or author IDs are changed.
-export function shotPresentation(id) {
+export function shotPresentation(id,step=null) {
+  const cg=id==='SH-15' ? 'ch1_ending_field_dusk' : step?.cg ?? null;
   return {
-    cg:id==='SH-15' ? 'ch1_ending_field_dusk' : null,
-    hidePortraits:['SH-01','SH-07','SH-15','SH-20','SH-24'].includes(id),
-    hideSprites:['SH-07','SH-15','SH-24'].includes(id),
+    cg,
+    hidePortraits:Boolean(cg)||['SH-01','SH-07','SH-15','SH-20','SH-24'].includes(id),
+    hideSprites:Boolean(cg)||['SH-07','SH-15','SH-24'].includes(id),
     rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty','SH-16':'emil_down','SH-17':'emil_bright','SH-18':'emil_down','SH-21':'emil_serious','SH-23':'emil_down'}[id] ?? null,
     hold:id==='SH-14' ? 3000 : 0,
   };

@@ -26,7 +26,8 @@
   },
   "backgrounds": {},
   "cg": {
-    "ch1_ending_field_dusk": "cg/ch1_ending_field_dusk.png"
+    "ch1_ending_field_dusk": "cg/ch1_ending_field_dusk.png",
+    "ch1_branch_b_moonlit_journey": "cg/ch1_branch_b_moonlit_journey.png"
   },
   "sprites": {
     "elaina_flying_front": "sprites/elaina/broom-trial/elaina_broom_front_source.png",

@@ -26,7 +26,7 @@ function reachChoice(inspected=new Set(points)){
 }
 
 test('both read-only script files parse without production notes becoming player text',async()=>{
-  assert.equal(chapter.shots.size,24);assert.equal(chapter.lineCount,316);
+  assert.equal(chapter.shots.size,24);assert.equal(chapter.lineCount,317);
   const steps=[...chapter.shots.values()].flatMap(shot=>shot.steps);
   assert.equal(steps.filter(step=>step.kind==='choice').length,1);
   assert.equal(steps.filter(step=>step.kind==='memory').length,6);
@@ -69,7 +69,7 @@ test('branch B retains all dialogue, skips gift memories and original ending, an
   assert.ok(!seen.some(step=>/送她礼物|天才|称赞|纯真的孩子/.test(step.text)));
   assert.equal(flow.phase,'branch-to-gate');assert.deepEqual(flow.interactions(),[]);assert.throws(()=>flow.arrive('field_dusk'));
   flow.arrive('gate_dusk');finish(flow,branchSteps);assert.equal(flow.phase,'branch-to-epilogue');
-  flow.arrive('field_dusk');finish(flow,branchSteps);assert.equal(flow.phase,'complete');assert.equal(flow.route,'branchB');
+  assert.throws(()=>flow.arrive('field_dusk'));flow.arrive('field_day');finish(flow,branchSteps);assert.equal(flow.phase,'complete');assert.equal(flow.route,'branchB');
   assert.equal(branchSteps.at(-1).text,'没错，就是我。');
   assert.ok(![...seen,...branchSteps].some(step=>['SH-12','SH-13','SH-14','SH-15'].includes(step.shotId)||step.kind==='memory'));
   const expected=[...chapter.shots.values()].filter(shot=>Number(shot.id.slice(3))>=16).flatMap(shot=>shot.steps).filter(step=>step.kind==='line');
@@ -111,4 +111,23 @@ test('night farewell moves Emil and Nino only, keeps Elaina still and cancels cl
 test('branch staging hides the reflection portraits and uses its own ending without the original CG',()=>{
   assert.equal(shotPresentation('SH-20').hidePortraits,true);assert.equal(shotPresentation('SH-24').hidePortraits,true);assert.equal(shotPresentation('SH-24').hideSprites,true);assert.equal(shotPresentation('SH-24').cg,null);
   assert.equal(audioProfile({mode:'dialogue',scene:'gate_dusk',shot:'SH-23'}),'hush');assert.equal(audioProfile({mode:'dialogue',scene:'field_dusk',shot:'SH-24'}),'hope');
+});
+
+test('the revised script shows the couple CG only on its closing narration and then uses daylight',()=>{
+  const reflection=chapter.shots.get('SH-20').steps;
+  assert.equal(reflection.length,5);
+  assert.equal(reflection[1].text,'看着妮诺挂在墙上的围裙。');
+  assert.equal(reflection[2].text,'看向窗外那片广袤的草原。');
+  const farewell=chapter.shots.get('SH-23').steps;
+  assert.ok(farewell.slice(0,-2).every(step=>shotPresentation(step.shotId,step).cg===null));
+  for(const step of farewell.slice(-2)){
+    const staging=shotPresentation(step.shotId,step);
+    assert.equal(step.speaker,'旁白');assert.equal(staging.cg,'ch1_branch_b_moonlit_journey');
+    assert.equal(staging.hidePortraits,true);assert.equal(staging.hideSprites,true);
+  }
+  assert.equal(farewell.at(-2).text,'深夜的村庄，只剩下阵阵的蝉鸣。');
+  assert.equal(farewell.at(-1).text,'少年少女的的未来，也许才刚刚启程');
+  assert.equal(chapter.shots.get('SH-24').scene,'field_day');
+  assert.ok(chapter.shots.get('SH-24').steps.every(step=>step.bg==='field_day'&&!shotPresentation(step.shotId,step).cg));
+  assert.ok(chapter.shots.get('SH-15').steps.every(step=>step.bg==='field_dusk'&&shotPresentation(step.shotId,step).cg==='ch1_ending_field_dusk'));
 });

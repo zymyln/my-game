@@ -88,7 +88,7 @@ function setMode(next) {
 
 function refreshStoryCG() {
   const reading=mode==='dialogue'||(mode==='pause'&&pausedMode==='dialogue');
-  const name=reading ? shotPresentation(session?.current?.shotId).cg : null;
+  const name=reading ? shotPresentation(session?.current?.shotId,session?.current).cg : null;
   const image=assets.cg.get(name);
   ui['story-cg'].hidden=!image;
   ui.game.dataset.cg=image ? name : '';
@@ -245,7 +245,7 @@ function showLine() {
     ui.game.dataset.shot=node.shotId;ui.game.dataset.stepKind=node.kind;ui.game.dataset.dialogueId=session.currentId;
     setMode('choice');ui.game.focus({preventScroll:true});return;
   }
-  const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId);
+  const changed=node.shotId!==lastShot,staging=shotPresentation(node.shotId,node);
   if(changed) {
     lastShot=node.shotId;glassState=null;propKind=null;effectLocked=false;
     stage.select(moodForShot(node.shotId));
@@ -330,8 +330,7 @@ function advanceStory() {
   else if(flow.phase==='to-dusk')leaveVillage();
   else if(flow.phase==='branch-to-gate')travel(SCENES.hall.interactions.find(item=>item.id==='hall-gate'),{automatic:true});
   else if(flow.phase==='branch-to-epilogue'){
-    branchStage.leave();branchContinuation=()=>travel({...SCENES.gate_dusk.interactions.find(item=>item.id==='gate-dusk'),spawn:{x:320,y:170}},{automatic:true});
-    stage.select('night');setMode('interlude');ui.game.focus({preventScroll:true});
+    travel({to:'field_day',spawn:{x:320,y:170}},{automatic:true});
   }
   else if(flow.phase==='meet'&&flight.land()){
     flightContinuation=returnToExploration;setMode('flight');
@@ -500,7 +499,7 @@ function draw(time) {
   const cinematic=['flight','interlude'].includes(mode)||(mode==='pause'&&['flight','interlude'].includes(pausedMode));
   const staged=readingMode||cinematic;
   const flying=flight.snapshot();
-  const hideSprites=node&&shotPresentation(node.shotId).hideSprites||mode==='transition'&&(flow?.phase==='to-dusk'||flow?.phase.startsWith('branch-'));
+  const hideSprites=node&&shotPresentation(node.shotId,node).hideSprites||mode==='transition'&&(flow?.phase==='to-dusk'||flow?.phase.startsWith('branch-'));
   const lighting=stage.snapshot();
   ctx.clearRect(0,0,640,360);ctx.save();
   if(staged){ctx.translate(lighting.x*640,lighting.y*360);ctx.scale(lighting.zoom,lighting.zoom);ctx.translate(-lighting.x*640,-lighting.y*360);}

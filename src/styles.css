@@ -60,8 +60,9 @@
 
 #scene-atmosphere{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;object-fit:contain;image-rendering:pixelated}
 #story-cg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center;z-index:2;pointer-events:none}
-.game-frame[data-cg="ch1_ending_field_dusk"] .scene-topbar,.game-frame[data-cg="ch1_ending_field_dusk"] .scene-vignette{display:none}
-.game-frame[data-cg="ch1_ending_field_dusk"] .dialogue-layer{background:none}
+.game-frame[data-cg]:not([data-cg=""]) .scene-topbar,.game-frame[data-cg]:not([data-cg=""]) .scene-vignette{display:none}
+.game-frame[data-cg]:not([data-cg=""]) .dialogue-layer{background:none}
+.game-frame[data-cg="ch1_branch_b_moonlit_journey"] #story-cg{object-position:40% center}
 .game-frame[data-mood="gaze"] .portrait-left{filter:brightness(.57) saturate(.52)}
 .game-frame[data-mood="gaze"] .portrait-right{filter:brightness(1.05) saturate(.72)}
 @media(max-width:620px){#scene-atmosphere{object-fit:cover}}
