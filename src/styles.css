@@ -92,3 +92,5 @@
 @media(max-width:620px){.choice-card{padding:15px 18px}.choice-card h2{font-size:17px;margin:8px 0 14px;letter-spacing:1px}.choice-option{font-size:13px;padding:11px 12px;margin:9px 0}.choice-hint{font-size:9px;margin-top:12px}}
 @media(max-width:620px){.story-prop{width:32%;bottom:32%}}
 @media(max-width:620px){.portrait.illustrated[data-actor="nino"] img{height:160%;bottom:-60%}}
+
+.cg-curtain{position:absolute;inset:0;z-index:7;background:#10171c;pointer-events:auto}

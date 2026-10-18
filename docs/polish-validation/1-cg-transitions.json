@@ -1,0 +1,16 @@
+[
+  {
+    "motion": "no-preference",
+    "pauseBothTransitions": true,
+    "CGSequence": true,
+    "cancel": true,
+    "errors": []
+  },
+  {
+    "motion": "reduce",
+    "pauseBothTransitions": true,
+    "CGSequence": true,
+    "cancel": true,
+    "errors": []
+  }
+]

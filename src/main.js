@@ -1,3 +1,4 @@
+import { CGTransition } from './cg-transition.mjs';
 import { AssetLibrary } from './assets.js';
 import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient } from './art.js';
 import { SCENES, ROUTE, START, START_SCENE, canStand, nearestInteraction, readHallObservations } from './world.mjs';
@@ -46,6 +47,9 @@ const stage=new StagePlayer({reducedMotion});
 const flight=new FlightPlayer({reducedMotion});
 const memory=new MemoryPlayer({reducedMotion});
 const branchStage=new BranchStagePlayer({reducedMotion});
+const cgTransition=new CGTransition({reducedMotion});
+const curtain=document.createElement('div');curtain.className='cg-curtain';curtain.hidden=true;curtain.setAttribute('aria-hidden','true');ui.game.append(curtain);
+function resetCurtain(){cgTransition.reset();curtain.hidden=true;curtain.style.opacity='0';}
 let branchContinuation=null;
 let flightContinuation=null;
 let worldTime=0;
@@ -173,7 +177,7 @@ function resetJourney() {
   visited.clear();visited.add(START_SCENE);inspected.clear();
   lastShot=null;glassState=null;propKind=null;effectLocked=false;advanceReadyAt=0;activeInteraction=null;
   ui.game.classList.remove('impact');
-  stage.reset();
+  stage.reset();resetCurtain();
   flight.reset();flightContinuation=null;
   branchStage.reset();branchContinuation=null;
   memory.reset();refreshMemoryUI();
@@ -200,7 +204,7 @@ function resumeJourney() {
   advanceReadyAt+=elapsed;textStarted+=elapsed;lastFrame=0;
   setMode(pausedMode);ui.game.focus({preventScroll:true});
 }
-function backToTitle() {glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;branchStage.reset();branchContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
+function backToTitle() {resetCurtain();glassState=null;propKind=null;effectLocked=false;stage.reset();flight.reset();flightContinuation=null;branchStage.reset();branchContinuation=null;memory.reset();refreshMemoryUI();ui.game.classList.remove('impact');setMode('title');ui.start.focus({preventScroll:true});}
 
 function playImpact(cue) {
   if(!cue || reducedMotion)return;
@@ -228,9 +232,13 @@ function displayPortrait(side,face) {
   if(actorChanged&&!reducedMotion){container.classList.remove('arriving');void container.offsetWidth;container.classList.add('arriving');}
 }
 
-function showLine() {
+function showLine(transitioned=false) {
   const node = session.current;
   if (!node) return;
+  const nextCG=shotPresentation(node.shotId,node).cg;
+  if(!transitioned&&flow.route==='branchB'&&nextCG&&assets.cg.has(nextCG)&&ui.game.dataset.cg!==nextCG){
+    cgTransition.start(()=>showLine(true));return;
+  }
   ui.game.dataset.scriptSource=node.sourceFile;
   branchStage.select(node);
   if(node.kind==='choice'){
@@ -312,7 +320,7 @@ function showLine() {
 }
 
 function advance() {
-  if (!['dialogue','memory'].includes(mode)) return;
+  if (!['dialogue','memory'].includes(mode)||cgTransition.busy) return;
   if(mode==='dialogue'&&branchStage.kind==='reflection')return;
   if(mode==='memory'){memory.next();refreshMemoryUI();return;}
   if (mode==='dialogue' && typedCount < textCharacters.length) {
@@ -330,7 +338,7 @@ function advanceStory() {
   else if(flow.phase==='to-dusk')leaveVillage();
   else if(flow.phase==='branch-to-gate')travel(SCENES.hall.interactions.find(item=>item.id==='hall-gate'),{automatic:true});
   else if(flow.phase==='branch-to-epilogue'){
-    travel({to:'field_day',spawn:{x:320,y:170}},{automatic:true});
+    cgTransition.start(()=>{sceneId='field_day';Object.assign(player,{x:320,y:170});refreshSceneUI();session=flow.arrive(sceneId);showLine(true);},{between:true});
   }
   else if(flow.phase==='meet'&&flight.land()){
     flightContinuation=returnToExploration;setMode('flight');
@@ -339,7 +347,7 @@ function advanceStory() {
 }
 
 function showEnding() {
-  stage.reset();
+  stage.reset();resetCurtain();
   flight.reset();flightContinuation=null;
   glassState=null;propKind=null;effectLocked=false;
   ui['end-kicker'].textContent=flow.route==='branchB'?'第一章 · 支线 B 完':'第一章 · 完';
@@ -546,6 +554,9 @@ function draw(time) {
 function frame(time) {
   const dt = lastFrame ? Math.min((time-lastFrame)/1000,.05) : 0;
   lastFrame = time; updateMovement(dt);
+  if(mode!=='pause'&&!document.hidden)cgTransition.update(dt*1000);
+  curtain.hidden=!cgTransition.busy;curtain.style.opacity=String(cgTransition.opacity);
+  ui.game.dataset.cgTransition=cgTransition.busy?'busy':'';
   const audioMode=mode==='pause'?pausedMode:mode;
   const audioNode=['dialogue','memory'].includes(audioMode)?session?.current:null;
   const profile=audioPanel.active&&audioPanel.profile?audioPanel.profile:audioProfile({mode:audioMode,scene:audioNode?.bg??sceneId,shot:audioNode?.shotId??null,glass:glassState});
@@ -573,13 +584,14 @@ function frame(time) {
     if(memory.phase==='complete')advanceStory();
   }
   if(propKind&&['dialogue','memory'].includes(mode))magic.update(dt*1000);
-  if (mode==='dialogue' && typedCount<textCharacters.length) {
+  if (mode==='dialogue' && !cgTransition.busy && typedCount<textCharacters.length) {
     const count = reducedMotion ? textCharacters.length : Math.max(0,Math.min(textCharacters.length,Math.floor((time-textStarted)/32)));
     if (count!==typedCount) { typedCount=count; ui['dialogue-text'].textContent=textCharacters.slice(0,count).join(''); }
     if (typedCount===textCharacters.length) { ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent='继续'; }
   }
   if(mode==='dialogue') {
-    const held=time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy||branchStage.kind==='reflection';ui.advance.disabled=held;
+    if(cgTransition.busy)textStarted=time;
+    const held=cgTransition.busy||time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy||branchStage.kind==='reflection';ui.advance.disabled=held;
     if(held)ui['advance-label'].textContent=branchStage.kind==='reflection'?'静静看着…':'片刻之后…';
     else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
   }
