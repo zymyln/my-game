@@ -109,7 +109,7 @@ test('night farewell moves Emil and Nino only, keeps Elaina still and cancels cl
 });
 
 test('branch staging hides the reflection portraits and uses its own ending without the original CG',()=>{
-  assert.equal(shotPresentation('SH-20').hidePortraits,true);assert.equal(shotPresentation('SH-24').hidePortraits,true);assert.equal(shotPresentation('SH-24').hideSprites,true);assert.equal(shotPresentation('SH-24').cg,null);
+  assert.equal(shotPresentation('SH-20').hidePortraits,true);assert.equal(shotPresentation('SH-24').hidePortraits,true);assert.equal(shotPresentation('SH-24').hideSprites,true);assert.equal(shotPresentation('SH-24').cg,'ch1_branch_b_happy_ending');
   assert.equal(audioProfile({mode:'dialogue',scene:'gate_dusk',shot:'SH-23'}),'hush');assert.equal(audioProfile({mode:'dialogue',scene:'field_dusk',shot:'SH-24'}),'hope');
 });
 
@@ -128,6 +128,6 @@ test('the revised script shows the couple CG only on its closing narration and t
   assert.equal(farewell.at(-2).text,'深夜的村庄，只剩下阵阵的蝉鸣。');
   assert.equal(farewell.at(-1).text,'少年少女的的未来，也许才刚刚启程');
   assert.equal(chapter.shots.get('SH-24').scene,'field_day');
-  assert.ok(chapter.shots.get('SH-24').steps.every(step=>step.bg==='field_day'&&!shotPresentation(step.shotId,step).cg));
+  assert.ok(chapter.shots.get('SH-24').steps.every(step=>step.bg==='field_day'&&shotPresentation(step.shotId,step).cg==='ch1_branch_b_happy_ending'));
   assert.ok(chapter.shots.get('SH-15').steps.every(step=>step.bg==='field_dusk'&&shotPresentation(step.shotId,step).cg==='ch1_ending_field_dusk'));
 });

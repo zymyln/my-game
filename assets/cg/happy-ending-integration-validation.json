@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-19",
+  "method": "Temporary browser response injection to select shots; actual advance button and scene transitions",
+  "results": [
+    {
+      "variant": "normal",
+      "CG": true,
+      "pauseResume": true,
+      "daylightEpilogueLines": 6,
+      "completion": true,
+      "originalCG": true,
+      "titleCleanup": true,
+      "errors": []
+    },
+    {
+      "variant": "reduced",
+      "CG": true,
+      "pauseResume": true,
+      "daylightEpilogueLines": 6,
+      "completion": true,
+      "originalCG": true,
+      "titleCleanup": true,
+      "errors": []
+    },
+    {
+      "variant": "missing",
+      "CG": false,
+      "pauseResume": true,
+      "daylightEpilogueLines": 6,
+      "completion": true,
+      "originalCG": true,
+      "titleCleanup": true,
+      "errors": []
+    }
+  ]
+}
