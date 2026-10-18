@@ -458,3 +458,11 @@
 - 验证：Word 归档 SHA-256 与源文件一致；原文档 116 个非空段落逐段核对，Markdown 无漏搬；`git diff --check` 通过。
 - 未修改 `content/script/`、`src/`、`index.html`、`docs/contract.md`、`AGENTS.md` 或 `.gitignore`，未安装依赖。
 - 网络备注：会话开始执行 `git pull` 时连接 GitHub 443 超时；本地工作区原为干净且与 `origin/main` 对齐，完成本地提交后再次尝试推送。
+
+## 2026-10-18 企划区：合并《循环小镇》v0.2
+
+- 根据用户提供的 v0.2 修正补丁，将 `content/planning/loop-town/剧情企划.md` 从 v0.1 升级为 v0.2 合并稿：补入莉迪娅·奥古斯特与伊森·奥古斯特的命名、出身、仪式、Boss 战分工、开头流程与结局分类。
+- 新增 `content/planning/loop-town/版本记录.md`，记录新增/确认项与 v0.1 冲突修正：坏结局改为莉迪娅死亡、伊蕾娜离开；“中间+中间”归入坏结局变体；删除以两人存活为前提的旧镇口告别收尾。
+- 更新企划 README、企划区索引与根 README 的 v0.2 入口；未修改现有第一章游戏内容、`content/script/`、`src/`、`index.html`、`docs/contract.md`、`AGENTS.md` 或 `.gitignore`。
+- 验证：48 项 v0.2 关键词逐项核对无缺失；`git diff --check` 通过；v0.1 docx 的 SHA-256 未变。
+- 网络：本次 `git pull` 已成功，当前分支与 `origin/main` 同步；待提交推送。
