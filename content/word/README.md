@@ -1,9 +1,8 @@
 # 支线 B Word 修改稿
 
-`第一章支线B_不送瓶子_文本修改稿.docx` 是 2026-10-17 的 Word 编辑稿，供文本修改和校对使用。
+`第一章支线B_不送瓶子_文本修改稿.docx` 是 **2026-10-17 的旧编辑稿**，内容已过时（其 SH-23 收尾两句与 SH-24 场景标注均为旧版），仅作历史归档保留，请勿再以它为编辑底稿。
 
-游戏读取的剧本仍以 `content/script/ch1_branch_b.md` 为准。Word 稿只是编辑底稿；后续改动需要先同步回 Markdown，再交给主力机接入，不要直接把 Word 当作运行数据。
-
-- 对应剧本：`content/script/ch1_branch_b.md`
+- 用户 10-18 的最终修改稿在 `outputs/第一章支线B_不送瓶子_修改稿_2026-10-18.docx`；`content/script/ch1_branch_b.md` 已与其逐段核对一致（见 docs/state.md 2026-10-19 记录）。
+- 游戏读取的剧本以 `content/script/ch1_branch_b.md` 为唯一真源（见 `docs/contract.md`）。任何 Word 稿都只是编辑底稿：后续改动需先同步回 Markdown，再交给主力机接入，不要直接把 Word 当作运行数据。
 - 镜头范围：SH-16 至 SH-24
-- 状态：支线尚未接入游戏
+- 状态：支线已接入游戏（2026-10-18 起）
