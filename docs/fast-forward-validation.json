@@ -1,0 +1,58 @@
+{
+  "browser": "Edge",
+  "speed": 8,
+  "results": [
+    {
+      "route": "branchB",
+      "completed": true,
+      "shots": [
+        "SH-16",
+        "SH-17",
+        "SH-18",
+        "SH-19",
+        "SH-20",
+        "SH-21",
+        "SH-22",
+        "SH-23",
+        "SH-24"
+      ],
+      "CGs": [
+        "ch1_branch_b_moonlit_journey",
+        "ch1_branch_b_happy_ending"
+      ],
+      "memories": [],
+      "choiceStops": true,
+      "releaseStops": true,
+      "pauseStops": true,
+      "blurStops": true,
+      "errors": []
+    },
+    {
+      "route": "main",
+      "completed": true,
+      "shots": [
+        "SH-11",
+        "SH-12",
+        "SH-13",
+        "SH-14",
+        "SH-15"
+      ],
+      "CGs": [
+        "ch1_ending_field_dusk"
+      ],
+      "memories": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "choiceStops": true,
+      "releaseStops": true,
+      "pauseStops": true,
+      "blurStops": true,
+      "errors": []
+    }
+  ]
+}

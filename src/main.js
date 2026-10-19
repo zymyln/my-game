@@ -1,3 +1,4 @@
+import { FastForward } from './fast-forward.mjs';
 import { CGTransition } from './cg-transition.mjs';
 import { AssetLibrary } from './assets.js';
 import { createSceneBackgrounds, drawSprite, drawPortrait, drawAmbient } from './art.js';
@@ -34,6 +35,9 @@ const keys = new Set();
 const player = { ...START, direction: 'right', moving: false };
 const visited = new Set([START_SCENE]);
 const inspected = new Set();
+const fast=new FastForward();
+const fastButton=document.createElement('button');fastButton.type='button';fastButton.className='fast-forward-control';fastButton.id='fast-forward';fastButton.title='点击切换快进，或按住 Ctrl 临时快进；在选项处停止';fastButton.hidden=true;ui.game.append(fastButton);
+fastButton.addEventListener('click',()=>{fast.toggle(mode);ui.game.focus({preventScroll:true});});
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const wait = milliseconds => new Promise(resolve => setTimeout(resolve,milliseconds));
 let mode = 'title', sceneId = START_SCENE, session = null, observations = new Map();
@@ -73,6 +77,7 @@ for (const [index,id] of ROUTE.entries()) {
 }
 
 function setMode(next) {
+  fast.enter(next);
   mode = next; keys.clear(); player.moving = false;
   ui['title-screen'].hidden = next !== 'title';
   ui['explore-ui'].hidden = next !== 'explore';
@@ -174,6 +179,7 @@ function leaveVillage() {
 }
 
 function resetJourney() {
+  fast.reset();
   lastBranchCue=null;if(sound.context)sound.stopCues();
   sceneId=START_SCENE;Object.assign(player,START,{direction:'right',moving:false});
   visited.clear();visited.add(START_SCENE);inspected.clear();
@@ -435,7 +441,8 @@ document.addEventListener('fullscreenchange',() => ui.fullscreen.setAttribute('a
 const movementKeys = ['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'];
 document.addEventListener('keydown',event => {
   if(audioPanel.active)return;
-  if (event.ctrlKey || event.altKey || event.metaKey || event.isComposing) return;
+  if(event.key==='Control'){if(!event.repeat){fast.hold(mode);event.preventDefault();}return;}
+  if ((event.ctrlKey || event.altKey || event.metaKey) && event.key!=='Escape' || event.isComposing) return;
   if (event.target instanceof HTMLElement && event.target.matches('input,textarea,select,[contenteditable="true"]')) return;
   const key = event.key.toLowerCase();
   const onButton = event.target instanceof HTMLButtonElement;
@@ -460,9 +467,9 @@ document.addEventListener('keydown',event => {
   if (mode === 'inspect' && [' ','enter','e'].includes(key) && !onButton) { event.preventDefault(); returnToExploration(); return; }
   if (['dialogue','memory'].includes(mode) && [' ','enter','e'].includes(key) && !onButton) { event.preventDefault(); advance(); }
 });
-document.addEventListener('keyup',event => keys.delete(event.key.toLowerCase()));
-window.addEventListener('blur',() => { keys.clear(); player.moving = false; });
-document.addEventListener('visibilitychange',() => { keys.clear(); lastFrame = 0; });
+document.addEventListener('keyup',event => {keys.delete(event.key.toLowerCase());if(event.key==='Control')fast.release();});
+window.addEventListener('blur',() => { fast.reset();keys.clear(); player.moving = false; });
+document.addEventListener('visibilitychange',() => { fast.reset();keys.clear(); lastFrame = 0; });
 
 function updateMovement(dt) {
   if (mode !== 'explore') return;
@@ -557,7 +564,11 @@ function draw(time) {
 function frame(time) {
   const dt = lastFrame ? Math.min((time-lastFrame)/1000,.05) : 0;
   lastFrame = time; updateMovement(dt);
-  if(mode!=='pause'&&!document.hidden)cgTransition.update(dt*1000);
+  const stepMs=dt*1000*fast.scale;
+  fastButton.hidden=!['dialogue','memory','flight','interlude'].includes(mode);
+  fastButton.textContent=fast.active?'停止快进':'快进 · Ctrl';fastButton.setAttribute('aria-pressed',String(fast.active));
+  ui.game.dataset.fastForward=fast.active?'on':'off';
+  if(mode!=='pause'&&!document.hidden)cgTransition.update(stepMs);
   curtain.hidden=!cgTransition.busy;curtain.style.opacity=String(cgTransition.opacity);
   ui.game.dataset.cgTransition=cgTransition.busy?'busy':'';
   const audioMode=mode==='pause'?pausedMode:mode;
@@ -569,35 +580,38 @@ function frame(time) {
   ui.game.dataset.audioProfile=profile;ui.game.dataset.audioState=sound.context?.state??'waiting';ui.game.dataset.musicTrack=sound.music?.id??'';
   if(mode!=='pause')worldTime+=dt*1000;
   if(['dialogue','flight','interlude'].includes(mode)){
-    stage.update(dt*1000);
-    if(!document.hidden)flight.update(dt*1000);
+    stage.update(stepMs);
+    if(!document.hidden)flight.update(stepMs);
   }
   if(mode==='flight'&&flight.complete){
     const continueStory=flightContinuation;flightContinuation=null;flight.reset();continueStory?.();
   }
   if(['dialogue','interlude'].includes(mode)&&!document.hidden&&branchStage.kind){
-    branchStage.update(dt*1000);
+    branchStage.update(stepMs);
     if(branchStage.complete){
       if(branchStage.kind==='reflection')advanceStory();
       else{const continueStory=branchContinuation;branchContinuation=null;branchStage.reset();continueStory?.();}
     }
   }
   if(mode==='memory'&&!document.hidden){
-    memory.update(dt*1000);refreshMemoryUI();
+    memory.update(stepMs);refreshMemoryUI();
     if(memory.phase==='complete')advanceStory();
   }
-  if(propKind&&['dialogue','memory'].includes(mode))magic.update(dt*1000);
+  if(propKind&&['dialogue','memory'].includes(mode))magic.update(stepMs);
   if (mode==='dialogue' && !cgTransition.busy && typedCount<textCharacters.length) {
-    const count = reducedMotion ? textCharacters.length : Math.max(0,Math.min(textCharacters.length,Math.floor((time-textStarted)/32)));
+    const count = reducedMotion||fast.active ? textCharacters.length : Math.max(0,Math.min(textCharacters.length,Math.floor((time-textStarted)/32)));
     if (count!==typedCount) { typedCount=count; ui['dialogue-text'].textContent=textCharacters.slice(0,count).join(''); }
     if (typedCount===textCharacters.length) { ui['dialogue-layer'].classList.add('ready'); ui['advance-label'].textContent='继续'; }
   }
   if(mode==='dialogue') {
     if(cgTransition.busy)textStarted=time;
+    if(fast.active&&advanceReadyAt>time+240)advanceReadyAt=time+240;
     const held=cgTransition.busy||time<advanceReadyAt||(effectLocked&&magic.busy)||flight.busy||branchStage.kind==='reflection';ui.advance.disabled=held;
     if(held)ui['advance-label'].textContent=branchStage.kind==='reflection'?'静静看着…':'片刻之后…';
     else ui['advance-label'].textContent=typedCount===textCharacters.length?'继续':'显示全文';
   }
+  const ready=mode==='memory'?memory.ready:mode==='dialogue'&&!ui.advance.disabled&&typedCount===textCharacters.length;
+  if(fast.update(dt*1000,{mode,token:session?.currentId,ready})&&!document.hidden)advance();
   draw(worldTime); requestAnimationFrame(frame);
 }
 refreshSceneUI(); requestAnimationFrame(frame);
