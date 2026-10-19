@@ -1,0 +1,35 @@
+Create a high-quality 2D Japanese fantasy JRPG dialogue character portrait of Lydia.
+
+REFERENCE ROLES:
+Use @image1 as the primary reference for Lydia’s identity, character design, body proportions, and costume details.
+Use @image2 as the primary reference for the illustration style, linework, coloring, and rendering quality.
+The finished portrait should look visually consistent with @image2, as part of the same game's character artwork, while clearly depicting Lydia from @image1.
+
+CHARACTER DESIGN:
+Lydia has warm red chin-length hair, softly layered bangs, green eyes, and a youthful, charming face with natural teenage proportions.
+Preserve the two small brown ribbon ornaments from @image1, one above each ear, with both ornaments clearly visible. Each ribbon has a small brass-colored center ornament.
+
+Preserve her outfit from @image1: a white blouse with a small fold-over collar, full-length gently puffed sleeves, fitted wrist cuffs, and a brown ribbon at the neck.
+She wears a fitted brown waist cincher with four brass buttons arranged in two rows, narrow dark teal piping, and a subtly pointed lower edge.
+Her deep teal pleated skirt has narrow gold edging and a small asymmetrical overlapping side panel with a restrained gold decorative accent.
+Preserve the placement and scale of these details from @image1. She wears opaque black tights beneath the skirt.
+
+ART STYLE:
+Match the polished Japanese fantasy RPG illustration aesthetic of @image2.
+Use delicate clean linework, refined facial features, beautiful detailed eyes, soft cel shading, harmonious colors, layered fabric, and carefully rendered costume ornaments.
+
+Draw precise eyelashes and layered green irises with restrained highlights. Render the hair with fine strands within clearly defined locks, subtle tonal transitions, and carefully placed highlights.
+Give the blouse clean, purposeful folds and softly shaded volume. Render the waist cincher, brass buttons, ribbons, and gold skirt edging with distinct but harmonious material finishes.
+Maintain clear silhouettes and readable shapes while preserving the fine detail and finish visible in @image2.
+
+POSE AND COMPOSITION:
+Use a vertical 3:5 composition, framed from the top of Lydia’s head to mid-thigh.
+Her face and upper body should be prominently displayed at a scale comparable to the character in @image2.
+She stands naturally with relaxed shoulders and a gentle closed-mouth smile.
+Both arms rest comfortably at her sides. Both empty hands are fully visible beside the skirt, with a small gap separating each hand from the clothing.
+Keep the top of her hair, both ribbon ornaments, both elbows, and both hands comfortably inside the frame.
+
+BACKGROUND:
+Use a simple neutral background with soft, even lighting.
+Single character, no scenery, no text, no interface, no speech bubbles, and no decorative frame.
+Designed as a finished character portrait for a fantasy RPG dialogue system.
