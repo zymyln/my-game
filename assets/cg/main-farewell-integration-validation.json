@@ -1,0 +1,37 @@
+{
+  "method": "Temporary response injection selects main farewell; actual advance buttons/fast-forward and game-clock departure to original epilogue",
+  "results": [
+    {
+      "variant": "normal",
+      "farewellLines": 16,
+      "flightPreserved": true,
+      "completed": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "variant": "reduced",
+      "farewellLines": 16,
+      "flightPreserved": true,
+      "completed": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "variant": "missing",
+      "farewellLines": 16,
+      "flightPreserved": true,
+      "completed": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "variant": "fast",
+      "farewellLines": 16,
+      "flightPreserved": true,
+      "completed": true,
+      "pause": true,
+      "errors": []
+    }
+  ]
+}

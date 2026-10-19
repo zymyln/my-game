@@ -182,12 +182,12 @@ export class ChapterFlow {
 
 // Program-side staging only. No shared dialogue fields or author IDs are changed.
 export function shotPresentation(id,step=null) {
-  const cg=id==='SH-15' ? 'ch1_ending_field_dusk' : id==='SH-24' ? 'ch1_branch_b_happy_ending' : step?.cg ?? null;
+  const cg=['SH-13','SH-14'].includes(id) ? 'ch1_main_farewell' : id==='SH-15' ? 'ch1_ending_field_dusk' : id==='SH-24' ? 'ch1_branch_b_happy_ending' : step?.cg ?? null;
   return {
     cg,
     hidePortraits:Boolean(cg)||['SH-01','SH-07','SH-15','SH-20','SH-24'].includes(id),
     hideSprites:Boolean(cg)||['SH-07','SH-15','SH-24'].includes(id),
-    rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-14':'nino_empty','SH-16':'emil_down','SH-17':'emil_bright','SH-18':'emil_down','SH-21':'emil_serious','SH-23':'emil_down'}[id] ?? null,
+    rightFace:{'SH-05':'emil_bright','SH-08':'chief_calm','SH-09':'chief_calm','SH-11':'emil_pout','SH-13':'emil_down','SH-16':'emil_down','SH-17':'emil_bright','SH-18':'emil_down','SH-21':'emil_serious','SH-23':'emil_down'}[id] ?? null,
     hold:id==='SH-14' ? 3000 : 0,
   };
 }

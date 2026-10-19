@@ -118,3 +118,16 @@ test('Elaina returns to neutral as soon as the memory cards finish and keeps it 
   }
   assert.equal(portraitReaction({shotId:'SH-04',speaker:'艾米尔',text:'外面的世界充满这么多幸福喔。'}),null);
 });
+
+
+test('the entire main farewell uses the supplied CG instead of Nino empty portrait',()=>{
+  for(const id of ['SH-13','SH-14'])for(const step of chapter.shots.get(id).steps){
+    const staging=shotPresentation(id,step);
+    assert.equal(staging.cg,'ch1_main_farewell');
+    assert.equal(staging.hidePortraits,true);assert.equal(staging.hideSprites,true);
+    assert.notEqual(staging.rightFace,'nino_empty');
+  }
+  assert.equal(shotPresentation('SH-12').cg,null);
+  assert.equal(shotPresentation('SH-15').cg,'ch1_ending_field_dusk');
+  assert.equal(shotPresentation('SH-23').cg,null);
+});
