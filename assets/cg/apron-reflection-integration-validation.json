@@ -1,0 +1,37 @@
+{
+  "method": "Temporary browser response injection selects reflection entry; game clock automatically plays all five lines to resolve",
+  "results": [
+    {
+      "variant": "normal",
+      "reflectionLines": 5,
+      "automatic": true,
+      "pause": true,
+      "restoresPortraits": true,
+      "errors": []
+    },
+    {
+      "variant": "reduced",
+      "reflectionLines": 5,
+      "automatic": true,
+      "pause": true,
+      "restoresPortraits": true,
+      "errors": []
+    },
+    {
+      "variant": "missing",
+      "reflectionLines": 5,
+      "automatic": true,
+      "pause": true,
+      "restoresPortraits": true,
+      "errors": []
+    },
+    {
+      "variant": "fast",
+      "reflectionLines": 5,
+      "automatic": true,
+      "pause": true,
+      "restoresPortraits": true,
+      "errors": []
+    }
+  ]
+}

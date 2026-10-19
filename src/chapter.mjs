@@ -182,7 +182,7 @@ export class ChapterFlow {
 
 // Program-side staging only. No shared dialogue fields or author IDs are changed.
 export function shotPresentation(id,step=null) {
-  const cg=['SH-13','SH-14'].includes(id) ? 'ch1_main_farewell' : id==='SH-15' ? 'ch1_ending_field_dusk' : id==='SH-24' ? 'ch1_branch_b_happy_ending' : step?.cg ?? null;
+  const cg=['SH-13','SH-14'].includes(id) ? 'ch1_main_farewell' : id==='SH-15' ? 'ch1_ending_field_dusk' : id==='SH-20' ? 'ch1_branch_b_apron_reflection' : id==='SH-24' ? 'ch1_branch_b_happy_ending' : step?.cg ?? null;
   return {
     cg,
     hidePortraits:Boolean(cg)||['SH-01','SH-07','SH-15','SH-20','SH-24'].includes(id),

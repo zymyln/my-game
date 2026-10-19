@@ -586,7 +586,7 @@ function frame(time) {
   if(mode==='flight'&&flight.complete){
     const continueStory=flightContinuation;flightContinuation=null;flight.reset();continueStory?.();
   }
-  if(['dialogue','interlude'].includes(mode)&&!document.hidden&&branchStage.kind){
+  if(['dialogue','interlude'].includes(mode)&&!document.hidden&&!cgTransition.busy&&branchStage.kind){
     branchStage.update(stepMs);
     if(branchStage.complete){
       if(branchStage.kind==='reflection')advanceStory();

@@ -131,3 +131,11 @@ test('the revised script shows the couple CG only on its closing narration and t
   assert.ok(chapter.shots.get('SH-24').steps.every(step=>step.bg==='field_day'&&shotPresentation(step.shotId,step).cg==='ch1_branch_b_happy_ending'));
   assert.ok(chapter.shots.get('SH-15').steps.every(step=>step.bg==='field_dusk'&&shotPresentation(step.shotId,step).cg==='ch1_ending_field_dusk'));
 });
+
+
+test('the apron CG covers all five reflection lines and clears before Emil decides',()=>{
+  const steps=chapter.shots.get('SH-20').steps;
+  assert.equal(steps.length,5);
+  for(const step of steps){const p=shotPresentation(step.shotId,step);assert.equal(p.cg,'ch1_branch_b_apron_reflection');assert.equal(p.hidePortraits,true);assert.equal(p.hideSprites,true);}
+  assert.equal(shotPresentation('SH-19').cg,null);assert.equal(shotPresentation('SH-21').cg,null);
+});
