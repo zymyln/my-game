@@ -1,23 +1,26 @@
 {
-  "createdAt": "2026-10-17T03:21:35.282Z",
-  "sourceRevision": "d79f938acbcdc133846292e08c0f247210a51a20",
+  "createdAt": "2026-10-19T10:56:17.095Z",
+  "sourceRevision": "7d07ef6a0ad63b1a103f32b785e583929d000ae2",
   "archive": {
     "file": "魔女之旅-第一章-离线试玩版.zip",
-    "bytes": 46830592,
-    "sha256": "e4094343991b5de1da3664a815c26ab7bc6d532085ebf9735d3134f7f555a8e2"
+    "bytes": 62264531,
+    "sha256": "e1890ceb23a777051afda96d3efcc0f0c27f90fc026b7b40d35a521baaab39af"
   },
   "game": {
     "file": "开始游戏.html",
-    "bytes": 63042660,
-    "sha256": "d55c6062984b2ea22a0e7bca6d9778c92cfa15529cc9392ae3bc8fe2cfd147c9"
+    "bytes": 83846858,
+    "sha256": "685d64df962bc4d254355b8b28b0ff39f6cbadce11ac1de798207607fbb8745c"
   },
   "target": "Desktop Microsoft Edge / Google Chrome; offline file opening",
   "modules": [
     "src/main.js",
-    "src/dialogue.mjs",
+    "src/fast-forward.mjs",
+    "src/cg-transition.mjs",
     "src/assets.js",
     "src/art.js",
     "src/elaina-sprite.js",
+    "src/villager-sprites.js",
+    "src/scene-details.js",
     "src/world.mjs",
     "src/chapter.mjs",
     "src/sound.js",
@@ -25,10 +28,11 @@
     "src/score.mjs",
     "src/magic.mjs",
     "src/magic-art.js",
-    "src/effects-preview.js",
     "src/staging.mjs",
     "src/audio-panel.js",
-    "src/flight.mjs"
+    "src/flight.mjs",
+    "src/memory.mjs",
+    "src/branch-staging.mjs"
   ],
   "assets": [
     {
@@ -102,6 +106,16 @@
       "sha256": "892c4533d70a2352601b17890506285e67477bf4876d865915dfb566ffd1840d"
     },
     {
+      "path": "portraits/branch-expressions/processed/emil_determined.png",
+      "bytes": 1234541,
+      "sha256": "972c41de52be5afce794c1cc3ee3add9697d4eccea0ae4d8177d7e0950fd7617"
+    },
+    {
+      "path": "portraits/branch-expressions/processed/nino_hesitant.png",
+      "bytes": 1247308,
+      "sha256": "4e38ce918fa7e2aa6f381c18b2e9ae9c6b31e8df075b1a7e57bc05b1def8b051"
+    },
+    {
       "path": "portraits/nino/processed-v2/nino_down.png",
       "bytes": 1247898,
       "sha256": "b3f06270910aa14db8754d24332b5b35090c014cf08844b7517ed1ed2682d78f"
@@ -120,6 +134,31 @@
       "path": "portraits/nino/processed-v2/nino_empty.png",
       "bytes": 1245687,
       "sha256": "a54301fe37c09db065b481ff783703621d639f45a6c43ad1acd54ce9f1b97817"
+    },
+    {
+      "path": "cg/ch1_ending_field_dusk.png",
+      "bytes": 4139283,
+      "sha256": "18df0ddabee769c70e9a3fd5b16cf1744549cf3e5bb8618a1bdba97e2975dca3"
+    },
+    {
+      "path": "cg/ch1_main_farewell.png",
+      "bytes": 2594345,
+      "sha256": "ee17e2ef415e67e60f2ae8f0a1a17d8a675ef900b5e79dee5c00de3ca98c4281"
+    },
+    {
+      "path": "cg/ch1_branch_b_apron_reflection.png",
+      "bytes": 1957446,
+      "sha256": "0dd7fdc62f041e02b6bac941523ba64248f6af1c0e60b34016eaee27b5384826"
+    },
+    {
+      "path": "cg/ch1_branch_b_moonlit_journey.png",
+      "bytes": 2445373,
+      "sha256": "0e5219f463b1e303587bc213b21bb9f8531e26aa826dfbf293fa88fb46559b10"
+    },
+    {
+      "path": "cg/ch1_branch_b_happy_ending.png",
+      "bytes": 1971818,
+      "sha256": "7bf75608c3709ef9e233c2d5e2dbc5df4a2917a983c22ef0d2c7928174141012"
     },
     {
       "path": "sprites/elaina/broom-trial/elaina_broom_front_source.png",

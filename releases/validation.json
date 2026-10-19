@@ -1,32 +1,78 @@
 {
-  "date": "2026-10-17",
+  "date": "2026-10-19",
   "archive": "魔女之旅-第一章-离线试玩版.zip",
-  "archiveSha256": "e4094343991b5de1da3664a815c26ab7bc6d532085ebf9735d3134f7f555a8e2",
+  "archiveSha256": "e1890ceb23a777051afda96d3efcc0f0c27f90fc026b7b40d35a521baaab39af",
   "nativeWindowsZipExtraction": true,
-  "extractedFiles": ["开始游戏.html", "先看这里.txt"],
+  "extractedFiles": [
+    "先看这里.txt",
+    "开始游戏.html"
+  ],
   "htmlSha256MatchesReleaseInfo": true,
   "allEmbeddedImagesMatchSourceHashes": true,
-  "embeddedImages": 30,
-  "browserModules": 16,
+  "embeddedImages": 37,
+  "browserModules": 20,
   "draftsAndAppendixExcluded": true,
-  "testedEnvironment": "Windows / Microsoft Edge (Chromium), file:// URL, offline network mode",
-  "requiresNodeForPlayer": false,
-  "requiresLocalServer": false,
-  "mainline": {
-    "shots": 15,
-    "spokenLines": 234,
-    "memoryCards": 6,
-    "allSteps": 240,
-    "portraitsAndMemoryImages": true,
-    "arrivalLandingAndDeparture": true,
-    "departureBeforeEpilogue": true,
-    "optionalInspections": true,
-    "storyGates": true,
-    "audioProfiles": true,
-    "pauseResume": true,
-    "restart": true
+  "testedEnvironment": "Windows Microsoft Edge headless; extracted file:// HTML, offline context",
+  "unmodifiedHTMLSmoke": {
+    "titleStartup": true,
+    "arrivalAndLanding": true,
+    "walking": true,
+    "errors": [],
+    "externalRequests": []
   },
-  "roamSmokeTest": true,
-  "externalRequests": [],
-  "browserErrors": []
+  "routeMethod": "Temporary runtime Blob instrumentation selects unlocked choice; on-disk HTML unmodified; actual left-click choice, fast-forward, game-clock animations and scene transitions",
+  "results": [
+    {
+      "route": "branchB",
+      "shots": [
+        "SH-16",
+        "SH-17",
+        "SH-18",
+        "SH-19",
+        "SH-20",
+        "SH-21",
+        "SH-22",
+        "SH-23",
+        "SH-24"
+      ],
+      "CGs": [
+        "ch1_branch_b_apron_reflection",
+        "ch1_branch_b_moonlit_journey",
+        "ch1_branch_b_happy_ending"
+      ],
+      "memories": [],
+      "completed": true,
+      "pauseResume": true,
+      "fastForward": true,
+      "externalRequests": [],
+      "errors": []
+    },
+    {
+      "route": "main",
+      "shots": [
+        "SH-11",
+        "SH-12",
+        "SH-13",
+        "SH-14",
+        "SH-15"
+      ],
+      "CGs": [
+        "ch1_main_farewell",
+        "ch1_ending_field_dusk"
+      ],
+      "memories": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "completed": true,
+      "pauseResume": true,
+      "fastForward": true,
+      "externalRequests": [],
+      "errors": []
+    }
+  ]
 }
