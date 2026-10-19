@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-19",
+  "browser": "Edge",
+  "phaser": "3.90.0",
+  "localURL": "http://127.0.0.1:4180",
+  "movement": true,
+  "wellCollision": true,
+  "interaction": true,
+  "dialogueStopsMovement": true,
+  "escapeAndButtonClose": true,
+  "blurStopsMovement": true,
+  "noExternalRequests": true,
+  "errors": [],
+  "launcherTest": {
+    "command": "启动循环小镇.cmd --no-open --port 4185",
+    "phaserHTTPStatus": 200,
+    "testServersStopped": true
+  }
+}

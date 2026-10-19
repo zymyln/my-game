@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>循环小镇 · 起步场景</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <main>
+    <header><div><p class="eyebrow">LOOP TOWN</p><h1>循环小镇</h1></div><span class="edition">起步场景 · 环境验证</span></header>
+    <div class="intro"><p>走进广场，试着读一读告示牌。</p><span id="engine-status" role="status">正在准备地图…</span></div>
+    <section id="game-shell" tabindex="0" aria-label="循环小镇测试地图">
+      <div id="game-canvas"></div>
+      <div class="location">小镇广场 <span>测试地图</span></div>
+      <p id="interaction" class="interaction" hidden><kbd>E</kbd> 查看告示牌</p>
+      <section id="dialogue" class="dialogue" role="dialog" aria-labelledby="dialogue-title" hidden>
+        <p id="dialogue-title" class="dialogue-title"></p><p id="dialogue-text"></p>
+        <button id="close-dialogue" type="button">继续行走 <kbd>E / Esc</kbd></button>
+      </section>
+      <div id="error" role="alert" hidden>地图未能启动。请通过“启动循环小镇.cmd”打开，再把终端错误告诉我。</div>
+    </section>
+    <footer><div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> 行走</span><span><kbd>E</kbd> 调查</span><span><kbd>Esc</kbd> 关闭对白</span></div><p>本页仅验证环境、地图与交互，不代表正式剧情或美术。</p></footer>
+  </main>
+  <script src="./vendor/phaser.min.js" onerror="document.getElementById('error').hidden=false"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

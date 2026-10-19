@@ -1,0 +1,14 @@
+{
+  "name": "loop-town-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent Phaser environment prototype for Loop Town",
+  "scripts": {
+    "dev": "node tools/dev.mjs",
+    "start": "node tools/dev.mjs --open",
+    "check": "node --check src/main.js && node --check tools/dev.mjs"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": { "phaser": "3.90.0" }
+}
