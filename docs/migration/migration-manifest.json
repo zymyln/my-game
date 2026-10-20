@@ -1,0 +1,274 @@
+{
+  "preparedOn": "2026-10-20",
+  "status": "preparation_only_not_migrated",
+  "sourceRepository": "https://github.com/zymyln/my-game.git",
+  "sourceCommit": "111b8e3ff46fbba1d35842cf0b1655494867c62c",
+  "scope": "Tracked Loop Town files + explicit new-repository document drafts; no files copied or remote created.",
+  "fileCount": 42,
+  "totalBytes": 1572935,
+  "manuallyCreate": [
+    ".gitignore (new repository only, see migration checklist)"
+  ],
+  "pendingAssets": [
+    "Lydia image originals referenced in assets/style-references/lydia; not tracked in this repository and not included."
+  ],
+  "requiredPostCopyEdits": [
+    "Adapt planning README old chapter references and old machine restrictions in the migration copy; see checklist.",
+    "Fill actual destination/remote and migration validation results in docs/state.md."
+  ],
+  "files": [
+    {
+      "source": "games/loop-town/启动循环小镇.cmd",
+      "target": "启动循环小镇.cmd",
+      "bytes": 902,
+      "sha256": "af2feda115235c01c7f230a6d6e79aa351e5f4e84833a53d46bb4432f8712669"
+    },
+    {
+      "source": "docs/migration/AGENTS-新仓库草案.md",
+      "target": "AGENTS.md",
+      "bytes": 3040,
+      "sha256": "8364edb244d75a24428808883624ec96dea9ae3bdb1107d843c2c47e6101586e"
+    },
+    {
+      "source": "assets/style-references/lydia/莉迪娅-立绘归档与接续-2026-10-19.md",
+      "target": "assets/style-references/lydia/莉迪娅-立绘归档与接续-2026-10-19.md",
+      "bytes": 4077,
+      "sha256": "b29bb1dfbc4421fd892219f33d44a7a8aa44ba13e9a652569ed056003b171591"
+    },
+    {
+      "source": "assets/style-references/lydia/莉迪娅-Tsubaki3双参考满意版-提示词.txt",
+      "target": "assets/style-references/lydia/莉迪娅-Tsubaki3双参考满意版-提示词.txt",
+      "bytes": 2930,
+      "sha256": "6a5498c40caf3dfedc990d85cbc904368588b585bb69b6871d78f3b6cc4c5018"
+    },
+    {
+      "source": "assets/style-references/lydia/莉迪娅的haruka2立绘参数.md",
+      "target": "assets/style-references/lydia/莉迪娅的haruka2立绘参数.md",
+      "bytes": 5128,
+      "sha256": "8eb9ddb55064b7bf2b6dfe1583ecc6646aaa797aa45a0243860b387829028f77"
+    },
+    {
+      "source": "content/planning/loop-town/版本记录.md",
+      "target": "content/planning/loop-town/版本记录.md",
+      "bytes": 14551,
+      "sha256": "1f0d13fa0776fe2208782136797da5d2f8446b32a2d9e03b7f2c3d98b40e0c60"
+    },
+    {
+      "source": "content/planning/loop-town/剧情企划.md",
+      "target": "content/planning/loop-town/剧情企划.md",
+      "bytes": 33181,
+      "sha256": "70b9b83b7ef8e3a32da4acb3102f23d24192afd4b0eefd813ecda6cfffe464b5"
+    },
+    {
+      "source": "content/planning/loop-town/循环小镇-设定速查表-v0.7.md",
+      "target": "content/planning/loop-town/循环小镇-设定速查表-v0.7.md",
+      "bytes": 10562,
+      "sha256": "d6316d6b16e10df900372bdcd6baf1d8467037da4862dfcff3886290e0bf653b"
+    },
+    {
+      "source": "content/planning/loop-town/循环小镇-一致性审查-2026-10-19.md",
+      "target": "content/planning/loop-town/循环小镇-一致性审查-2026-10-19.md",
+      "bytes": 6528,
+      "sha256": "3f71bd5121ac01f99154aa808efb06b033f943d67d31e99679d50bde71b7b6f4"
+    },
+    {
+      "source": "content/planning/loop-town/伊蕾娜同人游戏剧情企划文档_v0.1.docx",
+      "target": "content/planning/loop-town/伊蕾娜同人游戏剧情企划文档_v0.1.docx",
+      "bytes": 25420,
+      "sha256": "a0a4b8e247658a2299a1e328a9dce5562709084276d58fa6aa64968436f68daa"
+    },
+    {
+      "source": "content/planning/loop-town/README.md",
+      "target": "content/planning/loop-town/README.md",
+      "bytes": 5296,
+      "sha256": "7c25934fc229c93b5cf1118c29d08c0f39421925cf5030200f65748586b63918"
+    },
+    {
+      "source": "docs/migration/交接-新仓库草案.md",
+      "target": "docs/交接.md",
+      "bytes": 3031,
+      "sha256": "622d3fb776df270a257ee2e02cde0aea1e8c008a966429ff0f3f4e4b4d38cf5d"
+    },
+    {
+      "source": "games/loop-town/README.md",
+      "target": "docs/archive/开发环境-迁移前.md",
+      "bytes": 3915,
+      "sha256": "a01a7e91807503b9332df11d7cbd15f66a56a098ae786a577a4cc55dcf9a4fd4"
+    },
+    {
+      "source": "docs/循环小镇-下一对话交接.md",
+      "target": "docs/archive/迁移前交接.md",
+      "bytes": 8136,
+      "sha256": "c75bd65a9f54acd6508d22ca6794f77f39da80ad52ad41d81706bb273c72ec08"
+    },
+    {
+      "source": "games/loop-town/docs/planning/地面小镇布局-v01.md",
+      "target": "docs/planning/地面小镇布局-v01.md",
+      "bytes": 4278,
+      "sha256": "ab0d3168f7eeeafa2d936de94577552daf85ee65b94cb5db04db6523648ac8ea"
+    },
+    {
+      "source": "games/loop-town/docs/planning/古代遗迹布局-v03.md",
+      "target": "docs/planning/古代遗迹布局-v03.md",
+      "bytes": 9245,
+      "sha256": "d838f1c2b851c88fb05bdebf68320b2dd066393284d633442982012204b02e6d"
+    },
+    {
+      "source": "games/loop-town/docs/planning/小镇与地上遗迹统一-v03.md",
+      "target": "docs/planning/小镇与地上遗迹统一-v03.md",
+      "bytes": 6684,
+      "sha256": "139f1b0f12e18bf26afa17f01d8472905400d69aa8494be4daf5a8f969a81c9c"
+    },
+    {
+      "source": "games/loop-town/docs/planning/小镇与遗迹布局-v02.md",
+      "target": "docs/planning/小镇与遗迹布局-v02.md",
+      "bytes": 14805,
+      "sha256": "25852233c6585b446d398dd9d71f95c06632b7038d4848431a11739250dbbf16"
+    },
+    {
+      "source": "games/loop-town/docs/planning/build-layout-v02.mjs",
+      "target": "docs/planning/build-layout-v02.mjs",
+      "bytes": 11090,
+      "sha256": "53154e8380e449b1947a48407cbce05d755e00deeb57140d4cde2c155ec9d508"
+    },
+    {
+      "source": "games/loop-town/docs/planning/build-ruins-v03.mjs",
+      "target": "docs/planning/build-ruins-v03.mjs",
+      "bytes": 10246,
+      "sha256": "e7f419950d515d0527613a5a8df0794298e977391e6bbbcec0e3daaea3caf01b"
+    },
+    {
+      "source": "games/loop-town/docs/planning/build-town-v03.mjs",
+      "target": "docs/planning/build-town-v03.mjs",
+      "bytes": 9327,
+      "sha256": "9f11e0a3ef447a56da079d52c4d710b3290279d526beb1e93b2e4dbb4a34cb62"
+    },
+    {
+      "source": "games/loop-town/docs/planning/ruins-layout-v02.png",
+      "target": "docs/planning/ruins-layout-v02.png",
+      "bytes": 190779,
+      "sha256": "b4452f700c4277a91a59fcde1360649947891dc882a1fec475d8bdb0789dad0f"
+    },
+    {
+      "source": "games/loop-town/docs/planning/ruins-layout-v02.svg",
+      "target": "docs/planning/ruins-layout-v02.svg",
+      "bytes": 11111,
+      "sha256": "cfcac065029e22c345c697a7905f90550f97755107d287de15dffc4fcd7ec3a3"
+    },
+    {
+      "source": "games/loop-town/docs/planning/ruins-layout-v03.png",
+      "target": "docs/planning/ruins-layout-v03.png",
+      "bytes": 379774,
+      "sha256": "3ae4bade2d45bc2b1c4a0e2191cf3f0ccfeba0eb1c9f4455d37d494b5b25f42f"
+    },
+    {
+      "source": "games/loop-town/docs/planning/ruins-layout-v03.svg",
+      "target": "docs/planning/ruins-layout-v03.svg",
+      "bytes": 21614,
+      "sha256": "fd62ae367dff36cbec5c2a10778348996cb766cf0de31ca490e9dabae46198cb"
+    },
+    {
+      "source": "games/loop-town/docs/planning/town-layout-v01.svg",
+      "target": "docs/planning/town-layout-v01.svg",
+      "bytes": 8443,
+      "sha256": "36ad64a8a7d4d8d0563214ed742b39ca2ab3a2fb9aeaacfc42741c69aa78e76d"
+    },
+    {
+      "source": "games/loop-town/docs/planning/town-layout-v02.png",
+      "target": "docs/planning/town-layout-v02.png",
+      "bytes": 191275,
+      "sha256": "cdbc5539a8fcfe34baecc3b2e494633db539d5ad64f71e2595823481e3dae30e"
+    },
+    {
+      "source": "games/loop-town/docs/planning/town-layout-v02.svg",
+      "target": "docs/planning/town-layout-v02.svg",
+      "bytes": 19928,
+      "sha256": "0f61b01ff9c407e47579591fdf12975805ad4fefe0e3622d1e410952b1a2e8c7"
+    },
+    {
+      "source": "games/loop-town/docs/planning/town-layout-v03.png",
+      "target": "docs/planning/town-layout-v03.png",
+      "bytes": 303818,
+      "sha256": "94ec07dea8d5706a5ac7d942af732449dcb61744d9fe64663dcec522be755ffd"
+    },
+    {
+      "source": "games/loop-town/docs/planning/town-layout-v03.svg",
+      "target": "docs/planning/town-layout-v03.svg",
+      "bytes": 21992,
+      "sha256": "e847dc52ce0d2ff0a631ee34c8bdef7252071916eb99ff0820dfc94cd7721755"
+    },
+    {
+      "source": "games/loop-town/docs/preview-desktop.png",
+      "target": "docs/preview-desktop.png",
+      "bytes": 144379,
+      "sha256": "51f27effe663347d677d4b304bafc867336b27c3ff2dd62f215fb249a7d81caf"
+    },
+    {
+      "source": "games/loop-town/docs/preview-mobile.png",
+      "target": "docs/preview-mobile.png",
+      "bytes": 69358,
+      "sha256": "a3991e2cc31590fe0dca2f13929fdad49dbf00ad9567c0c863ae5132e76393f4"
+    },
+    {
+      "source": "docs/migration/state-新仓库初始稿.md",
+      "target": "docs/state.md",
+      "bytes": 745,
+      "sha256": "96c16542dc4f6fcf676aa70acb74b72098ef22d44932a14aa93e269f98eadd6d"
+    },
+    {
+      "source": "games/loop-town/docs/validation.json",
+      "target": "docs/validation.json",
+      "bytes": 484,
+      "sha256": "fc088fb89d8463de1af90098dc4305c021642aefe5c6f6f0d34c792204988e0f"
+    },
+    {
+      "source": "games/loop-town/index.html",
+      "target": "index.html",
+      "bytes": 1761,
+      "sha256": "ccb93c12d826ef9a73b93eb38dd373215258351699d2c4d446dc5c1060db2a20"
+    },
+    {
+      "source": "games/loop-town/package.json",
+      "target": "package.json",
+      "bytes": 412,
+      "sha256": "b5dcd76926fa5ca11fc2ae7d5da4de2193aaf927e3c542d30406b4b23c8b13db"
+    },
+    {
+      "source": "games/loop-town/pnpm-lock.yaml",
+      "target": "pnpm-lock.yaml",
+      "bytes": 598,
+      "sha256": "e3d57c6bc3e488eac788dac76feb8f730b153f18fa6f22269a8f2b7d4e5f23ca"
+    },
+    {
+      "source": "docs/migration/README-新仓库草案.md",
+      "target": "README.md",
+      "bytes": 2257,
+      "sha256": "75e1af81bc3fc5dad7bd7fd4ca71ff31143099b5e1e8686cf5a406afd049e109"
+    },
+    {
+      "source": "games/loop-town/src/data/demo.js",
+      "target": "src/data/demo.js",
+      "bytes": 428,
+      "sha256": "1d6166095ffe6b156fd6c03f4e5ed8026de359ce6003d51559ff91077dbbacb5"
+    },
+    {
+      "source": "games/loop-town/src/main.js",
+      "target": "src/main.js",
+      "bytes": 5766,
+      "sha256": "1dd0239d8f80aa39559a5938ec9d15ac03f5e55c92558769a2a33c3d4803f602"
+    },
+    {
+      "source": "games/loop-town/src/style.css",
+      "target": "src/style.css",
+      "bytes": 2867,
+      "sha256": "01392ff8e08a28189ecabe1c7fb3e69485a3c0db028783099a097ef36ff89c37"
+    },
+    {
+      "source": "games/loop-town/tools/dev.mjs",
+      "target": "tools/dev.mjs",
+      "bytes": 2774,
+      "sha256": "6c385b281d5f1387ab21a743ac5d7c7a31a708d2d21a66e95069e4044eca35cf"
+    }
+  ],
+  "targetTreeLocalLinksChecked": 32
+}
