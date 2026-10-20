@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "title": "我的故事 · 操作示例",
+  "nodes": [
+    {
+      "id": "arrival",
+      "title": "01  抵达小镇",
+      "text": "旅人来到陌生的小镇。\n广场上，一位少女正在寻找什么。",
+      "x": 80,
+      "y": 210,
+      "color": "lavender"
+    },
+    {
+      "id": "choice",
+      "title": "02  一次选择",
+      "text": "要停下脚步，听听她的故事吗？",
+      "x": 420,
+      "y": 210,
+      "color": "sand"
+    },
+    {
+      "id": "help",
+      "title": "03 A  伸出援手",
+      "text": "帮助少女找回丢失的东西。\n她提起了森林深处的传闻。",
+      "x": 780,
+      "y": 60,
+      "color": "sage"
+    },
+    {
+      "id": "alone",
+      "title": "03 B  独自调查",
+      "text": "继续探索小镇。\n在旧告示牌上发现相同的线索。",
+      "x": 780,
+      "y": 370,
+      "color": "rose"
+    },
+    {
+      "id": "forest",
+      "title": "04  森林的入口",
+      "text": "不同的路，通向同一个秘密。\n这里可以继续展开新的分支……",
+      "x": 1140,
+      "y": 210,
+      "color": "lavender"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "arrival",
+      "to": "choice",
+      "label": "遇见少女"
+    },
+    {
+      "id": "e2",
+      "from": "choice",
+      "to": "help",
+      "label": "选择帮助"
+    },
+    {
+      "id": "e3",
+      "from": "choice",
+      "to": "alone",
+      "label": "继续前行"
+    },
+    {
+      "id": "e4",
+      "from": "help",
+      "to": "forest",
+      "label": "获得线索"
+    },
+    {
+      "id": "e5",
+      "from": "alone",
+      "to": "forest",
+      "label": "发现线索"
+    }
+  ]
+}
