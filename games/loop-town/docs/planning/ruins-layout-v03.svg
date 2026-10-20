@@ -30,7 +30,7 @@
 <path d="M750 1085 V985" fill="none" stroke="#83917e" stroke-width="55" stroke-linecap="round" stroke-linejoin="round"  />
 <path d="M750 1085 V985" fill="none" stroke="#eee8d5" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"  />
 <path d="M750 126 V175" fill="none" stroke="#b16954" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 7" marker-end="url(#red)"/>
-<text x="560" y="145" font-size="18" fill="#b16954" font-weight="bold">旧城区相关地面废墟 · 主入口候选</text>
+<text x="545" y="145" font-size="18" fill="#b16954" font-weight="bold">M1 旧城地面废墟 · 主入口候选 → R01</text>
 <path d="M600 175 H900 V255 L855 280 H635 L600 245 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
 <text x="625" y="210" font-size="20" fill="#33443e" font-weight="bold">R01  掩门与下行梯</text>
 <text x="625" y="239" font-size="16" fill="#68746c" font-weight="normal">新旧门框交叠；地面具体接口待定</text>
@@ -173,5 +173,5 @@
 <text x="45" y="1324" font-size="21" fill="#33443e" font-weight="bold">探索节奏：主入口 → 看见中心轮廓 → 分翼调查与解谜 → 回廊回访 → 第五天接近中心。</text>
 <text x="45" y="1364" font-size="18" fill="#33443e" font-weight="normal">密度来自可辨用途、局部操作、线索关联与回访；古代遗迹的破损为原有状态，不是循环导致每日腐坏。</text>
 <text x="45" y="1400" font-size="18" fill="#33443e" font-weight="normal">本图是空间提案，非比例关卡：尚未验证碰撞、步行时间、遮挡视线、跨层投影；决战场地不在本轮定稿。</text>
-<text x="45" y="1436" font-size="18" fill="#68746c" font-weight="normal">旧镇图不改；主入口具体接入哪处旧城地面废墟另议。R 编号只用于本稿讨论，不映射旧 U 编号或正式事件 ID。</text>
+<text x="45" y="1436" font-size="18" fill="#68746c" font-weight="normal">地面配套小镇第三稿，M1 / R01 为同一候选跨图接口，两图不作精确投影。R 编号不映射旧 U 编号或正式事件 ID。</text>
 </svg>
