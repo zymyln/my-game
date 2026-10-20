@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1480" viewBox="0 0 1800 1480"><defs><marker id="green" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#657c62"/></marker><marker id="red" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#b16954"/></marker><marker id="blue" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#7297a1"/></marker></defs><style>text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif}</style>
+<rect x="0" y="0" width="1800" height="1480" rx="8" fill="#f5f0e5" stroke="none" stroke-width="2"/>
+<text x="45" y="49" font-size="31" fill="#33443e" font-weight="bold">循环小镇 · 古代魔女研究遗迹 / 地图第三稿</text>
+<text x="45" y="83" font-size="18" fill="#33443e" font-weight="normal">依据 v0.7 ｜ 古代研究结构 + 伊森后期利用痕迹 ｜ 房间用途、路线、入口与封印落点均为规划候选</text>
+<rect x="40" y="110" width="1320" height="1170" rx="38" fill="#dce1d5" stroke="#abb6a2" stroke-width="2"/>
+<path d="M82 170 L360 145 L505 220 L480 370 L390 400 L260 315 L80 350 Z" fill="#c6cfbb" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1070 145 L1300 165 L1320 400 L1180 370 L1090 290 Z" fill="#c6cfbb" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M70 930 L220 1010 L285 1215 L90 1225 Z" fill="#c6cfbb" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1080 1130 L1295 1000 L1310 1220 L1120 1235 Z" fill="#c6cfbb" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M700 420 H510 L465 470 V940 L535 1085 H970 L1030 1005 V500 L945 420 H700" fill="none" stroke="#83917e" stroke-width="55" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M700 420 H510 L465 470 V940 L535 1085 H970 L1030 1005 V500 L945 420 H700" fill="none" stroke="#eee8d5" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 270 V350" fill="none" stroke="#83917e" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 270 V350" fill="none" stroke="#eee8d5" stroke-width="45" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 455 V510" fill="none" stroke="#83917e" stroke-width="47" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 455 V510" fill="none" stroke="#eee8d5" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M510 460 H410 V410" fill="none" stroke="#83917e" stroke-width="43" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M510 460 H410 V410" fill="none" stroke="#eee8d5" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M465 700 H400" fill="none" stroke="#83917e" stroke-width="47" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M465 700 H400" fill="none" stroke="#eee8d5" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M465 875 H400" fill="none" stroke="#83917e" stroke-width="43" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M465 875 H400" fill="none" stroke="#eee8d5" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M490 1025 H410 V1100" fill="none" stroke="#83917e" stroke-width="41" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M490 1025 H410 V1100" fill="none" stroke="#eee8d5" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M1030 565 H1100" fill="none" stroke="#83917e" stroke-width="43" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M1030 565 H1100" fill="none" stroke="#eee8d5" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M1030 815 H1100" fill="none" stroke="#83917e" stroke-width="47" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M1030 815 H1100" fill="none" stroke="#eee8d5" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M970 1085 V1140" fill="none" stroke="#83917e" stroke-width="43" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M970 1085 V1140" fill="none" stroke="#eee8d5" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 1085 V985" fill="none" stroke="#83917e" stroke-width="55" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 1085 V985" fill="none" stroke="#eee8d5" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M750 126 V175" fill="none" stroke="#b16954" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 7" marker-end="url(#red)"/>
+<text x="560" y="145" font-size="18" fill="#b16954" font-weight="bold">旧城区相关地面废墟 · 主入口候选</text>
+<path d="M600 175 H900 V255 L855 280 H635 L600 245 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="625" y="210" font-size="20" fill="#33443e" font-weight="bold">R01  掩门与下行梯</text>
+<text x="625" y="239" font-size="16" fill="#68746c" font-weight="normal">新旧门框交叠；地面具体接口待定</text>
+<path d="M718 286 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M718 295 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M718 304 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M718 313 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M718 322 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M585 350 H920 V438 L875 460 H625 L585 425 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="610" y="385" font-size="20" fill="#33443e" font-weight="bold">R02  研究前厅</text>
+<text x="610" y="414" font-size="16" fill="#68746c" font-weight="normal">辨认方向 / 仪式结构的初步痕迹</text>
+<path d="M135 330 H365 L410 365 V460 H170 L135 425 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="155" y="365" font-size="20" fill="#33443e" font-weight="bold">R04  刻记与抄录室</text>
+<text x="155" y="394" font-size="16" fill="#68746c" font-weight="normal">刻记 / 抄录面 / 缺损书架</text>
+<text x="155" y="418" font-size="16" fill="#68746c" font-weight="normal">研究方法旁证，不直给真相</text>
+<rect x="150" y="437" width="32" height="12" rx="8" fill="#b1baa3" stroke="none" stroke-width="2"/>
+<rect x="198" y="437" width="32" height="12" rx="8" fill="#b1baa3" stroke="none" stroke-width="2"/>
+<rect x="246" y="437" width="32" height="12" rx="8" fill="#b1baa3" stroke="none" stroke-width="2"/>
+<rect x="294" y="437" width="32" height="12" rx="8" fill="#b1baa3" stroke="none" stroke-width="2"/>
+<path d="M120 590 L315 565 L400 610 V755 L345 785 H150 L120 735 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="145" y="620" font-size="20" fill="#33443e" font-weight="bold">R05  西侧试验庭</text>
+<text x="145" y="649" font-size="16" fill="#68746c" font-weight="normal">P1 · 解谜封印 1 候选</text>
+<text x="145" y="673" font-size="16" fill="#68746c" font-weight="normal">原有环槽 / 后加标记 / 操作构件</text>
+<ellipse cx="255" cy="721" rx="61" ry="30" fill="#e5d7b5" stroke="#c39d58" stroke-width="3" />
+<path d="M197 721 H313" fill="none" stroke="#c39d58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M255 698 V745" fill="none" stroke="#c39d58" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<rect x="150" y="798" width="145" height="31" rx="3" fill="#f5dfd0" stroke="#b16954" stroke-width="2"/>
+<text x="159" y="820" font-size="15" fill="#b16954" font-weight="bold">后加定位记号</text>
+<path d="M155 865 H400 V940 L365 968 H155 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="175" y="898" font-size="20" fill="#33443e" font-weight="bold">R06  残件与比对间</text>
+<text x="175" y="927" font-size="16" fill="#68746c" font-weight="normal">匹配用途的旁证；P1 提示就近</text>
+<path d="M220 1060 H420 V1180 L375 1200 H245 L220 1160 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="240" y="1093" font-size="20" fill="#33443e" font-weight="bold">R07  背风小室</text>
+<text x="240" y="1122" font-size="16" fill="#68746c" font-weight="normal">短独白 / 整理线索</text>
+<text x="240" y="1146" font-size="16" fill="#68746c" font-weight="normal">莉迪娅停留处候选</text>
+<text x="240" y="1170" font-size="16" fill="#68746c" font-weight="normal">不先定成住所</text>
+<path d="M610 510 H905 V568 L865 595 H650 L610 568 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="630" y="545" font-size="20" fill="#33443e" font-weight="bold">R03  上层观察廊</text>
+<text x="630" y="574" font-size="16" fill="#68746c" font-weight="normal">先见中央轮廓；栏边不可直接通行</text>
+<ellipse cx="754" cy="795" rx="225" ry="181" fill="#abb8ac" stroke="#7e9081" stroke-width="3" />
+<ellipse cx="754" cy="795" rx="180" ry="139" fill="#ddd7c2" stroke="#85927e" stroke-width="3" />
+<ellipse cx="754" cy="795" rx="138" ry="100" fill="#e9dfc7" stroke="#a89772" stroke-width="3" />
+<path d="M754 589 V650" fill="none" stroke="#7297a1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 8" marker-end="url(#blue)"/>
+<text x="664" y="686" font-size="22" fill="#33443e" font-weight="bold">中央下沉研究场</text>
+<text x="669" y="718" font-size="20" fill="#33443e" font-weight="bold">R13 · 中心遗构</text>
+<text x="634" y="770" font-size="21" fill="#896a34" font-weight="bold">第五天：最终封印显现</text>
+<text x="644" y="804" font-size="17" fill="#33443e" font-weight="normal">两人合作处理 · 企划已定</text>
+<text x="653" y="841" font-size="17" fill="#b16954" font-weight="bold">不设独立魔力库</text>
+<text x="647" y="881" font-size="16" fill="#68746c" font-weight="normal">此前可见 / 可进范围待定</text>
+<ellipse cx="603" cy="750" rx="11" ry="16" fill="#b6bea9" stroke="#83917e" stroke-width="3" />
+<ellipse cx="904" cy="750" rx="11" ry="16" fill="#b6bea9" stroke="#83917e" stroke-width="3" />
+<ellipse cx="610" cy="860" rx="11" ry="16" fill="#b6bea9" stroke="#83917e" stroke-width="3" />
+<ellipse cx="897" cy="860" rx="11" ry="16" fill="#b6bea9" stroke="#83917e" stroke-width="3" />
+<path d="M1090 425 H1285 V605 H1100 L1075 575 V465 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="1110" y="462" font-size="20" fill="#33443e" font-weight="bold">R08  旧研究侧室</text>
+<text x="1110" y="491" font-size="16" fill="#68746c" font-weight="normal">伊森临时工作区候选</text>
+<text x="1110" y="515" font-size="16" fill="#68746c" font-weight="normal">木桌 / 撑架 / 纸片 / 灯具</text>
+<text x="1110" y="539" font-size="16" fill="#68746c" font-weight="normal">置入古代结构，不重造遗迹</text>
+<rect x="1120" y="557" width="98" height="21" rx="2" fill="#b9856c" stroke="#b16954" stroke-width="2"/>
+<rect x="1100" y="620" width="145" height="31" rx="3" fill="#f5dfd0" stroke="#b16954" stroke-width="2"/>
+<text x="1109" y="642" font-size="15" fill="#b16954" font-weight="bold">多年利用的痕迹</text>
+<path d="M1100 720 L1245 700 L1295 755 V930 H1120 L1090 895 V750 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="1110" y="756" font-size="20" fill="#33443e" font-weight="bold">R09  东侧配列室</text>
+<text x="1110" y="785" font-size="16" fill="#68746c" font-weight="normal">P2 · 解谜封印 2 候选</text>
+<text x="1110" y="809" font-size="16" fill="#68746c" font-weight="normal">原有刻槽与可替换构件</text>
+<text x="1110" y="833" font-size="16" fill="#68746c" font-weight="normal">和 P1 采用不同观察逻辑</text>
+<rect x="1130" y="870" width="29" height="28" rx="3" fill="#d8c79c" stroke="#c39d58" stroke-width="2"/>
+<rect x="1174" y="870" width="29" height="28" rx="3" fill="#d8c79c" stroke="#c39d58" stroke-width="2"/>
+<rect x="1218" y="870" width="29" height="28" rx="3" fill="#d8c79c" stroke="#c39d58" stroke-width="2"/>
+<path d="M1110 1005 H1270 V1095 H1140 L1110 1060 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M1030 1005 H1110" fill="none" stroke="#83917e" stroke-width="37" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M1030 1005 H1110" fill="none" stroke="#eee8d5" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"  />
+<text x="1125" y="1038" font-size="20" fill="#33443e" font-weight="bold">R10  封闭小龛</text>
+<text x="1125" y="1067" font-size="16" fill="#68746c" font-weight="normal">可选痕迹 / 未定</text>
+<path d="M675 1010 H850 V1125 H675 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="693" y="1045" font-size="20" fill="#33443e" font-weight="bold">R11  下行前庭</text>
+<text x="693" y="1074" font-size="16" fill="#68746c" font-weight="normal">柱列遮挡 / 接近前的停顿</text>
+<path d="M720 955 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M720 964 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M720 973 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M720 982 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M720 991 h64" fill="none" stroke="#83917e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M850 1140 H1075 V1245 H850 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<text x="868" y="1172" font-size="20" fill="#33443e" font-weight="bold">R12  侧向维护廊</text>
+<text x="868" y="1201" font-size="16" fill="#68746c" font-weight="normal">回程捷径候选</text>
+<text x="868" y="1225" font-size="16" fill="#68746c" font-weight="normal">开启与保持规则待定</text>
+<path d="M555 1150 H655 V1235 H555 Z" fill="#eee8d5" stroke="#83917e" stroke-width="3" stroke-linejoin="round"/>
+<path d="M605 1085 V1150" fill="none" stroke="#83917e" stroke-width="33" stroke-linecap="round" stroke-linejoin="round"  />
+<path d="M605 1085 V1150" fill="none" stroke="#eee8d5" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"  />
+<text x="563" y="1183" font-size="18" fill="#33443e" font-weight="bold">R14</text>
+<text x="563" y="1208" font-size="17" fill="#33443e" font-weight="normal">侧龛</text>
+<path d="M480 656 L480 720 L505 720" fill="none" stroke="#b16954" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" />
+<path d="M1050 650 V700 H1080" fill="none" stroke="#b16954" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" />
+<text x="452" y="565" font-size="16" fill="#68746c" font-weight="normal">上层回廊</text>
+<text x="450" y="991" font-size="16" fill="#68746c" font-weight="normal">西翼回程</text>
+<text x="865" y="1000" font-size="15" fill="#68746c" font-weight="normal">柱列</text>
+<text x="1020" y="1130" font-size="15" fill="#68746c" font-weight="normal">转角后汇入前庭</text>
+<path d="M770 308 V335" fill="none" stroke="#657c62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#green)"/>
+<path d="M965 423 L1015 510 V980 L958 1070 H870" fill="none" stroke="#657c62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#green)"/>
+<path d="M838 1080 H782 V1000" fill="none" stroke="#657c62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#green)"/>
+<path d="M1038 675 V985 L980 1105 H855" fill="none" stroke="#b16954" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 8" marker-end="url(#red)"/>
+<text x="1115" y="672" font-size="15" fill="#b16954" font-weight="normal">跟踪同一路线</text>
+<path d="M1300 560 H1338" fill="none" stroke="#b16954" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" />
+<text x="1130" y="407" font-size="16" fill="#b16954" font-weight="normal">S1 地窖连接？</text>
+<path d="M90 890 H140" fill="none" stroke="#b16954" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 6" />
+<text x="70" y="1015" font-size="16" fill="#b16954" font-weight="normal">S3 接口仅预留</text>
+<rect x="1390" y="110" width="370" height="1170" rx="18" fill="#ede7d9" stroke="none" stroke-width="2"/>
+<text x="1415" y="150" font-size="23" fill="#33443e" font-weight="bold">这次调整的重点</text>
+<text x="1415" y="190" font-size="18" fill="#33443e" font-weight="normal">研究空间围绕中心展开</text>
+<text x="1415" y="220" font-size="18" fill="#33443e" font-weight="normal">中心从“走廊末端”移到中间</text>
+<text x="1415" y="250" font-size="18" fill="#33443e" font-weight="normal">西翼：记录、比对、试验</text>
+<text x="1415" y="280" font-size="18" fill="#33443e" font-weight="normal">东翼：配列、后期利用</text>
+<text x="1415" y="310" font-size="18" fill="#33443e" font-weight="normal">保留古代石构与原有刻槽</text>
+<text x="1415" y="340" font-size="18" fill="#33443e" font-weight="normal">伊森痕迹用可移入物表达</text>
+<text x="1415" y="370" font-size="18" fill="#33443e" font-weight="normal">房间名与用途均为候选</text>
+<text x="1415" y="445" font-size="23" fill="#33443e" font-weight="bold">线型与年代</text>
+<path d="M1420 475 H1480" fill="none" stroke="#83917e" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"  />
+<text x="1500" y="481" font-size="17" fill="#33443e" font-weight="normal">古代通路 / 石构</text>
+<path d="M1420 516 H1480" fill="none" stroke="#b16954" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" />
+<text x="1500" y="522" font-size="17" fill="#33443e" font-weight="normal">后加痕迹 / 候选接口</text>
+<path d="M1420 557 H1480" fill="none" stroke="#657c62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" marker-end="url(#green)"/>
+<text x="1500" y="563" font-size="17" fill="#33443e" font-weight="normal">D5 接近路线提案</text>
+<path d="M1420 598 H1480" fill="none" stroke="#b16954" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 8" marker-end="url(#red)"/>
+<text x="1500" y="604" font-size="17" fill="#33443e" font-weight="normal">跟踪路线示意</text>
+<path d="M1420 639 H1480" fill="none" stroke="#7297a1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 8" marker-end="url(#blue)"/>
+<text x="1500" y="645" font-size="17" fill="#33443e" font-weight="normal">视线，不能当通路</text>
+<text x="1415" y="707" font-size="21" fill="#33443e" font-weight="bold">高差示意 · 非剖面施工图</text>
+<path d="M1425 752 H1515 V805 H1610 V860 H1730" fill="none" stroke="#83917e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"  />
+<text x="1420" y="740" font-size="16" fill="#33443e" font-weight="normal">地面入口</text>
+<text x="1510" y="793" font-size="16" fill="#33443e" font-weight="normal">研究回廊</text>
+<text x="1610" y="890" font-size="16" fill="#33443e" font-weight="normal">中心下沉场</text>
+<text x="1415" y="935" font-size="23" fill="#33443e" font-weight="bold">仍然保留的边界</text>
+<text x="1415" y="975" font-size="17" fill="#33443e" font-weight="normal">只有最终封印中心位置已定</text>
+<text x="1415" y="1005" font-size="17" fill="#33443e" font-weight="normal">P1 / P2 落点、具体机关待定</text>
+<text x="1415" y="1035" font-size="17" fill="#33443e" font-weight="normal">不把屏障当成永久锁门规则</text>
+<text x="1415" y="1065" font-size="17" fill="#33443e" font-weight="normal">古代魔女身份与年代待定</text>
+<text x="1415" y="1095" font-size="17" fill="#33443e" font-weight="normal">S1 / S3 不默认连通</text>
+<text x="1415" y="1125" font-size="17" fill="#33443e" font-weight="normal">所有空间仍在结界封锁内</text>
+<text x="1415" y="1155" font-size="17" fill="#33443e" font-weight="normal">不新增战斗、潜行或跳跃系统</text>
+<text x="45" y="1324" font-size="21" fill="#33443e" font-weight="bold">探索节奏：主入口 → 看见中心轮廓 → 分翼调查与解谜 → 回廊回访 → 第五天接近中心。</text>
+<text x="45" y="1364" font-size="18" fill="#33443e" font-weight="normal">密度来自可辨用途、局部操作、线索关联与回访；古代遗迹的破损为原有状态，不是循环导致每日腐坏。</text>
+<text x="45" y="1400" font-size="18" fill="#33443e" font-weight="normal">本图是空间提案，非比例关卡：尚未验证碰撞、步行时间、遮挡视线、跨层投影；决战场地不在本轮定稿。</text>
+<text x="45" y="1436" font-size="18" fill="#68746c" font-weight="normal">旧镇图不改；主入口具体接入哪处旧城地面废墟另议。R 编号只用于本稿讨论，不映射旧 U 编号或正式事件 ID。</text>
+</svg>
