@@ -5,7 +5,7 @@
 ## 仓库内容板块
 
 - **当前游戏：第一章《瓶中的幸福》**：本 README 其余部分介绍的游戏，程序与剧本均已接入。
-- **新游戏企划：循环小镇（v0.7）**：[独立企划板块](content/planning/loop-town/README.md)，目前只有设定与文档，尚未接入正式程序，也不影响现有游戏。
+- **循环小镇已迁至[独立仓库](https://github.com/zymyln/loop-town)**：本机新项目目录 `D:/loop-town`。此处[企划板块](content/planning/loop-town/README.md)与 `games/loop-town/` 保留迁移前快照，后续新项目开发在独立仓库进行。
 
 发给其他人试玩可使用 [第一章离线试玩包](releases/README.md)：解压后直接双击 HTML，不需要 Node.js、Codex、本地服务器或联网。开发目录仍沿用 `开始游戏.cmd` 启动。
 
