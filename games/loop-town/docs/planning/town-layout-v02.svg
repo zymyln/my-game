@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200"><style>text{font-family:'Microsoft YaHei','Noto Sans CJK SC',sans-serif} </style>
+<rect x="0" y="0" width="1600" height="1200" rx="0" fill="#f5f1e7" stroke="none" stroke-width="2" />
+<text x="40" y="48" font-size="30" fill="#263d38" font-weight="bold">循环小镇 · 地面空间草案 02</text>
+<text x="40" y="80" font-size="16" fill="#33413e" font-weight="normal">2026-10-20 ｜ 六区扩展 · 建筑外轮廓与探索口袋 ｜ 地形、用途、封印位置均为候选，非比例关卡</text>
+<rect x="40" y="105" width="1200" height="990" rx="50" fill="#dce4d2" stroke="#a7b59b" stroke-width="2" />
+<rect x="145" y="150" width="570" height="245" rx="8" fill="#dad9cb" stroke="none" stroke-width="2" />
+<rect x="815" y="140" width="380" height="255" rx="8" fill="#d1dcc5" stroke="none" stroke-width="2" />
+<rect x="140" y="435" width="355" height="360" rx="8" fill="#cbdcbc" stroke="none" stroke-width="2" />
+<rect x="525" y="435" width="290" height="360" rx="8" fill="#eadab8" stroke="none" stroke-width="2" />
+<rect x="850" y="435" width="350" height="365" rx="8" fill="#dcd0b9" stroke="none" stroke-width="2" />
+<rect x="420" y="840" width="430" height="225" rx="8" fill="#ead6bf" stroke="none" stroke-width="2" />
+<path d="M96 145 Q60 350 92 530 T92 860 Q82 1000 110 1080" fill="none" stroke="#91bfc9" stroke-width="32" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M655 1090 V615 V390 L455 390 V145" fill="none" stroke="#f9edcf" stroke-width="42" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M140 615 H1205" fill="none" stroke="#f9edcf" stroke-width="38" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M350 615 V410 H1080 V615 M350 615 V815 H1080 V615" fill="none" stroke="#f9edcf" stroke-width="27" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M145 555 H470 V735 H165 M370 475 V775 M905 500 V755 H1170 M1005 500 V755 M465 910 H590 M720 910 H815 M610 220 H755 V410" fill="none" stroke="#d0bd97" stroke-width="15" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M455 390 V410 M1080 410 V350 M350 815 H90" fill="none" stroke="#f9edcf" stroke-width="23" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M75 815 H120" fill="none" stroke="#8d795d" stroke-width="15" stroke-linejoin="round" stroke-linecap="round" />
+<text x="165" y="180" font-size="22" fill="#3e5548" font-weight="bold">05 旧城区</text>
+<text x="840" y="175" font-size="22" fill="#3e5548" font-weight="bold">06 林缘与旧路</text>
+<text x="155" y="460" font-size="22" fill="#3e5548" font-weight="bold">03 住宅区</text>
+<text x="535" y="460" font-size="22" fill="#3e5548" font-weight="bold">02 中心街</text>
+<text x="865" y="460" font-size="22" fill="#3e5548" font-weight="bold">04 工坊区</text>
+<text x="445" y="867" font-size="22" fill="#3e5548" font-weight="bold">01 镇口与旅人街</text>
+<rect x="160" y="205" width="220" height="85" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="165" y="210" width="210" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="169" y="238" font-size="16" fill="#35433f" font-weight="bold">O1 旧公共建筑</text>
+<text x="169" y="260" font-size="13" fill="#746c60" font-weight="normal">前廊 · S2 封闭侧门</text>
+<path d="M264 290 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="490" y="200" width="205" height="75" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="495" y="205" width="195" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="499" y="233" font-size="16" fill="#35433f" font-weight="bold">O2 旧档案屋</text>
+<text x="499" y="255" font-size="13" fill="#746c60" font-weight="normal">用途候选 · 无历史定稿</text>
+<path d="M586.5 275 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="170" y="310" width="205" height="65" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="175" y="315" width="195" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="179" y="343" font-size="16" fill="#35433f" font-weight="bold">O3 旧屋与门廊</text>
+<text x="179" y="365" font-size="13" fill="#746c60" font-weight="normal">生活痕迹 / 修补差异</text>
+<path d="M266.5 375 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="500" y="300" width="195" height="70" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="505" y="305" width="185" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="509" y="333" font-size="16" fill="#35433f" font-weight="bold">O4 封闭院落</text>
+<text x="509" y="355" font-size="13" fill="#746c60" font-weight="normal">可见内院 · 开放待定</text>
+<path d="M591.5 370 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="155" y="480" width="175" height="65" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="160" y="485" width="165" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="164" y="513" font-size="16" fill="#35433f" font-weight="bold">H1–2 井边民居</text>
+<text x="164" y="535" font-size="13" fill="#746c60" font-weight="normal">合用井 / 门前小凳</text>
+<path d="M236.5 545 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="390" y="480" width="95" height="65" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="395" y="485" width="85" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="399" y="513" font-size="16" fill="#35433f" font-weight="bold">H3 小宅</text>
+<text x="399" y="535" font-size="13" fill="#746c60" font-weight="normal">菜园</text>
+<path d="M431.5 545 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="155" y="645" width="175" height="75" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="160" y="650" width="165" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="164" y="678" font-size="16" fill="#35433f" font-weight="bold">H4–5 连排住宅</text>
+<text x="164" y="700" font-size="13" fill="#746c60" font-weight="normal">共用后院 / 晾衣</text>
+<path d="M236.5 720 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="390" y="645" width="95" height="70" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="395" y="650" width="85" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="399" y="678" font-size="16" fill="#35433f" font-weight="bold">H6 民居</text>
+<text x="399" y="700" font-size="13" fill="#746c60" font-weight="normal">窄门</text>
+<path d="M431.5 715 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="160" y="745" width="170" height="45" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="165" y="750" width="160" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="169" y="778" font-size="16" fill="#35433f" font-weight="bold">H7–8 坡脚住宅</text>
+<path d="M239 790 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="540" y="480" width="105" height="70" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="545" y="485" width="95" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="549" y="513" font-size="16" fill="#35433f" font-weight="bold">C1 面包店</text>
+<text x="549" y="535" font-size="13" fill="#746c60" font-weight="normal">出炉窗</text>
+<path d="M586.5 550 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="690" y="480" width="115" height="70" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="695" y="485" width="105" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="699" y="513" font-size="16" fill="#35433f" font-weight="bold">C2 杂货店</text>
+<text x="699" y="535" font-size="13" fill="#746c60" font-weight="normal">门外货架</text>
+<path d="M741.5 550 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="540" y="665" width="105" height="75" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="545" y="670" width="95" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="549" y="698" font-size="16" fill="#35433f" font-weight="bold">C3 餐馆</text>
+<text x="549" y="720" font-size="13" fill="#746c60" font-weight="normal">侧门</text>
+<path d="M586.5 740 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="690" y="665" width="115" height="75" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="695" y="670" width="105" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="699" y="698" font-size="16" fill="#35433f" font-weight="bold">C4 公共屋</text>
+<text x="699" y="720" font-size="13" fill="#746c60" font-weight="normal">布告/寄存</text>
+<path d="M741.5 740 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="870" y="480" width="205" height="90" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="875" y="485" width="195" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="879" y="513" font-size="16" fill="#35433f" font-weight="bold">W1 魔道具店</text>
+<text x="879" y="535" font-size="13" fill="#746c60" font-weight="normal">伊森归属仅制作标注</text>
+<path d="M966.5 570 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="1090" y="480" width="105" height="80" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="1095" y="485" width="95" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="1099" y="513" font-size="16" fill="#35433f" font-weight="bold">W4 材料铺</text>
+<text x="1099" y="535" font-size="13" fill="#746c60" font-weight="normal">散料架</text>
+<path d="M1136.5 560 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="870" y="650" width="120" height="70" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="875" y="655" width="110" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="879" y="683" font-size="16" fill="#35433f" font-weight="bold">W3 修理作坊</text>
+<text x="879" y="705" font-size="13" fill="#746c60" font-weight="normal">临街工作台</text>
+<path d="M924 720 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="1025" y="650" width="170" height="70" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="1030" y="655" width="160" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="1034" y="683" font-size="16" fill="#35433f" font-weight="bold">W2 仓库</text>
+<text x="1034" y="705" font-size="13" fill="#746c60" font-weight="normal">卸货 / S1 地窖</text>
+<path d="M1104 720 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="1030" y="745" width="165" height="45" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="1035" y="750" width="155" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="1039" y="778" font-size="16" fill="#35433f" font-weight="bold">W5 小作坊组</text>
+<path d="M1106.5 790 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="445" y="930" width="155" height="100" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="450" y="935" width="145" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="454" y="963" font-size="16" fill="#35433f" font-weight="bold">T1 旅馆</text>
+<text x="454" y="985" font-size="13" fill="#746c60" font-weight="normal">前厅/客房仅预留</text>
+<path d="M516.5 1030 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="715" y="930" width="120" height="80" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="720" y="935" width="110" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="724" y="963" font-size="16" fill="#35433f" font-weight="bold">T2 车棚</text>
+<text x="724" y="985" font-size="13" fill="#746c60" font-weight="normal">马厩候选</text>
+<path d="M769 1010 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="715" y="1025" width="120" height="45" rx="4" fill="#fffaf0" stroke="#9b8b74" stroke-width="2" />
+<rect x="720" y="1030" width="110" height="7" rx="1" fill="#c6ab89" stroke="none" stroke-width="2" />
+<text x="724" y="1058" font-size="16" fill="#35433f" font-weight="bold">T3 小商店</text>
+<path d="M769 1070 h12" fill="none" stroke="#a36243" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="850" y="210" width="145" height="85" rx="8" fill="#e6dfc6" stroke="#a39172" stroke-width="2" />
+<text x="862" y="239" font-size="16" fill="#33413e" font-weight="normal">E1 旧路台地</text>
+<text x="862" y="265" font-size="13" fill="#33413e" font-weight="normal">B2 战斗封印候选</text>
+<rect x="1020" y="210" width="170" height="85" rx="8" fill="#c4d2bc" stroke="#8da086" stroke-width="2" />
+<text x="1031" y="239" font-size="16" fill="#33413e" font-weight="normal">E2 林下石构</text>
+<text x="1031" y="265" font-size="13" fill="#33413e" font-weight="normal">地下遗迹范围预留</text>
+<path d="M1080 350 V310 H940 V295" fill="none" stroke="#baa37d" stroke-width="12" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="155" y="875" width="200" height="95" rx="8" fill="#e5dfca" stroke="#a9987a" stroke-width="2" />
+<text x="167" y="904" font-size="16" fill="#33413e" font-weight="normal">E3 岸边作业空地</text>
+<text x="167" y="930" font-size="13" fill="#33413e" font-weight="normal">B1 战斗封印候选</text>
+<text x="167" y="950" font-size="13" fill="#33413e" font-weight="normal">留安全演出视野</text>
+<path d="M255 875 V815" fill="none" stroke="#d0bd97" stroke-width="14" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="655" cy="615" r="48" fill="#f2e6c9" stroke="#a39372" stroke-width="2"/><circle cx="655" cy="615" r="15" fill="#9dafaa"/>
+<text x="570" y="590" font-size="14" fill="#33413e" font-weight="normal">摊位带</text>
+<text x="690" y="590" font-size="14" fill="#33413e" font-weight="normal">告示栏</text>
+<text x="594" y="650" font-size="14" fill="#33413e" font-weight="normal">中心地标待定</text>
+<circle cx="340" cy="580" r="14" fill="#996243"/>
+<text x="335" y="585" font-size="14" fill="#fff" font-weight="normal">a</text>
+<text x="155" y="588" font-size="14" fill="#33413e" font-weight="normal">共用井与洗衣角</text>
+<circle cx="405" cy="760" r="14" fill="#996243"/>
+<text x="400" y="765" font-size="14" fill="#fff" font-weight="normal">b</text>
+<text x="390" y="789" font-size="13" fill="#33413e" font-weight="normal">穿院近路</text>
+<circle cx="825" cy="770" r="14" fill="#996243"/>
+<text x="820" y="775" font-size="14" fill="#fff" font-weight="normal">c</text>
+<text x="665" y="795" font-size="14" fill="#33413e" font-weight="normal">南侧生活支路 / 货运绕行</text>
+<circle cx="770" cy="345" r="14" fill="#996243"/>
+<text x="765" y="350" font-size="14" fill="#fff" font-weight="normal">d</text>
+<text x="733" y="375" font-size="14" fill="#33413e" font-weight="normal">高窗观察角</text>
+<circle cx="620" cy="1000" r="14" fill="#996243"/>
+<text x="615" y="1005" font-size="14" fill="#fff" font-weight="normal">e</text>
+<text x="455" y="1055" font-size="14" fill="#33413e" font-weight="normal">旅馆后院 · 寄存与晾晒</text>
+<circle cx="1220" cy="710" r="14" fill="#ae5f69"/>
+<text x="1215" y="715" font-size="14" fill="#fff" font-weight="normal">S</text>
+<text x="1204" y="744" font-size="14" fill="#984a55" font-weight="normal">S1</text>
+<circle cx="400" cy="300" r="14" fill="#ae5f69"/>
+<text x="395" y="305" font-size="14" fill="#fff" font-weight="normal">S</text>
+<text x="386" y="330" font-size="14" fill="#984a55" font-weight="normal">S2</text>
+<circle cx="125" cy="740" r="14" fill="#ae5f69"/>
+<text x="120" y="745" font-size="14" fill="#fff" font-weight="normal">S</text>
+<text x="112" y="772" font-size="14" fill="#984a55" font-weight="normal">S3</text>
+<text x="465" y="429" font-size="13" fill="#33413e" font-weight="normal">北横街：绕过广场连接旧城与工坊</text>
+<text x="610" y="1130" font-size="18" fill="#33413e" font-weight="normal">镇口 ↓ 来客道路</text>
+<text x="43" y="1145" font-size="16" fill="#33413e" font-weight="normal">河渠、桥与坡地均待确认；镇界封锁天空与地下，任何入口都不默认能离镇。</text>
+<text x="1275" y="140" font-size="24" fill="#324c42" font-weight="bold">N ↑ 北</text>
+<text x="1275" y="195" font-size="21" fill="#324c42" font-weight="bold">规模草案</text>
+<text x="1275" y="230" font-size="16" fill="#33413e" font-weight="normal">21 组建筑轮廓</text>
+<text x="1275" y="260" font-size="16" fill="#33413e" font-weight="normal">住宅 / 作坊组含多户</text>
+<text x="1275" y="290" font-size="16" fill="#33413e" font-weight="normal">8 处户外探索口袋</text>
+<text x="1275" y="320" font-size="16" fill="#33413e" font-weight="normal">6 区以街网相连</text>
+<text x="1275" y="350" font-size="16" fill="#33413e" font-weight="normal">尺寸与加载分区未定</text>
+<text x="1275" y="425" font-size="21" fill="#324c42" font-weight="bold">密度的三种回报</text>
+<text x="1275" y="460" font-size="16" fill="#33413e" font-weight="normal">看：生活与用途痕迹</text>
+<text x="1275" y="490" font-size="16" fill="#33413e" font-weight="normal">查：物件与追问线索</text>
+<text x="1275" y="520" font-size="16" fill="#33413e" font-weight="normal">走：近路与视线变化</text>
+<text x="1275" y="550" font-size="16" fill="#33413e" font-weight="normal">不要求每件装饰可点</text>
+<text x="1275" y="625" font-size="21" fill="#324c42" font-weight="bold">地下候选接口</text>
+<text x="1275" y="660" font-size="16" fill="#33413e" font-weight="normal">S1 仓库地窖</text>
+<text x="1275" y="690" font-size="16" fill="#33413e" font-weight="normal">S2 旧建筑侧门</text>
+<text x="1275" y="720" font-size="16" fill="#33413e" font-weight="normal">S3 河渠检修口</text>
+<text x="1275" y="750" font-size="16" fill="#33413e" font-weight="normal">是否连通见遗迹图</text>
+<text x="1275" y="780" font-size="16" fill="#33413e" font-weight="normal">E2 不等于正式入口</text>
+<text x="1275" y="855" font-size="20" fill="#984a55" font-weight="bold">全部开放范围待定</text>
+<text x="1275" y="890" font-size="16" fill="#33413e" font-weight="normal">实线：地面路网</text>
+<text x="1275" y="920" font-size="16" fill="#33413e" font-weight="normal">棕点：探索口袋</text>
+<text x="1275" y="950" font-size="16" fill="#33413e" font-weight="normal">红点：地下入口候选</text>
+<text x="1275" y="980" font-size="16" fill="#33413e" font-weight="normal">B1 / B2：位置提案</text>
+<text x="1275" y="1010" font-size="16" fill="#33413e" font-weight="normal">玩家不会看到制作编号</text>
+</svg>

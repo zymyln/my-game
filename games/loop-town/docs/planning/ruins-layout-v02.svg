@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200"><style>text{font-family:'Microsoft YaHei','Noto Sans CJK SC',sans-serif} </style>
+<rect x="0" y="0" width="1600" height="1200" rx="0" fill="#f5f1e7" stroke="none" stroke-width="2" />
+<text x="40" y="48" font-size="30" fill="#263d38" font-weight="bold">循环小镇 · 地下遗迹空间草案 02</text>
+<text x="40" y="80" font-size="16" fill="#33413e" font-weight="normal">2026-10-20 ｜ 功能分区与高低层示意，不与地面按坐标叠合 ｜ 最终封印位置已定，其余命名、用途、通路均为提案</text>
+<rect x="40" y="105" width="1200" height="990" rx="35" fill="#d8dcd6" stroke="#9ba8a0" stroke-width="2" />
+<path d="M245 310 V420 H550 V320 H710 V420 H1090 V310" fill="none" stroke="#a4b0a8" stroke-width="32" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M245 420 V660 H1090 V420 M550 420 V865 H710 V660 M900 420 V865 H710" fill="none" stroke="#a4b0a8" stroke-width="32" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M245 660 V865 H550 M1090 660 V865 H900" fill="none" stroke="#a4b0a8" stroke-width="26" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M180 145 V215 M620 145 V215 M1090 145 V215" fill="none" stroke="#ae5f69" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="8 7"/>
+<text x="100" y="135" font-size="16" fill="#984a55" font-weight="normal">S3 河渠检修口？</text>
+<text x="550" y="135" font-size="16" fill="#984a55" font-weight="normal">S2 旧建筑侧门？</text>
+<text x="1010" y="135" font-size="16" fill="#984a55" font-weight="normal">S1 仓库地窖？</text>
+<rect x="110" y="215" width="280" height="105" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="124" y="245" font-size="18" fill="#3a5747" font-weight="bold">U1 排水检修前室</text>
+<text x="124" y="273" font-size="14" fill="#33413e" font-weight="normal">生活设施过渡</text>
+<text x="124" y="296" font-size="14" fill="#33413e" font-weight="normal">仅 S3 候选连接</text>
+<rect x="485" y="215" width="270" height="105" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="499" y="245" font-size="18" fill="#3a5747" font-weight="bold">U2 旧建筑下层</text>
+<text x="499" y="273" font-size="14" fill="#33413e" font-weight="normal">台阶 / 掩门 / 旧标记</text>
+<text x="499" y="296" font-size="14" fill="#33413e" font-weight="normal">仅 S2 候选连接</text>
+<rect x="955" y="215" width="255" height="105" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="969" y="245" font-size="18" fill="#3a5747" font-weight="bold">U3 储藏地窖</text>
+<text x="969" y="273" font-size="14" fill="#33413e" font-weight="normal">箱架与用途痕迹</text>
+<text x="969" y="296" font-size="14" fill="#33413e" font-weight="normal">仅 S1 候选连接</text>
+<rect x="110" y="475" width="280" height="120" rx="8" fill="#e9d3b1" stroke="#a57847" stroke-width="2" />
+<text x="124" y="505" font-size="18" fill="#81572d" font-weight="bold">U4 旧分流设施</text>
+<text x="124" y="533" font-size="14" fill="#33413e" font-weight="normal">普通设施与异常附着的过渡</text>
+<text x="124" y="556" font-size="14" fill="#33413e" font-weight="normal">P1 解谜封印候选</text>
+<rect x="445" y="460" width="185" height="130" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="459" y="490" font-size="18" fill="#3a5747" font-weight="bold">U5 维修间</text>
+<text x="459" y="518" font-size="14" fill="#33413e" font-weight="normal">拆卸件 / 操作痕迹</text>
+<text x="459" y="541" font-size="14" fill="#33413e" font-weight="normal">感应调查口袋</text>
+<rect x="710" y="470" width="260" height="120" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="724" y="500" font-size="18" fill="#3a5747" font-weight="bold">U6 回廊观察台</text>
+<text x="724" y="528" font-size="14" fill="#33413e" font-weight="normal">可望见中心，当前不能直达</text>
+<text x="724" y="551" font-size="14" fill="#33413e" font-weight="normal">日常设施 → 人工改造线索</text>
+<rect x="1015" y="470" width="200" height="120" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="1029" y="500" font-size="18" fill="#3a5747" font-weight="bold">U7 器材间</text>
+<text x="1029" y="528" font-size="14" fill="#33413e" font-weight="normal">支路尽端有发现</text>
+<text x="1029" y="551" font-size="14" fill="#33413e" font-weight="normal">不放关键必需道具</text>
+<rect x="110" y="735" width="280" height="115" rx="8" fill="#e9d3b1" stroke="#a57847" stroke-width="2" />
+<text x="124" y="765" font-size="18" fill="#81572d" font-weight="bold">U8 配列设施室</text>
+<text x="124" y="793" font-size="14" fill="#33413e" font-weight="normal">符文或机关对应，形式待定</text>
+<text x="124" y="816" font-size="14" fill="#33413e" font-weight="normal">P2 解谜封印候选</text>
+<rect x="445" y="735" width="185" height="105" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="459" y="765" font-size="18" fill="#3a5747" font-weight="bold">U9 维护侧廊</text>
+<text x="459" y="793" font-size="14" fill="#33413e" font-weight="normal">返回捷径候选</text>
+<text x="459" y="816" font-size="14" fill="#33413e" font-weight="normal">开启时机待定</text>
+<rect x="710" y="730" width="260" height="115" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="724" y="760" font-size="18" fill="#3a5747" font-weight="bold">U10 改造工作区</text>
+<text x="724" y="788" font-size="14" fill="#33413e" font-weight="normal">伊森关联物证候选</text>
+<text x="724" y="811" font-size="14" fill="#33413e" font-weight="normal">不先编写揭露内容</text>
+<rect x="1020" y="735" width="195" height="115" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="1034" y="765" font-size="18" fill="#3a5747" font-weight="bold">U11 支撑基座</text>
+<text x="1034" y="793" font-size="14" fill="#33413e" font-weight="normal">材料与结构回报</text>
+<text x="1034" y="816" font-size="14" fill="#33413e" font-weight="normal">可省略的小支室</text>
+<rect x="110" y="925" width="280" height="105" rx="8" fill="#eef0e7" stroke="#7a9184" stroke-width="2" />
+<text x="124" y="955" font-size="18" fill="#3a5747" font-weight="bold">U12 旧记录壁龛</text>
+<text x="124" y="983" font-size="14" fill="#33413e" font-weight="normal">可选背景 / 感应碎片</text>
+<text x="124" y="1006" font-size="14" fill="#33413e" font-weight="normal">关键解谜提示不藏于此</text>
+<path d="M245 925 V865" fill="none" stroke="#a4b0a8" stroke-width="26" stroke-linejoin="round" stroke-linecap="round" />
+<rect x="490" y="925" width="460" height="125" rx="8" fill="#e9d3b1" stroke="#a57847" stroke-width="2" />
+<text x="504" y="955" font-size="18" fill="#81572d" font-weight="bold">U13 地下遗迹中心 · 最终封印</text>
+<text x="504" y="983" font-size="14" fill="#33413e" font-weight="normal">第 5 天显现：企划已定；此前表现为普通中心遗构的候选</text>
+<text x="504" y="1006" font-size="14" fill="#33413e" font-weight="normal">留前庭、跟踪视线、出手距离与两人合作位置；不定分镜</text>
+<path d="M710 865 V925" fill="none" stroke="#a4b0a8" stroke-width="32" stroke-linejoin="round" stroke-linecap="round" />
+<path d="M950 995 H1050" fill="none" stroke="#ae5f69" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="8 7"/>
+<text x="1030" y="945" font-size="16" fill="#984a55" font-weight="normal">后续衔接预留</text>
+<text x="1030" y="975" font-size="15" fill="#33413e" font-weight="normal">决战场地待定</text>
+<text x="1030" y="1005" font-size="15" fill="#33413e" font-weight="normal">不自动通向镇外</text>
+<text x="410" y="372" font-size="16" fill="#33413e" font-weight="normal">上层回廊：入口分流与方位辨认</text>
+<text x="405" y="695" font-size="16" fill="#33413e" font-weight="normal">维护环路：绕过中心，连接调查与解谜支翼</text>
+<text x="790" y="902" font-size="15" fill="#33413e" font-weight="normal">下行前庭（高差与遮挡待细化）</text>
+<text x="1275" y="145" font-size="21" fill="#324c42" font-weight="bold">空间阅读顺序</text>
+<text x="1275" y="185" font-size="16" fill="#33413e" font-weight="normal">01 日常地下设施</text>
+<text x="1275" y="215" font-size="16" fill="#33413e" font-weight="normal">02 古老结构与用途</text>
+<text x="1275" y="245" font-size="16" fill="#33413e" font-weight="normal">03 后期改造的痕迹</text>
+<text x="1275" y="275" font-size="16" fill="#33413e" font-weight="normal">04 封印与中心异常</text>
+<text x="1275" y="305" font-size="16" fill="#33413e" font-weight="normal">这些是提案层次</text>
+<text x="1275" y="335" font-size="16" fill="#33413e" font-weight="normal">不预设遗迹起源</text>
+<text x="1275" y="425" font-size="21" fill="#324c42" font-weight="bold">探索节奏</text>
+<text x="1275" y="465" font-size="16" fill="#33413e" font-weight="normal">前室 → 回廊 → 支翼</text>
+<text x="1275" y="495" font-size="16" fill="#33413e" font-weight="normal">可见目标，绕行调查</text>
+<text x="1275" y="525" font-size="16" fill="#33413e" font-weight="normal">尽端有可选信息回报</text>
+<text x="1275" y="555" font-size="16" fill="#33413e" font-weight="normal">中心有独立接近前庭</text>
+<text x="1275" y="585" font-size="16" fill="#33413e" font-weight="normal">沿途有短暂安静空间</text>
+<text x="1275" y="675" font-size="21" fill="#324c42" font-weight="bold">线型与规则</text>
+<text x="1275" y="715" font-size="16" fill="#33413e" font-weight="normal">粗实线：内部候选通路</text>
+<text x="1275" y="745" font-size="16" fill="#33413e" font-weight="normal">红虚线：待定跨图接口</text>
+<text x="1275" y="775" font-size="16" fill="#33413e" font-weight="normal">P1 / P2：封印位置提案</text>
+<text x="1275" y="805" font-size="16" fill="#33413e" font-weight="normal">图中连接整体待确认</text>
+<text x="1275" y="835" font-size="16" fill="#33413e" font-weight="normal">不包含出镇逃生通道</text>
+<text x="1275" y="925" font-size="21" fill="#984a55" font-weight="bold">本轮只验证结构</text>
+<text x="1275" y="965" font-size="16" fill="#33413e" font-weight="normal">不制作室内像素地图</text>
+<text x="1275" y="995" font-size="16" fill="#33413e" font-weight="normal">不确定具体机关答案</text>
+<text x="1275" y="1025" font-size="16" fill="#33413e" font-weight="normal">不确定剧情揭露顺序</text>
+<text x="45" y="1135" font-size="16" fill="#33413e" font-weight="normal">五天对应：D1 B1 / D2 P1 / D3 B2 / D4 P2 / D5 中心最终封印；只有时间线已定，地点均属候选。</text>
+<text x="45" y="1165" font-size="16" fill="#33413e" font-weight="normal">重要：遗迹与普通地下设施是否采用同一网络、三个入口是否保留，都需用户确认；这张图是一种可讨论的方案。</text>
+</svg>
