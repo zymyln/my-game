@@ -1,0 +1,19 @@
+- main [ref=f1e2]:
+  - generic [ref=f1e3]:
+    - link "循环小镇" [ref=f1e4] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f1e5]: 伊蕾娜 · 第一天
+    - button "暂停" [disabled] [ref=f1e6]
+  - region "第一天可玩开场" [ref=f1e7]:
+    - generic "小镇地图，WASD或方向键行走" [ref=f1e8]
+    - generic [ref=f1e10]:
+      - paragraph [ref=f1e11]: ELAINA · DAY 1.0
+      - heading "循环小镇" [level=1] [ref=f1e12]
+      - paragraph [ref=f1e13]: 一段旅途，一天的开始。
+      - button "开始旅程" [ref=f1e15] [cursor=pointer]
+  - generic [ref=f1e16]:
+    - status [ref=f1e17]: 旅途即将开始
+    - paragraph [ref=f1e18]:
+      - generic [ref=f1e19]: WASD / 方向键 行走
+      - generic [ref=f1e20]: E 调查 / 继续
+      - generic [ref=f1e21]: Esc 暂停

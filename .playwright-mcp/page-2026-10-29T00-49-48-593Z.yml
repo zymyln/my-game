@@ -1,0 +1,43 @@
+- generic [ref=e3]:
+  - link "跳转到内容" [ref=e5] [cursor=pointer]:
+    - /url: "#_R_7er7laaqn75cched5hlb5_"
+  - generic [ref=e6]:
+    - complementary [ref=e7]:
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]: ChatGPT
+          - generic [ref=e21]:
+            - button "搜索" [ref=e22] [cursor=pointer]
+            - button "隐藏侧边栏" [expanded] [ref=e30] [cursor=pointer]
+        - navigation "聊天记录" [ref=e35]:
+          - button "新聊天" [ref=e39] [cursor=pointer]
+          - generic [ref=e51]:
+            - button "定时任务" [ref=e52] [cursor=pointer]
+            - button "插件" [ref=e61] [cursor=pointer]
+            - button "探索" [ref=e70] [cursor=pointer]
+        - button "打开个人资料菜单" [disabled] [ref=e88]:
+          - generic [ref=e89]:
+            - status [ref=e90]: 正在加载个人资料
+            - generic [ref=e94]:
+              - generic [ref=e95]: Elaina
+              - generic [ref=e96]: Plus
+      - generic:
+        - separator
+    - generic [ref=e99]:
+      - main [ref=e101]:
+        - generic:
+          - button "临时聊天" [ref=e107] [cursor=pointer]
+          - group "撰写器模式" [ref=e113]:
+            - button "聊天" [disabled] [pressed] [ref=e114]
+            - button "工作" [disabled] [ref=e115]
+        - main [ref=e127]:
+          - generic [ref=e130]:
+            - heading "我们从哪里开始？" [level=1] [ref=e138]
+            - generic [ref=e164]:
+              - button "添加文件等内容" [disabled] [ref=e169]
+              - textbox "询问 ChatGPT" [active] [ref=e176]:
+                - paragraph: 询问 ChatGPT
+              - generic [ref=e180]:
+                - button "听写" [disabled] [ref=e183]
+                - button "发送" [disabled] [ref=e188] [cursor=pointer]
+      - status [ref=e193]

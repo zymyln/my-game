@@ -1,0 +1,25 @@
+- main [ref=f1e2]:
+  - generic [ref=f1e3]:
+    - link "循环小镇" [ref=f1e4] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f1e5]: 伊蕾娜 · 第一天
+    - button "暂停" [ref=f1e6] [cursor=pointer]
+  - region "第一天可玩开场" [ref=f1e7]:
+    - generic "小镇地图，WASD或方向键行走" [ref=f1e8]
+    - img "伊蕾娜骑着扫帚飞过河谷与小镇" [ref=f1e23]
+    - dialog "剧情对白" [ref=f1e24]:
+      - paragraph [ref=f1e25]: 从高空俯瞰下去，世界总是显得格外安静。
+      - button "继续" [ref=f1e26] [cursor=pointer]: 继续 ▸
+    - group "剧情操作" [ref=f1e27]:
+      - button "存档" [ref=f1e28] [cursor=pointer]
+      - button "读档" [disabled] [ref=f1e29]
+      - button "自动" [ref=f1e30] [cursor=pointer]
+      - button "跳过" [ref=f1e31] [cursor=pointer]
+      - button "菜单" [ref=f1e32] [cursor=pointer]
+  - generic [ref=f1e16]:
+    - status [ref=f1e17]: E / 空格继续 · 选择时可按数字键
+    - paragraph [ref=f1e18]:
+      - generic [ref=f1e19]: WASD / 方向键 行走
+      - generic [ref=f1e20]: E 调查 / 继续
+      - generic [ref=f1e21]: Esc 暂停
+      - generic [ref=f1e33]: 已记录

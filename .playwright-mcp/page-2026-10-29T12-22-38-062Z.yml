@@ -1,0 +1,49 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: LOOP TOWN / ART STUDY 01
+      - heading "循环小镇" [level=1] [ref=e6]
+    - link "第一天 · 可玩开场 ↗" [ref=e7] [cursor=pointer]:
+      - /url: ./day1.html
+    - link "立绘素材册 ↗" [ref=e8] [cursor=pointer]:
+      - /url: ./portraits.html
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - paragraph [ref=e11]: 像素地图与角色样图
+      - paragraph [ref=e12]: 沿主街走进小镇，看看旅馆与驿站。
+    - status [ref=e13]: 正在准备地图…
+  - navigation "选择样图区域" [ref=e14]:
+    - button "01 小镇入口" [pressed] [ref=e15] [cursor=pointer]
+    - button "02 旧城残庭" [ref=e16] [cursor=pointer]
+    - button "03 地下研究室" [ref=e17] [cursor=pointer]
+    - button "角色近看" [ref=e18] [cursor=pointer]
+  - group "切换样图角色" [ref=e19]:
+    - generic [ref=e20]: 行走角色
+    - button "伊蕾娜" [pressed] [ref=e21] [cursor=pointer]
+    - button "莉迪娅" [ref=e22] [cursor=pointer]
+  - generic [ref=e23]:
+    - button "测试惊讶 ！" [ref=e24] [cursor=pointer]
+    - button "测试限时选项 5 秒小事件 ↗" [ref=e25] [cursor=pointer]
+    - button "测试对话样式 五种状态轮换 ↗" [ref=e26] [cursor=pointer]
+    - generic [ref=e27]: 风吹起纸页 · 5 秒内选择，超时默认压住剩下的纸。
+    - status
+    - link "解谜与战斗教学试验 ↗" [ref=e28] [cursor=pointer]:
+      - /url: ./tutorial.html
+  - region "循环小镇像素样图" [ref=e29]:
+    - generic:
+      - strong: 小镇入口
+      - generic: 旅馆、驿站与沿街民宿
+    - group "系统按键（样式稿，未接功能）" [ref=e31]:
+      - button "存档" [ref=e32] [cursor=pointer]
+      - button "读档" [ref=e33] [cursor=pointer]
+      - button "自动" [ref=e34] [cursor=pointer]
+      - button "跳过" [ref=e35] [cursor=pointer]
+      - button "菜单" [ref=e36] [cursor=pointer]
+    - alert [ref=e37]: "JS错误：Uncaught Error: Local Phaser did not load."
+  - generic [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e40]: WASD / ↑↓←→ 行走
+      - generic [ref=e41]: E 调查 / 通行
+      - generic [ref=e42]: Esc 关闭对白
+      - generic [ref=e43]: 伊蕾娜 正面 · 四向行走
+    - paragraph [ref=e44]: 三处局部美术试做，场地与观察文字均为样例；角色切换用于美术比较，不代表正式剧情视角。

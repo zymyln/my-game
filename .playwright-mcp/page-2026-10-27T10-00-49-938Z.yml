@@ -1,0 +1,68 @@
+- generic [ref=e5]:
+  - banner [ref=e7]:
+    - generic [ref=e9]:
+      - button "登录" [ref=e10] [cursor=pointer]
+      - button "免费注册" [ref=e11] [cursor=pointer]
+  - generic [ref=e13]:
+    - main [ref=e14]:
+      - region "对话 chat-6a05d6ae-fbd0-43ea-8a2e-0a604ff61572" [ref=e16]:
+        - generic [ref=e19]:
+          - generic:
+            - generic:
+              - generic:
+                - list "对话"
+    - generic [ref=e22]:
+      - navigation "Sidebar shortcuts":
+        - button "ChatGPT" [ref=e23] [cursor=pointer]
+        - navigation "侧边栏" [ref=e28]:
+          - link "新聊天" [ref=e29] [cursor=pointer]:
+            - /url: /?noauth_recent_chat_failed=1
+          - link "图像" [ref=e35] [cursor=pointer]:
+            - /url: /images
+          - link "插件" [ref=e43] [cursor=pointer]:
+            - /url: /plugins?plugins_landing=1
+          - link "查看套餐和定价" [ref=e48] [cursor=pointer]:
+            - /url: https://openai.com/chatgpt/pricing/
+          - link "帮助" [ref=e58] [cursor=pointer]:
+            - /url: https://help.openai.com/zh-hans-cn/collections/3742473-chatgpt
+          - button "深度研究" [ref=e67] [cursor=pointer]
+          - link "设置" [ref=e72] [cursor=pointer]:
+            - /url: /settings
+      - complementary "侧边栏" [ref=e78]:
+        - button "关闭边栏" [disabled] [ref=e82]
+        - generic [ref=e87]:
+          - heading "获取为你量身定制的回复" [level=2] [ref=e88]
+          - paragraph [ref=e89]: 登录以获取基于已保存聊天的回答，并可创建图片和上传文件。
+          - button "登录" [ref=e90] [cursor=pointer]
+  - generic [ref=e93]:
+    - contentinfo [ref=e94]:
+      - generic [ref=e99]:
+        - heading "我们先从哪里开始呢？" [level=1] [ref=e101]
+        - generic [ref=e102]:
+          - button "可以告诉我你能做些什么吗？" [ref=e108] [cursor=pointer]
+          - generic [ref=e113]:
+            - button [aria-hidden] [ref=e114]
+            - button [aria-hidden] [ref=e115]
+            - button [aria-hidden] [ref=e116]
+            - generic [ref=e117]:
+              - generic [ref=e121]:
+                - generic [ref=e122]: 与 ChatGPT 聊天
+                - textbox "与 ChatGPT 聊天" [ref=e125]:
+                  - /placeholder: 询问 ChatGPT
+              - generic [ref=e126]:
+                - button "添加文件等" [ref=e128] [cursor=pointer]
+                - generic [ref=e131]:
+                  - button "开始听写" [ref=e133] [cursor=pointer]
+                  - button "发送消息" [disabled] [ref=e137]
+    - paragraph [ref=e144]:
+      - generic [ref=e145]:
+        - text: ChatGPT 是 AI。使用即表示你同意我们的
+        - link "条款" [ref=e146] [cursor=pointer]:
+          - /url: https://openai.com/terms
+        - text: 和
+        - link "隐私政策" [ref=e147] [cursor=pointer]:
+          - /url: https://openai.com/privacy
+        - text: 。聊天内容可能会被审核，并用于改进我们的 AI 模型。
+        - link "了解更多：了解您的数据如何用于改进 AI 模型" [ref=e148] [cursor=pointer]:
+          - /url: https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance
+          - text: 了解更多

@@ -1,0 +1,152 @@
+- generic [ref=f15e1]:
+  - generic [ref=f15e3]:
+    - link "跳转到内容" [ref=f15e514] [cursor=pointer]:
+      - /url: "#_r_8d_"
+    - generic [ref=f15e6]:
+      - complementary [ref=f15e7]:
+        - generic [ref=f15e13]:
+          - generic [ref=f15e14]:
+            - button "切换模式，当前模式：ChatGPT" [ref=f15e15] [cursor=pointer]:
+              - generic [ref=f15e16]: ChatGPT
+            - generic [ref=f15e24]:
+              - button "搜索" [ref=f15e25] [cursor=pointer]
+              - button "隐藏侧边栏" [expanded] [ref=f15e33] [cursor=pointer]
+          - navigation "聊天记录" [ref=f15e38]:
+            - button "新聊天" [ref=f15e42] [cursor=pointer]
+            - generic [ref=f15e51]:
+              - generic [ref=f15e54]:
+                - button "定时任务" [ref=f15e55] [cursor=pointer]
+                - button "资料库" [ref=f15e64] [cursor=pointer]
+                - button "插件" [ref=f15e72] [cursor=pointer]
+                - button "探索" [ref=f15e81] [cursor=pointer]
+              - generic [ref=f15e92]:
+                - generic [ref=f15e95]:
+                  - generic [ref=f15e96]:
+                    - button "项目" [expanded] [ref=f15e99] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "项目侧边栏选项"
+                          - button "添加新项目" [ref=f15e104] [cursor=pointer]
+                  - list [ref=f15e111]:
+                    - listitem [ref=f15e112]: 没有项目
+                - generic [ref=f15e116]:
+                  - generic [ref=f15e117]:
+                    - button "最近" [expanded] [ref=f15e120] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "聊天侧边栏选项"
+                          - button "筛选聊天和工作"
+                          - button "新聊天"
+                  - list [ref=f15e127]:
+                    - listitem [ref=f15e128]:
+                      - generic [ref=f15e130]:
+                        - group "制作日式奇幻环境CG":
+                          - link "制作日式奇幻环境CG" [ref=f15e131] [cursor=pointer]:
+                            - /url: /c/6ae04836-c744-83e8-90ca-f09b66aa7482
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e137] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e141] [cursor=pointer]
+                    - listitem [ref=f15e145]:
+                      - generic [ref=f15e147]:
+                        - group "制作像素姿势图":
+                          - link "制作像素姿势图" [ref=f15e148] [cursor=pointer]:
+                            - /url: /c/6adf4692-83c8-83ee-a974-36f02c943354
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e154] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e158] [cursor=pointer]
+                    - listitem [ref=f15e162]:
+                      - generic [ref=f15e164]:
+                        - group "制作像素角色图":
+                          - link "制作像素角色图" [ref=f15e165] [cursor=pointer]:
+                            - /url: /c/6adf28b5-1e7c-83e8-becd-2da106573409
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e171] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e175] [cursor=pointer]
+                    - listitem [ref=f15e179]:
+                      - generic [ref=f15e181]:
+                        - group "浏览剧情文件":
+                          - link "浏览剧情文件" [ref=f15e182] [cursor=pointer]:
+                            - /url: /c/6addaa09-d034-83e8-86cc-b00483baeaa8
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e188] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e192] [cursor=pointer]
+                    - listitem [ref=f15e196]:
+                      - generic [ref=f15e198]:
+                        - group "通读企划文件":
+                          - link "通读企划文件" [ref=f15e199] [cursor=pointer]:
+                            - /url: /c/6adc0bec-9ff8-83ec-9dd0-760f9058ac7d
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e205] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e209] [cursor=pointer]
+                    - listitem [ref=f15e213]:
+                      - generic [ref=f15e215]:
+                        - group "更换夜晚外景":
+                          - link "更换夜晚外景" [ref=f15e216] [cursor=pointer]:
+                            - /url: /c/6add3f32-4d20-83ec-80d8-54c678cb4fd0
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e222] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e226] [cursor=pointer]
+                    - listitem [ref=f15e230]:
+                      - generic [ref=f15e232]:
+                        - group "绘制游戏CG插画":
+                          - link "绘制游戏CG插画" [ref=f15e233] [cursor=pointer]:
+                            - /url: /c/6adc999b-f36c-83ee-a256-c802060b6081
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=f15e239] [cursor=pointer]
+                              - button "置顶聊天" [ref=f15e243] [cursor=pointer]
+          - generic [ref=f15e254] [cursor=pointer]:
+            - button "打开个人资料菜单" [ref=f15e255]
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Elaina
+                  - generic: Plus
+        - generic:
+          - separator
+      - text: 询问 ChatGPT
+      - generic [ref=f15e516]:
+        - main [ref=f15e518]:
+          - generic:
+            - button "临时聊天" [ref=f15e524] [cursor=pointer]
+            - group "撰写器模式" [ref=f15e530]:
+              - button "聊天" [pressed] [ref=f15e531] [cursor=pointer]
+              - button "工作" [ref=f15e532] [cursor=pointer]
+          - main [ref=f15e544]:
+            - generic [ref=f15e547]:
+              - heading "我们从哪里开始？" [level=1] [ref=f15e555]
+              - generic [ref=f15e559]:
+                - generic [ref=f15e563]:
+                  - generic [ref=f15e564]:
+                    - button "创建图像或贴纸" [ref=f15e565] [cursor=pointer]
+                    - button "对该建议不感兴趣"
+                  - generic [ref=f15e568]:
+                    - button "撰写或编辑" [ref=f15e569] [cursor=pointer]
+                    - button "对该建议不感兴趣"
+                  - generic [ref=f15e572]:
+                    - button "搜索网页" [ref=f15e573] [cursor=pointer]
+                    - button "对该建议不感兴趣"
+                - generic [ref=f15e597]:
+                  - button "添加文件等内容" [ref=f15e602] [cursor=pointer]
+                  - textbox "询问 ChatGPT" [active] [ref=f15e609]:
+                    - paragraph: 询问 ChatGPT
+                  - generic [ref=f15e612]:
+                    - button "选择 ChatGPT 模型" [ref=f15e616] [cursor=pointer]:
+                      - generic [ref=f15e622]:
+                        - generic [aria-hidden]:
+                          - generic: 思考强度
+                        - generic [ref=f15e623]: Medium
+                    - generic [ref=f15e629]:
+                      - button "听写" [ref=f15e632] [cursor=pointer]
+                      - button "开始语音" [ref=f15e637] [cursor=pointer]
+        - status [ref=f15e642]
+  - status [ref=f15e511]
+  - status [ref=f15e512]

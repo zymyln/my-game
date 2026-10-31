@@ -1,0 +1,224 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - link "跳转到内容" [ref=e5] [cursor=pointer]:
+      - /url: "#_R_7er7laaqn75cched5hlb5_"
+    - generic [ref=e6]:
+      - complementary [ref=e7]:
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - button "切换模式，当前模式：ChatGPT" [ref=e194] [cursor=pointer]:
+              - generic [ref=e195]: ChatGPT
+            - generic [ref=e21]:
+              - button "搜索" [ref=e22] [cursor=pointer]
+              - button "隐藏侧边栏" [expanded] [ref=e30] [cursor=pointer]
+          - navigation "聊天记录" [ref=e35]:
+            - button "新聊天" [ref=e39] [cursor=pointer]
+            - generic [ref=e48]:
+              - generic [ref=e51]:
+                - button "定时任务" [ref=e52] [cursor=pointer]
+                - button "资料库" [ref=e203] [cursor=pointer]
+                - button "插件" [ref=e61] [cursor=pointer]
+                - button "探索" [ref=e70] [cursor=pointer]
+              - generic [ref=e211]:
+                - generic [ref=e214]:
+                  - generic [ref=e215]:
+                    - button "项目" [expanded] [ref=e218] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "项目侧边栏选项"
+                          - button "添加新项目" [ref=e223] [cursor=pointer]
+                  - list [ref=e230]:
+                    - listitem [ref=e231]:
+                      - button "loop town" [ref=e235] [cursor=pointer]:
+                        - generic:
+                          - button "loop town 的项目操作" [ref=e248]
+                          - button "在 loop town 中开启新聊天" [ref=e254]
+                - generic [ref=e262]:
+                  - generic [ref=e263]:
+                    - button "最近" [expanded] [ref=e266] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "聊天侧边栏选项"
+                          - button "筛选聊天和工作"
+                          - button "新聊天"
+                  - list [ref=e273]:
+                    - listitem [ref=e274]:
+                      - generic [ref=e276]:
+                        - group "生成木工铺概念图":
+                          - link "生成木工铺概念图" [ref=e277] [cursor=pointer]:
+                            - /url: /c/6ae283c1-937c-83ee-8551-1520543d9650
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e283] [cursor=pointer]
+                              - button "置顶聊天" [ref=e287] [cursor=pointer]
+                    - listitem [ref=e291]:
+                      - generic [ref=e293]:
+                        - group "探索配乐工具":
+                          - link "探索配乐工具" [ref=e294] [cursor=pointer]:
+                            - /url: /c/6ae1e417-02e4-83ee-85b8-e9ee14535808
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e300] [cursor=pointer]
+                              - button "置顶聊天" [ref=e304] [cursor=pointer]
+                    - listitem [ref=e308]:
+                      - generic [ref=e310]:
+                        - group "讨论项目剧情":
+                          - link "讨论项目剧情" [ref=e311] [cursor=pointer]:
+                            - /url: /g/g-p-6ae1f5294a608191adf6f5b20ce7c52a/c/6ae1f586-f90c-83ee-a399-a53a181dbd1c
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e317] [cursor=pointer]
+                              - button "置顶聊天" [ref=e321] [cursor=pointer]
+                    - listitem [ref=e325]:
+                      - generic [ref=e327]:
+                        - group "生成铁匠铺设计稿":
+                          - link "生成铁匠铺设计稿" [ref=e328] [cursor=pointer]:
+                            - /url: /c/6ae1ed53-0d88-83ee-b6c2-6469bd750b68
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e334] [cursor=pointer]
+                              - button "置顶聊天" [ref=e338] [cursor=pointer]
+                    - listitem [ref=e342]:
+                      - generic [ref=e344]:
+                        - group "制作严肃表情差分":
+                          - link "制作严肃表情差分" [ref=e345] [cursor=pointer]:
+                            - /url: /c/6ae1da04-2af4-83ec-b8ac-4200f0e7e6e2
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e351] [cursor=pointer]
+                              - button "置顶聊天" [ref=e355] [cursor=pointer]
+                    - listitem [ref=e359]:
+                      - generic [ref=e361]:
+                        - group "制作表情差分":
+                          - link "制作表情差分" [ref=e362] [cursor=pointer]:
+                            - /url: /c/6ae1d3aa-9994-83e8-9e8e-0ebf8670d506
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e368] [cursor=pointer]
+                              - button "置顶聊天" [ref=e372] [cursor=pointer]
+                    - listitem [ref=e376]:
+                      - generic [ref=e378]:
+                        - group "制作表情差分":
+                          - link "制作表情差分" [ref=e379] [cursor=pointer]:
+                            - /url: /c/6ae1d133-8188-83ec-9d76-61af0bbfef96
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e385] [cursor=pointer]
+                              - button "置顶聊天" [ref=e389] [cursor=pointer]
+                    - listitem [ref=e393]:
+                      - generic [ref=e395]:
+                        - group "编辑吊坠裂痕效果":
+                          - link "编辑吊坠裂痕效果" [ref=e396] [cursor=pointer]:
+                            - /url: /c/6ae1cd8c-eed4-83ec-8226-1a523c7ab90a
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e402] [cursor=pointer]
+                              - button "置顶聊天" [ref=e406] [cursor=pointer]
+                    - listitem [ref=e410]:
+                      - generic [ref=e412]:
+                        - group "像素游戏模型搭配":
+                          - link "像素游戏模型搭配" [ref=e413] [cursor=pointer]:
+                            - /url: /c/6ae1a070-71f0-83ec-b6ee-966144fea792
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e419] [cursor=pointer]
+                              - button "置顶聊天" [ref=e423] [cursor=pointer]
+                    - listitem [ref=e427]:
+                      - generic [ref=e429]:
+                        - group "制作像素角色图":
+                          - link "制作像素角色图" [ref=e430] [cursor=pointer]:
+                            - /url: /c/6adf28b5-1e7c-83e8-becd-2da106573409
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e436] [cursor=pointer]
+                              - button "置顶聊天" [ref=e440] [cursor=pointer]
+                    - listitem [ref=e444]:
+                      - generic [ref=e446]:
+                        - group "浏览剧情文件":
+                          - link "浏览剧情文件" [ref=e447] [cursor=pointer]:
+                            - /url: /c/6addaa09-d034-83e8-86cc-b00483baeaa8
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e453] [cursor=pointer]
+                              - button "置顶聊天" [ref=e457] [cursor=pointer]
+                    - listitem [ref=e461]:
+                      - generic [ref=e463]:
+                        - group "通读企划文件":
+                          - link "通读企划文件" [ref=e464] [cursor=pointer]:
+                            - /url: /c/6adc0bec-9ff8-83ec-9dd0-760f9058ac7d
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e470] [cursor=pointer]
+                              - button "置顶聊天" [ref=e474] [cursor=pointer]
+                    - listitem [ref=e478]:
+                      - generic [ref=e480]:
+                        - group "更换夜晚外景":
+                          - link "更换夜晚外景" [ref=e481] [cursor=pointer]:
+                            - /url: /c/6add3f32-4d20-83ec-80d8-54c678cb4fd0
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e487] [cursor=pointer]
+                              - button "置顶聊天" [ref=e491] [cursor=pointer]
+                    - listitem [ref=e495]:
+                      - generic [ref=e497]:
+                        - group "绘制游戏CG插画":
+                          - link "绘制游戏CG插画" [ref=e498] [cursor=pointer]:
+                            - /url: /c/6adc999b-f36c-83ee-a256-c802060b6081
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e504] [cursor=pointer]
+                              - button "置顶聊天" [ref=e508] [cursor=pointer]
+          - generic [ref=e512] [cursor=pointer]:
+            - button "打开个人资料菜单" [ref=e513]
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Elaina
+                  - generic: Plus
+        - generic:
+          - separator
+      - generic [ref=e99]:
+        - main [ref=e101]:
+          - generic:
+            - button "临时聊天" [ref=e107] [cursor=pointer]
+            - group "撰写器模式" [ref=e113]:
+              - button "聊天" [pressed] [ref=e114] [cursor=pointer]
+              - button "工作" [ref=e115] [cursor=pointer]
+          - main [ref=e127]:
+            - generic [ref=e130]:
+              - heading "我们从哪里开始？" [level=1] [ref=e138]
+              - generic [ref=e142]:
+                - generic [ref=e518]:
+                  - button "每周精选适合零基础制作游戏 BGM 与音效的新工具、技术进展和实用教程" [ref=e519] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e521]: 🎵
+                  - button "对该建议不感兴趣"
+                - generic [ref=e163]:
+                  - generic [ref=e670]:
+                    - button "grocery-current-reference.png" [ref=e671] [cursor=pointer]:
+                      - generic [ref=e672]:
+                        - img "grocery-current-reference.png" [ref=e673]
+                        - progressbar "正在上传 grocery-current-reference.png" [ref=e674]
+                      - button "移除“grocery-current-reference.png”"
+                    - button "shops-style-reference.png" [ref=e678] [cursor=pointer]:
+                      - generic [ref=e679]:
+                        - img "shops-style-reference.png" [ref=e680]
+                        - progressbar "正在上传 shops-style-reference.png" [ref=e681]
+                      - button "移除“shops-style-reference.png”"
+                  - generic [ref=e164]:
+                    - textbox "询问 ChatGPT" [active] [ref=e176]:
+                      - paragraph: 询问 ChatGPT
+                    - button "添加文件等内容" [ref=e169] [cursor=pointer]
+                    - generic [ref=e179]:
+                      - button "选择 ChatGPT 模型" [ref=e526] [cursor=pointer]:
+                        - generic [ref=e532]:
+                          - generic [aria-hidden]:
+                            - generic: 思考强度
+                          - generic [ref=e533]: High
+                      - generic [ref=e180]:
+                        - button "听写" [ref=e183] [cursor=pointer]
+                        - button "发送" [ref=e685] [cursor=pointer]
+        - status [ref=e193]
+  - status [ref=e542]
+  - status [ref=e543]

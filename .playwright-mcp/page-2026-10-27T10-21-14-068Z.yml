@@ -1,0 +1,196 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - link "跳转到内容" [ref=e576] [cursor=pointer]:
+      - /url: "#_r_dm_"
+    - generic [ref=e6]:
+      - complementary [ref=e7]:
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - button "切换模式，当前模式：ChatGPT" [ref=e108] [cursor=pointer]:
+              - generic [ref=e109]: ChatGPT
+            - generic [ref=e21]:
+              - button "搜索" [ref=e22] [cursor=pointer]
+              - button "隐藏侧边栏" [expanded] [ref=e30] [cursor=pointer]
+          - navigation "聊天记录" [ref=e35]:
+            - button "新聊天" [ref=e39] [cursor=pointer]
+            - generic [ref=e48]:
+              - generic [ref=e51]:
+                - button "定时任务" [ref=e52] [cursor=pointer]
+                - button "资料库" [ref=e411] [cursor=pointer]
+                - button "插件" [ref=e61] [cursor=pointer]
+                - button "探索" [ref=e70] [cursor=pointer]
+              - generic [ref=e117]:
+                - generic [ref=e120]:
+                  - generic [ref=e121]:
+                    - button "项目" [expanded] [ref=e124] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "项目侧边栏选项"
+                          - button "添加新项目" [ref=e129] [cursor=pointer]
+                  - list [ref=e136]:
+                    - listitem [ref=e137]: 没有项目
+                - generic [ref=e141]:
+                  - generic [ref=e142]:
+                    - button "最近" [expanded] [ref=e145] [cursor=pointer]
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "聊天侧边栏选项"
+                          - button "筛选聊天和工作"
+                          - button "新聊天"
+                  - list [ref=e152]:
+                    - listitem [ref=e577]:
+                      - generic [ref=e744]:
+                        - group "生成像素角色":
+                          - generic:
+                            - link "生成像素角色" [ref=e745] [cursor=pointer]:
+                              - /url: /c/6ae07ac3-21d8-83e8-a5b5-936d45fe85e2
+                            - generic:
+                              - generic:
+                                - status "处理中"
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e751] [cursor=pointer]
+                              - button "置顶聊天" [ref=e755] [cursor=pointer]
+                    - listitem [ref=e153]:
+                      - generic [ref=e155]:
+                        - group "生成杂货店老板像素图":
+                          - link "生成杂货店老板像素图" [ref=e156] [cursor=pointer]:
+                            - /url: /c/6ae079d8-c768-83e8-9cec-8df6e640e196
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e162] [cursor=pointer]
+                              - button "置顶聊天" [ref=e166] [cursor=pointer]
+                    - listitem [ref=e170]:
+                      - generic [ref=e172]:
+                        - group "生成像素NPC":
+                          - link "生成像素NPC" [ref=e173] [cursor=pointer]:
+                            - /url: /c/6ae076db-a1a8-83ee-a7ac-41c22577ee42
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e179] [cursor=pointer]
+                              - button "置顶聊天" [ref=e183] [cursor=pointer]
+                    - listitem [ref=e187]:
+                      - generic [ref=e189]:
+                        - group "制作日式奇幻环境CG":
+                          - link "制作日式奇幻环境CG" [ref=e190] [cursor=pointer]:
+                            - /url: /c/6ae04836-c744-83e8-90ca-f09b66aa7482
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e196] [cursor=pointer]
+                              - button "置顶聊天" [ref=e200] [cursor=pointer]
+                    - listitem [ref=e204]:
+                      - generic [ref=e206]:
+                        - group "制作像素姿势图":
+                          - link "制作像素姿势图" [ref=e207] [cursor=pointer]:
+                            - /url: /c/6adf4692-83c8-83ee-a974-36f02c943354
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e213] [cursor=pointer]
+                              - button "置顶聊天" [ref=e217] [cursor=pointer]
+                    - listitem [ref=e221]:
+                      - generic [ref=e223]:
+                        - group "制作像素角色图":
+                          - link "制作像素角色图" [ref=e224] [cursor=pointer]:
+                            - /url: /c/6adf28b5-1e7c-83e8-becd-2da106573409
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e230] [cursor=pointer]
+                              - button "置顶聊天" [ref=e234] [cursor=pointer]
+                    - listitem [ref=e238]:
+                      - generic [ref=e240]:
+                        - group "浏览剧情文件":
+                          - link "浏览剧情文件" [ref=e241] [cursor=pointer]:
+                            - /url: /c/6addaa09-d034-83e8-86cc-b00483baeaa8
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e247] [cursor=pointer]
+                              - button "置顶聊天" [ref=e251] [cursor=pointer]
+                    - listitem [ref=e255]:
+                      - generic [ref=e257]:
+                        - group "通读企划文件":
+                          - link "通读企划文件" [ref=e258] [cursor=pointer]:
+                            - /url: /c/6adc0bec-9ff8-83ec-9dd0-760f9058ac7d
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e264] [cursor=pointer]
+                              - button "置顶聊天" [ref=e268] [cursor=pointer]
+                    - listitem [ref=e272]:
+                      - generic [ref=e274]:
+                        - group "更换夜晚外景":
+                          - link "更换夜晚外景" [ref=e275] [cursor=pointer]:
+                            - /url: /c/6add3f32-4d20-83ec-80d8-54c678cb4fd0
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e281] [cursor=pointer]
+                              - button "置顶聊天" [ref=e285] [cursor=pointer]
+                    - listitem [ref=e289]:
+                      - generic [ref=e291]:
+                        - group "绘制游戏CG插画":
+                          - link "绘制游戏CG插画" [ref=e292] [cursor=pointer]:
+                            - /url: /c/6adc999b-f36c-83ee-a256-c802060b6081
+                          - generic:
+                            - generic:
+                              - button "聊天操作" [ref=e298] [cursor=pointer]
+                              - button "置顶聊天" [ref=e302] [cursor=pointer]
+          - generic [ref=e306] [cursor=pointer]:
+            - button "打开个人资料菜单" [ref=e307]
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Elaina
+                  - generic: Plus
+        - generic:
+          - separator
+      - generic [ref=e595]:
+        - main [ref=e597]:
+          - generic:
+            - generic:
+              - generic:
+                - button "Chat actions" [ref=e600] [cursor=pointer]
+                - button "分享" [disabled] [ref=e607]
+          - region "对话" [ref=e624]:
+            - generic [ref=e625]:
+              - generic [ref=e635]:
+                - generic [ref=e636]:
+                  - heading "你说：" [level=4] [ref=e637]
+                  - generic [ref=e638]:
+                    - button "用户附件" [ref=e640] [cursor=pointer]:
+                      - img "用户附件" [ref=e641]
+                    - generic [ref=e643]:
+                      - generic [ref=e644]: 请直接生成一张日式奇幻游戏《循环小镇》的布店老板正面静止像素小人。上传图片是同游戏的面包店老板，只参考像素颗粒、Q版大头短身比例、轻微俯视视角、完整站姿和游戏内尺寸感，不复制人物的脸、头发、厨师帽和白围裙。 设计候选：一位温和干练的中年女性布店老板，深紫色头发盘成低发髻，穿朴素的蓝灰色长袖上衣与暗紫色长裙，肩上自然搭着一条柔和浅色布巾，腰间有小巧针线包。衣服只保留清晰的大色块，方便游戏中辨认，具有日常小镇气息。单人正面全身站立，双脚自然接地、手臂放松，保持静止。角色四周留白，透明背景，不画店铺、货架、柜台、文字、地面阴影或其他人物。不要修长成人立绘，不要多方向或动作表。
+                      - generic [ref=e652]:
+                        - button "复制消息" [ref=e654] [cursor=pointer]
+                        - button "共享提示" [ref=e657] [cursor=pointer]
+                - generic [ref=e759]:
+                  - heading "ChatGPT 说：" [level=4] [ref=e760]
+                  - group [ref=e762]:
+                    - group [ref=e763]:
+                      - button "图像生成时玩贪吃蛇" [ref=e764] [cursor=pointer]
+                    - generic:
+                      - generic: 最后再微调一下…
+                      - generic: 96%
+              - generic [ref=e672]: ChatGPT 可能会出错。请核查重要信息。
+            - generic:
+              - generic:
+                - generic:
+                  - button [aria-hidden]
+                - heading "最新一条回复" [level=4] [ref=e676]
+                - status [ref=e677]
+                - generic [ref=e699]:
+                  - button "添加文件等内容" [ref=e704] [cursor=pointer]
+                  - textbox "询问 ChatGPT" [active] [ref=e711]:
+                    - paragraph: 询问 ChatGPT
+                  - generic [ref=e714]:
+                    - button "选择 ChatGPT 模型" [ref=e766] [cursor=pointer]:
+                      - generic [ref=e772]:
+                        - generic [aria-hidden]:
+                          - generic: 思考强度
+                        - generic [ref=e773]: Medium
+                    - generic [ref=e731]:
+                      - button "听写" [disabled] [ref=e734]
+                      - button "停止" [ref=e739] [cursor=pointer]
+        - status [ref=e742]
+  - status [ref=e410]
+  - status [ref=e743]

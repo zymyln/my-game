@@ -1,0 +1,252 @@
+- generic:
+  - generic:
+    - generic:
+      - generic:
+        - link:
+          - /url: "#_r_ad_"
+          - text: 跳转到内容
+      - generic:
+        - complementary [aria-hidden] [ref=f15e7]:
+          - generic [ref=f15e13]:
+            - generic [ref=f15e14]:
+              - button [ref=f15e896] [cursor=pointer]:
+                - generic [ref=f15e16]: ChatGPT
+              - generic [ref=f15e24]:
+                - button [ref=f15e897] [cursor=pointer]
+                - button [expanded] [ref=f15e898] [cursor=pointer]
+            - navigation [ref=f15e899]:
+              - button [ref=f15e900] [cursor=pointer]:
+                - generic [ref=f15e43]: 新聊天
+              - generic [ref=f15e51]:
+                - generic [ref=f15e54]:
+                  - button [ref=f15e901] [cursor=pointer]:
+                    - generic [ref=f15e56]: 定时任务
+                  - button [ref=f15e902] [cursor=pointer]:
+                    - generic [ref=f15e65]: 资料库
+                  - button [ref=f15e903] [cursor=pointer]:
+                    - generic [ref=f15e73]: 插件
+                  - button [ref=f15e904] [cursor=pointer]:
+                    - generic [ref=f15e82]: 探索
+                - generic [ref=f15e92]:
+                  - generic [ref=f15e95]:
+                    - generic [ref=f15e96]:
+                      - button [expanded] [ref=f15e905] [cursor=pointer]:
+                        - generic [ref=f15e100]: 项目
+                      - button
+                      - button [ref=f15e906] [cursor=pointer]
+                    - list [ref=f15e111]:
+                      - listitem [ref=f15e112]: 没有项目
+                  - generic [ref=f15e116]:
+                    - generic [ref=f15e117]:
+                      - button [expanded] [ref=f15e907] [cursor=pointer]:
+                        - generic [ref=f15e121]: 最近
+                      - button
+                      - button
+                      - button
+                    - list [ref=f15e127]:
+                      - listitem [ref=f15e800]:
+                        - generic [ref=f15e802]:
+                          - group:
+                            - link [ref=f15e908] [cursor=pointer]:
+                              - /url: /c/6ae076db-a1a8-83ee-a7ac-41c22577ee42
+                              - generic [ref=f15e804]: 生成像素NPC
+                            - generic:
+                              - generic:
+                                - button [ref=f15e909] [cursor=pointer]
+                                - button [ref=f15e910] [cursor=pointer]
+                      - listitem [ref=f15e128]:
+                        - generic [ref=f15e130]:
+                          - group:
+                            - link [ref=f15e911] [cursor=pointer]:
+                              - /url: /c/6ae04836-c744-83e8-90ca-f09b66aa7482
+                              - generic [ref=f15e132]: 制作日式奇幻环境CG
+                            - generic:
+                              - generic:
+                                - button [ref=f15e912] [cursor=pointer]
+                                - button [ref=f15e913] [cursor=pointer]
+                      - listitem [ref=f15e145]:
+                        - generic [ref=f15e147]:
+                          - group:
+                            - link [ref=f15e914] [cursor=pointer]:
+                              - /url: /c/6adf4692-83c8-83ee-a974-36f02c943354
+                              - generic [ref=f15e149]: 制作像素姿势图
+                            - generic:
+                              - generic:
+                                - button [ref=f15e915] [cursor=pointer]
+                                - button [ref=f15e916] [cursor=pointer]
+                      - listitem [ref=f15e162]:
+                        - generic [ref=f15e164]:
+                          - group:
+                            - link [ref=f15e917] [cursor=pointer]:
+                              - /url: /c/6adf28b5-1e7c-83e8-becd-2da106573409
+                              - generic [ref=f15e166]: 制作像素角色图
+                            - generic:
+                              - generic:
+                                - button [ref=f15e918] [cursor=pointer]
+                                - button [ref=f15e919] [cursor=pointer]
+                      - listitem [ref=f15e179]:
+                        - generic [ref=f15e181]:
+                          - group:
+                            - link [ref=f15e920] [cursor=pointer]:
+                              - /url: /c/6addaa09-d034-83e8-86cc-b00483baeaa8
+                              - generic [ref=f15e183]: 浏览剧情文件
+                            - generic:
+                              - generic:
+                                - button [ref=f15e921] [cursor=pointer]
+                                - button [ref=f15e922] [cursor=pointer]
+                      - listitem [ref=f15e196]:
+                        - generic [ref=f15e198]:
+                          - group:
+                            - link [ref=f15e923] [cursor=pointer]:
+                              - /url: /c/6adc0bec-9ff8-83ec-9dd0-760f9058ac7d
+                              - generic [ref=f15e200]: 通读企划文件
+                            - generic:
+                              - generic:
+                                - button [ref=f15e924] [cursor=pointer]
+                                - button [ref=f15e925] [cursor=pointer]
+                      - listitem [ref=f15e213]:
+                        - generic [ref=f15e215]:
+                          - group:
+                            - link [ref=f15e926] [cursor=pointer]:
+                              - /url: /c/6add3f32-4d20-83ec-80d8-54c678cb4fd0
+                              - generic [ref=f15e217]: 更换夜晚外景
+                            - generic:
+                              - generic:
+                                - button [ref=f15e927] [cursor=pointer]
+                                - button [ref=f15e928] [cursor=pointer]
+                      - listitem [ref=f15e230]:
+                        - generic [ref=f15e232]:
+                          - group:
+                            - link [ref=f15e929] [cursor=pointer]:
+                              - /url: /c/6adc999b-f36c-83ee-a256-c802060b6081
+                              - generic [ref=f15e234]: 绘制游戏CG插画
+                            - generic:
+                              - generic:
+                                - button [ref=f15e930] [cursor=pointer]
+                                - button [ref=f15e931] [cursor=pointer]
+            - generic [ref=f15e254] [cursor=pointer]:
+              - button [ref=f15e932]
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Elaina
+                    - generic: Plus
+          - generic:
+            - separator
+        - text: 询问 ChatGPT
+        - generic:
+          - generic:
+            - generic [aria-hidden]:
+              - main:
+                - generic:
+                  - generic:
+                    - generic:
+                      - button [ref=f15e933] [cursor=pointer]
+                      - button [ref=f15e934] [cursor=pointer]: 分享
+                      - button [ref=f15e935] [cursor=pointer]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - generic:
+                                      - generic:
+                                        - generic:
+                                          - generic:
+                                            - region:
+                                              - generic:
+                                                - generic:
+                                                  - generic:
+                                                    - generic:
+                                                      - generic:
+                                                        - generic:
+                                                          - generic:
+                                                            - generic:
+                                                              - generic:
+                                                                - generic:
+                                                                  - generic:
+                                                                    - generic:
+                                                                      - heading [level=4]: 你说：
+                                                                      - generic:
+                                                                        - generic:
+                                                                          - generic:
+                                                                            - generic: 请直接生成一张日式奇幻 RPG 小镇路人 NPC 像素小人：一位普通成年村民，穿朴素的棕色外套、米色衬衣与深色裤子，造型自然友善。单人全身，正面站立，双脚完整，居中；清晰的像素网格、有限色板、硬边像素艺术，适合俯视角剧情游戏角色参考。纯透明背景，不要场景、文字、边框或其他人物。只生成一张。
+                                                                            - generic:
+                                                                              - generic:
+                                                                                - generic:
+                                                                                  - generic:
+                                                                                    - button
+                                                                                  - button
+                                                                                  - generic:
+                                                                                    - button
+                                                                    - generic:
+                                                                      - heading [level=4]: ChatGPT 说：
+                                                                      - generic:
+                                                                        - generic:
+                                                                          - generic:
+                                                                            - generic:
+                                                                              - generic:
+                                                                                - button
+                                                                                - generic:
+                                                                                  - generic:
+                                                                                    - button [ref=f15e936] [cursor=pointer]: 编辑
+                                                                                    - button [ref=f15e937] [cursor=pointer]
+                                                                  - generic:
+                                                                    - generic:
+                                                                      - button
+                                                                      - button
+                                                                      - button
+                                                                      - button
+                                                                      - button
+                                                - generic: ChatGPT 可能会出错。请核查重要信息。
+                                              - generic:
+                                                - button [aria-hidden]
+                                                - heading [level=4] [ref=f15e938]: 最新一条回复
+                                                - status [ref=f15e733]
+            - status
+  - status
+  - status
+  - status: 回答已完成
+  - dialog [ref=f15e940]:
+    - heading "图片预览" [level=2] [ref=f15e941]
+    - generic [ref=f15e942]:
+      - generic [ref=f15e948]:
+        - generic [ref=f15e950]:
+          - banner:
+            - button "复古像素村民角色 的文件操作" [ref=f15e952] [cursor=pointer]:
+              - generic [ref=f15e953]: 图像
+            - generic:
+              - button "82%" [ref=f15e962] [cursor=pointer]
+              - generic [ref=f15e966]:
+                - button "下载" [ref=f15e967] [cursor=pointer]
+                - button "分享" [ref=f15e971] [cursor=pointer]
+              - button "在侧面板中打开" [ref=f15e977] [cursor=pointer]
+              - button "关闭查看器" [ref=f15e983] [cursor=pointer]
+        - generic [ref=f15e993]:
+          - toolbar "图像编辑工具" [ref=f15e995]:
+            - button "移动工具栏" [ref=f15e996] [cursor=pointer]
+            - generic [ref=f15e1002]:
+              - button "标注" [ref=f15e1003] [cursor=pointer]
+              - button "添加评论" [ref=f15e1007] [cursor=pointer]
+              - button "移除背景" [ref=f15e1011] [cursor=pointer]
+              - button "擦除" [ref=f15e1015] [cursor=pointer]
+              - button "调整大小" [ref=f15e1019] [cursor=pointer]
+          - img "已生成图像 1" [ref=f15e1028]
+      - generic [ref=f15e1049]:
+        - button "添加文件等内容" [ref=f15e1054] [cursor=pointer]
+        - textbox "描述修改内容" [active] [ref=f15e1061]:
+          - paragraph: 描述修改内容
+        - generic [ref=f15e1064]:
+          - button "选择 ChatGPT 模型" [ref=f15e1068] [cursor=pointer]:
+            - generic [ref=f15e1074]:
+              - generic [aria-hidden]:
+                - generic: 思考强度
+              - generic [ref=f15e1075]: Medium
+          - generic [ref=f15e1081]:
+            - button "听写" [ref=f15e1084] [cursor=pointer]
+            - button "开始语音" [ref=f15e1089] [cursor=pointer]
