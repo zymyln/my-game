@@ -806,3 +806,9 @@
 - 沿用已认可的面包店老板四帧节奏，为铁匠铺老板与木工铺老板制作站姿呼吸。两位使用各自 80×80 游戏精灵，2.42 秒循环，足底锚点与腰以下像素一致。
 - 本机试样在 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/`，使用手艺街实景和原站位。Edge 实测两位均可循环、切回原站姿和放大对比。预览 `http://127.0.0.1:4195/craft-map-idle-trial/preview.html`。
 - 本轮交付独立试样，等作者看过后决定是否接入。
+
+
+## 2026-11-25 循环小镇：木工老板面部重画
+
+- 依据作者全身原稿，在 80×80 原站姿的面部范围内重画两眼与嘴，并对位使用网页 GPT 候选的短胡像素。透明度和脸外像素一致，原站位与四帧呼吸沿用。
+- 独立预览 `http://127.0.0.1:4195/craft-map-idle-trial/preview.html?npc=carpenter` 支持修脸前后切换，已在 Edge 实测。网页原图及重画后的精灵见 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/revision/`，待作者看过后接入。
