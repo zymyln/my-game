@@ -812,3 +812,9 @@
 
 - 依据作者全身原稿，在 80×80 原站姿的面部范围内重画两眼与嘴，并对位使用网页 GPT 候选的短胡像素。透明度和脸外像素一致，原站位与四帧呼吸沿用。
 - 独立预览 `http://127.0.0.1:4195/craft-map-idle-trial/preview.html?npc=carpenter` 支持修脸前后切换，已在 Edge 实测。网页原图及重画后的精灵见 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/revision/`，待作者看过后接入。
+
+
+## 2026-11-25 循环小镇：木工老板全身站姿候选
+
+- 作者要求停止在旧脸上局部修补。已由「Edge 生图」在网页 GPT 新对话中重做正面全身站姿，保留原设服装和木工工具，重新设计脸。生成对话 `https://chatgpt.com/c/6b069d41-40e8-83ee-b730-0bc375710a43`。
+- 原图、透明 80×80 候选及同一站位的新旧对照保存在 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/carpenter-standing-redraw/`。Edge 核对候选人物范围为 29×64，脚底第 73 行。暂作候选，待作者验收站姿。
