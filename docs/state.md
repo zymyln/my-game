@@ -823,3 +823,9 @@
 
 - 按作者最新要求，「Edge 生图」在网页 GPT 新对话中仅上传铁匠、面包店老板和旅馆老板三张参考，重新设计了木工老板。新造型为浅棕卷发、格纹衬衫、工具围裙，耳后夹一支铅笔。生成对话 `https://chatgpt.com/c/6b069fbf-ecac-83ee-afb8-008554218a46`。
 - 原图、透明 80×80 候选和与铁匠同尺度的手艺街对照保存在 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/carpenter-fresh-design/`。Edge 已核对人物约 30×64，脚底第 73 行。交付为独立站姿候选，待作者验收。
+
+## 2026-11-25 循环小镇：新木工老板地图呼吸
+
+- 作者认可新站姿后，沿用面包店老板的错拍节奏。每帧 80×80，四帧用时 1210、260、650、300 毫秒，单圈 2.42 秒。肩胸先起，头部抬 1 像素后晚一拍回落。第 39 行及以下逐像素保持原样。
+- 反重力「美术助理」实查 GIF、四帧精灵表和四张原尺寸手艺街画面，确认自然读作呼吸，领口和肩带无断缝，围裙工具及脚底稳定，通过验收。Edge 实测循环、静止对照、放大及系统减少动态效果时的静止默认状态。
+- 试样保存在 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/carpenter-fresh-design/breathing/`。独立预览 `http://127.0.0.1:4195/craft-map-idle-trial/carpenter-fresh-design/breathing/preview.html`，未接入正式游戏。
