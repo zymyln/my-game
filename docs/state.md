@@ -818,3 +818,8 @@
 
 - 作者要求停止在旧脸上局部修补。已由「Edge 生图」在网页 GPT 新对话中重做正面全身站姿，保留原设服装和木工工具，重新设计脸。生成对话 `https://chatgpt.com/c/6b069d41-40e8-83ee-b730-0bc375710a43`。
 - 原图、透明 80×80 候选及同一站位的新旧对照保存在 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/carpenter-standing-redraw/`。Edge 核对候选人物范围为 29×64，脚底第 73 行。暂作候选，待作者验收站姿。
+
+## 2026-11-25 循环小镇：木工老板全新设计
+
+- 按作者最新要求，「Edge 生图」在网页 GPT 新对话中仅上传铁匠、面包店老板和旅馆老板三张参考，重新设计了木工老板。新造型为浅棕卷发、格纹衬衫、工具围裙，耳后夹一支铅笔。生成对话 `https://chatgpt.com/c/6b069fbf-ecac-83ee-afb8-008554218a46`。
+- 原图、透明 80×80 候选和与铁匠同尺度的手艺街对照保存在 `outputs/npc-dialogue-portraits-20261124/craft-map-idle-trial/carpenter-fresh-design/`。Edge 已核对人物约 30×64，脚底第 73 行。交付为独立站姿候选，待作者验收。
